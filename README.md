@@ -32,6 +32,11 @@ const b = uniq(a); // => [ 1, 2 ]
 const x = {a: 1, b: "", c: undefined};
 const y = uniq(x); // => { a: 1 }
 
+const a = [null, 1, 2, "", undefined, 1];
+const b = sortedUniq(a); // => [ 1, 2 ]
+const x = {a: 1, b: "", c: undefined};
+const y = sortedUniq(x); // => { a: 1 }
+
 const { name, description } = pkg(); // => { name: ..., version: ...}
 
 ```

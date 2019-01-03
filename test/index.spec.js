@@ -4,7 +4,7 @@ process.env.NODE_ENV = 'test';
 
 /* dependencies */
 const { expect } = require('chai');
-const { compact, uniq, pkg } = require('../');
+const { compact, uniq, sortedUniq, pkg } = require('../');
 
 describe('common', () => {
   it('should read current process package information', () => {
@@ -47,6 +47,25 @@ describe('common', () => {
   it('should remove duplicates from an object', () => {
     const x = { a: null, b: 1, c: '', d: undefined };
     const y = uniq(x);
+    expect(y).to.exist;
+    expect(y).to.not.include.keys('a', 'c', 'd');
+    expect(y.b).to.exist;
+    y.e = 2;
+    expect(x.e).to.not.exist;
+  });
+
+  it('should create sorted duplicates array', () => {
+    const a = [null, 1, 2, '', undefined, 1];
+    const b = sortedUniq(a);
+    expect(b).to.exist;
+    expect(b).to.eql([1, 2]);
+    b.push(3);
+    expect(a).to.not.contain(3);
+  });
+
+  it('should create sorted duplicates object', () => {
+    const x = { a: null, b: 1, c: '', d: undefined };
+    const y = sortedUniq(x);
     expect(y).to.exist;
     expect(y).to.not.include.keys('a', 'c', 'd');
     expect(y.b).to.exist;
