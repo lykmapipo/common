@@ -110,18 +110,23 @@ exports.sortedUniq = function sortedUniq(value) {
  * @function pkg
  * @name pkg
  * @description read current process package information
+ * @param {String|String[]|...String} field fields to pick from package
  * @return {Object} current process package information
  * @author lally elias <lallyelias87@mail.com>
  * @license MIT
  * @since 0.1.0
- * @version 0.1.0
+ * @version 0.2.0
  * @static
  * @public
  * @example
  * const { name, version } = pkg(); // => { name: ..., version: ...}
  */
-exports.pkg = function pkg() {
+exports.pkg = function pkg(...field) {
   const options = _.merge({}, { cwd: process.cwd() });
-  const pkg = readPkg(options);
-  return pkg;
+  const _pkg = readPkg(options);
+  const fields = exports.uniq([].concat([...field]));
+  if (!_.isEmpty(fields)) {
+    return _.merge({}, _.pick(_pkg, ...fields));
+  }
+  return _pkg;
 };

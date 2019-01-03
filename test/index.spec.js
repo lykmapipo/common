@@ -16,6 +16,12 @@ describe('common', () => {
     expect(version).to.exist;
   });
 
+  it('should pick current process package information', () => {
+    const info = pkg('name', 'version');
+    expect(info.name).to.exist;
+    expect(info.version).to.exist;
+  });
+
   it('should compact an array', () => {
     const a = [null, 1, '', undefined];
     const b = compact(a);
