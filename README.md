@@ -20,9 +20,14 @@ npm install --save @lykmapipo/common
 ## Usage
 
 ```js
-const { pkg } = require('@lykmapipo/common');
+const { compact, pkg } = require('@lykmapipo/common');
 
-const { name, description } = pkg();
+const a = [null, 1, "", undefined];
+const b = compact(a); // => [ 1 ]
+const x = {a: 1, b: "", c: undefined};
+const y = compact(x); // => { a: 1 }
+
+const { name, description } = pkg(); // => { name: ..., version: ...}
 
 ```
 

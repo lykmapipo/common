@@ -21,10 +21,10 @@ const { sync: readPkg } = require('read-pkg');
  * @public
  * @example
  * const a = [null, 1, "", undefined];
- * const b = compact(a); // [ 1 ]
+ * const b = compact(a); // => [ 1 ]
  *
  * const x = {a: 1, b: "", c: undefined};
- * const y = compact(x); // {a: 1}
+ * const y = compact(x); // => { a: 1 }
  */
 exports.compact = function compact(value) {
   // compact array
@@ -54,7 +54,7 @@ exports.compact = function compact(value) {
  * @static
  * @public
  * @example
- * const { name, version } = pkg();
+ * const { name, version } = pkg(); // => { name: ..., version: ...}
  */
 exports.pkg = function pkg() {
   const options = _.merge({}, { cwd: process.cwd() });
