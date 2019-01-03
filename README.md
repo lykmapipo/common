@@ -27,6 +27,11 @@ const b = compact(a); // => [ 1 ]
 const x = {a: 1, b: "", c: undefined};
 const y = compact(x); // => { a: 1 }
 
+const a = [null, 1, 1, "", undefined, 2];
+const b = uniq(a); // => [ 1, 2 ]
+const x = {a: 1, b: "", c: undefined};
+const y = uniq(x); // => { a: 1 }
+
 const { name, description } = pkg(); // => { name: ..., version: ...}
 
 ```
