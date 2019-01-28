@@ -10,7 +10,8 @@ const {
   sortedUniq,
   pkg,
   continentNames,
-  countryNames
+  countryNames,
+  countryCodes
 } = require('../');
 
 describe('common', () => {
@@ -98,5 +99,12 @@ describe('common', () => {
     expect(countryNames).to.be.an('array');
     expect(countryNames).to.be.to.have.length.at.least(1);
     expect(countryNames).to.include('Tanzania');
+  });
+
+  it('shoulde expose country codes', () => {
+    expect(countryCodes).to.exist;
+    expect(countryCodes).to.be.an('array');
+    expect(countryCodes).to.be.to.have.length.at.least(1);
+    expect(countryCodes).to.include('TZ');
   });
 });

@@ -169,6 +169,24 @@ const continentNames = sortedUniq(_.values(continents));
 const countryNames = sortedUniq(_.map(countries, 'name'));
 
 
+/**
+ * @function countryCodes
+ * @name countryCodes
+ * @description provide country codes
+ * @return {String[]} list of country codes
+ * @author lally elias <lallyelias87@mail.com>
+ * @license MIT
+ * @since 0.3.0
+ * @version 0.1.0
+ * @static
+ * @public
+ * @example
+ * const { countryCodes } = require('@lykmapipo/common');
+ * // => ['TZ']
+ */
+const countryCodes = _.map(sortedUniq(_.keys(countries)), _.toUpper);
+
+
 /* exports */
 module.exports = exports = {
   compact,
@@ -176,5 +194,6 @@ module.exports = exports = {
   sortedUniq,
   pkg,
   continentNames,
-  countryNames
+  countryNames,
+  countryCodes
 };
