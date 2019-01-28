@@ -4,7 +4,14 @@ process.env.NODE_ENV = 'test';
 
 /* dependencies */
 const { expect } = require('chai');
-const { compact, uniq, sortedUniq, pkg } = require('../');
+const {
+  compact,
+  uniq,
+  sortedUniq,
+  pkg,
+  continentNames,
+  countryNames
+} = require('../');
 
 describe('common', () => {
   it('should read current process package information', () => {
@@ -77,5 +84,19 @@ describe('common', () => {
     expect(y.b).to.exist;
     y.e = 2;
     expect(x.e).to.not.exist;
+  });
+
+  it('shoulde expose continent names', () => {
+    expect(continentNames).to.exist;
+    expect(continentNames).to.be.an('array');
+    expect(continentNames).to.be.to.have.length.at.least(1);
+    expect(continentNames).to.include('Africa');
+  });
+
+  it('shoulde expose country names', () => {
+    expect(countryNames).to.exist;
+    expect(countryNames).to.be.an('array');
+    expect(countryNames).to.be.to.have.length.at.least(1);
+    expect(countryNames).to.include('Tanzania');
   });
 });

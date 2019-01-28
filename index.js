@@ -3,6 +3,7 @@
 
 /* dependencies */
 const _ = require('lodash');
+const { continents, countries } = require('countries-list');
 const { sync: readPkg } = require('read-pkg');
 
 
@@ -26,7 +27,7 @@ const { sync: readPkg } = require('read-pkg');
  * const x = {a: 1, b: "", c: undefined};
  * const y = compact(x); // => { a: 1 }
  */
-exports.compact = function compact(value) {
+const compact = value => {
   // compact array
   if (_.isArray(value)) {
     return _.compact(value);
@@ -61,10 +62,10 @@ exports.compact = function compact(value) {
  * const x = {a: 1, b: "", c: undefined};
  * const y = uniq(x); // => { a: 1 }
  */
-exports.uniq = function uniq(value) {
+const uniq = value => {
   // uniq
   if (value) {
-    let _value = exports.compact(value);
+    let _value = compact(value);
     _value = _.isArray(value) ? _.uniq(_value) : _value;
     return _value;
   }
@@ -93,10 +94,10 @@ exports.uniq = function uniq(value) {
  * const x = {a: 1, b: "", c: undefined};
  * const y = sortedUniq(x); // => { a: 1 }
  */
-exports.sortedUniq = function sortedUniq(value) {
+const sortedUniq = value => {
   // sortedUniq
   if (value) {
-    let _value = exports.uniq(value);
+    let _value = uniq(value);
     _value = _.isArray(_value) ? _.orderBy(_value) : _value;
     return _value;
   }
@@ -121,12 +122,59 @@ exports.sortedUniq = function sortedUniq(value) {
  * @example
  * const { name, version } = pkg(); // => { name: ..., version: ...}
  */
-exports.pkg = function pkg(...field) {
+const pkg = (...field) => {
   const options = _.merge({}, { cwd: process.cwd() });
   const _pkg = readPkg(options);
-  const fields = exports.uniq([].concat([...field]));
+  const fields = uniq([].concat([...field]));
   if (!_.isEmpty(fields)) {
     return _.merge({}, _.pick(_pkg, ...fields));
   }
   return _pkg;
+};
+
+
+/**
+ * @function continentNames
+ * @name continentNames
+ * @description provide continent names
+ * @return {String[]} list of continent names
+ * @author lally elias <lallyelias87@mail.com>
+ * @license MIT
+ * @since 0.3.0
+ * @version 0.1.0
+ * @static
+ * @public
+ * @example
+ * const { continentNames } = require('@lykmapipo/common');
+ * // => ['Africa', 'Europe']
+ */
+const continentNames = sortedUniq(_.values(continents));
+
+
+/**
+ * @function countryNames
+ * @name countryNames
+ * @description provide country names
+ * @return {String[]} list of country names
+ * @author lally elias <lallyelias87@mail.com>
+ * @license MIT
+ * @since 0.3.0
+ * @version 0.1.0
+ * @static
+ * @public
+ * @example
+ * const { countryNames } = require('@lykmapipo/common');
+ * // => ['Tanzania']
+ */
+const countryNames = sortedUniq(_.map(countries, 'name'));
+
+
+/* exports */
+module.exports = exports = {
+  compact,
+  uniq,
+  sortedUniq,
+  pkg,
+  continentNames,
+  countryNames
 };

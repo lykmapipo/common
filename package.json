@@ -39,6 +39,7 @@
     "mocha": "^5.2.0"
   },
   "dependencies": {
+    "countries-list": ">=2.4.2",
     "lodash": ">=4.17.11",
     "read-pkg": ">=4.0.1"
   },
