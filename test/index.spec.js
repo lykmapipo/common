@@ -11,7 +11,8 @@ const {
   pkg,
   continentNames,
   countryNames,
-  countryCodes
+  countryCodes,
+  callingCodes
 } = require('../');
 
 describe('common', () => {
@@ -106,5 +107,12 @@ describe('common', () => {
     expect(countryCodes).to.be.an('array');
     expect(countryCodes).to.be.to.have.length.at.least(1);
     expect(countryCodes).to.include('TZ');
+  });
+
+  it('shoulde expose country calling codes', () => {
+    expect(callingCodes).to.exist;
+    expect(callingCodes).to.be.an('array');
+    expect(callingCodes).to.be.to.have.length.at.least(1);
+    expect(callingCodes).to.include('255');
   });
 });

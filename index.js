@@ -187,6 +187,27 @@ const countryNames = sortedUniq(_.map(countries, 'name'));
 const countryCodes = _.map(sortedUniq(_.keys(countries)), _.toUpper);
 
 
+/**
+ * @function callingCodes
+ * @name callingCodes
+ * @description provide country codes
+ * @return {String[]} list of country codes
+ * @author lally elias <lallyelias87@mail.com>
+ * @license MIT
+ * @since 0.3.0
+ * @version 0.1.0
+ * @static
+ * @public
+ * @example
+ * const { callingCodes } = require('@lykmapipo/common');
+ * // => ['255']
+ */
+const callingCodes =
+  _.map(sortedUniq(_.flattenDeep(_.map(countries, country => {
+    return (country.phone || '').split(',');
+  })), _.toUpper));
+
+
 /* exports */
 module.exports = exports = {
   compact,
@@ -195,5 +216,6 @@ module.exports = exports = {
   pkg,
   continentNames,
   countryNames,
-  countryCodes
+  countryCodes,
+  callingCodes
 };
