@@ -20,7 +20,16 @@ npm install --save @lykmapipo/common
 ## Usage
 
 ```js
-const { compact, uniq, pkg } = require('@lykmapipo/common');
+const { 
+compact,
+uniq,
+sortedUniq,
+pkg,
+continentNames,
+countryNames,
+countryCodes,
+callingCodes 
+} = require('@lykmapipo/common');
 
 const a = [null, 1, "", undefined];
 const b = compact(a); // => [ 1 ]
