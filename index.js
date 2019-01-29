@@ -134,8 +134,7 @@ const pkg = (...field) => {
 
 
 /**
- * @function continentNames
- * @name continentNames
+ * @name CONTINENT_NAMES
  * @description provide continent names
  * @return {String[]} list of continent names
  * @author lally elias <lallyelias87@mail.com>
@@ -145,15 +144,14 @@ const pkg = (...field) => {
  * @static
  * @public
  * @example
- * const { continentNames } = require('@lykmapipo/common');
- * // => ['Africa', 'Europe']
+ * const { CONTINENT_NAMES } = require('@lykmapipo/common');
+ * // => ['Africa', ...]
  */
-const continentNames = sortedUniq(_.values(continents));
+const CONTINENT_NAMES = sortedUniq(_.values(continents));
 
 
 /**
- * @function countryNames
- * @name countryNames
+ * @name COUNTRY_NAMES
  * @description provide country names
  * @return {String[]} list of country names
  * @author lally elias <lallyelias87@mail.com>
@@ -163,15 +161,14 @@ const continentNames = sortedUniq(_.values(continents));
  * @static
  * @public
  * @example
- * const { countryNames } = require('@lykmapipo/common');
- * // => ['Tanzania']
+ * const { COUNTRY_NAMES } = require('@lykmapipo/common');
+ * // => ['Tanzania', ...]
  */
-const countryNames = sortedUniq(_.map(countries, 'name'));
+const COUNTRY_NAMES = sortedUniq(_.map(countries, 'name'));
 
 
 /**
- * @function countryCodes
- * @name countryCodes
+ * @name COUNTRY_CODES
  * @description provide country codes
  * @return {String[]} list of country codes
  * @author lally elias <lallyelias87@mail.com>
@@ -181,17 +178,16 @@ const countryNames = sortedUniq(_.map(countries, 'name'));
  * @static
  * @public
  * @example
- * const { countryCodes } = require('@lykmapipo/common');
- * // => ['TZ']
+ * const { COUNTRY_CODES } = require('@lykmapipo/common');
+ * // => ['TZ', ...]
  */
-const countryCodes = _.map(sortedUniq(_.keys(countries)), _.toUpper);
+const COUNTRY_CODES = _.map(sortedUniq(_.keys(countries)), _.toUpper);
 
 
 /**
- * @function callingCodes
- * @name callingCodes
- * @description provide country codes
- * @return {String[]} list of country codes
+ * @name CALLING_CODES
+ * @description provide country calling codes
+ * @return {String[]} list of country calling codes
  * @author lally elias <lallyelias87@mail.com>
  * @license MIT
  * @since 0.3.0
@@ -199,10 +195,10 @@ const countryCodes = _.map(sortedUniq(_.keys(countries)), _.toUpper);
  * @static
  * @public
  * @example
- * const { callingCodes } = require('@lykmapipo/common');
- * // => ['255']
+ * const { CALLING_CODES } = require('@lykmapipo/common');
+ * // => ['255', ...]
  */
-const callingCodes =
+const CALLING_CODES =
   _.map(sortedUniq(_.flattenDeep(_.map(countries, country => {
     return (country.phone || '').split(',');
   })), _.toUpper));
@@ -214,8 +210,8 @@ module.exports = exports = {
   uniq,
   sortedUniq,
   pkg,
-  continentNames,
-  countryNames,
-  countryCodes,
-  callingCodes
+  CONTINENT_NAMES,
+  COUNTRY_NAMES,
+  COUNTRY_CODES,
+  CALLING_CODES
 };

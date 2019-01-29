@@ -9,10 +9,10 @@ const {
   uniq,
   sortedUniq,
   pkg,
-  continentNames,
-  countryNames,
-  countryCodes,
-  callingCodes
+  CONTINENT_NAMES,
+  COUNTRY_NAMES,
+  COUNTRY_CODES,
+  CALLING_CODES
 } = require('../');
 
 describe('common', () => {
@@ -89,30 +89,30 @@ describe('common', () => {
   });
 
   it('shoulde expose continent names', () => {
-    expect(continentNames).to.exist;
-    expect(continentNames).to.be.an('array');
-    expect(continentNames).to.be.to.have.length.at.least(1);
-    expect(continentNames).to.include('Africa');
+    expect(CONTINENT_NAMES).to.exist;
+    expect(CONTINENT_NAMES).to.be.an('array');
+    expect(CONTINENT_NAMES).to.be.to.have.length.at.least(1);
+    expect(CONTINENT_NAMES).to.include('Africa');
   });
 
   it('shoulde expose country names', () => {
-    expect(countryNames).to.exist;
-    expect(countryNames).to.be.an('array');
-    expect(countryNames).to.be.to.have.length.at.least(1);
-    expect(countryNames).to.include('Tanzania');
+    expect(COUNTRY_NAMES).to.exist;
+    expect(COUNTRY_NAMES).to.be.an('array');
+    expect(COUNTRY_NAMES).to.be.to.have.length.at.least(1);
+    expect(COUNTRY_NAMES).to.include('Tanzania');
   });
 
   it('shoulde expose country codes', () => {
-    expect(countryCodes).to.exist;
-    expect(countryCodes).to.be.an('array');
-    expect(countryCodes).to.be.to.have.length.at.least(1);
-    expect(countryCodes).to.include('TZ');
+    expect(COUNTRY_CODES).to.exist;
+    expect(COUNTRY_CODES).to.be.an('array');
+    expect(COUNTRY_CODES).to.be.to.have.length.at.least(1);
+    expect(COUNTRY_CODES).to.include('TZ');
   });
 
   it('shoulde expose country calling codes', () => {
-    expect(callingCodes).to.exist;
-    expect(callingCodes).to.be.an('array');
-    expect(callingCodes).to.be.to.have.length.at.least(1);
-    expect(callingCodes).to.include('255');
+    expect(CALLING_CODES).to.exist;
+    expect(CALLING_CODES).to.be.an('array');
+    expect(CALLING_CODES).to.be.to.have.length.at.least(1);
+    expect(CALLING_CODES).to.include('255');
   });
 });
