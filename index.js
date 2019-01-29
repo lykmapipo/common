@@ -219,7 +219,7 @@ const CALLING_CODES =
  * const { MAP_FEATURES } = require('@lykmapipo/common');
  * // => ['Boundary', ...]
  */
-const MAP_FEATURES_GROUPS = sortedUniq([
+const MAP_FEATURE_GROUPS = sortedUniq([
   'Aerialway', 'Aeroway', 'Barrier',
   'Boundary', 'Building', 'Emergency',
   'Highway', 'Natural', 'Office',
@@ -239,5 +239,5 @@ module.exports = exports = {
   COUNTRY_NAMES,
   COUNTRY_CODES,
   CALLING_CODES,
-  MAP_FEATURES_GROUPS
+  MAP_FEATURE_GROUPS
 };

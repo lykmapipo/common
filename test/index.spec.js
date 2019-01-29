@@ -13,7 +13,7 @@ const {
   COUNTRY_NAMES,
   COUNTRY_CODES,
   CALLING_CODES,
-  MAP_FEATURES_GROUPS
+  MAP_FEATURE_GROUPS
 } = require('../');
 
 describe('common', () => {
@@ -118,9 +118,9 @@ describe('common', () => {
   });
 
   it('shoulde expose map features', () => {
-    expect(MAP_FEATURES_GROUPS).to.exist;
-    expect(MAP_FEATURES_GROUPS).to.be.an('array');
-    expect(MAP_FEATURES_GROUPS).to.be.to.have.length.at.least(1);
-    expect(MAP_FEATURES_GROUPS).to.include('Boundary');
+    expect(MAP_FEATURE_GROUPS).to.exist;
+    expect(MAP_FEATURE_GROUPS).to.be.an('array');
+    expect(MAP_FEATURE_GROUPS).to.be.to.have.length.at.least(1);
+    expect(MAP_FEATURE_GROUPS).to.include('Boundary');
   });
 });
