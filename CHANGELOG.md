@@ -1,3 +1,13 @@
+#### 0.4.0 (2019-01-29)
+
+##### New Features
+
+*  add map feature group constans ([18841d4d](https://github.com/lykmapipo/common/commit/18841d4d8770874761bad2b7ba4c0f5ec1649918))
+
+##### Refactors
+
+*  rename constants to use upper name convection ([80f2c7d3](https://github.com/lykmapipo/common/commit/80f2c7d36bdd6729186601c75f30850c605bebaf))
+
 #### 0.3.0 (2019-01-28)
 
 ##### Documentation Changes
