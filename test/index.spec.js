@@ -12,7 +12,8 @@ const {
   CONTINENT_NAMES,
   COUNTRY_NAMES,
   COUNTRY_CODES,
-  CALLING_CODES
+  CALLING_CODES,
+  MAP_FEATURES_GROUPS
 } = require('../');
 
 describe('common', () => {
@@ -114,5 +115,12 @@ describe('common', () => {
     expect(CALLING_CODES).to.be.an('array');
     expect(CALLING_CODES).to.be.to.have.length.at.least(1);
     expect(CALLING_CODES).to.include('255');
+  });
+
+  it('shoulde expose map features', () => {
+    expect(MAP_FEATURES_GROUPS).to.exist;
+    expect(MAP_FEATURES_GROUPS).to.be.an('array');
+    expect(MAP_FEATURES_GROUPS).to.be.to.have.length.at.least(1);
+    expect(MAP_FEATURES_GROUPS).to.include('Boundary');
   });
 });

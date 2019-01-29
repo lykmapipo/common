@@ -204,6 +204,31 @@ const CALLING_CODES =
   })), _.toUpper));
 
 
+/**
+ * @name MAP_FEATURE_GROUPS
+ * @description provide map feature groups as per OSM categorization
+ * @return {String[]} list of map features
+ * @author lally elias <lallyelias87@mail.com>
+ * @see {@link https://wiki.openstreetmap.org/wiki/Map_Features}
+ * @license MIT
+ * @since 0.4.0
+ * @version 0.1.0
+ * @static
+ * @public
+ * @example
+ * const { MAP_FEATURES } = require('@lykmapipo/common');
+ * // => ['Boundary', ...]
+ */
+const MAP_FEATURES_GROUPS = sortedUniq([
+  'Aerialway', 'Aeroway', 'Barrier',
+  'Boundary', 'Building', 'Emergency',
+  'Highway', 'Natural', 'Office',
+  'Power', 'Public Transport',
+  'Railway', 'Route', 'Shop',
+  'Telecom', 'Tourism', 'Waterway'
+]);
+
+
 /* exports */
 module.exports = exports = {
   compact,
@@ -213,5 +238,6 @@ module.exports = exports = {
   CONTINENT_NAMES,
   COUNTRY_NAMES,
   COUNTRY_CODES,
-  CALLING_CODES
+  CALLING_CODES,
+  MAP_FEATURES_GROUPS
 };
