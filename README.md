@@ -25,10 +25,11 @@ compact,
 uniq,
 sortedUniq,
 pkg,
-continentNames,
-countryNames,
-countryCodes,
-callingCodes 
+CONTINENT_NAMES,
+COUNTRY_NAMES,
+COUNTRY_CODES,
+CALLING_CODES,
+MAP_FEATURES_GROUPS 
 } = require('@lykmapipo/common');
 
 const a = [null, 1, "", undefined];
