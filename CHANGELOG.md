@@ -1,3 +1,13 @@
+#### 0.4.2 (2019-01-29)
+
+##### Chores
+
+*  generate changelog & bump to v0.4.2 ([610a199f](https://github.com/lykmapipo/common/commit/610a199fafb9372c168495b49cf54016ed93111f))
+
+##### Refactors
+
+*  rename MAP_FEATURES_GROUP to MAP_FEATURE_GROUPS ([b32763bb](https://github.com/lykmapipo/common/commit/b32763bb8b30aaddb83c0fd68994767ec5d33066))
+
 #### 0.4.1 (2019-01-29)
 
 ##### Chores
