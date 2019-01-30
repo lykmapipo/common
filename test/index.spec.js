@@ -13,6 +13,9 @@ const {
   COUNTRY_NAMES,
   COUNTRY_CODES,
   CALLING_CODES,
+  MAP_FEATURE_DEFAULT_NATURE,
+  MAP_FEATURE_DEFAULT_FAMILY,
+  MAP_FEATURE_DEFAULT_TYPE,
   MAP_FEATURE_NATURES,
   MAP_FEATURE_FAMILIES,
   MAP_FEATURE_PLACES,
@@ -117,6 +120,12 @@ describe('common', () => {
     expect(CALLING_CODES).to.be.an('array');
     expect(CALLING_CODES).to.be.to.have.length.at.least(1);
     expect(CALLING_CODES).to.include('255');
+  });
+
+  it('shoulde expose map features default values', () => {
+    expect(MAP_FEATURE_DEFAULT_NATURE).to.be.equal('Other');
+    expect(MAP_FEATURE_DEFAULT_FAMILY).to.be.equal('Other');
+    expect(MAP_FEATURE_DEFAULT_TYPE).to.be.equal('Other');
   });
 
   it('shoulde expose map features natures', () => {

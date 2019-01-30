@@ -7,6 +7,12 @@ const { continents, countries } = require('countries-list');
 const { sync: readPkg } = require('read-pkg');
 
 
+/* defaults */
+const MAP_FEATURE_DEFAULT_NATURE = 'Other';
+const MAP_FEATURE_DEFAULT_FAMILY = 'Other';
+const MAP_FEATURE_DEFAULT_TYPE = 'Other';
+
+
 /**
  * @function compact
  * @name compact
@@ -227,7 +233,7 @@ const MAP_FEATURE_NATURES = sortedUniq([
   'Office', 'Power', 'Public Transport',
   'Railway', 'Route', 'Shop',
   'Telecom', 'Tourism', 'Waterway',
-  'Other'
+  MAP_FEATURE_DEFAULT_NATURE
 ]);
 
 
@@ -271,6 +277,7 @@ const MAP_FEATURE_FAMILIES = sortedUniq([
   'Assembly Point',
   'Fire Hydrant',
   'First Aid Kit',
+  'Evacuation Centre',
 
   // 'Highway',
   'Road',
@@ -317,7 +324,7 @@ const MAP_FEATURE_FAMILIES = sortedUniq([
   'Stream',
 
   //Other
-  'Other'
+  MAP_FEATURE_DEFAULT_FAMILY
 ]);
 
 
@@ -383,7 +390,7 @@ const MAP_FEATURE_TYPES = _.map(sortedUniq(_.flattenDeep([
   // 'Tourism',
   // 'Waterway'
   // Other
-  'Other'
+  MAP_FEATURE_DEFAULT_TYPE
 ])), _.startCase);
 
 
@@ -397,8 +404,11 @@ module.exports = exports = {
   COUNTRY_NAMES,
   COUNTRY_CODES,
   CALLING_CODES,
+  MAP_FEATURE_DEFAULT_NATURE,
   MAP_FEATURE_NATURES,
+  MAP_FEATURE_DEFAULT_FAMILY,
   MAP_FEATURE_FAMILIES,
   MAP_FEATURE_PLACES,
+  MAP_FEATURE_DEFAULT_TYPE,
   MAP_FEATURE_TYPES
 };
