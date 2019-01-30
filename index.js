@@ -206,8 +206,9 @@ const CALLING_CODES =
 
 /**
  * @name MAP_FEATURE_NATURES
- * @description provide map feature groups as per OSM categorization
- * @return {String[]} list of map features
+ * @description provide map feature natures as per OSM primary map
+ * features tag key
+ * @return {String[]} list of map feature natures
  * @author lally elias <lallyelias87@mail.com>
  * @see {@link https://wiki.openstreetmap.org/wiki/Map_Features}
  * @license MIT
@@ -216,16 +217,141 @@ const CALLING_CODES =
  * @static
  * @public
  * @example
- * const { MAP_FEATURES } = require('@lykmapipo/common');
+ * const { MAP_FEATURE_NATURES } = require('@lykmapipo/common');
  * // => ['Boundary', ...]
  */
 const MAP_FEATURE_NATURES = sortedUniq([
   'Aerialway', 'Aeroway', 'Barrier',
   'Boundary', 'Building', 'Emergency',
-  'Highway', 'Natural', 'Office',
-  'Power', 'Public Transport',
+  'Highway', 'Man Made', 'Natural',
+  'Office', 'Power', 'Public Transport',
   'Railway', 'Route', 'Shop',
   'Telecom', 'Tourism', 'Waterway'
+]);
+
+
+/**
+ * @name MAP_FEATURE_FAMILIES
+ * @description provide map feature family as per OSM primary map
+ * features tag value
+ * @return {String[]} list of map feature families
+ * @author lally elias <lallyelias87@mail.com>
+ * @see {@link https://wiki.openstreetmap.org/wiki/Map_Features}
+ * @license MIT
+ * @since 0.5.0
+ * @version 0.1.0
+ * @static
+ * @public
+ * @example
+ * const { MAP_FEATURE_FAMILIES } = require('@lykmapipo/common');
+ * // => ['Administrative', ...]
+ */
+const MAP_FEATURE_FAMILIES = sortedUniq([
+  // 'Aerialway',
+  // 'Aeroway',
+  // 'Barrier',
+
+  // 'Boundary',
+  'Administrative',
+
+  // 'Building',
+  'Commercial',
+  'Hospital',
+  'Industrial',
+  'Religious',
+  'Residential',
+  'School',
+  'Stadium',
+  'Toilets',
+  'Warehouse',
+
+  // 'Emergency',
+  'Ambulance Station',
+  'Assembly Point',
+  'Fire Hydrant',
+  'First Aid Kit',
+
+  // 'Highway',
+  'Road',
+  'Residential',
+
+  // 'Man Made',
+  'Bridge',
+  'Pipeline',
+  'Wastewater Plant',
+
+  // 'Natural',
+  'Wetland',
+
+  // 'Office',
+  // 'Power',
+  'Cable',
+  'Generator',
+  'Line',
+  'Plant',
+  'Pole',
+  'Transformer',
+
+  // 'Public Transport',
+  'Platform',
+  'Station',
+  'Stop Area',
+  'Stop Position',
+
+  // 'Railway',
+  'Platform',
+  'Rail',
+  'Station',
+
+  // 'Route',
+  'Evacuation',
+
+  // 'Shop',
+  // 'Telecom',
+  // 'Tourism',
+  // 'Waterway'
+  'Ditch',
+  'Drain',
+  'River',
+  'Stream'
+]);
+
+
+/**
+ * @name MAP_FEATURE_TYPES
+ * @description provide map feature human readable types
+ * features tag value
+ * @return {String[]} list of map feature types
+ * @author lally elias <lallyelias87@mail.com>
+ * @see {@link https://wiki.openstreetmap.org/wiki/Map_Features}
+ * @license MIT
+ * @since 0.5.0
+ * @version 0.1.0
+ * @static
+ * @public
+ * @example
+ * const { MAP_FEATURE_TYPES } = require('@lykmapipo/common');
+ * // => ['Boundary', ...]
+ */
+const MAP_FEATURE_TYPES = sortedUniq([
+  // 'Aerialway',
+  // 'Aeroway',
+  // 'Barrier',
+  // 'Boundary',
+  // 'Building',
+  // 'Emergency',
+  // 'Highway',
+  // 'Man Made',
+  // 'Natural',
+  // 'Office',
+  // 'Power',
+  // 'Public Transport',
+  // 'Railway',
+  // 'Route',
+  // 'Shop',
+  // 'Telecom',
+  // 'Tourism',
+  // 'Waterway'
 ]);
 
 
@@ -239,5 +365,7 @@ module.exports = exports = {
   COUNTRY_NAMES,
   COUNTRY_CODES,
   CALLING_CODES,
-  MAP_FEATURE_NATURES
+  MAP_FEATURE_NATURES,
+  MAP_FEATURE_FAMILIES,
+  MAP_FEATURE_TYPES
 };
