@@ -1,3 +1,15 @@
+#### 0.5.0 (2019-01-30)
+
+##### New Features
+
+*  add map feature default values ([c503d3e9](https://github.com/lykmapipo/common/commit/c503d3e95ed90b4f3be75e8f01e10f30ed93aee7))
+*  expose map feature places tags ([875a3502](https://github.com/lykmapipo/common/commit/875a3502ade3fc8936a946e1720c89a772f15c44))
+*  add map feature families ([7afc38a4](https://github.com/lykmapipo/common/commit/7afc38a422e4383dd2d51d815a8f7386eedd257f))
+
+##### Refactors
+
+*  rename MAP_FEATURE_GROUPS to MAP_FEATURE_NATURES ([927a51d8](https://github.com/lykmapipo/common/commit/927a51d81ef615622b9535723356907cd86cef7c))
+
 #### 0.4.2 (2019-01-29)
 
 ##### Chores
