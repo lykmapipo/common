@@ -226,7 +226,8 @@ const MAP_FEATURE_NATURES = sortedUniq([
   'Highway', 'Man Made', 'Natural',
   'Office', 'Power', 'Public Transport',
   'Railway', 'Route', 'Shop',
-  'Telecom', 'Tourism', 'Waterway'
+  'Telecom', 'Tourism', 'Waterway',
+  'Other'
 ]);
 
 
@@ -313,7 +314,35 @@ const MAP_FEATURE_FAMILIES = sortedUniq([
   'Ditch',
   'Drain',
   'River',
-  'Stream'
+  'Stream',
+
+  //Other
+  'Other'
+]);
+
+
+/**
+ * @name MAP_FEATURE_PLACES
+ * @description provide map feature human readable places tags
+ * features tag value
+ * @return {String[]} list of map feature places tags
+ * @author lally elias <lallyelias87@mail.com>
+ * @see {@link https://wiki.openstreetmap.org/wiki/Map_Features}
+ * @license MIT
+ * @since 0.5.0
+ * @version 0.1.0
+ * @static
+ * @public
+ * @example
+ * const { MAP_FEATURE_PLACES } = require('@lykmapipo/common');
+ * // => ['country', ...]
+ */
+const MAP_FEATURE_PLACES = sortedUniq([
+  'city', 'continent', 'country',
+  'county', 'district', 'hamlet',
+  'municipality', 'neighbourhood', 'province',
+  'region', 'state', 'street',
+  'town', 'village', 'ward'
 ]);
 
 
@@ -331,13 +360,14 @@ const MAP_FEATURE_FAMILIES = sortedUniq([
  * @public
  * @example
  * const { MAP_FEATURE_TYPES } = require('@lykmapipo/common');
- * // => ['Boundary', ...]
+ * // => ['Country', ...]
  */
-const MAP_FEATURE_TYPES = sortedUniq([
+const MAP_FEATURE_TYPES = _.map(sortedUniq(_.flattenDeep([
   // 'Aerialway',
   // 'Aeroway',
   // 'Barrier',
   // 'Boundary',
+  MAP_FEATURE_PLACES,
   // 'Building',
   // 'Emergency',
   // 'Highway',
@@ -352,7 +382,9 @@ const MAP_FEATURE_TYPES = sortedUniq([
   // 'Telecom',
   // 'Tourism',
   // 'Waterway'
-]);
+  // Other
+  'Other'
+])), _.startCase);
 
 
 /* exports */
@@ -367,5 +399,6 @@ module.exports = exports = {
   CALLING_CODES,
   MAP_FEATURE_NATURES,
   MAP_FEATURE_FAMILIES,
+  MAP_FEATURE_PLACES,
   MAP_FEATURE_TYPES
 };

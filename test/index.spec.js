@@ -14,7 +14,8 @@ const {
   COUNTRY_CODES,
   CALLING_CODES,
   MAP_FEATURE_NATURES,
-  MAP_FEATURE_FAMILIES
+  MAP_FEATURE_FAMILIES,
+  MAP_FEATURE_PLACES,
 } = require('../');
 
 describe('common', () => {
@@ -118,17 +119,24 @@ describe('common', () => {
     expect(CALLING_CODES).to.include('255');
   });
 
-  it('shoulde expose map features', () => {
+  it('shoulde expose map features natures', () => {
     expect(MAP_FEATURE_NATURES).to.exist;
     expect(MAP_FEATURE_NATURES).to.be.an('array');
     expect(MAP_FEATURE_NATURES).to.be.to.have.length.at.least(1);
     expect(MAP_FEATURE_NATURES).to.include('Boundary');
   });
 
-  it('shoulde expose map features', () => {
+  it('shoulde expose map features families', () => {
     expect(MAP_FEATURE_FAMILIES).to.exist;
     expect(MAP_FEATURE_FAMILIES).to.be.an('array');
     expect(MAP_FEATURE_FAMILIES).to.be.to.have.length.at.least(1);
     expect(MAP_FEATURE_FAMILIES).to.include('Administrative');
+  });
+
+  it('shoulde expose map feature places tags', () => {
+    expect(MAP_FEATURE_PLACES).to.exist;
+    expect(MAP_FEATURE_PLACES).to.be.an('array');
+    expect(MAP_FEATURE_PLACES).to.be.to.have.length.at.least(1);
+    expect(MAP_FEATURE_PLACES).to.include('country');
   });
 });
