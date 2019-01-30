@@ -29,7 +29,7 @@ CONTINENT_NAMES,
 COUNTRY_NAMES,
 COUNTRY_CODES,
 CALLING_CODES,
-MAP_FEATURE_GROUPS 
+MAP_FEATURE_NATURES 
 } = require('@lykmapipo/common');
 
 const a = [null, 1, "", undefined];

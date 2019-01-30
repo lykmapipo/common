@@ -205,7 +205,7 @@ const CALLING_CODES =
 
 
 /**
- * @name MAP_FEATURE_GROUPS
+ * @name MAP_FEATURE_NATURES
  * @description provide map feature groups as per OSM categorization
  * @return {String[]} list of map features
  * @author lally elias <lallyelias87@mail.com>
@@ -219,7 +219,7 @@ const CALLING_CODES =
  * const { MAP_FEATURES } = require('@lykmapipo/common');
  * // => ['Boundary', ...]
  */
-const MAP_FEATURE_GROUPS = sortedUniq([
+const MAP_FEATURE_NATURES = sortedUniq([
   'Aerialway', 'Aeroway', 'Barrier',
   'Boundary', 'Building', 'Emergency',
   'Highway', 'Natural', 'Office',
@@ -239,5 +239,5 @@ module.exports = exports = {
   COUNTRY_NAMES,
   COUNTRY_CODES,
   CALLING_CODES,
-  MAP_FEATURE_GROUPS
+  MAP_FEATURE_NATURES
 };
