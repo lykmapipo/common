@@ -25,6 +25,7 @@ compact,
 uniq,
 sortedUniq,
 pkg,
+scopesFor,
 CONTINENT_NAMES,
 COUNTRY_NAMES,
 COUNTRY_CODES,
@@ -48,6 +49,8 @@ const x = {a: 1, b: "", c: undefined};
 const y = sortedUniq(x); // => { a: 1 }
 
 const { name, description } = pkg(); // => { name: ..., version: ...}
+
+const scopes = scopesFor('user', 'payment'); // => ['user:create', 'payment:create'];
 
 ```
 
