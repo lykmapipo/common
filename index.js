@@ -11,6 +11,11 @@ const { sync: readPkg } = require('read-pkg');
 const MAP_FEATURE_DEFAULT_NATURE = 'Other';
 const MAP_FEATURE_DEFAULT_FAMILY = 'Other';
 const MAP_FEATURE_DEFAULT_TYPE = 'Other';
+const RESOURCE_ACTIONS = [
+  'create', 'view', 'edit',
+  'delete', 'share', 'print',
+  'import', 'export', 'download'
+];
 
 
 /**
@@ -136,6 +141,46 @@ const pkg = (...field) => {
     return _.merge({}, _.pick(_pkg, ...fields));
   }
   return _pkg;
+};
+
+
+/**
+ * @function scopeFor
+ * @name scopeFor
+ * @description generate resource scopes(permissions)
+ * @param {...String} resources resources
+ * @return {Array} resources scopes
+ * @author lally elias <lallyelias87@mail.com>
+ * @license MIT
+ * @since 0.6.0
+ * @version 0.1.0
+ * @static
+ * @public
+ * @example
+ * const scopes = scopesFor('user')
+ * // => ['user:create', 'user:view',...rest]
+ */
+const scopesFor = (...resources) => {
+  // initialize resources scopes
+  let scopes;
+
+  // generate resources scopes
+  if (resources) {
+    const _resources = uniq([...resources]);
+    // map resources
+    scopes = _.map(_resources, resource => {
+      // map actions
+      return _.map(RESOURCE_ACTIONS, action => {
+        // map to scope(permission)
+        const scope = _.toLower([resource, action].join(':'));
+        return scope;
+      });
+    });
+    scopes = sortedUniq(_.flattenDeep(scopes));
+  }
+
+  // return resources scopes
+  return scopes;
 };
 
 
@@ -400,6 +445,7 @@ module.exports = exports = {
   uniq,
   sortedUniq,
   pkg,
+  scopesFor,
   CONTINENT_NAMES,
   COUNTRY_NAMES,
   COUNTRY_CODES,

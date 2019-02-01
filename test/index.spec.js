@@ -9,6 +9,7 @@ const {
   uniq,
   sortedUniq,
   pkg,
+  scopesFor,
   CONTINENT_NAMES,
   COUNTRY_NAMES,
   COUNTRY_CODES,
@@ -92,6 +93,19 @@ describe('common', () => {
     expect(y.b).to.exist;
     y.e = 2;
     expect(x.e).to.not.exist;
+  });
+
+  it('should create scopes for resources', () => {
+    const scopes = scopesFor('user', 'payment');
+    expect(scopes).to.exist;
+    expect(scopes).to.include(
+      'user:create', 'user:view', 'user:edit',
+      'user:delete', 'user:share', 'user:print',
+      'user:import', 'user:export', 'user:download',
+      'payment:create', 'payment:view', 'payment:edit',
+      'payment:delete', 'payment:share', 'payment:print',
+      'payment:import', 'payment:export', 'payment:download'
+    );
   });
 
   it('shoulde expose continent names', () => {
