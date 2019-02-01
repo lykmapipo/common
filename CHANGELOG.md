@@ -1,3 +1,13 @@
+#### 0.6.0 (2019-02-01)
+
+##### Documentation Changes
+
+*  add scopesFor usage doc ([29d0b9bc](https://github.com/lykmapipo/common/commit/29d0b9bc456eeb81d17bba2221a173cd50ba5822))
+
+##### New Features
+
+*  add resource scope generator ([5f5046e4](https://github.com/lykmapipo/common/commit/5f5046e411fa142c683983956a68d60981101c53))
+
 #### 0.5.0 (2019-01-30)
 
 ##### New Features
