@@ -1,3 +1,9 @@
+#### 0.7.0 (2019-02-08)
+
+##### New Features
+
+*  add areNotEmpty to check for varags emptiness ([0606e794](https://github.com/lykmapipo/common/commit/0606e79415b5fb4be98b2bbdca08ea55b6647e8e))
+
 #### 0.6.0 (2019-02-01)
 
 ##### Documentation Changes
