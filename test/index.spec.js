@@ -5,6 +5,7 @@ process.env.NODE_ENV = 'test';
 /* dependencies */
 const { expect } = require('chai');
 const {
+  areNotEmpty,
   compact,
   uniq,
   sortedUniq,
@@ -23,6 +24,16 @@ const {
 } = require('../');
 
 describe('common', () => {
+  it('should check if values are not empty', () => {
+    expect(areNotEmpty).to.exist;
+    expect(areNotEmpty).to.be.a('function');
+    expect(areNotEmpty.name).to.be.equal('areNotEmpty');
+    expect(areNotEmpty('a', 'b')).to.be.true;
+    expect(areNotEmpty('a', '')).to.be.false;
+    expect(areNotEmpty('a', undefined)).to.be.false;
+    expect(areNotEmpty('a', null)).to.be.false;
+  });
+
   it('should read current process package information', () => {
     expect(pkg).to.exist;
     expect(pkg).to.be.a('function');

@@ -7,7 +7,7 @@ const { continents, countries } = require('countries-list');
 const { sync: readPkg } = require('read-pkg');
 
 
-/* defaults */
+/* constants */
 const MAP_FEATURE_DEFAULT_NATURE = 'Other';
 const MAP_FEATURE_DEFAULT_FAMILY = 'Other';
 const MAP_FEATURE_DEFAULT_TYPE = 'Other';
@@ -16,6 +16,31 @@ const RESOURCE_ACTIONS = [
   'delete', 'share', 'print',
   'import', 'export', 'download'
 ];
+
+
+/**
+ * @function areNotEmpty
+ * @name areNotEmpty
+ * @description Check if provided values are not empty
+ * @param {...String} values set of values to check for emptiness
+ * @return {Boolean} whether values are not empty
+ * @author lally elias <lallyelias87@mail.com>
+ * @license MIT
+ * @since 0.1.0
+ * @version 0.1.0
+ * @static
+ * @public
+ * @example
+ * const notEmpty = areNotEmpty('a', 'b', 'c'); //=> true
+ * const notEmpty = areNotEmpty('a', 'b', null); //=> false
+ */
+const areNotEmpty = (...values) => {
+  const _values = [...values];
+  const notEmpty = _.reduce(_values, (acc, val) => {
+    return acc && !_.isEmpty(val);
+  }, true);
+  return notEmpty;
+};
 
 
 /**
@@ -441,6 +466,7 @@ const MAP_FEATURE_TYPES = _.map(sortedUniq(_.flattenDeep([
 
 /* exports */
 module.exports = exports = {
+  areNotEmpty,
   compact,
   uniq,
   sortedUniq,
