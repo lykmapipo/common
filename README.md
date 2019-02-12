@@ -26,6 +26,7 @@ uniq,
 sortedUniq,
 pkg,
 scopesFor,
+abbreviate,
 CONTINENT_NAMES,
 COUNTRY_NAMES,
 COUNTRY_CODES,
@@ -51,6 +52,8 @@ const y = sortedUniq(x); // => { a: 1 }
 const { name, description } = pkg(); // => { name: ..., version: ...}
 
 const scopes = scopesFor('user', 'payment'); // => ['user:create', 'payment:create'];
+
+const abbreaviation = abbreviate('Ministry of Finance') // => MOF
 
 ```
 

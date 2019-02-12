@@ -11,6 +11,7 @@ const {
   sortedUniq,
   pkg,
   scopesFor,
+  abbreviate,
   CONTINENT_NAMES,
   COUNTRY_NAMES,
   COUNTRY_CODES,
@@ -117,6 +118,19 @@ describe('common', () => {
       'payment:delete', 'payment:share', 'payment:print',
       'payment:import', 'payment:export', 'payment:download'
     );
+  });
+
+  it('should abbreviate a phrase', () => {
+    const abbreviation = abbreviate('Ministry of Finance');
+    expect(abbreviation).to.exist;
+    expect(abbreviation).to.be.equal('MOF');
+
+    expect(abbreviate('Ministry of Finance'))
+      .to.be.equal(abbreviate('Ministry', 'of', 'Finance'));
+    expect(abbreviate('Ministry of Finance'))
+      .to.be.equal(abbreviate(['Ministry', 'of', 'Finance']));
+    expect(abbreviate('Ministry of Finance'))
+      .to.be.equal(abbreviate(['Ministry'], 'of', ['Finance']));
   });
 
   it('shoulde expose continent names', () => {

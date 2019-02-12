@@ -170,8 +170,8 @@ const pkg = (...field) => {
 
 
 /**
- * @function scopeFor
- * @name scopeFor
+ * @function scopesFor
+ * @name scopesFor
  * @description generate resource scopes(permissions)
  * @param {...String} resources resources
  * @return {Array} resources scopes
@@ -206,6 +206,37 @@ const scopesFor = (...resources) => {
 
   // return resources scopes
   return scopes;
+};
+
+
+/**
+ * @function abbreviate
+ * @name abbreviate
+ * @description generate shortened form of word(s) or phrase.
+ * @param {...String} words set of words to derive abbreaviation
+ * @return {String} abbreviation
+ * @author lally elias <lallyelias87@mail.com>
+ * @license MIT
+ * @since 0.6.0
+ * @version 0.1.0
+ * @static
+ * @public
+ * @example
+ * const abbreaviation = abbreviate('Ministry of Finance')
+ * // => MoF
+ */
+const abbreviate = (...words) => {
+  // ensure words
+  let phrases = _.flattenDeep([...words]);
+  phrases = _.words(phrases.join(' '));
+
+  // generate abbreviation
+  const abbreviation = _.reduce(phrases, (abbr, phrase) => {
+    return _.toUpper(abbr + _.first(phrase));
+  }, '');
+
+  // return abbreviation
+  return abbreviation;
 };
 
 
@@ -472,6 +503,7 @@ module.exports = exports = {
   sortedUniq,
   pkg,
   scopesFor,
+  abbreviate,
   CONTINENT_NAMES,
   COUNTRY_NAMES,
   COUNTRY_CODES,
