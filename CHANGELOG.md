@@ -1,3 +1,9 @@
+#### 0.8.0 (2019-02-12)
+
+##### New Features
+
+*  implement words abbreviation generator ([7afc6587](https://github.com/lykmapipo/common/commit/7afc6587103c3b0ce5e6e0144dbd5629148d0723))
+
 #### 0.7.0 (2019-02-08)
 
 ##### New Features
