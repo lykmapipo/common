@@ -8,6 +8,7 @@ import {
   isEmpty,
   isPlainObject,
   map,
+  merge as mergify,
   pick,
   omitBy,
   orderBy,
@@ -307,3 +308,32 @@ export const abbreviate = (...words) => {
  * const id = idOf({ _id: 1 }) //=> 1
  */
 export const idOf = data => get(data, '_id') || get(data, 'id');
+
+// merge list of objects to single object
+/**
+ * @function mergeObjects
+ * @name mergeObjects
+ * @description merge a list on objects into a single object
+ * @param {...Object} objects list of objects
+ * @return {Object} a merged object
+ * @author lally elias <lallyelias87@mail.com>
+ * @license MIT
+ * @since 0.10.0
+ * @version 0.1.0
+ * @static
+ * @public
+ * @example
+ * const obj = mergeObjects({ a: 1 }, { b: 1 }, { c: 2}, { c: 2}, {b: null})
+ * //=> { a: 1, b: 1, c: 2 }
+ */
+export const mergeObjects = (...objects) => {
+  // ensure source objects
+  let sources = compactify([...objects]);
+  sources = map(sources, compact);
+
+  // merged objects
+  const merged = mergify({}, ...sources);
+
+  // return merged object
+  return merged;
+};

@@ -9,6 +9,7 @@ import {
   scopesFor,
   abbreviate,
   idOf,
+  mergeObjects,
 } from '../src/index';
 
 describe('common', () => {
@@ -152,5 +153,13 @@ describe('common', () => {
     expect(idOf({})).to.be.undefined;
     expect(idOf(1)).to.be.undefined;
     expect(idOf('1')).to.be.undefined;
+  });
+
+  it('should merge objects to single object', () => {
+    expect(mergeObjects({ a: 1 }, { b: 1 })).to.be.eql({ a: 1, b: 1 });
+    expect(mergeObjects({ a: 1 }, { b: 1 }, { b: undefined })).to.be.eql({
+      a: 1,
+      b: 1,
+    });
   });
 });
