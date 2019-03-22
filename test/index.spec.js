@@ -1,10 +1,6 @@
-'use strict';
-
-process.env.NODE_ENV = 'test';
-
-/* dependencies */
-const { expect } = require('chai');
-const {
+import { expect } from 'chai';
+import {
+  isNotValue,
   areNotEmpty,
   compact,
   uniq,
@@ -12,19 +8,20 @@ const {
   pkg,
   scopesFor,
   abbreviate,
-  CONTINENT_NAMES,
-  COUNTRY_NAMES,
-  COUNTRY_CODES,
-  CALLING_CODES,
-  MAP_FEATURE_DEFAULT_NATURE,
-  MAP_FEATURE_DEFAULT_FAMILY,
-  MAP_FEATURE_DEFAULT_TYPE,
-  MAP_FEATURE_NATURES,
-  MAP_FEATURE_FAMILIES,
-  MAP_FEATURE_PLACES,
-} = require('../');
+} from '../src/index';
 
 describe('common', () => {
+  it('should check if variable has no state', () => {
+    expect(isNotValue).to.exist;
+    expect(isNotValue).to.be.a('function');
+    expect(isNotValue.name).to.be.equal('isNotValue');
+    expect(isNotValue('a')).to.be.false;
+    expect(isNotValue('')).to.be.true;
+    expect(isNotValue(null)).to.be.true;
+    expect(isNotValue(undefined)).to.be.true;
+    expect(isNotValue(false)).to.be.true;
+  });
+
   it('should check if values are not empty', () => {
     expect(areNotEmpty).to.exist;
     expect(areNotEmpty).to.be.a('function');
@@ -111,12 +108,24 @@ describe('common', () => {
     const scopes = scopesFor('user', 'payment');
     expect(scopes).to.exist;
     expect(scopes).to.include(
-      'user:create', 'user:view', 'user:edit',
-      'user:delete', 'user:share', 'user:print',
-      'user:import', 'user:export', 'user:download',
-      'payment:create', 'payment:view', 'payment:edit',
-      'payment:delete', 'payment:share', 'payment:print',
-      'payment:import', 'payment:export', 'payment:download'
+      'user:create',
+      'user:view',
+      'user:edit',
+      'user:delete',
+      'user:share',
+      'user:print',
+      'user:import',
+      'user:export',
+      'user:download',
+      'payment:create',
+      'payment:view',
+      'payment:edit',
+      'payment:delete',
+      'payment:share',
+      'payment:print',
+      'payment:import',
+      'payment:export',
+      'payment:download'
     );
   });
 
@@ -125,66 +134,14 @@ describe('common', () => {
     expect(abbreviation).to.exist;
     expect(abbreviation).to.be.equal('MOF');
 
-    expect(abbreviate('Ministry of Finance'))
-      .to.be.equal(abbreviate('Ministry', 'of', 'Finance'));
-    expect(abbreviate('Ministry of Finance'))
-      .to.be.equal(abbreviate(['Ministry', 'of', 'Finance']));
-    expect(abbreviate('Ministry of Finance'))
-      .to.be.equal(abbreviate(['Ministry'], 'of', ['Finance']));
-  });
-
-  it('shoulde expose continent names', () => {
-    expect(CONTINENT_NAMES).to.exist;
-    expect(CONTINENT_NAMES).to.be.an('array');
-    expect(CONTINENT_NAMES).to.be.to.have.length.at.least(1);
-    expect(CONTINENT_NAMES).to.include('Africa');
-  });
-
-  it('shoulde expose country names', () => {
-    expect(COUNTRY_NAMES).to.exist;
-    expect(COUNTRY_NAMES).to.be.an('array');
-    expect(COUNTRY_NAMES).to.be.to.have.length.at.least(1);
-    expect(COUNTRY_NAMES).to.include('Tanzania');
-  });
-
-  it('shoulde expose country codes', () => {
-    expect(COUNTRY_CODES).to.exist;
-    expect(COUNTRY_CODES).to.be.an('array');
-    expect(COUNTRY_CODES).to.be.to.have.length.at.least(1);
-    expect(COUNTRY_CODES).to.include('TZ');
-  });
-
-  it('shoulde expose country calling codes', () => {
-    expect(CALLING_CODES).to.exist;
-    expect(CALLING_CODES).to.be.an('array');
-    expect(CALLING_CODES).to.be.to.have.length.at.least(1);
-    expect(CALLING_CODES).to.include('255');
-  });
-
-  it('shoulde expose map features default values', () => {
-    expect(MAP_FEATURE_DEFAULT_NATURE).to.be.equal('Other');
-    expect(MAP_FEATURE_DEFAULT_FAMILY).to.be.equal('Other');
-    expect(MAP_FEATURE_DEFAULT_TYPE).to.be.equal('Other');
-  });
-
-  it('shoulde expose map features natures', () => {
-    expect(MAP_FEATURE_NATURES).to.exist;
-    expect(MAP_FEATURE_NATURES).to.be.an('array');
-    expect(MAP_FEATURE_NATURES).to.be.to.have.length.at.least(1);
-    expect(MAP_FEATURE_NATURES).to.include('Boundary');
-  });
-
-  it('shoulde expose map features families', () => {
-    expect(MAP_FEATURE_FAMILIES).to.exist;
-    expect(MAP_FEATURE_FAMILIES).to.be.an('array');
-    expect(MAP_FEATURE_FAMILIES).to.be.to.have.length.at.least(1);
-    expect(MAP_FEATURE_FAMILIES).to.include('Administrative');
-  });
-
-  it('shoulde expose map feature places tags', () => {
-    expect(MAP_FEATURE_PLACES).to.exist;
-    expect(MAP_FEATURE_PLACES).to.be.an('array');
-    expect(MAP_FEATURE_PLACES).to.be.to.have.length.at.least(1);
-    expect(MAP_FEATURE_PLACES).to.include('country');
+    expect(abbreviate('Ministry of Finance')).to.be.equal(
+      abbreviate('Ministry', 'of', 'Finance')
+    );
+    expect(abbreviate('Ministry of Finance')).to.be.equal(
+      abbreviate(['Ministry', 'of', 'Finance'])
+    );
+    expect(abbreviate('Ministry of Finance')).to.be.equal(
+      abbreviate(['Ministry'], 'of', ['Finance'])
+    );
   });
 });

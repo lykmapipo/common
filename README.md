@@ -5,6 +5,7 @@
 
 Helper utilities for day to day development
 
+*Note!: Start of v0.9.0 all constants are not included consider use [constants](https://github.com/lykmapipo/constants)*
 
 ## Requirements
 
@@ -19,34 +20,30 @@ npm install --save @lykmapipo/common
 
 ## Usage
 
+- With nodejs
 ```js
-const { 
-compact,
-uniq,
-sortedUniq,
-pkg,
-scopesFor,
-abbreviate,
-CONTINENT_NAMES,
-COUNTRY_NAMES,
-COUNTRY_CODES,
-CALLING_CODES,
-MAP_FEATURE_NATURES 
+const {
+  compact,
+  uniq,
+  sortedUniq,
+  pkg,
+  scopesFor,
+  abbreviate
 } = require('@lykmapipo/common');
 
 const a = [null, 1, "", undefined];
 const b = compact(a); // => [ 1 ]
-const x = {a: 1, b: "", c: undefined};
+const x = { a: 1, b: "", c: undefined };
 const y = compact(x); // => { a: 1 }
 
 const a = [null, 1, 1, "", undefined, 2];
 const b = uniq(a); // => [ 1, 2 ]
-const x = {a: 1, b: "", c: undefined};
+const x = { a: 1, b: "", c: undefined };
 const y = uniq(x); // => { a: 1 }
 
 const a = [null, 1, 2, "", undefined, 1];
 const b = sortedUniq(a); // => [ 1, 2 ]
-const x = {a: 1, b: "", c: undefined};
+const x = { a: 1, b: "", c: undefined };
 const y = sortedUniq(x); // => { a: 1 }
 
 const { name, description } = pkg(); // => { name: ..., version: ...}
@@ -55,6 +52,39 @@ const scopes = scopesFor('user', 'payment'); // => ['user:create', 'payment:crea
 
 const abbreaviation = abbreviate('Ministry of Finance') // => MOF
 
+```
+
+- With ES Module
+```js
+import {
+  compact,
+  uniq,
+  sortedUniq,
+  pkg,
+  scopesFor,
+  abbreviate
+} from '@lykmapipo/common';
+
+const a = [null, 1, "", undefined];
+const b = compact(a); // => [ 1 ]
+const x = { a: 1, b: "", c: undefined };
+const y = compact(x); // => { a: 1 }
+
+const a = [null, 1, 1, "", undefined, 2];
+const b = uniq(a); // => [ 1, 2 ]
+const x = { a: 1, b: "", c: undefined };
+const y = uniq(x); // => { a: 1 }
+
+const a = [null, 1, 2, "", undefined, 1];
+const b = sortedUniq(a); // => [ 1, 2 ]
+const x = { a: 1, b: "", c: undefined };
+const y = sortedUniq(x); // => { a: 1 }
+
+const { name, description } = pkg(); // => { name: ..., version: ...}
+
+const scopes = scopesFor('user', 'payment'); // => ['user:create', 'payment:create'];
+
+const abbreaviation = abbreviate('Ministry of Finance') // => MOF
 ```
 
 ## Test
