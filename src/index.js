@@ -44,7 +44,7 @@ export const RESOURCE_ACTIONS = [
 ];
 
 /**
- * @function isNoValue
+ * @function isNotValue
  * @name isNotValue
  * @description Check if variable has no associated state
  * @param {Mixed} value variable to check if it has no associated state
@@ -57,7 +57,7 @@ export const RESOURCE_ACTIONS = [
  * @public
  * @example
  *
- * const isNoValue = isValue('a');
+ * const isNotValue = isValue('a');
  * //=> false
  *
  * const isNotValue = isValue(null);
@@ -372,7 +372,10 @@ export const mergeObjects = (...objects) => {
  * @public
  * @example
  *
- * const obj = variableNameFor('get', 'name');
+ * const name = variableNameFor('get', 'name');
  * //=> getName
+ *
+ * const name = variableNameFor('pick', 'a', 'name');
+ * //=> pickAName
  */
 export const variableNameFor = (...names) => camelCase([...names].join(' '));
