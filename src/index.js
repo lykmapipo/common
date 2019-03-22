@@ -7,6 +7,7 @@ import {
   first,
   isArray,
   isEmpty,
+  includes,
   isPlainObject,
   map,
   merge as mergify,
@@ -379,3 +380,26 @@ export const mergeObjects = (...objects) => {
  * //=> pickAName
  */
 export const variableNameFor = (...names) => camelCase([...names].join(' '));
+
+/**
+ * @function has
+ * @name has
+ * @description check if value is in a collection
+ * @param {Array|Object|string} collection The collection to inspect.
+ * @param {Mixed} value The value to search for.
+ * @returns {Boolean} whether value is in collection
+ * @author lally elias <lallyelias87@mail.com>
+ * @license MIT
+ * @since 0.10.0
+ * @version 0.1.0
+ * @static
+ * @public
+ * @example
+ *
+ * const hasValue = has([ 1, 2 ], 1);
+ * //=> true
+ *
+ * const hasValue = has([ 'a', 'b' ], 'c');
+ * //=> false
+ */
+export const has = (collection, value) => includes(collection, value);

@@ -11,6 +11,7 @@ import {
   idOf,
   mergeObjects,
   variableNameFor,
+  has,
 } from '../src/index';
 
 describe('common', () => {
@@ -167,5 +168,10 @@ describe('common', () => {
   it('should generate camelized variable name', () => {
     expect(variableNameFor('get', 'name')).to.be.equal('getName');
     expect(variableNameFor('pick', 'a', 'name')).to.be.equal('pickAName');
+  });
+
+  it('should check if value is in collection', () => {
+    expect(has([1, 2], 1)).to.be.true;
+    expect(has([1, 2], 3)).to.be.false;
   });
 });
