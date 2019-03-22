@@ -2,6 +2,7 @@ import {
   cloneDeep,
   compact as compactify,
   flattenDeep,
+  get,
   first,
   isArray,
   isEmpty,
@@ -305,4 +306,4 @@ export const abbreviate = (...words) => {
  * const id = idOf({ id: 1 }) //=> 1
  * const id = idOf({ _id: 1 }) //=> 1
  */
-export const idOf = data => (data ? data._id || data.id : undefined); // eslint-disable-line
+export const idOf = data => get(data, '_id') || get(data, 'id');

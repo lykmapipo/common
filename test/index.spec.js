@@ -149,5 +149,8 @@ describe('common', () => {
   it('should get an id of an object', () => {
     expect(idOf({ id: 1 })).to.be.equal(1);
     expect(idOf({ _id: 1 })).to.be.equal(1);
+    expect(idOf({})).to.be.undefined;
+    expect(idOf(1)).to.be.undefined;
+    expect(idOf('1')).to.be.undefined;
   });
 });
