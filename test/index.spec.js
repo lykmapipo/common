@@ -12,6 +12,7 @@ import {
   mergeObjects,
   variableNameFor,
   has,
+  hasAll,
 } from '../src/index';
 
 describe('common', () => {
@@ -173,5 +174,12 @@ describe('common', () => {
   it('should check if value is in collection', () => {
     expect(has([1, 2], 1)).to.be.true;
     expect(has([1, 2], 3)).to.be.false;
+  });
+
+  it('should check if all values are in collection', () => {
+    expect(hasAll([1, 2], 1, 2)).to.be.true;
+    expect(hasAll([1, 2], [1, 2])).to.be.true;
+    expect(hasAll([1, 2], 3)).to.be.false;
+    expect(hasAll([1, 2], 1, 3)).to.be.false;
   });
 });
