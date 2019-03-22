@@ -29,7 +29,7 @@ import { sync as readPackage } from 'read-pkg';
  * @since 0.1.0
  * @version 0.1.0
  * @static
- * @public
+ * @private
  */
 export const RESOURCE_ACTIONS = [
   'create',
