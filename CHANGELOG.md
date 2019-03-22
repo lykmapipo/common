@@ -1,3 +1,9 @@
+#### 0.11.1 (2019-03-22)
+
+##### Chores
+
+*  exclude builds from lint-stage to enforce use strict on cjs ([b0dca3de](https://github.com/lykmapipo/common/commit/b0dca3de25623a50fdbcacd06e5b69566769e4bc))
+
 #### 0.11.0 (2019-03-22)
 
 ##### New Features
