@@ -1,27 +1,4 @@
-import {
-  reduce,
-  cloneDeep,
-  isArray,
-  compact as compact$1,
-  isPlainObject,
-  omitBy,
-  uniq as uniq$1,
-  orderBy,
-  isEmpty,
-  pick,
-  map,
-  flattenDeep,
-  words,
-  get,
-  merge,
-  camelCase,
-  includes,
-  every,
-  some,
-  toUpper,
-  first,
-  toLower,
-} from 'lodash';
+import { reduce, cloneDeep, isArray, compact as compact$1, isPlainObject, omitBy, uniq as uniq$1, orderBy, isEmpty, pick, map, flattenDeep, words, get, merge, camelCase, includes, every, some, toUpper, first, toLower } from 'lodash';
 import { sync } from 'read-pkg';
 
 /**
@@ -481,20 +458,4 @@ const hasAny = (collection, ...values) => {
   return isAnyInCollection;
 };
 
-export {
-  RESOURCE_ACTIONS,
-  abbreviate,
-  areNotEmpty,
-  compact,
-  has,
-  hasAll,
-  hasAny,
-  idOf,
-  isNotValue,
-  mergeObjects,
-  pkg,
-  scopesFor,
-  sortedUniq,
-  uniq,
-  variableNameFor,
-};
+export { RESOURCE_ACTIONS, abbreviate, areNotEmpty, compact, has, hasAll, hasAny, idOf, isNotValue, mergeObjects, pkg, scopesFor, sortedUniq, uniq, variableNameFor };
