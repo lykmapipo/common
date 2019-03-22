@@ -56,8 +56,12 @@ export const RESOURCE_ACTIONS = [
  * @static
  * @public
  * @example
- * const isNoValue = isValue('a'); //=> false
- * const isNotValue = isValue(null); //=> true
+ *
+ * const isNoValue = isValue('a');
+ * //=> false
+ *
+ * const isNotValue = isValue(null);
+ * //=> true
  */
 export const isNotValue = value => !value;
 
@@ -74,8 +78,12 @@ export const isNotValue = value => !value;
  * @static
  * @public
  * @example
- * const notEmpty = areNotEmpty('a', 'b', 'c'); //=> true
- * const notEmpty = areNotEmpty('a', 'b', null); //=> false
+ *
+ * const notEmpty = areNotEmpty('a', 'b', 'c');
+ * //=> true
+ *
+ * const notEmpty = areNotEmpty('a', 'b', null);
+ * //=> false
  */
 export const areNotEmpty = (...values) => {
   // copy values
@@ -104,11 +112,12 @@ export const areNotEmpty = (...values) => {
  * @static
  * @public
  * @example
- * const a = [null, 1, "", undefined];
- * const b = compact(a); // => [ 1 ]
  *
- * const x = {a: 1, b: "", c: undefined};
- * const y = compact(x); // => { a: 1 }
+ * const b = compact([null, 1, "", undefined]);
+ * // => [ 1 ]
+ *
+ * const y = compact({a: 1, b: "", c: undefined});
+ * // => { a: 1 }
  */
 export const compact = value => {
   // copy value
@@ -141,11 +150,12 @@ export const compact = value => {
  * @static
  * @public
  * @example
- * const a = [null, 1, 1, "", undefined, 2];
- * const b = uniq(a); // => [ 1, 2 ]
  *
- * const x = {a: 1, b: "", c: undefined};
- * const y = uniq(x); // => { a: 1 }
+ * const b = uniq([null, 1, 1, "", undefined, 2]);
+ * // => [ 1, 2 ]
+ *
+ * const y = uniq({a: 1, b: "", c: undefined});
+ * // => { a: 1 }
  */
 export const uniq = value => {
   // uniq
@@ -172,11 +182,12 @@ export const uniq = value => {
  * @static
  * @public
  * @example
- * const a = [null, 1, 2, "", undefined, 1];
- * const b = sortedUniq(a); // => [ 1, 2 ]
  *
- * const x = {a: 1, b: "", c: undefined};
- * const y = sortedUniq(x); // => { a: 1 }
+ * const b = sortedUniq([null, 1, 2, "", undefined, 1]);
+ * // => [ 1, 2 ]
+ *
+ * const y = sortedUniq({a: 1, b: "", c: undefined});
+ * // => { a: 1 }
  */
 export const sortedUniq = value => {
   // sortedUniq
@@ -203,7 +214,9 @@ export const sortedUniq = value => {
  * @static
  * @public
  * @example
- * const { name, version } = pkg(); // => { name: ..., version: ...}
+ *
+ * const { name, version } = pkg();
+ * // => { name: ..., version: ...}
  */
 export const pkg = (...field) => {
   const cwd = process.cwd();
@@ -228,8 +241,9 @@ export const pkg = (...field) => {
  * @static
  * @public
  * @example
+ *
  * const scopes = scopesFor('user')
- * // => ['user:create', 'user:view',...rest]
+ * // => ['user:create', 'user:view']
  */
 export const scopesFor = (...resources) => {
   // initialize resources scopes
@@ -274,6 +288,7 @@ export const scopesFor = (...resources) => {
  * @static
  * @public
  * @example
+ *
  * const abbreaviation = abbreviate('Ministry of Finance')
  * // => MoF
  */
@@ -305,8 +320,12 @@ export const abbreviate = (...words) => {
  * @static
  * @public
  * @example
- * const id = idOf({ id: 1 }) //=> 1
- * const id = idOf({ _id: 1 }) //=> 1
+ *
+ * const id = idOf({ id: 1 })
+ * //=> 1
+ *
+ * const id = idOf({ _id: 1 })
+ * //=> 1
  */
 export const idOf = data => get(data, '_id') || get(data, 'id');
 
@@ -323,6 +342,7 @@ export const idOf = data => get(data, '_id') || get(data, 'id');
  * @static
  * @public
  * @example
+ *
  * const obj = mergeObjects({ a: 1 }, { b: 1 }, { c: 2}, { c: 2}, {b: null})
  * //=> { a: 1, b: 1, c: 2 }
  */
@@ -351,6 +371,8 @@ export const mergeObjects = (...objects) => {
  * @static
  * @public
  * @example
- * const obj = variableNameFor('get', 'name'); //=> getName
+ *
+ * const obj = variableNameFor('get', 'name');
+ * //=> getName
  */
 export const variableNameFor = (...names) => camelCase([...names].join(' '));
