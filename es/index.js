@@ -12,6 +12,9 @@ import {
   map,
   flattenDeep,
   words,
+  get,
+  merge,
+  camelCase,
   toUpper,
   first,
   toLower,
@@ -26,7 +29,7 @@ import { sync } from 'read-pkg';
  * @since 0.1.0
  * @version 0.1.0
  * @static
- * @public
+ * @private
  */
 const RESOURCE_ACTIONS = [
   'create',
@@ -41,7 +44,7 @@ const RESOURCE_ACTIONS = [
 ];
 
 /**
- * @function isNoValue
+ * @function isNotValue
  * @name isNotValue
  * @description Check if variable has no associated state
  * @param {Mixed} value variable to check if it has no associated state
@@ -53,8 +56,12 @@ const RESOURCE_ACTIONS = [
  * @static
  * @public
  * @example
- * const isNoValue = isValue('a'); //=> false
- * const isNotValue = isValue(null); //=> true
+ *
+ * const isNotValue = isValue('a');
+ * //=> false
+ *
+ * const isNotValue = isValue(null);
+ * //=> true
  */
 const isNotValue = value => !value;
 
@@ -71,8 +78,12 @@ const isNotValue = value => !value;
  * @static
  * @public
  * @example
- * const notEmpty = areNotEmpty('a', 'b', 'c'); //=> true
- * const notEmpty = areNotEmpty('a', 'b', null); //=> false
+ *
+ * const notEmpty = areNotEmpty('a', 'b', 'c');
+ * //=> true
+ *
+ * const notEmpty = areNotEmpty('a', 'b', null);
+ * //=> false
  */
 const areNotEmpty = (...values) => {
   // copy values
@@ -101,11 +112,12 @@ const areNotEmpty = (...values) => {
  * @static
  * @public
  * @example
- * const a = [null, 1, "", undefined];
- * const b = compact(a); // => [ 1 ]
  *
- * const x = {a: 1, b: "", c: undefined};
- * const y = compact(x); // => { a: 1 }
+ * const b = compact([null, 1, "", undefined]);
+ * // => [ 1 ]
+ *
+ * const y = compact({a: 1, b: "", c: undefined});
+ * // => { a: 1 }
  */
 const compact = value => {
   // copy value
@@ -138,11 +150,12 @@ const compact = value => {
  * @static
  * @public
  * @example
- * const a = [null, 1, 1, "", undefined, 2];
- * const b = uniq(a); // => [ 1, 2 ]
  *
- * const x = {a: 1, b: "", c: undefined};
- * const y = uniq(x); // => { a: 1 }
+ * const b = uniq([null, 1, 1, "", undefined, 2]);
+ * // => [ 1, 2 ]
+ *
+ * const y = uniq({a: 1, b: "", c: undefined});
+ * // => { a: 1 }
  */
 const uniq = value => {
   // uniq
@@ -169,11 +182,12 @@ const uniq = value => {
  * @static
  * @public
  * @example
- * const a = [null, 1, 2, "", undefined, 1];
- * const b = sortedUniq(a); // => [ 1, 2 ]
  *
- * const x = {a: 1, b: "", c: undefined};
- * const y = sortedUniq(x); // => { a: 1 }
+ * const b = sortedUniq([null, 1, 2, "", undefined, 1]);
+ * // => [ 1, 2 ]
+ *
+ * const y = sortedUniq({a: 1, b: "", c: undefined});
+ * // => { a: 1 }
  */
 const sortedUniq = value => {
   // sortedUniq
@@ -200,7 +214,9 @@ const sortedUniq = value => {
  * @static
  * @public
  * @example
- * const { name, version } = pkg(); // => { name: ..., version: ...}
+ *
+ * const { name, version } = pkg();
+ * // => { name: ..., version: ...}
  */
 const pkg = (...field) => {
   const cwd = process.cwd();
@@ -225,8 +241,9 @@ const pkg = (...field) => {
  * @static
  * @public
  * @example
+ *
  * const scopes = scopesFor('user')
- * // => ['user:create', 'user:view',...rest]
+ * // => ['user:create', 'user:view']
  */
 const scopesFor = (...resources) => {
   // initialize resources scopes
@@ -271,6 +288,7 @@ const scopesFor = (...resources) => {
  * @static
  * @public
  * @example
+ *
  * const abbreaviation = abbreviate('Ministry of Finance')
  * // => MoF
  */
@@ -289,14 +307,90 @@ const abbreviate = (...words$1) => {
   return abbreviation;
 };
 
+/**
+ * @function idOf
+ * @name idOf
+ * @description obtain an id or a given object
+ * @param {Object} data object to pick id from
+ * @return {Mixed} id of a given object
+ * @author lally elias <lallyelias87@mail.com>
+ * @license MIT
+ * @since 0.10.0
+ * @version 0.1.0
+ * @static
+ * @public
+ * @example
+ *
+ * const id = idOf({ id: 1 })
+ * //=> 1
+ *
+ * const id = idOf({ _id: 1 })
+ * //=> 1
+ */
+const idOf = data => get(data, '_id') || get(data, 'id');
+
+/**
+ * @function mergeObjects
+ * @name mergeObjects
+ * @description merge a list on objects into a single object
+ * @param {...Object} objects list of objects
+ * @return {Object} a merged object
+ * @author lally elias <lallyelias87@mail.com>
+ * @license MIT
+ * @since 0.10.0
+ * @version 0.1.0
+ * @static
+ * @public
+ * @example
+ *
+ * const obj = mergeObjects({ a: 1 }, { b: 1 }, { c: 2}, { c: 2}, {b: null})
+ * //=> { a: 1, b: 1, c: 2 }
+ */
+const mergeObjects = (...objects) => {
+  // ensure source objects
+  let sources = compact$1([...objects]);
+  sources = map(sources, compact);
+
+  // merged objects
+  const merged = merge({}, ...sources);
+
+  // return merged object
+  return merged;
+};
+
+/**
+ * @function variableNameFor
+ * @name variableNameFor
+ * @description produce camelize variable name based on passed strings
+ * @param {...String} names list of strings to produce variable name
+ * @return {String} camelized variable name
+ * @author lally elias <lallyelias87@mail.com>
+ * @license MIT
+ * @since 0.10.0
+ * @version 0.1.0
+ * @static
+ * @public
+ * @example
+ *
+ * const name = variableNameFor('get', 'name');
+ * //=> getName
+ *
+ * const name = variableNameFor('pick', 'a', 'name');
+ * //=> pickAName
+ */
+const variableNameFor = (...names) => camelCase([...names].join(' '));
+
 export {
   RESOURCE_ACTIONS,
   abbreviate,
   areNotEmpty,
   compact,
+  idOf,
   isNotValue,
+  mergeObjects,
   pkg,
   scopesFor,
   sortedUniq,
   uniq,
+  variableNameFor,
 };

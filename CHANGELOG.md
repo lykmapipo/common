@@ -1,3 +1,21 @@
+#### 0.10.0 (2019-03-22)
+
+##### New Features
+
+*  add camelized variable name generator ([cc97b847](https://github.com/lykmapipo/common/commit/cc97b847ca430564826271231d42b3795a4ef4b8))
+*  add mergeObjects to merge list of objects to single object ([e7bda400](https://github.com/lykmapipo/common/commit/e7bda4001e9206ea233f6edd24cb95ca86c1919c))
+*  add idOf allow get an id or _id of an object ([820e1fca](https://github.com/lykmapipo/common/commit/820e1fcae7d815acc64121bc4c29a8730fecbdaf))
+
+##### Refactors
+
+*  idOf to return undefined for object with no id ([7e5381d5](https://github.com/lykmapipo/common/commit/7e5381d54eadcdb6e5fe797d79696e5705f73701))
+
+##### Code Style Changes
+
+*  make resource action private ([6b4b0587](https://github.com/lykmapipo/common/commit/6b4b0587ca2ae5e42cede8a160d3202aff3f28b7))
+*  improve and correct jsdoc ([1f63da20](https://github.com/lykmapipo/common/commit/1f63da201d040d6c76e21e473755d72f3a04ddd9))
+*  improve jsdoc ([47688f17](https://github.com/lykmapipo/common/commit/47688f17bde8a3b883882489b4967bdfa12644ad))
+
 #### 0.9.0 (2019-03-22)
 
 ##### Bug Fixes
