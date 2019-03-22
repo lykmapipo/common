@@ -69,7 +69,6 @@
     "rollup": "^1.7.0"
   },
   "dependencies": {
-    "countries-list": ">=2.4.2",
     "lodash": ">=4.17.11",
     "read-pkg": ">=5.0.0"
   },
