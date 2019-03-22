@@ -10,6 +10,7 @@ import {
   abbreviate,
   idOf,
   mergeObjects,
+  variableNameFor,
 } from '../src/index';
 
 describe('common', () => {
@@ -161,5 +162,10 @@ describe('common', () => {
       a: 1,
       b: 1,
     });
+  });
+
+  it('should generate camelized variable name', () => {
+    expect(variableNameFor('get', 'name')).to.be.equal('getName');
+    expect(variableNameFor('pick', 'a', 'name')).to.be.equal('pickAName');
   });
 });

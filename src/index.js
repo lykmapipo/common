@@ -1,4 +1,5 @@
 import {
+  camelCase,
   cloneDeep,
   compact as compactify,
   flattenDeep,
@@ -309,7 +310,6 @@ export const abbreviate = (...words) => {
  */
 export const idOf = data => get(data, '_id') || get(data, 'id');
 
-// merge list of objects to single object
 /**
  * @function mergeObjects
  * @name mergeObjects
@@ -337,3 +337,20 @@ export const mergeObjects = (...objects) => {
   // return merged object
   return merged;
 };
+
+/**
+ * @function variableNameFor
+ * @name variableNameFor
+ * @description produce camelize variable name based on passed strings
+ * @param {...String} names list of strings to produce variable name
+ * @return {String} camelized variable name
+ * @author lally elias <lallyelias87@mail.com>
+ * @license MIT
+ * @since 0.10.0
+ * @version 0.1.0
+ * @static
+ * @public
+ * @example
+ * const obj = variableNameFor('get', 'name'); //=> getName
+ */
+export const variableNameFor = (...names) => camelCase([...names].join(' '));
