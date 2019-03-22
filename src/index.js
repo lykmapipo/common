@@ -288,3 +288,21 @@ export const abbreviate = (...words) => {
   // return abbreviation
   return abbreviation;
 };
+
+/**
+ * @function idOf
+ * @name idOf
+ * @description obtain an id or a given object
+ * @param {Object} data object to pick id from
+ * @return {Mixed} id of a given object
+ * @author lally elias <lallyelias87@mail.com>
+ * @license MIT
+ * @since 0.10.0
+ * @version 0.1.0
+ * @static
+ * @public
+ * @example
+ * const id = idOf({ id: 1 }) //=> 1
+ * const id = idOf({ _id: 1 }) //=> 1
+ */
+export const idOf = data => (data ? data._id || data.id : undefined); // eslint-disable-line

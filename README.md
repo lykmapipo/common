@@ -20,7 +20,8 @@ npm install --save @lykmapipo/common
 
 ## Usage
 
-- With nodejs
+- With Node.js:
+
 ```js
 const {
   compact,
@@ -54,7 +55,8 @@ const abbreaviation = abbreviate('Ministry of Finance') // => MOF
 
 ```
 
-- With ES Module
+- With ES Module:
+
 ```js
 import {
   compact,
