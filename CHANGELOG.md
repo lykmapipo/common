@@ -1,3 +1,13 @@
+#### 0.9.0 (2019-03-22)
+
+##### Bug Fixes
+
+*  unresolved dependencies for builds ([ae500c9d](https://github.com/lykmapipo/common/commit/ae500c9d28805cc024fa2d802c9a2454dab63f0d))
+
+##### Refactors
+
+*  migrate to use rollup and npm scripts ([a74ff669](https://github.com/lykmapipo/common/commit/a74ff6699144d29bf81a625268b500ec788274ea))
+
 #### 0.8.0 (2019-02-12)
 
 ##### New Features
