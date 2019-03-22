@@ -15,6 +15,9 @@ import {
   get,
   merge,
   camelCase,
+  includes,
+  every,
+  some,
   toUpper,
   first,
   toLower,
@@ -380,11 +383,112 @@ const mergeObjects = (...objects) => {
  */
 const variableNameFor = (...names) => camelCase([...names].join(' '));
 
+/**
+ * @function has
+ * @name has
+ * @description check if value is in a collection
+ * @param {Array|Object|string} collection The collection to inspect.
+ * @param {Mixed} value The value to search for.
+ * @returns {Boolean} whether value is in collection
+ * @author lally elias <lallyelias87@mail.com>
+ * @license MIT
+ * @since 0.11.0
+ * @version 0.1.0
+ * @static
+ * @public
+ * @example
+ *
+ * const hasValue = has([ 1, 2 ], 1);
+ * //=> true
+ *
+ * const hasValue = has([ 'a', 'b' ], 'c');
+ * //=> false
+ */
+const has = (collection, value) => includes(collection, value);
+
+/**
+ * @function hasAll
+ * @name hasAll
+ * @description check if all value are in a collection
+ * @param {Array} collection The collection to inspect.
+ * @param {Array|...Mixed} values The values to search for.
+ * @returns {Boolean} whether values are in collection
+ * @author lally elias <lallyelias87@mail.com>
+ * @license MIT
+ * @since 0.11.0
+ * @version 0.1.0
+ * @static
+ * @public
+ * @example
+ *
+ * const hasValues = hasAll([ 1, 2 ], 1, 2);
+ * //=> true
+ *
+ * const hasValues = hasAll([ 1, 2 ], [ 1, 2 ]);
+ * //=> true
+ *
+ * const hasValues = hasAll([ 'a', 'b' ], 'c', 'd');
+ * //=> false
+ */
+const hasAll = (collection, ...values) => {
+  // check if value is in collection
+  const checkIfIsInCollection = value => has(collection, value);
+
+  // check if collection has all values
+  const flatValues = flattenDeep([...values]);
+  const areAllInCollection = every(flatValues, checkIfIsInCollection);
+
+  // return whether collection has all value
+  return areAllInCollection;
+};
+
+/**
+ * @function hasAny
+ * @name hasAny
+ * @description check if any value is in a collection
+ * @param {Array} collection The collection to inspect.
+ * @param {Array|...Mixed} values The values to search for.
+ * @returns {Boolean} whether any value is in collection
+ * @author lally elias <lallyelias87@mail.com>
+ * @license MIT
+ * @since 0.11.0
+ * @version 0.1.0
+ * @static
+ * @public
+ * @example
+ *
+ * const hasValues = hasAny([ 1, 2 ], 1, 2);
+ * //=> true
+ *
+ * const hasValues = hasAny([ 1, 2 ], [ 1, 2 ]);
+ * //=> true
+ *
+ * const hasValues = hasAny([ 'a', 'b' ], 'b', 'd');
+ * //=> true
+ *
+ * const hasValues = hasAny([ 'a', 'b' ], 'c', 'd');
+ * //=> false
+ */
+const hasAny = (collection, ...values) => {
+  // check if value is in collection
+  const checkIfIsInCollection = value => has(collection, value);
+
+  // check if collection has all values
+  const flatValues = flattenDeep([...values]);
+  const isAnyInCollection = some(flatValues, checkIfIsInCollection);
+
+  // return whether collection has any value
+  return isAnyInCollection;
+};
+
 export {
   RESOURCE_ACTIONS,
   abbreviate,
   areNotEmpty,
   compact,
+  has,
+  hasAll,
+  hasAny,
   idOf,
   isNotValue,
   mergeObjects,

@@ -371,5 +371,122 @@ const name = variableNameFor('pick', 'a', 'name');
 
 
 
+#### has(collection, value) 
+
+check if value is in a collection
+
+
+
+
+##### Parameters
+
+| Name | Type | Description |  |
+| ---- | ---- | ----------- | -------- |
+| collection | `Array` `Object` `string`  | The collection to inspect. | &nbsp; |
+| value | `Mixed`  | The value to search for. | &nbsp; |
+
+
+
+
+##### Examples
+
+```javascript
+
+const hasValue = has([ 1, 2 ], 1);
+//=> true
+
+const hasValue = has([ 'a', 'b' ], 'c');
+//=> false
+```
+
+
+##### Returns
+
+
+- `Boolean`  whether value is in collection
+
+
+
+#### hasAll(collection, values) 
+
+check if all value are in a collection
+
+
+
+
+##### Parameters
+
+| Name | Type | Description |  |
+| ---- | ---- | ----------- | -------- |
+| collection | `Array`  | The collection to inspect. | &nbsp; |
+| values | `Array` `Mixed`  | The values to search for. | &nbsp; |
+
+
+
+
+##### Examples
+
+```javascript
+
+const hasValues = hasAll([ 1, 2 ], 1, 2);
+//=> true
+
+const hasValues = hasAll([ 1, 2 ], [ 1, 2 ]);
+//=> true
+
+const hasValues = hasAll([ 'a', 'b' ], 'c', 'd');
+//=> false
+```
+
+
+##### Returns
+
+
+- `Boolean`  whether values are in collection
+
+
+
+#### hasAny(collection, values) 
+
+check if any value is in a collection
+
+
+
+
+##### Parameters
+
+| Name | Type | Description |  |
+| ---- | ---- | ----------- | -------- |
+| collection | `Array`  | The collection to inspect. | &nbsp; |
+| values | `Array` `Mixed`  | The values to search for. | &nbsp; |
+
+
+
+
+##### Examples
+
+```javascript
+
+const hasValues = hasAny([ 1, 2 ], 1, 2);
+//=> true
+
+const hasValues = hasAny([ 1, 2 ], [ 1, 2 ]);
+//=> true
+
+const hasValues = hasAny([ 'a', 'b' ], 'b', 'd');
+//=> true
+
+const hasValues = hasAny([ 'a', 'b' ], 'c', 'd');
+//=> false
+```
+
+
+##### Returns
+
+
+- `Boolean`  whether any value is in collection
+
+
+
 
 *Documentation generated with [doxdox](https://github.com/neogeek/doxdox).*

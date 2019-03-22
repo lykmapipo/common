@@ -1,3 +1,11 @@
+#### 0.11.0 (2019-03-22)
+
+##### New Features
+
+*  add hasAny to check if collection has any value ([5bd99aec](https://github.com/lykmapipo/common/commit/5bd99aec4fbbf9802e3aeed47dbaa580c84cc28f))
+*  add hasAll to check if collection has all values ([951fd844](https://github.com/lykmapipo/common/commit/951fd844153c23ba4a9cd077a0afddd17100d2c3))
+*  add has to check if value is in collection ([71d85f29](https://github.com/lykmapipo/common/commit/71d85f296de4263b228ee8b64a20c3fa328ec7b9))
+
 #### 0.10.0 (2019-03-22)
 
 ##### New Features

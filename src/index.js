@@ -424,6 +424,9 @@ export const has = (collection, value) => includes(collection, value);
  * const hasValues = hasAll([ 1, 2 ], 1, 2);
  * //=> true
  *
+ * const hasValues = hasAll([ 1, 2 ], [ 1, 2 ]);
+ * //=> true
+ *
  * const hasValues = hasAll([ 'a', 'b' ], 'c', 'd');
  * //=> false
  */
@@ -455,6 +458,9 @@ export const hasAll = (collection, ...values) => {
  * @example
  *
  * const hasValues = hasAny([ 1, 2 ], 1, 2);
+ * //=> true
+ *
+ * const hasValues = hasAny([ 1, 2 ], [ 1, 2 ]);
  * //=> true
  *
  * const hasValues = hasAny([ 'a', 'b' ], 'b', 'd');
