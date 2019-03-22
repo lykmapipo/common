@@ -16,6 +16,7 @@ import {
   omitBy,
   orderBy,
   reduce,
+  some,
   toLower,
   toUpper,
   uniq as uniqify,
@@ -423,7 +424,7 @@ export const has = (collection, value) => includes(collection, value);
  * const hasValues = hasAll([ 1, 2 ], 1, 2);
  * //=> true
  *
- * const hasValues = has([ 'a', 'b' ], 'c', 'd');
+ * const hasValues = hasAll([ 'a', 'b' ], 'c', 'd');
  * //=> false
  */
 export const hasAll = (collection, ...values) => {
@@ -432,8 +433,44 @@ export const hasAll = (collection, ...values) => {
 
   // check if collection has all values
   const flatValues = flattenDeep([...values]);
-  const areInCollection = every(flatValues, checkIfIsInCollection);
+  const areAllInCollection = every(flatValues, checkIfIsInCollection);
 
   // return whether collection has all value
-  return areInCollection;
+  return areAllInCollection;
+};
+
+/**
+ * @function hasAny
+ * @name hasAny
+ * @description check if any value is in a collection
+ * @param {Array} collection The collection to inspect.
+ * @param {Array|...Mixed} values The values to search for.
+ * @returns {Boolean} whether any value is in collection
+ * @author lally elias <lallyelias87@mail.com>
+ * @license MIT
+ * @since 0.11.0
+ * @version 0.1.0
+ * @static
+ * @public
+ * @example
+ *
+ * const hasValues = hasAny([ 1, 2 ], 1, 2);
+ * //=> true
+ *
+ * const hasValues = hasAny([ 'a', 'b' ], 'b', 'd');
+ * //=> true
+ *
+ * const hasValues = hasAny([ 'a', 'b' ], 'c', 'd');
+ * //=> false
+ */
+export const hasAny = (collection, ...values) => {
+  // check if value is in collection
+  const checkIfIsInCollection = value => has(collection, value);
+
+  // check if collection has all values
+  const flatValues = flattenDeep([...values]);
+  const isAnyInCollection = some(flatValues, checkIfIsInCollection);
+
+  // return whether collection has any value
+  return isAnyInCollection;
 };

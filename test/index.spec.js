@@ -13,6 +13,7 @@ import {
   variableNameFor,
   has,
   hasAll,
+  hasAny,
 } from '../src/index';
 
 describe('common', () => {
@@ -181,5 +182,12 @@ describe('common', () => {
     expect(hasAll([1, 2], [1, 2])).to.be.true;
     expect(hasAll([1, 2], 3)).to.be.false;
     expect(hasAll([1, 2], 1, 3)).to.be.false;
+  });
+
+  it('should check if any value is in collection', () => {
+    expect(hasAny([1, 2], 1, 2)).to.be.true;
+    expect(hasAny([1, 2], [1, 2])).to.be.true;
+    expect(hasAny([1, 2], 1, 3)).to.be.true;
+    expect(hasAny([1, 2], 3)).to.be.false;
   });
 });
