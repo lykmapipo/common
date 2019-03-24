@@ -71,7 +71,7 @@ export const isNotValue = value => !value;
 /**
  * @function mapToUpper
  * @name mapToUpper
- * @description convert list values to upper values
+ * @description convert list of values to upper values
  * @param {String[]|...String} values list to convert to upper
  * @return {String[]} list of upper values
  * @author lally elias <lallyelias87@mail.com>
@@ -97,6 +97,37 @@ export const mapToUpper = (...values) => {
   const upperValues = map(lowerValues, convertToUpper);
   // return upper values
   return upperValues;
+};
+
+/**
+ * @function mapToLower
+ * @name mapToLower
+ * @description convert list of values to lower values
+ * @param {String[]|...String} values list to convert to lower
+ * @return {String[]} list of lower values
+ * @author lally elias <lallyelias87@mail.com>
+ * @license MIT
+ * @since 0.12.0
+ * @version 0.1.0
+ * @static
+ * @public
+ * @example
+ *
+ * const mapToLower = mapToLower('A');
+ * //=> ['a']
+ *
+ * const mapToLower = mapToLower(['A', 'B'], 'C');
+ * //=> ['a', 'b', 'c']
+ */
+export const mapToLower = (...values) => {
+  // convert upper to lower
+  const convertToLower = value => toLower(value);
+  // collect values
+  const upperValues = flattenDeep([...values]);
+  // convert to lower
+  const lowerValues = map(upperValues, convertToLower);
+  // return lower values
+  return lowerValues;
 };
 
 /**

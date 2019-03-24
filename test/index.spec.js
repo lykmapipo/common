@@ -2,6 +2,7 @@ import { expect } from 'chai';
 import {
   isNotValue,
   mapToUpper,
+  mapToLower,
   areNotEmpty,
   compact,
   uniq,
@@ -38,6 +39,17 @@ describe('common', () => {
     expect(mapToUpper(['a', 'b'])).to.be.eql(['A', 'B']);
     expect(mapToUpper(['a'], 'b')).to.be.eql(['A', 'B']);
     expect(mapToUpper('a', 'b')).to.be.eql(['A', 'B']);
+  });
+
+  it('should convert values to lower', () => {
+    expect(mapToLower).to.exist;
+    expect(mapToLower).to.be.a('function');
+    expect(mapToLower.name).to.be.equal('mapToLower');
+    expect(mapToLower('A')).to.be.eql(['a']);
+    expect(mapToLower(['A'])).to.be.eql(['a']);
+    expect(mapToLower(['A', 'B'])).to.be.eql(['a', 'b']);
+    expect(mapToLower(['A'], 'B')).to.be.eql(['a', 'b']);
+    expect(mapToLower('A', 'B')).to.be.eql(['a', 'b']);
   });
 
   it('should check if values are not empty', () => {
