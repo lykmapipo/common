@@ -69,6 +69,37 @@ export const RESOURCE_ACTIONS = [
 export const isNotValue = value => !value;
 
 /**
+ * @function mapToUpper
+ * @name mapToUpper
+ * @description convert list values to upper values
+ * @param {String[]|...String} values list to convert to upper
+ * @return {String[]} list of upper values
+ * @author lally elias <lallyelias87@mail.com>
+ * @license MIT
+ * @since 0.12.0
+ * @version 0.1.0
+ * @static
+ * @public
+ * @example
+ *
+ * const mapToUpper = mapToUpper('a');
+ * //=> ['A']
+ *
+ * const mapToUpper = mapToUpper(['a', 'b'], 'c');
+ * //=> ['A', 'B', 'C']
+ */
+export const mapToUpper = (...values) => {
+  // convert lower to upper
+  const convertToUpper = value => toUpper(value);
+  // collect values
+  const lowerValues = flattenDeep([...values]);
+  // convert to upper
+  const upperValues = map(lowerValues, convertToUpper);
+  // return upper values
+  return upperValues;
+};
+
+/**
  * @function areNotEmpty
  * @name areNotEmpty
  * @description Check if provided values are not empty

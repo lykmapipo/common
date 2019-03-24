@@ -1,6 +1,7 @@
 import { expect } from 'chai';
 import {
   isNotValue,
+  mapToUpper,
   areNotEmpty,
   compact,
   uniq,
@@ -26,6 +27,17 @@ describe('common', () => {
     expect(isNotValue(null)).to.be.true;
     expect(isNotValue(undefined)).to.be.true;
     expect(isNotValue(false)).to.be.true;
+  });
+
+  it('should convert values to upper', () => {
+    expect(mapToUpper).to.exist;
+    expect(mapToUpper).to.be.a('function');
+    expect(mapToUpper.name).to.be.equal('mapToUpper');
+    expect(mapToUpper('a')).to.be.eql(['A']);
+    expect(mapToUpper(['a'])).to.be.eql(['A']);
+    expect(mapToUpper(['a', 'b'])).to.be.eql(['A', 'B']);
+    expect(mapToUpper(['a'], 'b')).to.be.eql(['A', 'B']);
+    expect(mapToUpper('a', 'b')).to.be.eql(['A', 'B']);
   });
 
   it('should check if values are not empty', () => {
