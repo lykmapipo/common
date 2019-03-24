@@ -1,3 +1,10 @@
+#### 0.12.0 (2019-03-24)
+
+##### New Features
+
+*  add map to lower for array values ([9dd3857e](https://github.com/lykmapipo/common/commit/9dd3857e34362872fb58868b9adb69d93a7c7c6b))
+*  add array map to upper ([c719998f](https://github.com/lykmapipo/common/commit/c719998f0939b564cc0b91b4225f15da1d56f499))
+
 #### 0.11.1 (2019-03-22)
 
 ##### Chores

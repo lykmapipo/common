@@ -33,6 +33,76 @@ const isNotValue = isValue(null);
 
 
 
+#### mapToUpper(values) 
+
+convert list of values to upper values
+
+
+
+
+##### Parameters
+
+| Name | Type | Description |  |
+| ---- | ---- | ----------- | -------- |
+| values | `Array.<String>` `String`  | list to convert to upper | &nbsp; |
+
+
+
+
+##### Examples
+
+```javascript
+
+const mapToUpper = mapToUpper('a');
+//=> ['A']
+
+const mapToUpper = mapToUpper(['a', 'b'], 'c');
+//=> ['A', 'B', 'C']
+```
+
+
+##### Returns
+
+
+- `Array.&lt;String&gt;`  list of upper values
+
+
+
+#### mapToLower(values) 
+
+convert list of values to lower values
+
+
+
+
+##### Parameters
+
+| Name | Type | Description |  |
+| ---- | ---- | ----------- | -------- |
+| values | `Array.<String>` `String`  | list to convert to lower | &nbsp; |
+
+
+
+
+##### Examples
+
+```javascript
+
+const mapToLower = mapToLower('A');
+//=> ['a']
+
+const mapToLower = mapToLower(['A', 'B'], 'C');
+//=> ['a', 'b', 'c']
+```
+
+
+##### Returns
+
+
+- `Array.&lt;String&gt;`  list of lower values
+
+
+
 #### areNotEmpty(values) 
 
 Check if provided values are not empty

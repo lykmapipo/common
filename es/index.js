@@ -1,4 +1,4 @@
-import { reduce, cloneDeep, isArray, compact as compact$1, isPlainObject, omitBy, uniq as uniq$1, orderBy, isEmpty, pick, map, flattenDeep, words, get, merge, camelCase, includes, every, some, toUpper, first, toLower } from 'lodash';
+import { flattenDeep, map, reduce, cloneDeep, isArray, compact as compact$1, isPlainObject, omitBy, uniq as uniq$1, orderBy, isEmpty, pick, words, get, merge, camelCase, includes, every, some, toUpper, toLower, first } from 'lodash';
 import { sync } from 'read-pkg';
 
 /**
@@ -44,6 +44,68 @@ const RESOURCE_ACTIONS = [
  * //=> true
  */
 const isNotValue = value => !value;
+
+/**
+ * @function mapToUpper
+ * @name mapToUpper
+ * @description convert list of values to upper values
+ * @param {String[]|...String} values list to convert to upper
+ * @return {String[]} list of upper values
+ * @author lally elias <lallyelias87@mail.com>
+ * @license MIT
+ * @since 0.12.0
+ * @version 0.1.0
+ * @static
+ * @public
+ * @example
+ *
+ * const mapToUpper = mapToUpper('a');
+ * //=> ['A']
+ *
+ * const mapToUpper = mapToUpper(['a', 'b'], 'c');
+ * //=> ['A', 'B', 'C']
+ */
+const mapToUpper = (...values) => {
+  // convert lower to upper
+  const convertToUpper = value => toUpper(value);
+  // collect values
+  const lowerValues = flattenDeep([...values]);
+  // convert to upper
+  const upperValues = map(lowerValues, convertToUpper);
+  // return upper values
+  return upperValues;
+};
+
+/**
+ * @function mapToLower
+ * @name mapToLower
+ * @description convert list of values to lower values
+ * @param {String[]|...String} values list to convert to lower
+ * @return {String[]} list of lower values
+ * @author lally elias <lallyelias87@mail.com>
+ * @license MIT
+ * @since 0.12.0
+ * @version 0.1.0
+ * @static
+ * @public
+ * @example
+ *
+ * const mapToLower = mapToLower('A');
+ * //=> ['a']
+ *
+ * const mapToLower = mapToLower(['A', 'B'], 'C');
+ * //=> ['a', 'b', 'c']
+ */
+const mapToLower = (...values) => {
+  // convert upper to lower
+  const convertToLower = value => toLower(value);
+  // collect values
+  const upperValues = flattenDeep([...values]);
+  // convert to lower
+  const lowerValues = map(upperValues, convertToLower);
+  // return lower values
+  return lowerValues;
+};
 
 /**
  * @function areNotEmpty
@@ -458,4 +520,4 @@ const hasAny = (collection, ...values) => {
   return isAnyInCollection;
 };
 
-export { RESOURCE_ACTIONS, abbreviate, areNotEmpty, compact, has, hasAll, hasAny, idOf, isNotValue, mergeObjects, pkg, scopesFor, sortedUniq, uniq, variableNameFor };
+export { RESOURCE_ACTIONS, abbreviate, areNotEmpty, compact, has, hasAll, hasAny, idOf, isNotValue, mapToLower, mapToUpper, mergeObjects, pkg, scopesFor, sortedUniq, uniq, variableNameFor };
