@@ -6,6 +6,7 @@ import {
   flattenDeep,
   get,
   first,
+  forEach,
   isArray,
   isEmpty,
   includes,
@@ -579,6 +580,19 @@ export const mapErrorToObject = (error, options = {}) => {
     description,
   } = mergeObjects(options);
 
+  // normalize errors bag
+  const bagify = (errors = {}) => {
+    const bag = {};
+    // simplify error bag
+    forEach(errors, (value = {}, key) => {
+      const simple = pick(value, 'message', 'name', 'kind', 'path', 'value');
+      const type = get(value, 'properties.type');
+      bag[key] = mergeObjects(simple, { type });
+    });
+    // return errors bag
+    return bag;
+  };
+
   // prepare error payload
   const body = {};
   body.code = error.code || code;
@@ -586,8 +600,8 @@ export const mapErrorToObject = (error, options = {}) => {
   body.name = error.name || name;
   body.message = error.message || message || STATUS_CODES[code];
   body.description = error.description || description || body.message;
-  body.errors = error.errors || undefined; // error bag
-  body.stack = stack ? error.stack : undefined; // error stack
+  body.errors = error.errors ? bagify(error.errors) : undefined;
+  body.stack = stack ? error.stack : undefined;
 
   // return formatted error response
   return mergeObjects(body);

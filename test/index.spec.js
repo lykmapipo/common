@@ -262,15 +262,43 @@ describe('common', () => {
     expect(object.stack).to.exist;
   });
 
-  it('should normalize errors in error instance', () => {
-    const error = new Error();
-    const object = mapErrorToObject(error);
+  it('should normalize errors bag in error instance', () => {
+    const errors = {
+      name: {
+        message: 'Path `name` (John Doe) is not unique.',
+        name: 'ValidatorError',
+        properties: {
+          type: 'unique',
+          path: 'name',
+          value: 'John Doe',
+          message: 'Path `name` (John Doe) is not unique.',
+          reason: 'E11000 duplicate key error collection',
+        },
+        kind: 'unique',
+        path: 'name',
+        value: 'John Doe',
+        reason: 'E11000 duplicate key error collection',
+      },
+    };
+    const error = new Error('Validation Error');
+    error.errors = errors;
+    const object = mapErrorToObject(error, { name: 'ValidationError' });
     expect(object).to.be.eql({
       status: 500,
       code: 500,
       name: 'Error',
-      message: 'Internal Server Error',
-      description: 'Internal Server Error',
+      message: 'Validation Error',
+      description: 'Validation Error',
+      errors: {
+        name: {
+          message: 'Path `name` (John Doe) is not unique.',
+          name: 'ValidatorError',
+          type: 'unique',
+          kind: 'unique',
+          path: 'name',
+          value: 'John Doe',
+        },
+      },
     });
   });
 });
