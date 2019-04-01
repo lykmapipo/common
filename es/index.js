@@ -1,5 +1,6 @@
-import { flattenDeep, map, reduce, cloneDeep, isArray, compact as compact$1, isPlainObject, omitBy, uniq as uniq$1, orderBy, isEmpty, pick, words, get, merge, camelCase, includes, every, some, toUpper, toLower, toString, first } from 'lodash';
+import { flattenDeep, map, reduce, cloneDeep, isArray, compact as compact$1, isPlainObject, omitBy, uniq as uniq$1, orderBy, isEmpty, pick, words, get, merge, camelCase, includes, every, some, toUpper, toLower, toString, first, forEach } from 'lodash';
 import { sync } from 'read-pkg';
+import { STATUS_CODES } from 'statuses';
 
 /**
  * @name RESOURCE_ACTIONS
@@ -520,4 +521,65 @@ const hasAny = (collection, ...values) => {
   return isAnyInCollection;
 };
 
-export { RESOURCE_ACTIONS, abbreviate, areNotEmpty, compact, has, hasAll, hasAny, idOf, isNotValue, mapToLower, mapToUpper, mergeObjects, pkg, scopesFor, sortedUniq, uniq, variableNameFor };
+/**
+ * @function mapErrorToObject
+ * @name mapErrorToObject
+ * @description convert error instance to light weight object
+ * @param {Error} error valid error instance
+ * @param {Object} [options] additional convert options
+ * @param {String} [options.name=Error] default error name
+ * @param {String} [options.code=500] default error code
+ * @param {String} [options.stack=false] where to include error stack
+ * @see {@link https://jsonapi.org/format/#errors}
+ * @return {Object} formatted error object
+ * @author lally elias <lallyelias87@mail.com>
+ * @license MIT
+ * @since 0.13.0
+ * @version 0.1.0
+ * @static
+ * @public
+ * @example
+ *
+ * const body = mapErrorToObject(new Error('Missing API Key'));
+ * //=> { name:'Error', message: 'Missing API Key', ... }
+ *
+ */
+const mapErrorToObject = (error, options = {}) => {
+  // ensure options
+  const {
+    name = 'Error',
+    code = 500,
+    stack = false,
+    status,
+    message,
+    description,
+  } = mergeObjects(options);
+
+  // normalize errors bag
+  const bagify = (errors = {}) => {
+    const bag = {};
+    // simplify error bag
+    forEach(errors, (value = {}, key) => {
+      const simple = pick(value, 'message', 'name', 'kind', 'path', 'value');
+      const type = get(value, 'properties.type');
+      bag[key] = mergeObjects(simple, { type });
+    });
+    // return errors bag
+    return bag;
+  };
+
+  // prepare error payload
+  const body = {};
+  body.code = error.code || code;
+  body.status = error.status || status || code;
+  body.name = error.name || name;
+  body.message = error.message || message || STATUS_CODES[code];
+  body.description = error.description || description || body.message;
+  body.errors = error.errors ? bagify(error.errors) : undefined;
+  body.stack = stack ? error.stack : undefined;
+
+  // return formatted error response
+  return mergeObjects(body);
+};
+
+export { RESOURCE_ACTIONS, abbreviate, areNotEmpty, compact, has, hasAll, hasAny, idOf, isNotValue, mapErrorToObject, mapToLower, mapToUpper, mergeObjects, pkg, scopesFor, sortedUniq, uniq, variableNameFor };

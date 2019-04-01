@@ -1,3 +1,13 @@
+#### 0.13.0 (2019-04-01)
+
+##### New Features
+
+*  add error normalizer to object ([f2964009](https://github.com/lykmapipo/common/commit/f296400946de0ee56dad1699632caaabdf3fe424))
+
+##### Refactors
+
+*  improve error to object use cases ([1a4fed76](https://github.com/lykmapipo/common/commit/1a4fed76e5678584815f8e3efb586a18a974e6fd))
+
 #### 0.12.1 (2019-04-01)
 
 ##### Chores

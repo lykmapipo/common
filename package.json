@@ -1,6 +1,6 @@
 {
   "name": "@lykmapipo/common",
-  "version": "0.12.1",
+  "version": "0.13.0",
   "description": "Helper utilities for day to day development",
   "main": "lib/index.js",
   "module": "es/index.js",

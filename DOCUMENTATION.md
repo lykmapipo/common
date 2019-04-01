@@ -558,5 +558,41 @@ const hasValues = hasAny([ 'a', 'b' ], 'c', 'd');
 
 
 
+#### mapErrorToObject(error[, options]) 
+
+convert error instance to light weight object
+
+
+
+
+##### Parameters
+
+| Name | Type | Description |  |
+| ---- | ---- | ----------- | -------- |
+| error | `Error`  | valid error instance | &nbsp; |
+| options | `Object`  | additional convert options | *Optional* |
+| options.name&#x3D;Error | `String`  | default error name | *Optional* |
+| options.code&#x3D;500 | `String`  | default error code | *Optional* |
+| options.stack&#x3D;false | `String`  | where to include error stack | *Optional* |
+
+
+
+
+##### Examples
+
+```javascript
+
+const body = mapErrorToObject(new Error('Missing API Key'));
+//=> { name:'Error', message: 'Missing API Key', ... }
+```
+
+
+##### Returns
+
+
+- `Object`  formatted error object
+
+
+
 
 *Documentation generated with [doxdox](https://github.com/neogeek/doxdox).*
