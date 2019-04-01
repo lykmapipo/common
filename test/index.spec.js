@@ -16,6 +16,7 @@ import {
   has,
   hasAll,
   hasAny,
+  mapErrorToObject,
 } from '../src/index';
 
 describe('common', () => {
@@ -217,5 +218,59 @@ describe('common', () => {
     expect(hasAny([1, 2], [1, 2])).to.be.true;
     expect(hasAny([1, 2], 1, 3)).to.be.true;
     expect(hasAny([1, 2], 3)).to.be.false;
+  });
+
+  it('should normalize error instance to object', () => {
+    const error = new Error();
+    const object = mapErrorToObject(error);
+    expect(object).to.be.eql({
+      status: 500,
+      code: 500,
+      name: 'Error',
+      message: 'Internal Server Error',
+      description: 'Internal Server Error',
+    });
+  });
+
+  it('should normalize error instance to object with message', () => {
+    const error = new Error('Invalid Arguments');
+    const object = mapErrorToObject(error);
+    expect(object).to.be.eql({
+      status: 500,
+      code: 500,
+      name: 'Error',
+      message: 'Invalid Arguments',
+      description: 'Invalid Arguments',
+    });
+  });
+
+  it('should normalize error instance to object with code', () => {
+    const error = new Error('Invalid Arguments');
+    const object = mapErrorToObject(error, { code: 400 });
+    expect(object).to.be.eql({
+      status: 400,
+      code: 400,
+      name: 'Error',
+      message: 'Invalid Arguments',
+      description: 'Invalid Arguments',
+    });
+  });
+
+  it('should normalize error instance to object with stack', () => {
+    const error = new Error('Bad Request');
+    const object = mapErrorToObject(error, { stack: true });
+    expect(object.stack).to.exist;
+  });
+
+  it('should normalize errors in error instance', () => {
+    const error = new Error();
+    const object = mapErrorToObject(error);
+    expect(object).to.be.eql({
+      status: 500,
+      code: 500,
+      name: 'Error',
+      message: 'Internal Server Error',
+      description: 'Internal Server Error',
+    });
   });
 });

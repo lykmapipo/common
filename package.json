@@ -72,7 +72,8 @@
   },
   "dependencies": {
     "lodash": ">=4.17.11",
-    "read-pkg": ">=5.0.0"
+    "read-pkg": ">=5.0.0",
+    "statuses": ">=1.5.0"
   },
   "engines": {
     "node": ">=8.11.1",

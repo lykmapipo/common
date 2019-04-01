@@ -24,6 +24,7 @@ import {
   words as wordify,
 } from 'lodash';
 import { sync as readPackage } from 'read-pkg';
+import { STATUS_CODES } from 'statuses';
 
 /**
  * @name RESOURCE_ACTIONS
@@ -542,4 +543,52 @@ export const hasAny = (collection, ...values) => {
 
   // return whether collection has any value
   return isAnyInCollection;
+};
+
+/**
+ * @function mapErrorToObject
+ * @name mapErrorToObject
+ * @description convert error instance to light weight object
+ * @param {Error} error valid error instance
+ * @param {Object} [options] additional convert options
+ * @param {String} [options.name=Error] default error name
+ * @param {String} [options.code=500] default error code
+ * @param {String} [options.stack=false] where to include error stack
+ * @see {@link https://jsonapi.org/format/#errors}
+ * @return {Object} formatted error object
+ * @author lally elias <lallyelias87@mail.com>
+ * @license MIT
+ * @since 0.13.0
+ * @version 0.1.0
+ * @static
+ * @public
+ * @example
+ *
+ * const body = mapErrorToObject(new Error('Missing API Key'));
+ * //=> { name:'Error', message: 'Missing API Key', ... }
+ *
+ */
+export const mapErrorToObject = (error, options = {}) => {
+  // ensure options
+  const {
+    name = 'Error',
+    code = 500,
+    stack = false,
+    status,
+    message,
+    description,
+  } = mergeObjects(options);
+
+  // prepare error payload
+  const body = {};
+  body.code = error.code || code;
+  body.status = error.status || status || code;
+  body.name = error.name || name;
+  body.message = error.message || message || STATUS_CODES[code];
+  body.description = error.description || description || body.message;
+  body.errors = error.errors || undefined; // error bag
+  body.stack = stack ? error.stack : undefined; // error stack
+
+  // return formatted error response
+  return mergeObjects(body);
 };
