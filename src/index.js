@@ -18,6 +18,7 @@ import {
   reduce,
   some,
   toLower,
+  toString,
   toUpper,
   uniq as uniqify,
   words as wordify,
@@ -139,7 +140,7 @@ export const mapToLower = (...values) => {
  * @author lally elias <lallyelias87@mail.com>
  * @license MIT
  * @since 0.1.0
- * @version 0.1.0
+ * @version 0.2.0
  * @static
  * @public
  * @example
@@ -155,7 +156,7 @@ export const areNotEmpty = (...values) => {
   const copyOfValues = [...values];
   // check for empty values so far
   const checkForEmpties = (arePreviousEmpty, nextValue) => {
-    return arePreviousEmpty && !isEmpty(nextValue);
+    return arePreviousEmpty && !isEmpty(toString(nextValue));
   };
   // assert for emptiness
   const notEmpty = reduce(copyOfValues, checkForEmpties, true);
