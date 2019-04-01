@@ -1,4 +1,4 @@
-import { flattenDeep, map, reduce, cloneDeep, isArray, compact as compact$1, isPlainObject, omitBy, uniq as uniq$1, orderBy, isEmpty, pick, words, get, merge, camelCase, includes, every, some, toUpper, toLower, first } from 'lodash';
+import { flattenDeep, map, reduce, cloneDeep, isArray, compact as compact$1, isPlainObject, omitBy, uniq as uniq$1, orderBy, isEmpty, pick, words, get, merge, camelCase, includes, every, some, toUpper, toLower, toString, first } from 'lodash';
 import { sync } from 'read-pkg';
 
 /**
@@ -116,7 +116,7 @@ const mapToLower = (...values) => {
  * @author lally elias <lallyelias87@mail.com>
  * @license MIT
  * @since 0.1.0
- * @version 0.1.0
+ * @version 0.2.0
  * @static
  * @public
  * @example
@@ -132,7 +132,7 @@ const areNotEmpty = (...values) => {
   const copyOfValues = [...values];
   // check for empty values so far
   const checkForEmpties = (arePreviousEmpty, nextValue) => {
-    return arePreviousEmpty && !isEmpty(nextValue);
+    return arePreviousEmpty && !isEmpty(toString(nextValue));
   };
   // assert for emptiness
   const notEmpty = reduce(copyOfValues, checkForEmpties, true);
