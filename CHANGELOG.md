@@ -1,3 +1,17 @@
+#### 0.12.1 (2019-04-01)
+
+##### Chores
+
+*  force latest dependencies ([37c311cb](https://github.com/lykmapipo/common/commit/37c311cb1fd6b10fa4265f3e3c207c9109179663))
+
+##### Bug Fixes
+
+*  convert to string before check for emptiness ([e96e8508](https://github.com/lykmapipo/common/commit/e96e85088f8c0dc85be06471cf085f9a66f70b87))
+
+##### Tests
+
+*  allow empty check for numbers and arrays ([5ceba1d8](https://github.com/lykmapipo/common/commit/5ceba1d8285afd2383f08c506fd0d33275aac241))
+
 #### 0.12.0 (2019-03-24)
 
 ##### New Features
