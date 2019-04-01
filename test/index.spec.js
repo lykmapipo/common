@@ -60,6 +60,10 @@ describe('common', () => {
     expect(areNotEmpty('a', '')).to.be.false;
     expect(areNotEmpty('a', undefined)).to.be.false;
     expect(areNotEmpty('a', null)).to.be.false;
+    expect(areNotEmpty(1, null)).to.be.false;
+    expect(areNotEmpty(1, undefined)).to.be.false;
+    expect(areNotEmpty(1)).to.be.true;
+    expect(areNotEmpty([1, 'a'])).to.be.true;
   });
 
   it('should read current process package information', () => {
