@@ -341,5 +341,8 @@ describe('common', () => {
     expect(info).to.exist;
     expect(info).to.be.an('object');
     expect(info.arch).to.exist;
+    expect(info.arch).to.be.a('string');
+    expect(info.cpus).to.exist;
+    expect(info.cpus).to.be.an('array');
   });
 });
