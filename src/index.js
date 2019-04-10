@@ -707,6 +707,7 @@ export const processInfo = () => {
   // collect process information
   const info = {
     arch: process.arch,
+    cpuUsage: process.cpuUsage(),
   };
   // return collected process information
   return info;
