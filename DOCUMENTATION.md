@@ -651,5 +651,30 @@ const info = osInfo();
 
 
 
+#### processInfo() 
+
+obtain current process information
+
+
+
+
+
+
+##### Examples
+
+```javascript
+
+const info = processInfo();
+//=> { pid: 8989, ... }
+```
+
+
+##### Returns
+
+
+- `Object`  current process information
+
+
+
 
 *Documentation generated with [doxdox](https://github.com/neogeek/doxdox).*

@@ -646,4 +646,47 @@ const osInfo = () => {
   return info;
 };
 
-export { RESOURCE_ACTIONS, abbreviate, areNotEmpty, bagify, compact, has, hasAll, hasAny, idOf, isNotValue, mapErrorToObject, mapToLower, mapToUpper, mergeObjects, osInfo, pkg, scopesFor, sortedUniq, uniq, variableNameFor };
+/**
+ * @function processInfo
+ * @name processInfo
+ * @description obtain current process information
+ * @return {Object} current process information
+ * @author lally elias <lallyelias87@mail.com>
+ * @license MIT
+ * @since 0.15.0
+ * @version 0.1.0
+ * @static
+ * @public
+ * @example
+ *
+ * const info = processInfo();
+ * //=> { pid: 8989, ... }
+ *
+ */
+const processInfo = () => {
+  // collect process information
+  const info = {
+    arch: process.arch,
+    cpuUsage: process.cpuUsage(),
+    cwd: process.cwd(),
+    features: process.features,
+    egid: process.getegid(),
+    euid: process.geteuid(),
+    gid: process.getgid(),
+    groups: process.getgroups(),
+    uid: process.getuid(),
+    hrtime: process.hrtime(),
+    memoryUsage: process.memoryUsage(),
+    pid: process.pid,
+    platform: process.platform,
+    ppid: process.ppid,
+    title: process.title,
+    uptime: process.uptime(),
+    version: process.version,
+    versions: process.versions,
+  };
+  // return collected process information
+  return info;
+};
+
+export { RESOURCE_ACTIONS, abbreviate, areNotEmpty, bagify, compact, has, hasAll, hasAny, idOf, isNotValue, mapErrorToObject, mapToLower, mapToUpper, mergeObjects, osInfo, pkg, processInfo, scopesFor, sortedUniq, uniq, variableNameFor };

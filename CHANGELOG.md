@@ -1,3 +1,22 @@
+#### 0.15.0 (2019-04-10)
+
+##### Documentation Changes
+
+*  add contributing & code of conduct docs ([2cf7d4c8](https://github.com/lykmapipo/common/commit/2cf7d4c847024a565c00b95629d1b7285e015e29))
+
+##### New Features
+
+*  add versions to process info ([d731cebe](https://github.com/lykmapipo/common/commit/d731cebeb4c0bef1966b45f83df835d7018913a8))
+*  add version on process info ([2e0d8ff3](https://github.com/lykmapipo/common/commit/2e0d8ff38c4147045336ef96f9dee724abcb55cb))
+*  add pid, platform, ppid, title on process info ([7b13cb2c](https://github.com/lykmapipo/common/commit/7b13cb2c20ba9cc98f1d88c9d546b02a409d1354))
+*  add memoryUsage on process info ([e7350cdc](https://github.com/lykmapipo/common/commit/e7350cdc1ff2defc72a4faf0bcdc4c35dfe21b22))
+*  add hrtime on process info ([9ad09191](https://github.com/lykmapipo/common/commit/9ad09191141e34db590af7dfed15cb9e2facd040))
+*  add egid, euid, gid, groups, uid on process info ([18c7ce0e](https://github.com/lykmapipo/common/commit/18c7ce0e4696a65a07cf4397be512ef18a315225))
+*  add features on process info ([db531116](https://github.com/lykmapipo/common/commit/db5311162e414084ea675b62c13c06593c2fa8dc))
+*  add cwd on process info ([da93ade7](https://github.com/lykmapipo/common/commit/da93ade7b5c422f9d1d002591822b41a1f7cbab5))
+*  add cpuUsage on process info ([221df455](https://github.com/lykmapipo/common/commit/221df45587f112e6ff1929ac195932abd34e17af))
+*  add processInfo utility ([13b06724](https://github.com/lykmapipo/common/commit/13b067240d5920b6a9659fe998f179846f8c40b6))
+
 #### 0.14.0 (2019-04-10)
 
 ##### Chores
