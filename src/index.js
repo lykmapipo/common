@@ -1,4 +1,4 @@
-import { arch, cpus, endianness, freemem } from 'os';
+import { arch, cpus, endianness, freemem, homedir } from 'os';
 import {
   camelCase,
   cloneDeep,
@@ -656,6 +656,7 @@ export const osInfo = () => {
     cpus: cpus(),
     endianness: endianness(),
     freemem: freemem(),
+    homedir: homedir(),
   };
   // return collected os information
   return info;

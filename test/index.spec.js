@@ -352,5 +352,8 @@ describe('common', () => {
 
     expect(info.freemem).to.exist;
     expect(info.freemem).to.be.a('number');
+
+    expect(info.homedir).to.exist;
+    expect(info.homedir).to.be.a('string');
   });
 });
