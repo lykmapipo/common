@@ -355,5 +355,8 @@ describe('common', () => {
 
     expect(info.homedir).to.exist;
     expect(info.homedir).to.be.a('string');
+
+    expect(info.hostname).to.exist;
+    expect(info.hostname).to.be.a('string');
   });
 });
