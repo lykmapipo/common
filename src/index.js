@@ -717,6 +717,10 @@ export const processInfo = () => {
     uid: process.getuid(),
     hrtime: process.hrtime(),
     memoryUsage: process.memoryUsage(),
+    pid: process.pid,
+    platform: process.platform,
+    ppid: process.ppid,
+    title: process.title,
   };
   // return collected process information
   return info;

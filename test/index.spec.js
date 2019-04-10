@@ -399,5 +399,13 @@ describe('common', () => {
     expect(info.hrtime).to.be.an('array');
     expect(info.memoryUsage).to.exist;
     expect(info.memoryUsage).to.be.an('object');
+    expect(info.pid).to.exist;
+    expect(info.pid).to.be.a('number');
+    expect(info.platform).to.exist;
+    expect(info.platform).to.be.a('string');
+    expect(info.ppid).to.exist;
+    expect(info.ppid).to.be.a('number');
+    expect(info.title).to.exist;
+    expect(info.title).to.be.a('string');
   });
 });
