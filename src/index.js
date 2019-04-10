@@ -9,6 +9,7 @@ import {
   networkInterfaces,
   platform,
   release,
+  tmpdir,
 } from 'os';
 import {
   camelCase,
@@ -673,6 +674,7 @@ export const osInfo = () => {
     networkInterfaces: networkInterfaces(),
     platform: platform(),
     release: release(),
+    tmpdir: tmpdir(),
   };
   // return collected os information
   return info;
