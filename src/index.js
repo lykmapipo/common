@@ -716,6 +716,7 @@ export const processInfo = () => {
     groups: process.getgroups(),
     uid: process.getuid(),
     hrtime: process.hrtime(),
+    memoryUsage: process.memoryUsage(),
   };
   // return collected process information
   return info;

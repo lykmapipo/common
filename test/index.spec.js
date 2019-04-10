@@ -397,5 +397,7 @@ describe('common', () => {
     expect(info.uid).to.be.a('number');
     expect(info.hrtime).to.exist;
     expect(info.hrtime).to.be.an('array');
+    expect(info.memoryUsage).to.exist;
+    expect(info.memoryUsage).to.be.an('object');
   });
 });
