@@ -723,6 +723,7 @@ export const processInfo = () => {
     title: process.title,
     uptime: process.uptime(),
     version: process.version,
+    versions: process.versions,
   };
   // return collected process information
   return info;

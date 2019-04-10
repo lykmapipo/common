@@ -411,5 +411,7 @@ describe('common', () => {
     expect(info.uptime).to.be.a('number');
     expect(info.version).to.exist;
     expect(info.version).to.be.a('string');
+    expect(info.versions).to.exist;
+    expect(info.versions).to.be.an('object');
   });
 });
