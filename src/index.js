@@ -1,4 +1,4 @@
-import { arch, cpus } from 'os';
+import { arch, cpus, endianness } from 'os';
 import {
   camelCase,
   cloneDeep,
@@ -654,6 +654,7 @@ export const osInfo = () => {
   const info = {
     arch: arch(),
     cpus: cpus(),
+    endianness: endianness(),
   };
   // return collected os information
   return info;
