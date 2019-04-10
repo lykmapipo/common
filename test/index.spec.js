@@ -373,5 +373,8 @@ describe('common', () => {
 
     expect(info.tmpdir).to.exist;
     expect(info.tmpdir).to.be.a('string');
+
+    expect(info.totalmem).to.exist;
+    expect(info.totalmem).to.be.a('number');
   });
 });
