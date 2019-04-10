@@ -8,6 +8,7 @@ import {
   loadavg,
   networkInterfaces,
   platform,
+  release,
 } from 'os';
 import {
   camelCase,
@@ -671,6 +672,7 @@ export const osInfo = () => {
     loadavg: loadavg(),
     networkInterfaces: networkInterfaces(),
     platform: platform(),
+    release: release(),
   };
   // return collected os information
   return info;

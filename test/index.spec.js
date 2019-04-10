@@ -367,5 +367,8 @@ describe('common', () => {
 
     expect(info.platform).to.exist;
     expect(info.platform).to.be.a('string');
+
+    expect(info.release).to.exist;
+    expect(info.release).to.be.a('string');
   });
 });
