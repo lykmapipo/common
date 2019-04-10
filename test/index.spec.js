@@ -383,5 +383,7 @@ describe('common', () => {
     expect(info.cpuUsage).to.be.an('object');
     expect(info.cwd).to.exist;
     expect(info.cwd).to.be.a('string');
+    expect(info.features).to.exist;
+    expect(info.features).to.be.an('object');
   });
 });
