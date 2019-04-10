@@ -710,6 +710,11 @@ export const processInfo = () => {
     cpuUsage: process.cpuUsage(),
     cwd: process.cwd(),
     features: process.features,
+    egid: process.getegid(),
+    euid: process.geteuid(),
+    gid: process.getgid(),
+    groups: process.getgroups(),
+    uid: process.getuid(),
   };
   // return collected process information
   return info;

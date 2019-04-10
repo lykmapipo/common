@@ -385,5 +385,15 @@ describe('common', () => {
     expect(info.cwd).to.be.a('string');
     expect(info.features).to.exist;
     expect(info.features).to.be.an('object');
+    expect(info.egid).to.exist;
+    expect(info.egid).to.be.a('number');
+    expect(info.euid).to.exist;
+    expect(info.euid).to.be.a('number');
+    expect(info.gid).to.exist;
+    expect(info.gid).to.be.a('number');
+    expect(info.groups).to.exist;
+    expect(info.groups).to.be.an('array');
+    expect(info.uid).to.exist;
+    expect(info.uid).to.be.a('number');
   });
 });
