@@ -12,6 +12,7 @@ import {
   tmpdir,
   totalmem,
   type as osType,
+  uptime,
 } from 'os';
 import {
   camelCase,
@@ -679,6 +680,7 @@ export const osInfo = () => {
     tmpdir: tmpdir(),
     totalmem: totalmem(),
     type: osType(),
+    uptime: uptime(),
   };
   // return collected os information
   return info;

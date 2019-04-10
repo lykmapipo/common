@@ -379,5 +379,8 @@ describe('common', () => {
 
     expect(info.type).to.exist;
     expect(info.type).to.be.a('string');
+
+    expect(info.uptime).to.exist;
+    expect(info.uptime).to.be.a('number');
   });
 });
