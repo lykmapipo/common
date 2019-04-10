@@ -395,5 +395,7 @@ describe('common', () => {
     expect(info.groups).to.be.an('array');
     expect(info.uid).to.exist;
     expect(info.uid).to.be.a('number');
+    expect(info.hrtime).to.exist;
+    expect(info.hrtime).to.be.an('array');
   });
 });
