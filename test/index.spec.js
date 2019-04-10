@@ -16,6 +16,7 @@ import {
   has,
   hasAll,
   hasAny,
+  bagify,
   mapErrorToObject,
 } from '../src/index';
 
@@ -260,6 +261,38 @@ describe('common', () => {
     const error = new Error('Bad Request');
     const object = mapErrorToObject(error, { stack: true });
     expect(object.stack).to.exist;
+  });
+
+  it('should normalize errors bag', () => {
+    const errors = {
+      name: {
+        message: 'Path `name` (John Doe) is not unique.',
+        name: 'ValidatorError',
+        properties: {
+          type: 'unique',
+          path: 'name',
+          value: 'John Doe',
+          message: 'Path `name` (John Doe) is not unique.',
+          reason: 'E11000 duplicate key error collection',
+        },
+        kind: 'unique',
+        path: 'name',
+        value: 'John Doe',
+        reason: 'E11000 duplicate key error collection',
+      },
+    };
+
+    const object = bagify(errors);
+    expect(object).to.be.eql({
+      name: {
+        message: 'Path `name` (John Doe) is not unique.',
+        name: 'ValidatorError',
+        type: 'unique',
+        kind: 'unique',
+        path: 'name',
+        value: 'John Doe',
+      },
+    });
   });
 
   it('should normalize errors bag in error instance', () => {

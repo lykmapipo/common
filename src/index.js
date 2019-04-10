@@ -571,12 +571,12 @@ export const bagify = (errors = {}) => {
   forEach(errors, (error = {}, key) => {
     // simplify error bag
     const { message, name, type, kind, path, value, properties = {} } = error;
-    const props = ['message', 'name', 'type', 'kind', 'path', 'value'];
     const normalized = mergeObjects(
       { message, name, type, kind, path, value },
       properties
     );
     // reset key with normalized error
+    const props = ['message', 'name', 'type', 'kind', 'path', 'value'];
     bag[key] = pick(normalized, ...props);
   });
   // return errors bag
