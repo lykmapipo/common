@@ -1,6 +1,6 @@
 {
   "name": "@lykmapipo/common",
-  "version": "0.13.0",
+  "version": "0.14.0",
   "description": "Helper utilities for day to day development",
   "main": "lib/index.js",
   "module": "es/index.js",
@@ -68,7 +68,7 @@
     "mocha": "^6.1.2",
     "prettier": "^1.16.4",
     "rimraf": "^2.6.3",
-    "rollup": "^1.9.2"
+    "rollup": "^1.9.3"
   },
   "dependencies": {
     "lodash": ">=4.17.11",

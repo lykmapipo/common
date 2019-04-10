@@ -1,3 +1,35 @@
+#### 0.14.0 (2019-04-10)
+
+##### Chores
+
+*  force latest dependencies ([618d5795](https://github.com/lykmapipo/common/commit/618d57951c0cca7bf29d828275cbf1db5658a306))
+
+##### New Features
+
+*  add uptime on os info ([e8658315](https://github.com/lykmapipo/common/commit/e8658315b693d4e292de7994c82eb810108a4fe2))
+*  add type on os info ([5fbbc0f2](https://github.com/lykmapipo/common/commit/5fbbc0f2d6a7c15f835f46d436516f6f1775cfe5))
+*  add totalmem on os info ([21d54ca9](https://github.com/lykmapipo/common/commit/21d54ca9da59739f1cbe8de705bd37314e07d06d))
+*  add tmpdir on os info ([d1e2b58a](https://github.com/lykmapipo/common/commit/d1e2b58a14758c12f9f62c2c02ff19cd0263e10d))
+*  add release on os info ([678516a9](https://github.com/lykmapipo/common/commit/678516a98dde4baef0965ee86e0f3d4f479b6324))
+*  add platform on os info ([41342077](https://github.com/lykmapipo/common/commit/41342077a13d2c424f5252472f4d7f362378f382))
+*  add networkInterfaces on os info ([08d05664](https://github.com/lykmapipo/common/commit/08d05664cdf219b8bf8b4b0ef6c3e6752649b4f3))
+*  add loadavg on os info ([10b1c866](https://github.com/lykmapipo/common/commit/10b1c866d7c2773e53dd594aee35481f786bd57c))
+*  add hostname on os info ([20d02bbe](https://github.com/lykmapipo/common/commit/20d02bbe823f7c8cd5f67a5e2594de59148c93a6))
+*  add homedir on os info ([0d28c03d](https://github.com/lykmapipo/common/commit/0d28c03d1ae404bb56dbdb5f435f6b7d88eb4592))
+*  add freemem on os info ([55ff511c](https://github.com/lykmapipo/common/commit/55ff511c1be8577c77d4766466dd4db584910708))
+*  add endianness on os info ([483287e4](https://github.com/lykmapipo/common/commit/483287e4423b66b10450e9e824759f48c0bb6c06))
+*  add cpus info to os info ([6061f25b](https://github.com/lykmapipo/common/commit/6061f25bf12ee87cd24db1235cab425b6eec5609))
+*  add os info helper ([61a08209](https://github.com/lykmapipo/common/commit/61a082097d03d126481503b1bdcc0d918ceb8cac))
+
+##### Refactors
+
+*  extract errors bag normalizer to utility ([1b5e3045](https://github.com/lykmapipo/common/commit/1b5e3045668948f65d3a0079720b82c0d3e0aa5b))
+
+##### Tests
+
+*  re-arrange osInfo specs ([87dd2019](https://github.com/lykmapipo/common/commit/87dd2019b0a75cb7b14cd0851786305639fce5dd))
+*  retest bagify ([1e4533b9](https://github.com/lykmapipo/common/commit/1e4533b98e0e05849bfa2f4a8e1ec0eea104d8ba))
+
 #### 0.13.0 (2019-04-01)
 
 ##### New Features

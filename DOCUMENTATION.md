@@ -558,6 +558,38 @@ const hasValues = hasAny([ 'a', 'b' ], 'c', 'd');
 
 
 
+#### bagify(errors) 
+
+normalize errors bag to light weight object
+
+
+
+
+##### Parameters
+
+| Name | Type | Description |  |
+| ---- | ---- | ----------- | -------- |
+| errors | `Object`  | valid errors bag | &nbsp; |
+
+
+
+
+##### Examples
+
+```javascript
+
+const body = bagify({name : new Error('Validation Error') });
+//=> { name: { name: 'Error', message: 'Name Required'}, ... }
+```
+
+
+##### Returns
+
+
+- `Object`  formatted errors bag
+
+
+
 #### mapErrorToObject(error[, options]) 
 
 convert error instance to light weight object
@@ -591,6 +623,31 @@ const body = mapErrorToObject(new Error('Missing API Key'));
 
 
 - `Object`  formatted error object
+
+
+
+#### osInfo() 
+
+obtain operating system information
+
+
+
+
+
+
+##### Examples
+
+```javascript
+
+const info = osInfo();
+//=> { arch:'x64', ... }
+```
+
+
+##### Returns
+
+
+- `Object`  os information object
 
 
 
