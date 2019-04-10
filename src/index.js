@@ -7,6 +7,7 @@ import {
   hostname,
   loadavg,
   networkInterfaces,
+  platform,
 } from 'os';
 import {
   camelCase,
@@ -669,6 +670,7 @@ export const osInfo = () => {
     hostname: hostname(),
     loadavg: loadavg(),
     networkInterfaces: networkInterfaces(),
+    platform: platform(),
   };
   // return collected os information
   return info;

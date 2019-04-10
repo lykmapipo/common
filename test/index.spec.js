@@ -364,5 +364,8 @@ describe('common', () => {
 
     expect(info.networkInterfaces).to.exist;
     expect(info.networkInterfaces).to.be.an('object');
+
+    expect(info.platform).to.exist;
+    expect(info.platform).to.be.a('string');
   });
 });
