@@ -685,3 +685,29 @@ export const osInfo = () => {
   // return collected os information
   return info;
 };
+
+/**
+ * @function processInfo
+ * @name processInfo
+ * @description obtain current process information
+ * @return {Object} current process information
+ * @author lally elias <lallyelias87@mail.com>
+ * @license MIT
+ * @since 0.15.0
+ * @version 0.1.0
+ * @static
+ * @public
+ * @example
+ *
+ * const info = processInfo();
+ * //=> { pid: 8989, ... }
+ *
+ */
+export const processInfo = () => {
+  // collect process information
+  const info = {
+    arch: process.arch,
+  };
+  // return collected process information
+  return info;
+};

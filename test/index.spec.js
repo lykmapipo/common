@@ -19,6 +19,7 @@ import {
   bagify,
   mapErrorToObject,
   osInfo,
+  processInfo,
 } from '../src/index';
 
 describe('common', () => {
@@ -369,5 +370,14 @@ describe('common', () => {
     expect(info.type).to.be.a('string');
     expect(info.uptime).to.exist;
     expect(info.uptime).to.be.a('number');
+  });
+
+  it('should get process information', () => {
+    const info = processInfo();
+    expect(info).to.exist;
+    expect(info).to.be.an('object');
+
+    expect(info.arch).to.exist;
+    expect(info.arch).to.be.a('string');
   });
 });
