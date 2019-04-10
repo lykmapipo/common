@@ -18,6 +18,7 @@ import {
   hasAny,
   bagify,
   mapErrorToObject,
+  osInfo,
 } from '../src/index';
 
 describe('common', () => {
@@ -333,5 +334,12 @@ describe('common', () => {
         },
       },
     });
+  });
+
+  it('should get os information', () => {
+    const info = osInfo();
+    expect(info).to.exist;
+    expect(info).to.be.an('object');
+    expect(info.arch).to.exist;
   });
 });

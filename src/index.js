@@ -1,3 +1,4 @@
+import { arch } from 'os';
 import {
   camelCase,
   cloneDeep,
@@ -629,4 +630,30 @@ export const mapErrorToObject = (error, options = {}) => {
 
   // return formatted error response
   return mergeObjects(body);
+};
+
+/**
+ * @function osInfo
+ * @name osInfo
+ * @description obtain operating system information
+ * @return {Object} os information object
+ * @author lally elias <lallyelias87@mail.com>
+ * @license MIT
+ * @since 0.14.0
+ * @version 0.1.0
+ * @static
+ * @public
+ * @example
+ *
+ * const info = osInfo();
+ * //=> { arch:'x64', ... }
+ *
+ */
+export const osInfo = () => {
+  // collect os information
+  const info = {
+    arch: arch(),
+  };
+  // return collected os information
+  return info;
 };
