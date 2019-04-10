@@ -349,5 +349,8 @@ describe('common', () => {
 
     expect(info.endianness).to.exist;
     expect(info.endianness).to.be.a('string');
+
+    expect(info.freemem).to.exist;
+    expect(info.freemem).to.be.a('number');
   });
 });
