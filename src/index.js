@@ -547,6 +547,43 @@ export const hasAny = (collection, ...values) => {
 };
 
 /**
+ * @function bagify
+ * @name bagify
+ * @description normalize errors bag to light weight object
+ * @param {Object} errors valid errors bag
+ * @return {Object} formatted errors bag
+ * @author lally elias <lallyelias87@mail.com>
+ * @license MIT
+ * @since 0.14.0
+ * @version 0.1.0
+ * @static
+ * @public
+ * @example
+ *
+ * const body = bagify({name : new Error('Validation Error') });
+ * //=> { name: { name: 'Error', message: 'Name Required'}, ... }
+ *
+ */
+export const bagify = (errors = {}) => {
+  // initialize normalize errors bag
+  const bag = {};
+  // iterate errors ba
+  forEach(errors, (error = {}, key) => {
+    // simplify error bag
+    const { message, name, type, kind, path, value, properties = {} } = error;
+    const props = ['message', 'name', 'type', 'kind', 'path', 'value'];
+    const normalized = mergeObjects(
+      { message, name, type, kind, path, value },
+      properties
+    );
+    // reset key with normalized error
+    bag[key] = pick(normalized, ...props);
+  });
+  // return errors bag
+  return bag;
+};
+
+/**
  * @function mapErrorToObject
  * @name mapErrorToObject
  * @description convert error instance to light weight object
@@ -579,19 +616,6 @@ export const mapErrorToObject = (error, options = {}) => {
     message,
     description,
   } = mergeObjects(options);
-
-  // normalize errors bag
-  const bagify = (errors = {}) => {
-    const bag = {};
-    // simplify error bag
-    forEach(errors, (value = {}, key) => {
-      const simple = pick(value, 'message', 'name', 'kind', 'path', 'value');
-      const type = get(value, 'properties.type');
-      bag[key] = mergeObjects(simple, { type });
-    });
-    // return errors bag
-    return bag;
-  };
 
   // prepare error payload
   const body = {};
