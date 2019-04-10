@@ -361,5 +361,8 @@ describe('common', () => {
 
     expect(info.loadavg).to.exist;
     expect(info.loadavg).to.be.an('array');
+
+    expect(info.networkInterfaces).to.exist;
+    expect(info.networkInterfaces).to.be.an('object');
   });
 });
