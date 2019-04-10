@@ -11,6 +11,7 @@ import {
   release,
   tmpdir,
   totalmem,
+  type as osType,
 } from 'os';
 import {
   camelCase,
@@ -677,6 +678,7 @@ export const osInfo = () => {
     release: release(),
     tmpdir: tmpdir(),
     totalmem: totalmem(),
+    type: osType(),
   };
   // return collected os information
   return info;
