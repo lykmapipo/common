@@ -358,5 +358,8 @@ describe('common', () => {
 
     expect(info.hostname).to.exist;
     expect(info.hostname).to.be.a('string');
+
+    expect(info.loadavg).to.exist;
+    expect(info.loadavg).to.be.an('array');
   });
 });
