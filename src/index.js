@@ -721,6 +721,8 @@ export const processInfo = () => {
     platform: process.platform,
     ppid: process.ppid,
     title: process.title,
+    uptime: process.uptime(),
+    version: process.version,
   };
   // return collected process information
   return info;

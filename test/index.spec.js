@@ -407,5 +407,9 @@ describe('common', () => {
     expect(info.ppid).to.be.a('number');
     expect(info.title).to.exist;
     expect(info.title).to.be.a('string');
+    expect(info.uptime).to.exist;
+    expect(info.uptime).to.be.a('number');
+    expect(info.version).to.exist;
+    expect(info.version).to.be.a('string');
   });
 });
