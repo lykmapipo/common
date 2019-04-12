@@ -643,6 +643,13 @@ export const mapErrorToObject = (error, options = {}) => {
   body.errors = error.errors ? bagify(error.errors) : undefined;
   body.stack = stack ? error.stack : undefined;
 
+  // support OAuth v2 error style
+  // https://tools.ietf.org/html/rfc6749#page-71
+  body.uri = get(error, 'error_uri', error.uri);
+  body.error = error.error || body.name;
+  body.error_description = body.description;
+  body.error_uri = body.uri;
+
   // return formatted error response
   return mergeObjects(body);
 };

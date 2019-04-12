@@ -224,14 +224,16 @@ describe('common', () => {
   });
 
   it('should normalize error instance to object', () => {
-    const error = new Error();
+    const error = new Error('Internal Server Error');
     const object = mapErrorToObject(error);
     expect(object).to.be.eql({
       status: 500,
       code: 500,
       name: 'Error',
+      error: 'Error',
       message: 'Internal Server Error',
       description: 'Internal Server Error',
+      error_description: 'Internal Server Error',
     });
   });
 
@@ -242,8 +244,10 @@ describe('common', () => {
       status: 500,
       code: 500,
       name: 'Error',
+      error: 'Error',
       message: 'Invalid Arguments',
       description: 'Invalid Arguments',
+      error_description: 'Invalid Arguments',
     });
   });
 
@@ -254,8 +258,10 @@ describe('common', () => {
       status: 400,
       code: 400,
       name: 'Error',
+      error: 'Error',
       message: 'Invalid Arguments',
       description: 'Invalid Arguments',
+      error_description: 'Invalid Arguments',
     });
   });
 
@@ -322,8 +328,10 @@ describe('common', () => {
       status: 500,
       code: 500,
       name: 'Error',
+      error: 'Error',
       message: 'Validation Error',
       description: 'Validation Error',
+      error_description: 'Validation Error',
       errors: {
         name: {
           message: 'Path `name` (John Doe) is not unique.',
