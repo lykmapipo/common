@@ -1,3 +1,13 @@
+#### 0.16.0 (2019-04-12)
+
+##### Chores
+
+*  force latest dependencies ([b06d2742](https://github.com/lykmapipo/common/commit/b06d27421e68fe32c0e95211aebd34156814e931))
+
+##### New Features
+
+*  support oauth v2 error object ([0a285e18](https://github.com/lykmapipo/common/commit/0a285e183070e42e11d87cf32a9272011d2e95b0))
+
 #### 0.15.0 (2019-04-10)
 
 ##### Documentation Changes
