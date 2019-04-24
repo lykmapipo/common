@@ -571,7 +571,7 @@ export const hasAny = (collection, ...values) => {
  * @author lally elias <lallyelias87@mail.com>
  * @license MIT
  * @since 0.14.0
- * @version 0.1.0
+ * @version 0.2.0
  * @static
  * @public
  * @example
@@ -586,13 +586,22 @@ export const bagify = (errors = {}) => {
   // iterate errors ba
   forEach(errors, (error = {}, key) => {
     // simplify error bag
-    const { message, name, type, kind, path, value, properties = {} } = error;
+    const {
+      message,
+      name,
+      type,
+      kind,
+      path,
+      value,
+      index,
+      properties = {},
+    } = error;
     const normalized = mergeObjects(
-      { message, name, type, kind, path, value },
+      { message, name, type, kind, path, value, index },
       properties
     );
     // reset key with normalized error
-    const props = ['message', 'name', 'type', 'kind', 'path', 'value'];
+    const props = ['message', 'name', 'type', 'kind', 'path', 'value', 'index'];
     bag[key] = pick(normalized, ...props);
   });
   // return errors bag

@@ -287,6 +287,7 @@ describe('common', () => {
         path: 'name',
         value: 'John Doe',
         reason: 'E11000 duplicate key error collection',
+        index: 'name',
       },
     };
 
@@ -299,6 +300,7 @@ describe('common', () => {
         kind: 'unique',
         path: 'name',
         value: 'John Doe',
+        index: 'name',
       },
     });
   });
@@ -319,6 +321,7 @@ describe('common', () => {
         path: 'name',
         value: 'John Doe',
         reason: 'E11000 duplicate key error collection',
+        index: 'name',
       },
     };
     const error = new Error('Validation Error');
@@ -340,6 +343,7 @@ describe('common', () => {
           kind: 'unique',
           path: 'name',
           value: 'John Doe',
+          index: 'name',
         },
       },
     });
