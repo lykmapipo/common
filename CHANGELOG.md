@@ -1,3 +1,13 @@
+#### 0.17.0 (2019-04-24)
+
+##### Chores
+
+* **depedencies:**  force latest versions ([d07b1726](https://github.com/lykmapipo/common/commit/d07b17265424884d8611f7fd0bfdd85f2a2f345f))
+
+##### New Features
+
+*  allow index on mapErrorToObject ([6e10d777](https://github.com/lykmapipo/common/commit/6e10d777be89014e89cd4329e5d6ed0b99d3f294))
+
 #### 0.16.0 (2019-04-12)
 
 ##### Chores
