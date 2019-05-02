@@ -286,9 +286,39 @@ export const sortedUniq = value => {
 };
 
 /**
+ * @function mergeObjects
+ * @name mergeObjects
+ * @description merge a list on objects into a single object
+ * @param {...Object} objects list of objects
+ * @return {Object} a merged object
+ * @author lally elias <lallyelias87@mail.com>
+ * @license MIT
+ * @since 0.10.0
+ * @version 0.1.0
+ * @static
+ * @public
+ * @example
+ *
+ * const obj = mergeObjects({ a: 1 }, { b: 1 }, { c: 2}, { c: 2}, {b: null})
+ * //=> { a: 1, b: 1, c: 2 }
+ */
+export const mergeObjects = (...objects) => {
+  // ensure source objects
+  let sources = compactify([...objects]);
+  sources = map(sources, compact);
+
+  // merged objects
+  const merged = mergify({}, ...sources);
+
+  // return merged object
+  return merged;
+};
+
+/**
  * @function pkg
  * @name pkg
- * @description read current process package information
+ * @description read package information
+ * @param {String} [path] valid path to package.json file
  * @param {String|String[]|...String} field fields to pick from package
  * @return {Object} current process package information
  * @author lally elias <lallyelias87@mail.com>
@@ -301,15 +331,33 @@ export const sortedUniq = value => {
  *
  * const { name, version } = pkg();
  * // => { name: ..., version: ...}
+ *
+ * const { name, version } = pkg(__dirname);
+ * // => { name: ..., version: ...}
  */
-export const pkg = (...field) => {
-  const cwd = process.cwd();
-  const copyOfPkg = readPackage({ cwd });
-  const fields = uniq([...field]);
-  if (!isEmpty(fields)) {
-    return { ...pick(copyOfPkg, ...fields) };
+export const pkg = (path, ...field) => {
+  // try read from path or process cwd
+  const read = () => {
+    try {
+      return readPackage({ cwd: path });
+    } catch (e) {
+      return readPackage({ cwd: process.cwd() });
+    }
+  };
+
+  // try read package data
+  try {
+    const packageInfo = mergeObjects(read());
+    const fields = uniq([...field, path]);
+    if (!isEmpty(fields)) {
+      const info = { ...pick(packageInfo, ...fields) };
+      return isEmpty(info) ? { ...packageInfo } : info;
+    }
+    return packageInfo;
+  } catch (e) {
+    // no package data found
+    return {};
   }
-  return copyOfPkg;
 };
 
 /**
@@ -412,35 +460,6 @@ export const abbreviate = (...words) => {
  * //=> 1
  */
 export const idOf = data => get(data, '_id') || get(data, 'id');
-
-/**
- * @function mergeObjects
- * @name mergeObjects
- * @description merge a list on objects into a single object
- * @param {...Object} objects list of objects
- * @return {Object} a merged object
- * @author lally elias <lallyelias87@mail.com>
- * @license MIT
- * @since 0.10.0
- * @version 0.1.0
- * @static
- * @public
- * @example
- *
- * const obj = mergeObjects({ a: 1 }, { b: 1 }, { c: 2}, { c: 2}, {b: null})
- * //=> { a: 1, b: 1, c: 2 }
- */
-export const mergeObjects = (...objects) => {
-  // ensure source objects
-  let sources = compactify([...objects]);
-  sources = map(sources, compact);
-
-  // merged objects
-  const merged = mergify({}, ...sources);
-
-  // return merged object
-  return merged;
-};
 
 /**
  * @function variableNameFor
