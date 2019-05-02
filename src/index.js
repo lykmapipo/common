@@ -304,12 +304,12 @@ export const sortedUniq = value => {
  */
 export const pkg = (...field) => {
   const cwd = process.cwd();
-  const copfyOfPkg = readPackage({ cwd });
+  const copyOfPkg = readPackage({ cwd });
   const fields = uniq([...field]);
   if (!isEmpty(fields)) {
-    return { ...pick(copfyOfPkg, ...fields) };
+    return { ...pick(copyOfPkg, ...fields) };
   }
-  return copfyOfPkg;
+  return copyOfPkg;
 };
 
 /**
