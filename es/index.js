@@ -1,5 +1,5 @@
 import { arch, cpus, endianness, freemem, homedir, hostname, loadavg, networkInterfaces, platform, release, tmpdir, totalmem, type, uptime } from 'os';
-import { flattenDeep, map, reduce, cloneDeep, isArray, compact as compact$1, isPlainObject, omitBy, uniq as uniq$1, orderBy, isEmpty, pick, words, get, merge, camelCase, includes, every, some, forEach, toUpper, toLower, toString, first } from 'lodash';
+import { flattenDeep, map, reduce, cloneDeep, isArray, compact as compact$1, isPlainObject, omitBy, uniq as uniq$1, orderBy, merge, isEmpty, pick, words, get, camelCase, includes, every, some, forEach, toUpper, toLower, toString, first } from 'lodash';
 import { sync } from 'read-pkg';
 import { STATUS_CODES } from 'statuses';
 
@@ -246,9 +246,39 @@ const sortedUniq = value => {
 };
 
 /**
+ * @function mergeObjects
+ * @name mergeObjects
+ * @description merge a list on objects into a single object
+ * @param {...Object} objects list of objects
+ * @return {Object} a merged object
+ * @author lally elias <lallyelias87@mail.com>
+ * @license MIT
+ * @since 0.10.0
+ * @version 0.1.0
+ * @static
+ * @public
+ * @example
+ *
+ * const obj = mergeObjects({ a: 1 }, { b: 1 }, { c: 2}, { c: 2}, {b: null})
+ * //=> { a: 1, b: 1, c: 2 }
+ */
+const mergeObjects = (...objects) => {
+  // ensure source objects
+  let sources = compact$1([...objects]);
+  sources = map(sources, compact);
+
+  // merged objects
+  const merged = merge({}, ...sources);
+
+  // return merged object
+  return merged;
+};
+
+/**
  * @function pkg
  * @name pkg
- * @description read current process package information
+ * @description read package information
+ * @param {String} [path] valid path to package.json file
  * @param {String|String[]|...String} field fields to pick from package
  * @return {Object} current process package information
  * @author lally elias <lallyelias87@mail.com>
@@ -261,15 +291,33 @@ const sortedUniq = value => {
  *
  * const { name, version } = pkg();
  * // => { name: ..., version: ...}
+ *
+ * const { name, version } = pkg(__dirname);
+ * // => { name: ..., version: ...}
  */
-const pkg = (...field) => {
-  const cwd = process.cwd();
-  const copfyOfPkg = sync({ cwd });
-  const fields = uniq([...field]);
-  if (!isEmpty(fields)) {
-    return { ...pick(copfyOfPkg, ...fields) };
+const pkg = (path, ...field) => {
+  // try read from path or process cwd
+  const read = () => {
+    try {
+      return sync({ cwd: path });
+    } catch (e) {
+      return sync({ cwd: process.cwd() });
+    }
+  };
+
+  // try read package data
+  try {
+    const packageInfo = mergeObjects(read());
+    const fields = uniq([...field, path]);
+    if (!isEmpty(fields)) {
+      const info = { ...pick(packageInfo, ...fields) };
+      return isEmpty(info) ? { ...packageInfo } : info;
+    }
+    return packageInfo;
+  } catch (e) {
+    // no package data found
+    return {};
   }
-  return copfyOfPkg;
 };
 
 /**
@@ -372,35 +420,6 @@ const abbreviate = (...words$1) => {
  * //=> 1
  */
 const idOf = data => get(data, '_id') || get(data, 'id');
-
-/**
- * @function mergeObjects
- * @name mergeObjects
- * @description merge a list on objects into a single object
- * @param {...Object} objects list of objects
- * @return {Object} a merged object
- * @author lally elias <lallyelias87@mail.com>
- * @license MIT
- * @since 0.10.0
- * @version 0.1.0
- * @static
- * @public
- * @example
- *
- * const obj = mergeObjects({ a: 1 }, { b: 1 }, { c: 2}, { c: 2}, {b: null})
- * //=> { a: 1, b: 1, c: 2 }
- */
-const mergeObjects = (...objects) => {
-  // ensure source objects
-  let sources = compact$1([...objects]);
-  sources = map(sources, compact);
-
-  // merged objects
-  const merged = merge({}, ...sources);
-
-  // return merged object
-  return merged;
-};
 
 /**
  * @function variableNameFor

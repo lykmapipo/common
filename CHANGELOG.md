@@ -1,3 +1,17 @@
+#### 0.17.2 (2019-05-02)
+
+##### Chores
+
+* **.npmrc:**  prevent npm version to commit and tag version ([e0110130](https://github.com/lykmapipo/common/commit/e01101305a8775acfaa28a1748e3925378eb5c9a))
+
+##### Bug Fixes
+
+*  allow read package info from specified path or process.cwd ([2564b9c3](https://github.com/lykmapipo/common/commit/2564b9c37bbba8b2b7e7182cfe4b54a8c01dcb81))
+
+##### Code Style Changes
+
+*  fix typos ([65feb93a](https://github.com/lykmapipo/common/commit/65feb93a11da6affdc8913f3c05c9288038add98))
+
 #### 0.17.1 (2019-04-30)
 
 ##### Chores
