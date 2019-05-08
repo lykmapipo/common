@@ -1,5 +1,5 @@
 import { arch, cpus, endianness, freemem, homedir, hostname, loadavg, networkInterfaces, platform, release, tmpdir, totalmem, type, uptime } from 'os';
-import { flattenDeep, map, reduce, cloneDeep, isArray, compact as compact$1, isPlainObject, omitBy, uniq as uniq$1, orderBy, merge, isEmpty, pick, words, get, camelCase, includes, every, some, forEach, toUpper, toLower, toString, first } from 'lodash';
+import { isBoolean, flattenDeep, map, reduce, cloneDeep, isArray, compact as compact$1, isPlainObject, omitBy, uniq as uniq$1, orderBy, merge, isEmpty, pick, words, get, camelCase, includes, every, some, forEach, toUpper, toLower, toString, first } from 'lodash';
 import { sync } from 'read-pkg';
 import { STATUS_CODES } from 'statuses';
 
@@ -45,7 +45,7 @@ const RESOURCE_ACTIONS = [
  * const isNotValue = isValue(null);
  * //=> true
  */
-const isNotValue = value => !value;
+const isNotValue = value => (isBoolean(value) ? false : !value);
 
 /**
  * @function mapToUpper

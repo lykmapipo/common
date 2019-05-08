@@ -1,3 +1,9 @@
+#### 0.17.3 (2019-05-08)
+
+##### New Features
+
+*  allow boolean false on value check & merged objects ([722dacce](https://github.com/lykmapipo/common/commit/722daccebfe5aafea1611348a4e60b2967e02025))
+
 #### 0.17.2 (2019-05-02)
 
 ##### Chores

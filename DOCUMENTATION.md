@@ -243,9 +243,9 @@ const y = sortedUniq({a: 1, b: "", c: undefined});
 
 
 
-#### pkg(field) 
+#### mergeObjects(objects) 
 
-read current process package information
+merge a list on objects into a single object
 
 
 
@@ -254,6 +254,39 @@ read current process package information
 
 | Name | Type | Description |  |
 | ---- | ---- | ----------- | -------- |
+| objects | `Object`  | list of objects | &nbsp; |
+
+
+
+
+##### Examples
+
+```javascript
+
+const obj = mergeObjects({ a: 1 }, { b: 1 }, { c: 2}, { c: 2}, {b: null})
+//=> { a: 1, b: 1, c: 2 }
+```
+
+
+##### Returns
+
+
+- `Object`  a merged object
+
+
+
+#### pkg([path], field) 
+
+read package information
+
+
+
+
+##### Parameters
+
+| Name | Type | Description |  |
+| ---- | ---- | ----------- | -------- |
+| path | `String`  | valid path to package.json file | *Optional* |
 | field | `String` `Array.<String>` `String`  | fields to pick from package | &nbsp; |
 
 
@@ -264,6 +297,9 @@ read current process package information
 ```javascript
 
 const { name, version } = pkg();
+// => { name: ..., version: ...}
+
+const { name, version } = pkg(__dirname);
 // => { name: ..., version: ...}
 ```
 
@@ -371,38 +407,6 @@ const id = idOf({ _id: 1 })
 
 
 - `Mixed`  id of a given object
-
-
-
-#### mergeObjects(objects) 
-
-merge a list on objects into a single object
-
-
-
-
-##### Parameters
-
-| Name | Type | Description |  |
-| ---- | ---- | ----------- | -------- |
-| objects | `Object`  | list of objects | &nbsp; |
-
-
-
-
-##### Examples
-
-```javascript
-
-const obj = mergeObjects({ a: 1 }, { b: 1 }, { c: 2}, { c: 2}, {b: null})
-//=> { a: 1, b: 1, c: 2 }
-```
-
-
-##### Returns
-
-
-- `Object`  a merged object
 
 
 
