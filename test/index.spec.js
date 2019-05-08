@@ -31,7 +31,8 @@ describe('common', () => {
     expect(isNotValue('')).to.be.true;
     expect(isNotValue(null)).to.be.true;
     expect(isNotValue(undefined)).to.be.true;
-    expect(isNotValue(false)).to.be.true;
+    expect(isNotValue(false)).to.be.false;
+    expect(isNotValue(true)).to.be.false;
   });
 
   it('should convert values to upper', () => {
@@ -95,13 +96,14 @@ describe('common', () => {
   });
 
   it('should compact an object', () => {
-    const x = { a: null, b: 1, c: '', d: undefined };
+    const x = { a: null, b: 1, c: '', d: undefined, e: false };
     const y = compact(x);
     expect(y).to.exist;
+    expect(y).to.include.keys('b', 'e');
     expect(y).to.not.include.keys('a', 'c', 'd');
     expect(y.b).to.exist;
-    y.e = 2;
-    expect(x.e).to.not.exist;
+    y.f = 2;
+    expect(x.f).to.not.exist;
   });
 
   it('should remove duplicates from an array', () => {
@@ -196,6 +198,10 @@ describe('common', () => {
     expect(mergeObjects({ a: 1 }, { b: 1 }, { b: undefined })).to.be.eql({
       a: 1,
       b: 1,
+    });
+    expect(mergeObjects({ a: false }, { b: true })).to.be.eql({
+      a: false,
+      b: true,
     });
   });
 

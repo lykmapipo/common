@@ -24,6 +24,7 @@ import {
   first,
   forEach,
   isArray,
+  isBoolean,
   isEmpty,
   includes,
   isPlainObject,
@@ -85,7 +86,7 @@ export const RESOURCE_ACTIONS = [
  * const isNotValue = isValue(null);
  * //=> true
  */
-export const isNotValue = value => !value;
+export const isNotValue = value => (isBoolean(value) ? false : !value);
 
 /**
  * @function mapToUpper
