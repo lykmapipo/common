@@ -20,6 +20,7 @@ import {
   mapErrorToObject,
   osInfo,
   processInfo,
+  randomColor,
 } from '../src/index';
 
 describe('common', () => {
@@ -431,5 +432,10 @@ describe('common', () => {
     expect(info.version).to.be.a('string');
     expect(info.versions).to.exist;
     expect(info.versions).to.be.an('object');
+  });
+
+  it('should generate random color', () => {
+    const color = randomColor();
+    expect(color).to.exist;
   });
 });

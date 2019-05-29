@@ -43,6 +43,7 @@ import {
 } from 'lodash';
 import { sync as readPackage } from 'read-pkg';
 import { STATUS_CODES } from 'statuses';
+import generateColor from 'randomcolor';
 
 /**
  * @name RESOURCE_ACTIONS
@@ -763,4 +764,31 @@ export const processInfo = () => {
   };
   // return collected process information
   return info;
+};
+
+/**
+ * @function randomColor
+ * @name randomColor
+ * @description enerating attractive random colors
+ * @param {Object} [optns] valid generator options
+ * @param {Object} [optns.luminosity=light] controls the luminosity of the
+ * generated color. you can specify a string containing `bright`, `light` or
+ * `dark`.
+ * @return {String} random color
+ * @author lally elias <lallyelias87@mail.com>
+ * @license MIT
+ * @since 0.18.0
+ * @version 0.1.0
+ * @static
+ * @public
+ * @example
+ *
+ * const color = randomColor();
+ * //=> #C349D8
+ *
+ */
+export const randomColor = (optns = { luminosity: 'light' }) => {
+  const options = mergeObjects(optns);
+  const color = generateColor(options);
+  return color;
 };
