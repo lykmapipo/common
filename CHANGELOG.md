@@ -1,3 +1,14 @@
+#### 0.18.0 (2019-05-29)
+
+##### Chores
+
+* **release:**  compile latest source and generate latest release notes ([8a2fe4ba](https://github.com/lykmapipo/common/commit/8a2fe4ba2e47d2c1378f323e934d0e6ef4071e4d))
+* **deps:**  force latest version & audit fix ([1d2314a7](https://github.com/lykmapipo/common/commit/1d2314a7c524152f307300a77b7bb9da5cbd3a28))
+
+##### New Features
+
+*  add random color generator ([46729600](https://github.com/lykmapipo/common/commit/467296005f16ec389be068023d9176be9f647f3f))
+
 #### 0.17.6 (2019-05-29)
 
 ##### Chores
