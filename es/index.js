@@ -2,6 +2,7 @@ import { arch, cpus, endianness, freemem, homedir, hostname, loadavg, networkInt
 import { isBoolean, flattenDeep, map, reduce, cloneDeep, isArray, compact as compact$1, isPlainObject, omitBy, uniq as uniq$1, orderBy, merge, isEmpty, pick, words, get, camelCase, includes, every, some, forEach, toUpper, toLower, toString, first } from 'lodash';
 import { sync } from 'read-pkg';
 import { STATUS_CODES } from 'statuses';
+import generateColor from 'randomcolor';
 
 /**
  * @name RESOURCE_ACTIONS
@@ -724,4 +725,31 @@ const processInfo = () => {
   return info;
 };
 
-export { RESOURCE_ACTIONS, abbreviate, areNotEmpty, bagify, compact, has, hasAll, hasAny, idOf, isNotValue, mapErrorToObject, mapToLower, mapToUpper, mergeObjects, osInfo, pkg, processInfo, scopesFor, sortedUniq, uniq, variableNameFor };
+/**
+ * @function randomColor
+ * @name randomColor
+ * @description enerating attractive random colors
+ * @param {Object} [optns] valid generator options
+ * @param {Object} [optns.luminosity=light] controls the luminosity of the
+ * generated color. you can specify a string containing `bright`, `light` or
+ * `dark`.
+ * @return {String} random color
+ * @author lally elias <lallyelias87@mail.com>
+ * @license MIT
+ * @since 0.18.0
+ * @version 0.1.0
+ * @static
+ * @public
+ * @example
+ *
+ * const color = randomColor();
+ * //=> #C349D8
+ *
+ */
+const randomColor = (optns = { luminosity: 'light' }) => {
+  const options = mergeObjects(optns);
+  const color = generateColor(options);
+  return color;
+};
+
+export { RESOURCE_ACTIONS, abbreviate, areNotEmpty, bagify, compact, has, hasAll, hasAny, idOf, isNotValue, mapErrorToObject, mapToLower, mapToUpper, mergeObjects, osInfo, pkg, processInfo, randomColor, scopesFor, sortedUniq, uniq, variableNameFor };

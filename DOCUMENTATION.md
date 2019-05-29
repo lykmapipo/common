@@ -680,5 +680,38 @@ const info = processInfo();
 
 
 
+#### randomColor([optns]) 
+
+enerating attractive random colors
+
+
+
+
+##### Parameters
+
+| Name | Type | Description |  |
+| ---- | ---- | ----------- | -------- |
+| optns | `Object`  | valid generator options | *Optional* |
+| optns.luminosity&#x3D;light | `Object`  | controls the luminosity of the generated color. you can specify a string containing `bright`, `light` or<br>`dark`. | *Optional* |
+
+
+
+
+##### Examples
+
+```javascript
+
+const color = randomColor();
+//=> #C349D8
+```
+
+
+##### Returns
+
+
+- `String`  random color
+
+
+
 
 *Documentation generated with [doxdox](https://github.com/neogeek/doxdox).*

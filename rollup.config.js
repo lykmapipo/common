@@ -3,7 +3,7 @@ import pkg from './package.json';
 export default [
   {
     input: 'src/index.js',
-    external: ['lodash', 'read-pkg', 'statuses', 'os'],
+    external: ['lodash', 'read-pkg', 'statuses', 'os', 'randomcolor'],
     output: [
       {
         file: pkg.main,
