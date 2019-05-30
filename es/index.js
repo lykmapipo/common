@@ -3,6 +3,7 @@ import { isBoolean, flattenDeep, map, reduce, cloneDeep, isArray, compact as com
 import { sync } from 'read-pkg';
 import { STATUS_CODES } from 'statuses';
 import generateColor from 'randomcolor';
+import moment from 'moment';
 
 /**
  * @name RESOURCE_ACTIONS
@@ -728,7 +729,7 @@ const processInfo = () => {
 /**
  * @function randomColor
  * @name randomColor
- * @description enerating attractive random colors
+ * @description generating attractive random colors
  * @param {Object} [optns] valid generator options
  * @param {Object} [optns.luminosity=light] controls the luminosity of the
  * generated color. you can specify a string containing `bright`, `light` or
@@ -752,4 +753,28 @@ const randomColor = (optns = { luminosity: 'light' }) => {
   return color;
 };
 
-export { RESOURCE_ACTIONS, abbreviate, areNotEmpty, bagify, compact, has, hasAll, hasAny, idOf, isNotValue, mapErrorToObject, mapToLower, mapToUpper, mergeObjects, osInfo, pkg, processInfo, randomColor, scopesFor, sortedUniq, uniq, variableNameFor };
+/**
+ * @function formatDate
+ * @name formatDate
+ * @description format a data using specified format
+ * @param {Date} [date=new Date()] valid date instance
+ * @param {String} [format='YYYY-MM-DD'] valid date format
+ * @return {String} formatted date string
+ * @author lally elias <lallyelias87@mail.com>
+ * @license MIT
+ * @since 0.19.0
+ * @version 0.1.0
+ * @static
+ * @public
+ * @example
+ *
+ * const date = formatDate(new Date(), 'YYYY-MM-DD');
+ * //=> 2019-05-30
+ *
+ */
+const formatDate = (date = new Date(), format = 'YYYY-MM-DD') => {
+  const formatted = moment(date).format(format);
+  return formatted;
+};
+
+export { RESOURCE_ACTIONS, abbreviate, areNotEmpty, bagify, compact, formatDate, has, hasAll, hasAny, idOf, isNotValue, mapErrorToObject, mapToLower, mapToUpper, mergeObjects, osInfo, pkg, processInfo, randomColor, scopesFor, sortedUniq, uniq, variableNameFor };

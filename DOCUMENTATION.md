@@ -682,7 +682,7 @@ const info = processInfo();
 
 #### randomColor([optns]) 
 
-enerating attractive random colors
+generating attractive random colors
 
 
 
@@ -710,6 +710,39 @@ const color = randomColor();
 
 
 - `String`  random color
+
+
+
+#### formatDate([date&#x3D;new, format&#x3D;&#x27;YYYY-MM-DD&#x27;]) 
+
+format a data using specified format
+
+
+
+
+##### Parameters
+
+| Name | Type | Description |  |
+| ---- | ---- | ----------- | -------- |
+| date&#x3D;new | `Date`  | Date()] valid date instance | *Optional* |
+| format&#x3D;&#x27;YYYY-MM-DD&#x27; | `String`  | valid date format | *Optional* |
+
+
+
+
+##### Examples
+
+```javascript
+
+const date = formatDate(new Date(), 'YYYY-MM-DD');
+//=> 2019-05-30
+```
+
+
+##### Returns
+
+
+- `String`  formatted date string
 
 
 
