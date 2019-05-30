@@ -21,6 +21,7 @@ import {
   osInfo,
   processInfo,
   randomColor,
+  formatDate,
 } from '../src/index';
 
 describe('common', () => {
@@ -437,5 +438,11 @@ describe('common', () => {
   it('should generate random color', () => {
     const color = randomColor();
     expect(color).to.exist;
+  });
+
+  it('should format dates', () => {
+    expect(formatDate()).to.exist;
+    expect(formatDate(new Date('2019-01-25'))).to.be.equal('2019-01-25');
+    expect(formatDate(new Date('2019-01-25'), 'YYYY')).to.be.equal('2019');
   });
 });
