@@ -1,9 +1,10 @@
+import { keys } from 'lodash';
 import pkg from './package.json';
 
 export default [
   {
     input: 'src/index.js',
-    external: ['lodash', 'read-pkg', 'statuses', 'os', 'randomcolor', 'moment'],
+    external: ['os', ...keys(pkg.dependencies), ...keys(pkg.peerDependencies)],
     output: [
       {
         file: pkg.main,

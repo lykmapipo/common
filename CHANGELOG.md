@@ -1,3 +1,9 @@
+#### 0.20.0 (2019-06-08)
+
+##### New Features
+
+*  add mime helpers ([72e4d5ad](https://github.com/lykmapipo/common/commit/72e4d5ad1c466486c08c5a5beddb611bc3a9e343))
+
 #### 0.19.2 (2019-06-08)
 
 ##### Chores

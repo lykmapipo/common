@@ -1,5 +1,6 @@
 import { arch, cpus, endianness, freemem, homedir, hostname, loadavg, networkInterfaces, platform, release, tmpdir, totalmem, type, uptime } from 'os';
 import { isBoolean, flattenDeep, map, reduce, cloneDeep, isArray, compact as compact$1, isPlainObject, omitBy, uniq as uniq$1, orderBy, merge, isEmpty, pick, words, get, camelCase, includes, every, some, forEach, toUpper, toLower, toString, first } from 'lodash';
+export { getExtension as mimeExtensionOf, getType as mimeTypeOf } from 'mime';
 import { sync } from 'read-pkg';
 import { STATUS_CODES } from 'statuses';
 import generateColor from 'randomcolor';
