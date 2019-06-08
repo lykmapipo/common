@@ -41,6 +41,7 @@ import {
   uniq as uniqify,
   words as wordify,
 } from 'lodash';
+import { getType as mimeTypeOf, getExtension as mimeExtensionOf } from 'mime';
 import { sync as readPackage } from 'read-pkg';
 import { STATUS_CODES } from 'statuses';
 import generateColor from 'randomcolor';
@@ -817,3 +818,43 @@ export const formatDate = (date = new Date(), format = 'YYYY-MM-DD') => {
   const formatted = moment(date).format(format);
   return formatted;
 };
+
+/**
+ * @function mimeTypeOf
+ * @name mimeTypeOf
+ * @description Lookup a mime type based on file extension
+ * @param {String} extension valid file extension or name
+ * @return {String} valid mime type
+ * @author lally elias <lallyelias87@mail.com>
+ * @license MIT
+ * @since 0.20.0
+ * @version 0.1.0
+ * @static
+ * @public
+ * @example
+ *
+ * const mime = mimeTypeOf('txt');
+ * //=> 'text/plain'
+ *
+ */
+export { mimeTypeOf };
+
+/**
+ * @function mimeExtensionOf
+ * @name mimeExtensionOf
+ * @description Obtain file extension associated with a mime type
+ * @param {String} mimeType valid mime type
+ * @return {String} valid file extension
+ * @author lally elias <lallyelias87@mail.com>
+ * @license MIT
+ * @since 0.20.0
+ * @version 0.1.0
+ * @static
+ * @public
+ * @example
+ *
+ * const extension = mimeExtensionOf('text/plain');
+ * //=> txt
+ *
+ */
+export { mimeExtensionOf };

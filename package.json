@@ -72,6 +72,7 @@
   },
   "dependencies": {
     "lodash": ">=4.17.11",
+    "mime": ">=2.4.4",
     "moment": ">=2.24.0",
     "randomcolor": ">=0.5.4",
     "read-pkg": ">=5.1.1",

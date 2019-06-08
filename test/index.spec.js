@@ -22,6 +22,8 @@ import {
   processInfo,
   randomColor,
   formatDate,
+  mimeTypeOf,
+  mimeExtensionOf,
 } from '../src/index';
 
 describe('common', () => {
@@ -444,5 +446,18 @@ describe('common', () => {
     expect(formatDate()).to.exist;
     expect(formatDate(new Date('2019-01-25'))).to.be.equal('2019-01-25');
     expect(formatDate(new Date('2019-01-25'), 'YYYY')).to.be.equal('2019');
+  });
+
+  it('should get mime type of extension', () => {
+    let mime = mimeTypeOf('txt');
+    expect(mime).to.exist.and.be.equal('text/plain');
+
+    mime = mimeTypeOf('file.txt');
+    expect(mime).to.exist.and.be.equal('text/plain');
+  });
+
+  it('should get file extension of mime type', () => {
+    const extension = mimeExtensionOf('text/plain');
+    expect(extension).to.exist.and.be.equal('txt');
   });
 });
