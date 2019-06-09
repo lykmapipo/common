@@ -1,3 +1,13 @@
+#### 0.20.1 (2019-06-09)
+
+##### Chores
+
+* **deps:**  force latest version & audit fix ([d2c339f1](https://github.com/lykmapipo/common/commit/d2c339f1af48ea0b34f8bec2630cbd721d2824d2))
+
+##### Refactors
+
+*  migrate pkg read to use node fs ([d106789e](https://github.com/lykmapipo/common/commit/d106789e6472c4a14b7e894ad88e058abd7c69e9))
+
 #### 0.20.0 (2019-06-08)
 
 ##### New Features
