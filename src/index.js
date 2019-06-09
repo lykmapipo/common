@@ -1,3 +1,5 @@
+import { resolve as resolvePath } from 'path';
+import { readFileSync } from 'fs';
 import {
   arch,
   cpus,
@@ -42,10 +44,10 @@ import {
   words as wordify,
 } from 'lodash';
 import { getType as mimeTypeOf, getExtension as mimeExtensionOf } from 'mime';
-import { sync as readPackage } from 'read-pkg';
 import { STATUS_CODES } from 'statuses';
 import generateColor from 'randomcolor';
 import moment from 'moment';
+import parseJson from 'parse-json';
 
 /**
  * @name RESOURCE_ACTIONS
@@ -328,7 +330,7 @@ export const mergeObjects = (...objects) => {
  * @author lally elias <lallyelias87@mail.com>
  * @license MIT
  * @since 0.1.0
- * @version 0.2.0
+ * @version 0.3.0
  * @static
  * @public
  * @example
@@ -343,9 +345,13 @@ export const pkg = (path, ...field) => {
   // try read from path or process cwd
   const read = () => {
     try {
-      return readPackage({ cwd: path });
+      const filePath = resolvePath(path, 'package.json');
+      const json = parseJson(readFileSync(filePath, 'utf8'));
+      return json;
     } catch (e) {
-      return readPackage({ cwd: process.cwd() });
+      const filePath = resolvePath(process.cwd(), 'package.json');
+      const json = parseJson(readFileSync(filePath, 'utf8'));
+      return json;
     }
   };
 
