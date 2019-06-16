@@ -463,8 +463,8 @@ describe('common', () => {
   });
 
   it('should generate object hash', () => {
-    const object = { a: 1 };
-    const hash = hashOf(object);
-    expect(hash).to.exist.and.be.equal(hashOf(object));
+    const object = { a: 1, b: 1 };
+    expect(hashOf(object)).to.exist.and.be.equal(hashOf(object));
+    expect(hashOf(object, 'a')).to.exist.and.not.be.equal(hashOf(object));
   });
 });
