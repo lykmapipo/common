@@ -692,7 +692,7 @@ generating attractive random colors
 | Name | Type | Description |  |
 | ---- | ---- | ----------- | -------- |
 | optns | `Object`  | valid generator options | *Optional* |
-| optns.luminosity&#x3D;light | `Object`  | controls the luminosity of the generated color. you can specify a string containing `bright`, `light` or<br>`dark`. | *Optional* |
+| optns.luminosity&#x3D;light | `String`  | controls the luminosity of the generated color. you can specify a string containing `bright`, `light` or<br>`dark`. | *Optional* |
 
 
 
@@ -743,6 +743,106 @@ const date = formatDate(new Date(), 'YYYY-MM-DD');
 
 
 - `String`  formatted date string
+
+
+
+#### hashOf(object[, ignore]) 
+
+Generate hash of provided object
+
+
+
+
+##### Parameters
+
+| Name | Type | Description |  |
+| ---- | ---- | ----------- | -------- |
+| object | `Object`  | valid object to hash | &nbsp; |
+| ignore | `String`  | properties to ignore | *Optional* |
+
+
+
+
+##### Examples
+
+```javascript
+
+const hash = hashOf({ foo: 'bar' })
+// => '67b69634f9880a282c14a0f0cb7ba20cf5d677e9'
+```
+
+
+##### Returns
+
+
+- `String`  valid object hash
+
+
+
+#### parseTemplate(template, data) 
+
+Parse, format and render string based template
+
+
+
+
+##### Parameters
+
+| Name | Type | Description |  |
+| ---- | ---- | ----------- | -------- |
+| template | `String`  | valid template | &nbsp; |
+| data | `Object`  | object valid object apply on template | &nbsp; |
+
+
+
+
+##### Examples
+
+```javascript
+
+const template = 'Hello {name}, you have {count} unread messages';
+const formatted = parseTemplate(template, { name: 'John', count: 12 });
+//=> 'Hello John, you have 12 unread messages'
+```
+
+
+##### Returns
+
+
+- `String`  formatted string
+
+
+
+#### stripHtmlTags(html) 
+
+Strip HTML tags from a string
+
+
+
+
+##### Parameters
+
+| Name | Type | Description |  |
+| ---- | ---- | ----------- | -------- |
+| html | `String`  | valid html string | &nbsp; |
+
+
+
+
+##### Examples
+
+```javascript
+
+const html = 'lorem ipsum <strong>dolor</strong> <em>sit</em> amet';
+const formatted = stripHtmlTags(html);
+//=> 'lorem ipsum dolor sit amet'
+```
+
+
+##### Returns
+
+
+- `String`  string with no html tags
 
 
 

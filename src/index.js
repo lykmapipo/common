@@ -57,7 +57,7 @@ import stripTags from 'striptags';
 /**
  * @name RESOURCE_ACTIONS
  * @description default resource actions
- * @author lally elias <lallyelias87@mail.com>
+ * @author lally elias <lallyelias87@gmail.com>
  * @license MIT
  * @since 0.1.0
  * @version 0.1.0
@@ -82,7 +82,7 @@ export const RESOURCE_ACTIONS = [
  * @description Check if variable has no associated state
  * @param {Mixed} value variable to check if it has no associated state
  * @return {Boolean} whether variable contain state
- * @author lally elias <lallyelias87@mail.com>
+ * @author lally elias <lallyelias87@gmail.com>
  * @license MIT
  * @since 0.9.0
  * @version 0.1.0
@@ -104,7 +104,7 @@ export const isNotValue = value => (isBoolean(value) ? false : !value);
  * @description convert list of values to upper values
  * @param {String[]|...String} values list to convert to upper
  * @return {String[]} list of upper values
- * @author lally elias <lallyelias87@mail.com>
+ * @author lally elias <lallyelias87@gmail.com>
  * @license MIT
  * @since 0.12.0
  * @version 0.1.0
@@ -135,7 +135,7 @@ export const mapToUpper = (...values) => {
  * @description convert list of values to lower values
  * @param {String[]|...String} values list to convert to lower
  * @return {String[]} list of lower values
- * @author lally elias <lallyelias87@mail.com>
+ * @author lally elias <lallyelias87@gmail.com>
  * @license MIT
  * @since 0.12.0
  * @version 0.1.0
@@ -166,7 +166,7 @@ export const mapToLower = (...values) => {
  * @description Check if provided values are not empty
  * @param {...String} values set of values to check for emptiness
  * @return {Boolean} whether values are not empty
- * @author lally elias <lallyelias87@mail.com>
+ * @author lally elias <lallyelias87@gmail.com>
  * @license MIT
  * @since 0.1.0
  * @version 0.2.0
@@ -200,7 +200,7 @@ export const areNotEmpty = (...values) => {
  * The values false, null, 0, "", undefined, and NaN are falsey.
  * @param {Array|Object} value The array(or object) to compact.
  * @return {Object|Array} new array(or object) of filtered values.
- * @author lally elias <lallyelias87@mail.com>
+ * @author lally elias <lallyelias87@gmail.com>
  * @license MIT
  * @since 0.1.0
  * @version 0.1.0
@@ -238,7 +238,7 @@ export const compact = value => {
  * @description Creates new duplicate-free version of array(or object).
  * @param {Array|Object} value The array(or object) to inspect.
  * @return {Object|Array} new duplicate free array(or object).
- * @author lally elias <lallyelias87@mail.com>
+ * @author lally elias <lallyelias87@gmail.com>
  * @license MIT
  * @since 0.1.0
  * @version 0.1.0
@@ -270,7 +270,7 @@ export const uniq = value => {
  * @description Creates new duplicate-free version of sorted array(or object).
  * @param {Array|Object} value The array(or object) to inspect.
  * @return {Object|Array} new duplicate free sorted array(or object).
- * @author lally elias <lallyelias87@mail.com>
+ * @author lally elias <lallyelias87@gmail.com>
  * @license MIT
  * @since 0.1.0
  * @version 0.1.0
@@ -302,7 +302,7 @@ export const sortedUniq = value => {
  * @description merge a list on objects into a single object
  * @param {...Object} objects list of objects
  * @return {Object} a merged object
- * @author lally elias <lallyelias87@mail.com>
+ * @author lally elias <lallyelias87@gmail.com>
  * @license MIT
  * @since 0.10.0
  * @version 0.1.0
@@ -332,7 +332,7 @@ export const mergeObjects = (...objects) => {
  * @param {String} [path] valid path to package.json file
  * @param {String|String[]|...String} field fields to pick from package
  * @return {Object} current process package information
- * @author lally elias <lallyelias87@mail.com>
+ * @author lally elias <lallyelias87@gmail.com>
  * @license MIT
  * @since 0.1.0
  * @version 0.3.0
@@ -381,7 +381,7 @@ export const pkg = (path, ...field) => {
  * @description generate resource scopes(permissions)
  * @param {...String} resources resources
  * @return {Array} resources scopes
- * @author lally elias <lallyelias87@mail.com>
+ * @author lally elias <lallyelias87@gmail.com>
  * @license MIT
  * @since 0.6.0
  * @version 0.1.0
@@ -428,7 +428,7 @@ export const scopesFor = (...resources) => {
  * @description generate shortened form of word(s) or phrase.
  * @param {...String} words set of words to derive abbreaviation
  * @return {String} abbreviation
- * @author lally elias <lallyelias87@mail.com>
+ * @author lally elias <lallyelias87@gmail.com>
  * @license MIT
  * @since 0.6.0
  * @version 0.1.0
@@ -460,7 +460,7 @@ export const abbreviate = (...words) => {
  * @description obtain an id or a given object
  * @param {Object} data object to pick id from
  * @return {Mixed} id of a given object
- * @author lally elias <lallyelias87@mail.com>
+ * @author lally elias <lallyelias87@gmail.com>
  * @license MIT
  * @since 0.10.0
  * @version 0.1.0
@@ -482,7 +482,7 @@ export const idOf = data => get(data, '_id') || get(data, 'id');
  * @description produce camelize variable name based on passed strings
  * @param {...String} names list of strings to produce variable name
  * @return {String} camelized variable name
- * @author lally elias <lallyelias87@mail.com>
+ * @author lally elias <lallyelias87@gmail.com>
  * @license MIT
  * @since 0.10.0
  * @version 0.1.0
@@ -505,7 +505,7 @@ export const variableNameFor = (...names) => camelCase([...names].join(' '));
  * @param {Array|Object|string} collection The collection to inspect.
  * @param {Mixed} value The value to search for.
  * @returns {Boolean} whether value is in collection
- * @author lally elias <lallyelias87@mail.com>
+ * @author lally elias <lallyelias87@gmail.com>
  * @license MIT
  * @since 0.11.0
  * @version 0.1.0
@@ -528,7 +528,7 @@ export const has = (collection, value) => includes(collection, value);
  * @param {Array} collection The collection to inspect.
  * @param {Array|...Mixed} values The values to search for.
  * @returns {Boolean} whether values are in collection
- * @author lally elias <lallyelias87@mail.com>
+ * @author lally elias <lallyelias87@gmail.com>
  * @license MIT
  * @since 0.11.0
  * @version 0.1.0
@@ -564,7 +564,7 @@ export const hasAll = (collection, ...values) => {
  * @param {Array} collection The collection to inspect.
  * @param {Array|...Mixed} values The values to search for.
  * @returns {Boolean} whether any value is in collection
- * @author lally elias <lallyelias87@mail.com>
+ * @author lally elias <lallyelias87@gmail.com>
  * @license MIT
  * @since 0.11.0
  * @version 0.1.0
@@ -602,7 +602,7 @@ export const hasAny = (collection, ...values) => {
  * @description normalize errors bag to light weight object
  * @param {Object} errors valid errors bag
  * @return {Object} formatted errors bag
- * @author lally elias <lallyelias87@mail.com>
+ * @author lally elias <lallyelias87@gmail.com>
  * @license MIT
  * @since 0.14.0
  * @version 0.2.0
@@ -653,7 +653,7 @@ export const bagify = (errors = {}) => {
  * @param {String} [options.stack=false] where to include error stack
  * @see {@link https://jsonapi.org/format/#errors}
  * @return {Object} formatted error object
- * @author lally elias <lallyelias87@mail.com>
+ * @author lally elias <lallyelias87@gmail.com>
  * @license MIT
  * @since 0.13.0
  * @version 0.1.0
@@ -702,7 +702,7 @@ export const mapErrorToObject = (error, options = {}) => {
  * @name osInfo
  * @description obtain operating system information
  * @return {Object} os information object
- * @author lally elias <lallyelias87@mail.com>
+ * @author lally elias <lallyelias87@gmail.com>
  * @license MIT
  * @since 0.14.0
  * @version 0.1.0
@@ -741,7 +741,7 @@ export const osInfo = () => {
  * @name processInfo
  * @description obtain current process information
  * @return {Object} current process information
- * @author lally elias <lallyelias87@mail.com>
+ * @author lally elias <lallyelias87@gmail.com>
  * @license MIT
  * @since 0.15.0
  * @version 0.1.0
@@ -784,11 +784,11 @@ export const processInfo = () => {
  * @name randomColor
  * @description generating attractive random colors
  * @param {Object} [optns] valid generator options
- * @param {Object} [optns.luminosity=light] controls the luminosity of the
+ * @param {String} [optns.luminosity=light] controls the luminosity of the
  * generated color. you can specify a string containing `bright`, `light` or
  * `dark`.
  * @return {String} random color
- * @author lally elias <lallyelias87@mail.com>
+ * @author lally elias <lallyelias87@gmail.com>
  * @license MIT
  * @since 0.18.0
  * @version 0.1.0
@@ -813,7 +813,7 @@ export const randomColor = (optns = { luminosity: 'light' }) => {
  * @param {Date} [date=new Date()] valid date instance
  * @param {String} [format='YYYY-MM-DD'] valid date format
  * @return {String} formatted date string
- * @author lally elias <lallyelias87@mail.com>
+ * @author lally elias <lallyelias87@gmail.com>
  * @license MIT
  * @since 0.19.0
  * @version 0.1.0
@@ -836,7 +836,7 @@ export const formatDate = (date = new Date(), format = 'YYYY-MM-DD') => {
  * @description Lookup a mime type based on file extension
  * @param {String} extension valid file extension or name
  * @return {String} valid mime type
- * @author lally elias <lallyelias87@mail.com>
+ * @author lally elias <lallyelias87@gmail.com>
  * @license MIT
  * @since 0.20.0
  * @version 0.1.0
@@ -856,7 +856,7 @@ export { mimeTypeOf };
  * @description Obtain file extension associated with a mime type
  * @param {String} mimeType valid mime type
  * @return {String} valid file extension
- * @author lally elias <lallyelias87@mail.com>
+ * @author lally elias <lallyelias87@gmail.com>
  * @license MIT
  * @since 0.20.0
  * @version 0.1.0
@@ -877,7 +877,7 @@ export { mimeExtensionOf };
  * @param {Object} object valid object to hash
  * @param {...String} [ignore] properties to ignore
  * @return {String} valid object hash
- * @author lally elias <lallyelias87@mail.com>
+ * @author lally elias <lallyelias87@gmail.com>
  * @license MIT
  * @since 0.21.0
  * @version 0.1.0
@@ -905,10 +905,10 @@ export const hashOf = (object, ...ignore) => {
  * @function parseTemplate
  * @name parseTemplate
  * @description Parse, format and render string based template
- * @return {String} template valid template
+ * @param {String} template valid template
  * @param {Object} data object valid object apply on template
  * @return {String} formatted string
- * @author lally elias <lallyelias87@mail.com>
+ * @author lally elias <lallyelias87@gmail.com>
  * @license MIT
  * @since 0.21.0
  * @version 0.1.0
@@ -937,9 +937,9 @@ export const parseTemplate = (template, data) => {
  * @function stripHtmlTags
  * @name stripHtmlTags
  * @description Strip HTML tags from a string
- * @return {String} html valid html string
+ * @param {String} html valid html string
  * @return {String} string with no html tags
- * @author lally elias <lallyelias87@mail.com>
+ * @author lally elias <lallyelias87@gmail.com>
  * @license MIT
  * @since 0.21.0
  * @version 0.1.0

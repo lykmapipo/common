@@ -1,3 +1,16 @@
+#### 0.21.0 (2019-06-16)
+
+##### New Features
+
+*  add stripHtmlTags helper ([e1ea7ee1](https://github.com/lykmapipo/common/commit/e1ea7ee150f5269c7fb5dc08c941850007d0598f))
+*  add parseTemplate to support string templates ([2ae1be60](https://github.com/lykmapipo/common/commit/2ae1be605cb1b669d3234899b8468b82bd8ba5af))
+*  add hashOf to compute object hash ([a87e217d](https://github.com/lykmapipo/common/commit/a87e217d6475b60f66f33bd8ff2c25af304ba140))
+
+##### Tests
+
+*  improve hashOf assertitions ([7156ec6c](https://github.com/lykmapipo/common/commit/7156ec6cd4ce0f3dddc964e1f2f62df5032b09ce))
+*  use test helpers ([45923210](https://github.com/lykmapipo/common/commit/4592321058b0566d36610a5b4584065c5c2bcf59))
+
 #### 0.20.4 (2019-06-16)
 
 ##### Chores
