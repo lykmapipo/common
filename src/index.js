@@ -33,6 +33,7 @@ import {
   map,
   merge as mergify,
   pick,
+  omit,
   omitBy,
   orderBy,
   reduce,
@@ -48,6 +49,7 @@ import { STATUS_CODES } from 'statuses';
 import generateColor from 'randomcolor';
 import moment from 'moment';
 import parseJson from 'parse-json';
+import hashObject from 'object-hash';
 
 /**
  * @name RESOURCE_ACTIONS
@@ -864,3 +866,34 @@ export { mimeTypeOf };
  *
  */
 export { mimeExtensionOf };
+
+/**
+ * @function hashOf
+ * @name hashOf
+ * @description Generate hash of provided object
+ * @param {Object} object valid object to hash
+ * @param {...String} [ignore] properties to ignore
+ * @return {String} valid object hash
+ * @author lally elias <lallyelias87@mail.com>
+ * @license MIT
+ * @since 0.21.0
+ * @version 0.1.0
+ * @static
+ * @public
+ * @example
+ *
+ * const hash = hashOf({ foo: 'bar' })
+ * // => '67b69634f9880a282c14a0f0cb7ba20cf5d677e9'
+ *
+ */
+export const hashOf = (object, ...ignore) => {
+  // ensure object
+  let copyOfObject = mergeObjects(object);
+  copyOfObject = omit(copyOfObject, ...ignore);
+
+  // compute hash
+  const hash = hashObject(copyOfObject);
+
+  // return computed hash
+  return hash;
+};

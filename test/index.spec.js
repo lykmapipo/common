@@ -24,6 +24,7 @@ import {
   formatDate,
   mimeTypeOf,
   mimeExtensionOf,
+  hashOf,
 } from '../src/index';
 
 describe('common', () => {
@@ -459,5 +460,11 @@ describe('common', () => {
   it('should get file extension of mime type', () => {
     const extension = mimeExtensionOf('text/plain');
     expect(extension).to.exist.and.be.equal('txt');
+  });
+
+  it('should generate object hash', () => {
+    const object = { a: 1 };
+    const hash = hashOf(object);
+    expect(hash).to.exist.and.be.equal(hashOf(object));
   });
 });
