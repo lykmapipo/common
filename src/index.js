@@ -18,6 +18,7 @@ import {
 } from 'os';
 import {
   camelCase,
+  clone,
   cloneDeep,
   compact as compactify,
   every,
@@ -50,6 +51,7 @@ import generateColor from 'randomcolor';
 import moment from 'moment';
 import parseJson from 'parse-json';
 import hashObject from 'object-hash';
+import renderTemplate from 'string-template';
 
 /**
  * @name RESOURCE_ACTIONS
@@ -896,4 +898,36 @@ export const hashOf = (object, ...ignore) => {
 
   // return computed hash
   return hash;
+};
+
+/**
+ * @function parseTemplate
+ * @name parseTemplate
+ * @description Parse, format and render string based template
+ * @return {String} template valid template
+ * @param {Object} data object valid object apply on template
+ * @return {String} formatted string
+ * @author lally elias <lallyelias87@mail.com>
+ * @license MIT
+ * @since 0.21.0
+ * @version 0.1.0
+ * @static
+ * @public
+ * @example
+ *
+ * const template = 'Hello {name}, you have {count} unread messages';
+ * const formatted = parseTemplate(template, { name: 'John', count: 12 });
+ * //=> 'Hello John, you have 12 unread messages'
+ *
+ */
+export const parseTemplate = (template, data) => {
+  // ensure copy
+  const copyOfTemplate = clone(template);
+  const copyOfData = mergeObjects(data);
+
+  // render string template
+  const formatted = renderTemplate(copyOfTemplate, copyOfData);
+
+  // return formatted string
+  return formatted;
 };

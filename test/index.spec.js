@@ -25,6 +25,7 @@ import {
   mimeTypeOf,
   mimeExtensionOf,
   hashOf,
+  parseTemplate,
 } from '../src/index';
 
 describe('common', () => {
@@ -466,5 +467,13 @@ describe('common', () => {
     const object = { a: 1, b: 1 };
     expect(hashOf(object)).to.exist.and.be.equal(hashOf(object));
     expect(hashOf(object, 'a')).to.exist.and.not.be.equal(hashOf(object));
+  });
+
+  it('should parse string template', () => {
+    const template = 'Hello {name}, you have {count} unread messages';
+    const formatted = parseTemplate(template, { name: 'John', count: 12 });
+    expect(formatted).to.exist.and.be.equal(
+      'Hello John, you have 12 unread messages'
+    );
   });
 });
