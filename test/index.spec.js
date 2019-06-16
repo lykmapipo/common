@@ -26,6 +26,7 @@ import {
   mimeExtensionOf,
   hashOf,
   parseTemplate,
+  stripHtmlTags,
 } from '../src/index';
 
 describe('common', () => {
@@ -475,5 +476,11 @@ describe('common', () => {
     expect(formatted).to.exist.and.be.equal(
       'Hello John, you have 12 unread messages'
     );
+  });
+
+  it('should strip html tags', () => {
+    const html = 'lorem ipsum <strong>dolor</strong> <em>sit</em> amet';
+    const formatted = stripHtmlTags(html);
+    expect(formatted).to.exist.and.be.equal('lorem ipsum dolor sit amet');
   });
 });

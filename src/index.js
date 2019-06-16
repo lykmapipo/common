@@ -52,6 +52,7 @@ import moment from 'moment';
 import parseJson from 'parse-json';
 import hashObject from 'object-hash';
 import renderTemplate from 'string-template';
+import stripTags from 'striptags';
 
 /**
  * @name RESOURCE_ACTIONS
@@ -929,5 +930,30 @@ export const parseTemplate = (template, data) => {
   const formatted = renderTemplate(copyOfTemplate, copyOfData);
 
   // return formatted string
+  return formatted;
+};
+
+/**
+ * @function stripHtmlTags
+ * @name stripHtmlTags
+ * @description Strip HTML tags from a string
+ * @return {String} html valid html string
+ * @return {String} string with no html tags
+ * @author lally elias <lallyelias87@mail.com>
+ * @license MIT
+ * @since 0.21.0
+ * @version 0.1.0
+ * @static
+ * @public
+ * @example
+ *
+ * const html = 'lorem ipsum <strong>dolor</strong> <em>sit</em> amet';
+ * const formatted = stripHtmlTags(html);
+ * //=> 'lorem ipsum dolor sit amet'
+ *
+ */
+export const stripHtmlTags = html => {
+  const copyOfHtml = clone(html);
+  const formatted = stripTags(copyOfHtml);
   return formatted;
 };
