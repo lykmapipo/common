@@ -56,7 +56,7 @@ import stripTags from 'striptags';
 
 /**
  * @name RESOURCE_ACTIONS
- * @description default resource actions
+ * @description Default resource actions
  * @author lally elias <lallyelias87@gmail.com>
  * @license MIT
  * @since 0.1.0
@@ -101,7 +101,7 @@ export const isNotValue = value => (isBoolean(value) ? false : !value);
 /**
  * @function mapToUpper
  * @name mapToUpper
- * @description convert list of values to upper values
+ * @description Convert list of values to upper values
  * @param {String[]|...String} values list to convert to upper
  * @return {String[]} list of upper values
  * @author lally elias <lallyelias87@gmail.com>
@@ -132,7 +132,7 @@ export const mapToUpper = (...values) => {
 /**
  * @function mapToLower
  * @name mapToLower
- * @description convert list of values to lower values
+ * @description Convert list of values to lower values
  * @param {String[]|...String} values list to convert to lower
  * @return {String[]} list of lower values
  * @author lally elias <lallyelias87@gmail.com>
@@ -299,7 +299,7 @@ export const sortedUniq = value => {
 /**
  * @function mergeObjects
  * @name mergeObjects
- * @description merge a list on objects into a single object
+ * @description Merge a list on objects into a single object
  * @param {...Object} objects list of objects
  * @return {Object} a merged object
  * @author lally elias <lallyelias87@gmail.com>
@@ -328,7 +328,7 @@ export const mergeObjects = (...objects) => {
 /**
  * @function pkg
  * @name pkg
- * @description read package information
+ * @description Read package information
  * @param {String} [path] valid path to package.json file
  * @param {String|String[]|...String} field fields to pick from package
  * @return {Object} current process package information
@@ -378,7 +378,7 @@ export const pkg = (path, ...field) => {
 /**
  * @function scopesFor
  * @name scopesFor
- * @description generate resource scopes(permissions)
+ * @description Generate resource scopes(permissions)
  * @param {...String} resources resources
  * @return {Array} resources scopes
  * @author lally elias <lallyelias87@gmail.com>
@@ -425,7 +425,7 @@ export const scopesFor = (...resources) => {
 /**
  * @function abbreviate
  * @name abbreviate
- * @description generate shortened form of word(s) or phrase.
+ * @description Generate shortened form of word(s) or phrase.
  * @param {...String} words set of words to derive abbreaviation
  * @return {String} abbreviation
  * @author lally elias <lallyelias87@gmail.com>
@@ -457,7 +457,7 @@ export const abbreviate = (...words) => {
 /**
  * @function idOf
  * @name idOf
- * @description obtain an id or a given object
+ * @description Obtain an id or a given object
  * @param {Object} data object to pick id from
  * @return {Mixed} id of a given object
  * @author lally elias <lallyelias87@gmail.com>
@@ -479,7 +479,7 @@ export const idOf = data => get(data, '_id') || get(data, 'id');
 /**
  * @function variableNameFor
  * @name variableNameFor
- * @description produce camelize variable name based on passed strings
+ * @description Produce camelize variable name based on passed strings
  * @param {...String} names list of strings to produce variable name
  * @return {String} camelized variable name
  * @author lally elias <lallyelias87@gmail.com>
@@ -501,7 +501,7 @@ export const variableNameFor = (...names) => camelCase([...names].join(' '));
 /**
  * @function has
  * @name has
- * @description check if value is in a collection
+ * @description Check if value is in a collection
  * @param {Array|Object|string} collection The collection to inspect.
  * @param {Mixed} value The value to search for.
  * @returns {Boolean} whether value is in collection
@@ -524,7 +524,7 @@ export const has = (collection, value) => includes(collection, value);
 /**
  * @function hasAll
  * @name hasAll
- * @description check if all value are in a collection
+ * @description Check if all value are in a collection
  * @param {Array} collection The collection to inspect.
  * @param {Array|...Mixed} values The values to search for.
  * @returns {Boolean} whether values are in collection
@@ -560,7 +560,7 @@ export const hasAll = (collection, ...values) => {
 /**
  * @function hasAny
  * @name hasAny
- * @description check if any value is in a collection
+ * @description Check if any value is in a collection
  * @param {Array} collection The collection to inspect.
  * @param {Array|...Mixed} values The values to search for.
  * @returns {Boolean} whether any value is in collection
@@ -599,7 +599,7 @@ export const hasAny = (collection, ...values) => {
 /**
  * @function bagify
  * @name bagify
- * @description normalize errors bag to light weight object
+ * @description Normalize errors bag to light weight object
  * @param {Object} errors valid errors bag
  * @return {Object} formatted errors bag
  * @author lally elias <lallyelias87@gmail.com>
@@ -645,7 +645,7 @@ export const bagify = (errors = {}) => {
 /**
  * @function mapErrorToObject
  * @name mapErrorToObject
- * @description convert error instance to light weight object
+ * @description Convert error instance to light weight object
  * @param {Error} error valid error instance
  * @param {Object} [options] additional convert options
  * @param {String} [options.name=Error] default error name
@@ -700,7 +700,7 @@ export const mapErrorToObject = (error, options = {}) => {
 /**
  * @function osInfo
  * @name osInfo
- * @description obtain operating system information
+ * @description Obtain operating system information
  * @return {Object} os information object
  * @author lally elias <lallyelias87@gmail.com>
  * @license MIT
@@ -739,7 +739,7 @@ export const osInfo = () => {
 /**
  * @function processInfo
  * @name processInfo
- * @description obtain current process information
+ * @description Obtain current process information
  * @return {Object} current process information
  * @author lally elias <lallyelias87@gmail.com>
  * @license MIT
@@ -782,7 +782,7 @@ export const processInfo = () => {
 /**
  * @function randomColor
  * @name randomColor
- * @description generating attractive random colors
+ * @description Generating attractive random colors
  * @param {Object} [optns] valid generator options
  * @param {String} [optns.luminosity=light] controls the luminosity of the
  * generated color. you can specify a string containing `bright`, `light` or
@@ -809,7 +809,7 @@ export const randomColor = (optns = { luminosity: 'light' }) => {
 /**
  * @function formatDate
  * @name formatDate
- * @description format a data using specified format
+ * @description Format a data using specified format
  * @param {Date} [date=new Date()] valid date instance
  * @param {String} [format='YYYY-MM-DD'] valid date format
  * @return {String} formatted date string
@@ -988,7 +988,7 @@ export const stringify = value => {
 /**
  * @function parse
  * @name parse
- * @description Safely parses a JSON string to value
+ * @description Safely parses a JSON string to a value
  * @param {String} value JSON string of a value
  * @return {Mixed} valid value
  * @author lally elias <lallyelias87@gmail.com>
