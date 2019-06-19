@@ -35,7 +35,7 @@ const isNotValue = isValue(null);
 
 #### mapToUpper(values) 
 
-convert list of values to upper values
+Convert list of values to upper values
 
 
 
@@ -70,7 +70,7 @@ const mapToUpper = mapToUpper(['a', 'b'], 'c');
 
 #### mapToLower(values) 
 
-convert list of values to lower values
+Convert list of values to lower values
 
 
 
@@ -245,7 +245,7 @@ const y = sortedUniq({a: 1, b: "", c: undefined});
 
 #### mergeObjects(objects) 
 
-merge a list on objects into a single object
+Merge a list on objects into a single object
 
 
 
@@ -277,7 +277,7 @@ const obj = mergeObjects({ a: 1 }, { b: 1 }, { c: 2}, { c: 2}, {b: null})
 
 #### pkg([path], field) 
 
-read package information
+Read package information
 
 
 
@@ -313,7 +313,7 @@ const { name, version } = pkg(__dirname);
 
 #### scopesFor(resources) 
 
-generate resource scopes(permissions)
+Generate resource scopes(permissions)
 
 
 
@@ -345,7 +345,7 @@ const scopes = scopesFor('user')
 
 #### abbreviate(words) 
 
-generate shortened form of word(s) or phrase.
+Generate shortened form of word(s) or phrase.
 
 
 
@@ -377,7 +377,7 @@ const abbreaviation = abbreviate('Ministry of Finance')
 
 #### idOf(data) 
 
-obtain an id or a given object
+Obtain an id or a given object
 
 
 
@@ -412,7 +412,7 @@ const id = idOf({ _id: 1 })
 
 #### variableNameFor(names) 
 
-produce camelize variable name based on passed strings
+Produce camelize variable name based on passed strings
 
 
 
@@ -447,7 +447,7 @@ const name = variableNameFor('pick', 'a', 'name');
 
 #### has(collection, value) 
 
-check if value is in a collection
+Check if value is in a collection
 
 
 
@@ -483,7 +483,7 @@ const hasValue = has([ 'a', 'b' ], 'c');
 
 #### hasAll(collection, values) 
 
-check if all value are in a collection
+Check if all value are in a collection
 
 
 
@@ -522,7 +522,7 @@ const hasValues = hasAll([ 'a', 'b' ], 'c', 'd');
 
 #### hasAny(collection, values) 
 
-check if any value is in a collection
+Check if any value is in a collection
 
 
 
@@ -564,7 +564,7 @@ const hasValues = hasAny([ 'a', 'b' ], 'c', 'd');
 
 #### bagify(errors) 
 
-normalize errors bag to light weight object
+Normalize errors bag to light weight object
 
 
 
@@ -596,7 +596,7 @@ const body = bagify({name : new Error('Validation Error') });
 
 #### mapErrorToObject(error[, options]) 
 
-convert error instance to light weight object
+Convert error instance to light weight object
 
 
 
@@ -632,7 +632,7 @@ const body = mapErrorToObject(new Error('Missing API Key'));
 
 #### osInfo() 
 
-obtain operating system information
+Obtain operating system information
 
 
 
@@ -657,7 +657,7 @@ const info = osInfo();
 
 #### processInfo() 
 
-obtain current process information
+Obtain current process information
 
 
 
@@ -682,7 +682,7 @@ const info = processInfo();
 
 #### randomColor([optns]) 
 
-generating attractive random colors
+Generating attractive random colors
 
 
 
@@ -715,7 +715,7 @@ const color = randomColor();
 
 #### formatDate([date&#x3D;new, format&#x3D;&#x27;YYYY-MM-DD&#x27;]) 
 
-format a data using specified format
+Format a data using specified format
 
 
 
@@ -843,6 +843,72 @@ const formatted = stripHtmlTags(html);
 
 
 - `String`  string with no html tags
+
+
+
+#### stringify(valid) 
+
+Safely converts a given value to a JSON string
+
+
+
+
+##### Parameters
+
+| Name | Type | Description |  |
+| ---- | ---- | ----------- | -------- |
+| valid | `Mixed`  | valid value | &nbsp; |
+
+
+
+
+##### Examples
+
+```javascript
+
+const value = { x: 5, y: 6 };
+const string = stringify(value);
+//=> '{"x":5,"y":6}'
+```
+
+
+##### Returns
+
+
+- `String`  JSON string of a value
+
+
+
+#### parse(value) 
+
+Safely parses a JSON string to a value
+
+
+
+
+##### Parameters
+
+| Name | Type | Description |  |
+| ---- | ---- | ----------- | -------- |
+| value | `String`  | JSON string of a value | &nbsp; |
+
+
+
+
+##### Examples
+
+```javascript
+
+const string = '{"x":5,"y":6}';
+const value = parse(value);
+//=> { x: 5, y: 6 }
+```
+
+
+##### Returns
+
+
+- `Mixed`  valid value
 
 
 

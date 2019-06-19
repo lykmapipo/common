@@ -1,3 +1,13 @@
+#### 0.22.0 (2019-06-19)
+
+##### New Features
+
+*  add safe JSON stringify and parse ([5d76b257](https://github.com/lykmapipo/common/commit/5d76b25704cca1b099aaeeb1abeec0d53f50e957))
+
+##### Code Style Changes
+
+*  improve jsdoc descriptions ([1b6b7f98](https://github.com/lykmapipo/common/commit/1b6b7f98de096cad3d1f374a272e0339f1d5833a))
+
 #### 0.21.1 (2019-06-19)
 
 #### 0.21.0 (2019-06-16)
