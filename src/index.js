@@ -957,3 +957,57 @@ export const stripHtmlTags = html => {
   const formatted = stripTags(copyOfHtml);
   return formatted;
 };
+
+/**
+ * @function stringify
+ * @name stringify
+ * @description Safely converts a given value to a JSON string
+ * @param {Mixed} valid valid value
+ * @return {String} JSON string of a value
+ * @author lally elias <lallyelias87@gmail.com>
+ * @license MIT
+ * @since 0.22.0
+ * @version 0.1.0
+ * @static
+ * @public
+ * @example
+ *
+ * const value = { x: 5, y: 6 };
+ * const string = stringify(value);
+ * //=> '{"x":5,"y":6}'
+ *
+ */
+export const stringify = value => {
+  try {
+    return JSON.stringify(value);
+  } catch (e) {
+    return value;
+  }
+};
+
+/**
+ * @function parse
+ * @name parse
+ * @description Safely parses a JSON string to value
+ * @param {String} value JSON string of a value
+ * @return {Mixed} valid value
+ * @author lally elias <lallyelias87@gmail.com>
+ * @license MIT
+ * @since 0.22.0
+ * @version 0.1.0
+ * @static
+ * @public
+ * @example
+ *
+ * const string = '{"x":5,"y":6}';
+ * const value = parse(value);
+ * //=> { x: 5, y: 6 }
+ *
+ */
+export const parse = value => {
+  try {
+    return JSON.parse(value);
+  } catch (e) {
+    return value;
+  }
+};

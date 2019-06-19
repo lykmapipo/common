@@ -27,6 +27,8 @@ import {
   hashOf,
   parseTemplate,
   stripHtmlTags,
+  stringify,
+  parse,
 } from '../src/index';
 
 describe('common', () => {
@@ -482,5 +484,13 @@ describe('common', () => {
     const html = 'lorem ipsum <strong>dolor</strong> <em>sit</em> amet';
     const formatted = stripHtmlTags(html);
     expect(formatted).to.exist.and.be.equal('lorem ipsum dolor sit amet');
+  });
+
+  it('should stringify a value', () => {
+    expect(stringify({ x: 5, y: 6 })).to.be.equal('{"x":5,"y":6}');
+  });
+
+  it('should parse a value', () => {
+    expect(parse('{"x":5,"y":6}')).to.be.eql({ x: 5, y: 6 });
   });
 });
