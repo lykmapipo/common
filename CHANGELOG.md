@@ -1,3 +1,9 @@
+#### 0.22.1 (2019-06-22)
+
+##### Chores
+
+* **deps:**  force latest version & audit fix ([d7e9166b](https://github.com/lykmapipo/common/commit/d7e9166b42802cb177ea2c9f0cabeb35e2f2c31b))
+
 #### 0.22.0 (2019-06-19)
 
 ##### New Features
