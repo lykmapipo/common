@@ -802,7 +802,7 @@ export const processInfo = () => {
  */
 export const randomColor = (optns = { luminosity: 'light' }) => {
   const options = mergeObjects(optns);
-  const color = generateColor(options);
+  const color = toUpper(generateColor(options));
   return color;
 };
 
