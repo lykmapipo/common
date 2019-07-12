@@ -1,3 +1,13 @@
+#### 0.23.0 (2019-07-12)
+
+##### Chores
+
+* **deps:**  force latest version & audit fix ([6717690f](https://github.com/lykmapipo/common/commit/6717690f5c0b846fd0eae998b3b5dd7fe4cde11d))
+
+##### New Features
+
+*  make random color upper cased ([8ca55602](https://github.com/lykmapipo/common/commit/8ca55602729786a10cc1108b0634af014f97ef27))
+
 #### 0.22.3 (2019-07-06)
 
 ##### Chores

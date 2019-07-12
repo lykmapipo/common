@@ -1,7 +1,7 @@
 import { resolve } from 'path';
 import { readFileSync } from 'fs';
 import { arch, cpus, endianness, freemem, homedir, hostname, loadavg, networkInterfaces, platform, release, tmpdir, totalmem, type, uptime } from 'os';
-import { isBoolean, flattenDeep, map, reduce, cloneDeep, isArray, compact as compact$1, isPlainObject, omitBy, uniq as uniq$1, orderBy, merge, isEmpty, pick, words, get, camelCase, includes, every, some, forEach, omit, clone, toUpper, toLower, toString, first } from 'lodash';
+import { isBoolean, flattenDeep, map, reduce, cloneDeep, isArray, compact as compact$1, isPlainObject, omitBy, uniq as uniq$1, orderBy, merge, isEmpty, pick, words, get, camelCase, includes, every, some, forEach, toUpper, omit, clone, toLower, toString, first } from 'lodash';
 export { getExtension as mimeExtensionOf, getType as mimeTypeOf } from 'mime';
 import { STATUS_CODES } from 'statuses';
 import generateColor from 'randomcolor';
@@ -759,7 +759,7 @@ const processInfo = () => {
  */
 const randomColor = (optns = { luminosity: 'light' }) => {
   const options = mergeObjects(optns);
-  const color = generateColor(options);
+  const color = toUpper(generateColor(options));
   return color;
 };
 
