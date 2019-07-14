@@ -2,6 +2,7 @@
 
 [![Build module-starter](https://travis-ci.org/lykmapipo/common.svg?branch=master)](https://travis-ci.org/lykmapipo/common)
 [![Dependencies module-starter](https://david-dm.org/lykmapipo/common.svg?style=flat-square)](https://david-dm.org/lykmapipo/common)
+[![Coverage Status](https://coveralls.io/repos/github/lykmapipo/common/badge.svg?branch=master)](https://coveralls.io/github/lykmapipo/common?branch=master)
 
 Helper utilities for day to day development
 
