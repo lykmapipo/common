@@ -59,6 +59,7 @@
     "@lykmapipo/test-helpers": "^0.2.11",
     "chai": "^4.2.0",
     "commitizen": "^4.0.1",
+    "coveralls": "^3.0.5",
     "cz-conventional-changelog": "^2.1.0",
     "doxdox": "^3.0.0",
     "eslint": "^6.0.1",
