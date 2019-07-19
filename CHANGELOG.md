@@ -1,3 +1,11 @@
+#### 0.23.1 (2019-07-19)
+
+##### Chores
+
+* **deps:**  force latest version & audit fix ([a3107aa5](https://github.com/lykmapipo/common/commit/a3107aa5bf9efbd511c6369e3c144621cbca1502))
+* **ci:**  force latest node version & ensure code coverage run ([30901e54](https://github.com/lykmapipo/common/commit/30901e546f2eafa2f0ed13d0a90101342cac81c5))
+*  setup test coverage ([fd57065e](https://github.com/lykmapipo/common/commit/fd57065e6dca08436053bec47384068078cec1f7))
+
 #### 0.23.0 (2019-07-12)
 
 ##### Chores
