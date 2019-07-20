@@ -47,6 +47,7 @@ import {
 } from 'lodash';
 import { getType as mimeTypeOf, getExtension as mimeExtensionOf } from 'mime';
 import { STATUS_CODES } from 'statuses';
+import inflection from 'inflection';
 import generateColor from 'randomcolor';
 import moment from 'moment';
 import parseJson from 'parse-json';
@@ -1010,4 +1011,30 @@ export const parse = value => {
   } catch (e) {
     return value;
   }
+};
+
+/**
+ * @function pluralize
+ * @name pluralize
+ * @description Convert a given string value to its plural form
+ * @param {String} value subject value
+ * @return {String} plural form of provided string
+ * @author lally elias <lallyelias87@gmail.com>
+ * @license MIT
+ * @since 0.24.0
+ * @version 0.1.0
+ * @static
+ * @public
+ * @example
+ *
+ * pluralize('person');
+ * // => people
+ *
+ * pluralize('Hat');
+ * // => Hats
+ *
+ */
+export const pluralize = value => {
+  const plural = inflection.pluralize(value);
+  return plural;
 };

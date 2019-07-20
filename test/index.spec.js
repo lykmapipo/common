@@ -29,6 +29,7 @@ import {
   stripHtmlTags,
   stringify,
   parse,
+  pluralize,
 } from '../src/index';
 
 describe('common', () => {
@@ -492,5 +493,10 @@ describe('common', () => {
 
   it('should parse a value', () => {
     expect(parse('{"x":5,"y":6}')).to.be.eql({ x: 5, y: 6 });
+  });
+
+  it('should pluralize a value', () => {
+    expect(pluralize('person')).to.be.eql('people');
+    expect(pluralize('Hat')).to.be.eql('Hats');
   });
 });
