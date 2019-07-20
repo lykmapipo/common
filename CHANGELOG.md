@@ -1,3 +1,15 @@
+#### 0.24.0 (2019-07-20)
+
+##### Chores
+
+* **deps:**  add test coverage deps ([a36ceed6](https://github.com/lykmapipo/common/commit/a36ceed67ff46135fe1eade1fae0fdd155db4fa5))
+
+##### New Features
+
+*  add auto parse helper ([22be9ac4](https://github.com/lykmapipo/common/commit/22be9ac4333af0461d05bb601f599d7b9bb33a1a))
+*  add singularize helper ([f4a229e6](https://github.com/lykmapipo/common/commit/f4a229e61939e0fa1b0cc911604adbe41d76b1bc))
+*  add pluralize helper ([2ecace95](https://github.com/lykmapipo/common/commit/2ecace957834ae10a82e294306d98aa0864f91ff))
+
 #### 0.23.2 (2019-07-19)
 
 ##### Chores

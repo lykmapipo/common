@@ -912,5 +912,114 @@ const value = parse(value);
 
 
 
+#### pluralize(value) 
+
+Convert a given string value to its plural form
+
+
+
+
+##### Parameters
+
+| Name | Type | Description |  |
+| ---- | ---- | ----------- | -------- |
+| value | `String`  | subject value | &nbsp; |
+
+
+
+
+##### Examples
+
+```javascript
+
+pluralize('person');
+// => people
+
+pluralize('Hat');
+// => Hats
+```
+
+
+##### Returns
+
+
+- `String`  plural form of provided string
+
+
+
+#### singularize(value) 
+
+Convert a given string value to its singular form
+
+
+
+
+##### Parameters
+
+| Name | Type | Description |  |
+| ---- | ---- | ----------- | -------- |
+| value | `String`  | subject value | &nbsp; |
+
+
+
+
+##### Examples
+
+```javascript
+
+singularize('people');
+// => person
+
+singularize('Hats');
+// => Hat
+```
+
+
+##### Returns
+
+
+- `String`  singular form of provided string
+
+
+
+#### autoParse(value) 
+
+Safely auto parse a given value to js object
+
+
+
+
+##### Parameters
+
+| Name | Type | Description |  |
+| ---- | ---- | ----------- | -------- |
+| value | `Mixed`  | subject to parse | &nbsp; |
+| ...fields | `String`  | subject fields to apply auto parse | *Optional* |
+
+
+
+
+##### Examples
+
+```javascript
+
+autoParse('5');
+// => 5
+
+autoParse('{"x":5,"y":6}');
+// => { x: 5, y: 6 }
+
+autoParse({ a: '5', b: '6' }, 'a'))
+// => { a: 5, b: '6' }
+```
+
+
+##### Returns
+
+
+- `Mixed`  valid js object
+
+
+
 
 *Documentation generated with [doxdox](https://github.com/neogeek/doxdox).*

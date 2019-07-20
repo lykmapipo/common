@@ -4,12 +4,14 @@ import { arch, cpus, endianness, freemem, homedir, hostname, loadavg, networkInt
 import { isBoolean, flattenDeep, map, reduce, cloneDeep, isArray, compact as compact$1, isPlainObject, omitBy, uniq as uniq$1, orderBy, merge, isEmpty, pick, words, get, camelCase, includes, every, some, forEach, toUpper, omit, clone, toLower, toString, first } from 'lodash';
 export { getExtension as mimeExtensionOf, getType as mimeTypeOf } from 'mime';
 import { STATUS_CODES } from 'statuses';
+import inflection from 'inflection';
 import generateColor from 'randomcolor';
 import moment from 'moment';
 import parseJson from 'parse-json';
 import hashObject from 'object-hash';
 import renderTemplate from 'string-template';
 import stripTags from 'striptags';
+import parseValue from 'auto-parse';
 
 /**
  * @name RESOURCE_ACTIONS
@@ -929,4 +931,96 @@ const parse = value => {
   }
 };
 
-export { RESOURCE_ACTIONS, abbreviate, areNotEmpty, bagify, compact, formatDate, has, hasAll, hasAny, hashOf, idOf, isNotValue, mapErrorToObject, mapToLower, mapToUpper, mergeObjects, osInfo, parse, parseTemplate, pkg, processInfo, randomColor, scopesFor, sortedUniq, stringify, stripHtmlTags, uniq, variableNameFor };
+/**
+ * @function pluralize
+ * @name pluralize
+ * @description Convert a given string value to its plural form
+ * @param {String} value subject value
+ * @return {String} plural form of provided string
+ * @author lally elias <lallyelias87@gmail.com>
+ * @license MIT
+ * @since 0.24.0
+ * @version 0.1.0
+ * @static
+ * @public
+ * @example
+ *
+ * pluralize('person');
+ * // => people
+ *
+ * pluralize('Hat');
+ * // => Hats
+ *
+ */
+const pluralize = value => {
+  let plural = clone(value);
+  plural = inflection.pluralize(value);
+  return plural;
+};
+
+/**
+ * @function singularize
+ * @name singularize
+ * @description Convert a given string value to its singular form
+ * @param {String} value subject value
+ * @return {String} singular form of provided string
+ * @author lally elias <lallyelias87@gmail.com>
+ * @license MIT
+ * @since 0.24.0
+ * @version 0.1.0
+ * @static
+ * @public
+ * @example
+ *
+ * singularize('people');
+ * // => person
+ *
+ * singularize('Hats');
+ * // => Hat
+ *
+ */
+const singularize = value => {
+  let singular = clone(value);
+  singular = inflection.singularize(value);
+  return singular;
+};
+
+/**
+ * @function autoParse
+ * @name autoParse
+ * @description Safely auto parse a given value to js object
+ * @param {Mixed} value subject to parse
+ * @param {...String} [...fields] subject fields to apply auto parse
+ * @return {Mixed} valid js object
+ * @author lally elias <lallyelias87@gmail.com>
+ * @license MIT
+ * @since 0.24.0
+ * @version 0.1.0
+ * @static
+ * @public
+ * @example
+ *
+ * autoParse('5');
+ * // => 5
+ *
+ * autoParse('{"x":5,"y":6}');
+ * // => { x: 5, y: 6 }
+ *
+ * autoParse({ a: '5', b: '6' }, 'a'))
+ * // => { a: 5, b: '6' }
+ *
+ */
+const autoParse = (value, ...fields) => {
+  const copyOfValue = cloneDeep(value);
+  // handle plain object
+  if (isPlainObject(copyOfValue)) {
+    let parsed = pick(copyOfValue, ...fields);
+    parsed = isEmpty(parsed) ? copyOfValue : parsed;
+    parsed = parseValue(parsed);
+    return merge(copyOfValue, parsed);
+  }
+  // handle others
+  return parseValue(copyOfValue);
+};
+
+export { RESOURCE_ACTIONS, abbreviate, areNotEmpty, autoParse, bagify, compact, formatDate, has, hasAll, hasAny, hashOf, idOf, isNotValue, mapErrorToObject, mapToLower, mapToUpper, mergeObjects, osInfo, parse, parseTemplate, pkg, pluralize, processInfo, randomColor, scopesFor, singularize, sortedUniq, stringify, stripHtmlTags, uniq, variableNameFor };
