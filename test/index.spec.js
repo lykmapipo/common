@@ -31,6 +31,7 @@ import {
   parse,
   pluralize,
   singularize,
+  autoParse,
 } from '../src/index';
 
 describe('common', () => {
@@ -511,6 +512,18 @@ describe('common', () => {
 
     const val = 'Hats';
     expect(singularize(val)).to.be.eql('Hat');
+    expect(val).to.eql(val);
+  });
+
+  it('should autoparse a value', () => {
+    expect(autoParse('5')).to.be.eql(5);
+    expect(autoParse(' Undefined ')).to.be.eql(undefined);
+    expect(autoParse('{"a":5,"b":6}')).to.be.eql({ a: 5, b: 6 });
+    expect(autoParse({ a: '5', b: '6' })).to.be.eql({ a: 5, b: 6 });
+    expect(autoParse({ a: '5', b: '6' }, 'a')).to.be.eql({ a: 5, b: '6' });
+
+    const val = '5';
+    expect(autoParse(val)).to.be.eql(5);
     expect(val).to.eql(val);
   });
 });

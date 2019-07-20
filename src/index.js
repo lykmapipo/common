@@ -54,6 +54,7 @@ import parseJson from 'parse-json';
 import hashObject from 'object-hash';
 import renderTemplate from 'string-template';
 import stripTags from 'striptags';
+import parseValue from 'auto-parse';
 
 /**
  * @name RESOURCE_ACTIONS
@@ -1065,4 +1066,42 @@ export const singularize = value => {
   let singular = clone(value);
   singular = inflection.singularize(value);
   return singular;
+};
+
+/**
+ * @function autoParse
+ * @name autoParse
+ * @description Safely auto parse a given value to js object
+ * @param {Mixed} value subject to parse
+ * @param {...String} [...fields] subject fields to apply auto parse
+ * @return {Mixed} valid js object
+ * @author lally elias <lallyelias87@gmail.com>
+ * @license MIT
+ * @since 0.24.0
+ * @version 0.1.0
+ * @static
+ * @public
+ * @example
+ *
+ * autoParse('5');
+ * // => 5
+ *
+ * autoParse('{"x":5,"y":6}');
+ * // => { x: 5, y: 6 }
+ *
+ * autoParse({ a: '5', b: '6' }, 'a'))
+ * // => { a: 5, b: '6' }
+ *
+ */
+export const autoParse = (value, ...fields) => {
+  const copyOfValue = cloneDeep(value);
+  // handle plain object
+  if (isPlainObject(copyOfValue)) {
+    let parsed = pick(copyOfValue, ...fields);
+    parsed = isEmpty(parsed) ? copyOfValue : parsed;
+    parsed = parseValue(parsed);
+    return mergify(copyOfValue, parsed);
+  }
+  // handle others
+  return parseValue(copyOfValue);
 };
