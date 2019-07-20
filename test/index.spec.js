@@ -30,6 +30,7 @@ import {
   stringify,
   parse,
   pluralize,
+  singularize,
 } from '../src/index';
 
 describe('common', () => {
@@ -498,5 +499,18 @@ describe('common', () => {
   it('should pluralize a value', () => {
     expect(pluralize('person')).to.be.eql('people');
     expect(pluralize('Hat')).to.be.eql('Hats');
+
+    const val = 'Hat';
+    expect(pluralize(val)).to.be.eql('Hats');
+    expect(val).to.eql(val);
+  });
+
+  it('should singularize a value', () => {
+    expect(singularize('people')).to.be.eql('person');
+    expect(singularize('Hats')).to.be.eql('Hat');
+
+    const val = 'Hats';
+    expect(singularize(val)).to.be.eql('Hat');
+    expect(val).to.eql(val);
   });
 });

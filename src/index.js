@@ -1035,6 +1035,34 @@ export const parse = value => {
  *
  */
 export const pluralize = value => {
-  const plural = inflection.pluralize(value);
+  let plural = clone(value);
+  plural = inflection.pluralize(value);
   return plural;
+};
+
+/**
+ * @function singularize
+ * @name singularize
+ * @description Convert a given string value to its singular form
+ * @param {String} value subject value
+ * @return {String} singular form of provided string
+ * @author lally elias <lallyelias87@gmail.com>
+ * @license MIT
+ * @since 0.24.0
+ * @version 0.1.0
+ * @static
+ * @public
+ * @example
+ *
+ * singularize('people');
+ * // => person
+ *
+ * singularize('Hats');
+ * // => Hat
+ *
+ */
+export const singularize = value => {
+  let singular = clone(value);
+  singular = inflection.singularize(value);
+  return singular;
 };
