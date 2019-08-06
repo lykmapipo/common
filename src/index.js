@@ -93,10 +93,10 @@ export const RESOURCE_ACTIONS = [
  * @example
  *
  * const isNotValue = isValue('a');
- * //=> false
+ * // => false
  *
  * const isNotValue = isValue(null);
- * //=> true
+ * // => true
  */
 export const isNotValue = value => (isBoolean(value) ? false : !value);
 
@@ -115,10 +115,10 @@ export const isNotValue = value => (isBoolean(value) ? false : !value);
  * @example
  *
  * const copy = copyOf('a');
- * //=> 'a'
+ * // => 'a'
  *
  * const copy = copyOf({ 'a': 1 });
- * //=> { 'a': 1 }
+ * // => { 'a': 1 }
  */
 export const copyOf = value => cloneDeep(value);
 
@@ -137,10 +137,10 @@ export const copyOf = value => cloneDeep(value);
  * @example
  *
  * const mapToUpper = mapToUpper('a');
- * //=> ['A']
+ * // => ['A']
  *
  * const mapToUpper = mapToUpper(['a', 'b'], 'c');
- * //=> ['A', 'B', 'C']
+ * // => ['A', 'B', 'C']
  */
 export const mapToUpper = (...values) => {
   // convert lower to upper
@@ -168,10 +168,10 @@ export const mapToUpper = (...values) => {
  * @example
  *
  * const mapToLower = mapToLower('A');
- * //=> ['a']
+ * // => ['a']
  *
  * const mapToLower = mapToLower(['A', 'B'], 'C');
- * //=> ['a', 'b', 'c']
+ * // => ['a', 'b', 'c']
  */
 export const mapToLower = (...values) => {
   // convert upper to lower
@@ -199,10 +199,10 @@ export const mapToLower = (...values) => {
  * @example
  *
  * const notEmpty = areNotEmpty('a', 'b', 'c');
- * //=> true
+ * // => true
  *
  * const notEmpty = areNotEmpty('a', 'b', null);
- * //=> false
+ * // => false
  */
 export const areNotEmpty = (...values) => {
   // copy values
@@ -335,7 +335,7 @@ export const sortedUniq = value => {
  * @example
  *
  * const obj = mergeObjects({ a: 1 }, { b: 1 }, { c: 2}, { c: 2}, {b: null})
- * //=> { a: 1, b: 1, c: 2 }
+ * // => { a: 1, b: 1, c: 2 }
  */
 export const mergeObjects = (...objects) => {
   // ensure source objects
@@ -493,10 +493,10 @@ export const abbreviate = (...words) => {
  * @example
  *
  * const id = idOf({ id: 1 })
- * //=> 1
+ * // => 1
  *
  * const id = idOf({ _id: 1 })
- * //=> 1
+ * // => 1
  */
 export const idOf = data => get(data, '_id') || get(data, 'id');
 
@@ -515,10 +515,10 @@ export const idOf = data => get(data, '_id') || get(data, 'id');
  * @example
  *
  * const name = variableNameFor('get', 'name');
- * //=> getName
+ * // => getName
  *
  * const name = variableNameFor('pick', 'a', 'name');
- * //=> pickAName
+ * // => pickAName
  */
 export const variableNameFor = (...names) => camelCase([...names].join(' '));
 
@@ -538,10 +538,10 @@ export const variableNameFor = (...names) => camelCase([...names].join(' '));
  * @example
  *
  * const hasValue = has([ 1, 2 ], 1);
- * //=> true
+ * // => true
  *
  * const hasValue = has([ 'a', 'b' ], 'c');
- * //=> false
+ * // => false
  */
 export const has = (collection, value) => includes(collection, value);
 
@@ -561,13 +561,13 @@ export const has = (collection, value) => includes(collection, value);
  * @example
  *
  * const hasValues = hasAll([ 1, 2 ], 1, 2);
- * //=> true
+ * // => true
  *
  * const hasValues = hasAll([ 1, 2 ], [ 1, 2 ]);
- * //=> true
+ * // => true
  *
  * const hasValues = hasAll([ 'a', 'b' ], 'c', 'd');
- * //=> false
+ * // => false
  */
 export const hasAll = (collection, ...values) => {
   // check if value is in collection
@@ -597,16 +597,16 @@ export const hasAll = (collection, ...values) => {
  * @example
  *
  * const hasValues = hasAny([ 1, 2 ], 1, 2);
- * //=> true
+ * // => true
  *
  * const hasValues = hasAny([ 1, 2 ], [ 1, 2 ]);
- * //=> true
+ * // => true
  *
  * const hasValues = hasAny([ 'a', 'b' ], 'b', 'd');
- * //=> true
+ * // => true
  *
  * const hasValues = hasAny([ 'a', 'b' ], 'c', 'd');
- * //=> false
+ * // => false
  */
 export const hasAny = (collection, ...values) => {
   // check if value is in collection
@@ -635,7 +635,7 @@ export const hasAny = (collection, ...values) => {
  * @example
  *
  * const body = bagify({name : new Error('Validation Error') });
- * //=> { name: { name: 'Error', message: 'Name Required'}, ... }
+ * // => { name: { name: 'Error', message: 'Name Required'}, ... }
  *
  */
 export const bagify = (errors = {}) => {
@@ -686,7 +686,7 @@ export const bagify = (errors = {}) => {
  * @example
  *
  * const body = mapErrorToObject(new Error('Missing API Key'));
- * //=> { name:'Error', message: 'Missing API Key', ... }
+ * // => { name:'Error', message: 'Missing API Key', ... }
  *
  */
 export const mapErrorToObject = (error, options = {}) => {
@@ -735,7 +735,7 @@ export const mapErrorToObject = (error, options = {}) => {
  * @example
  *
  * const info = osInfo();
- * //=> { arch:'x64', ... }
+ * // => { arch:'x64', ... }
  *
  */
 export const osInfo = () => {
@@ -774,7 +774,7 @@ export const osInfo = () => {
  * @example
  *
  * const info = processInfo();
- * //=> { pid: 8989, ... }
+ * // => { pid: 8989, ... }
  *
  */
 export const processInfo = () => {
@@ -821,7 +821,7 @@ export const processInfo = () => {
  * @example
  *
  * const color = randomColor();
- * //=> #C349D8
+ * // => #C349D8
  *
  */
 export const randomColor = (optns = { luminosity: 'light' }) => {
@@ -846,7 +846,7 @@ export const randomColor = (optns = { luminosity: 'light' }) => {
  * @example
  *
  * const date = formatDate(new Date(), 'YYYY-MM-DD');
- * //=> 2019-05-30
+ * // => 2019-05-30
  *
  */
 export const formatDate = (date = new Date(), format = 'YYYY-MM-DD') => {
@@ -869,7 +869,7 @@ export const formatDate = (date = new Date(), format = 'YYYY-MM-DD') => {
  * @example
  *
  * const mime = mimeTypeOf('txt');
- * //=> 'text/plain'
+ * // => 'text/plain'
  *
  */
 export { mimeTypeOf };
@@ -889,7 +889,7 @@ export { mimeTypeOf };
  * @example
  *
  * const extension = mimeExtensionOf('text/plain');
- * //=> txt
+ * // => txt
  *
  */
 export { mimeExtensionOf };
@@ -942,7 +942,7 @@ export const hashOf = (object, ...ignore) => {
  *
  * const template = 'Hello {name}, you have {count} unread messages';
  * const formatted = parseTemplate(template, { name: 'John', count: 12 });
- * //=> 'Hello John, you have 12 unread messages'
+ * // => 'Hello John, you have 12 unread messages'
  *
  */
 export const parseTemplate = (template, data) => {
@@ -973,7 +973,7 @@ export const parseTemplate = (template, data) => {
  *
  * const html = 'lorem ipsum <strong>dolor</strong> <em>sit</em> amet';
  * const formatted = stripHtmlTags(html);
- * //=> 'lorem ipsum dolor sit amet'
+ * // => 'lorem ipsum dolor sit amet'
  *
  */
 export const stripHtmlTags = html => {
@@ -998,7 +998,7 @@ export const stripHtmlTags = html => {
  *
  * const value = { x: 5, y: 6 };
  * const string = stringify(value);
- * //=> '{"x":5,"y":6}'
+ * // => '{"x":5,"y":6}'
  *
  */
 export const stringify = value => {
@@ -1025,7 +1025,7 @@ export const stringify = value => {
  *
  * const string = '{"x":5,"y":6}';
  * const value = parse(value);
- * //=> { x: 5, y: 6 }
+ * // => { x: 5, y: 6 }
  *
  */
 export const parse = value => {
