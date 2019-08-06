@@ -1,3 +1,17 @@
+#### 0.24.3 (2019-08-06)
+
+##### Chores
+
+* **deps:**
+  *  force latest version & audit fix ([3abc4b54](https://github.com/lykmapipo/common/commit/3abc4b54be7a45259b2f663c0c13ff91763f2a89))
+  *  force latest version & audit fix ([cd18e2ef](https://github.com/lykmapipo/common/commit/cd18e2ef79d676ee14e4d9ef30f506bc1dc4201b))
+  *  add test coverage deps ([9664c970](https://github.com/lykmapipo/common/commit/9664c97088a9adcdbf103ed142cd220f62514a55))
+* **config:**  update eslint config ([74fc66b1](https://github.com/lykmapipo/common/commit/74fc66b12e02da41f7daa901f841ed313ce80a5a))
+
+##### Code Style Changes
+
+*  apply jsdoc linting rules ([1023577f](https://github.com/lykmapipo/common/commit/1023577fdbb1fc907191dc4b71c65653d47f6d64))
+
 #### 0.24.2 (2019-07-31)
 
 ##### Chores
