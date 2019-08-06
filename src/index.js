@@ -18,7 +18,6 @@ import {
 } from 'os';
 import {
   camelCase,
-  clone,
   cloneDeep,
   compact as compactify,
   every,
@@ -240,7 +239,7 @@ export const areNotEmpty = (...values) => {
  */
 export const compact = value => {
   // copy value
-  const copyOfValue = cloneDeep(value);
+  const copyOfValue = copyOf(value);
 
   // compact array
   if (isArray(copyOfValue)) {
@@ -636,7 +635,6 @@ export const hasAny = (collection, ...values) => {
  *
  * const body = bagify({name : new Error('Validation Error') });
  * // => { name: { name: 'Error', message: 'Name Required'}, ... }
- *
  */
 export const bagify = (errors = {}) => {
   // initialize normalize errors bag
@@ -687,7 +685,6 @@ export const bagify = (errors = {}) => {
  *
  * const body = mapErrorToObject(new Error('Missing API Key'));
  * // => { name:'Error', message: 'Missing API Key', ... }
- *
  */
 export const mapErrorToObject = (error, options = {}) => {
   // ensure options
@@ -736,7 +733,6 @@ export const mapErrorToObject = (error, options = {}) => {
  *
  * const info = osInfo();
  * // => { arch:'x64', ... }
- *
  */
 export const osInfo = () => {
   // collect os information
@@ -775,7 +771,6 @@ export const osInfo = () => {
  *
  * const info = processInfo();
  * // => { pid: 8989, ... }
- *
  */
 export const processInfo = () => {
   // collect process information
@@ -822,7 +817,6 @@ export const processInfo = () => {
  *
  * const color = randomColor();
  * // => #C349D8
- *
  */
 export const randomColor = (optns = { luminosity: 'light' }) => {
   const options = mergeObjects(optns);
@@ -847,7 +841,6 @@ export const randomColor = (optns = { luminosity: 'light' }) => {
  *
  * const date = formatDate(new Date(), 'YYYY-MM-DD');
  * // => 2019-05-30
- *
  */
 export const formatDate = (date = new Date(), format = 'YYYY-MM-DD') => {
   const formatted = moment(date).format(format);
@@ -870,7 +863,6 @@ export const formatDate = (date = new Date(), format = 'YYYY-MM-DD') => {
  *
  * const mime = mimeTypeOf('txt');
  * // => 'text/plain'
- *
  */
 export { mimeTypeOf };
 
@@ -890,7 +882,6 @@ export { mimeTypeOf };
  *
  * const extension = mimeExtensionOf('text/plain');
  * // => txt
- *
  */
 export { mimeExtensionOf };
 
@@ -911,7 +902,6 @@ export { mimeExtensionOf };
  *
  * const hash = hashOf({ foo: 'bar' })
  * // => '67b69634f9880a282c14a0f0cb7ba20cf5d677e9'
- *
  */
 export const hashOf = (object, ...ignore) => {
   // ensure object
@@ -943,11 +933,10 @@ export const hashOf = (object, ...ignore) => {
  * const template = 'Hello {name}, you have {count} unread messages';
  * const formatted = parseTemplate(template, { name: 'John', count: 12 });
  * // => 'Hello John, you have 12 unread messages'
- *
  */
 export const parseTemplate = (template, data) => {
   // ensure copy
-  const copyOfTemplate = clone(template);
+  const copyOfTemplate = copyOf(template);
   const copyOfData = mergeObjects(data);
 
   // render string template
@@ -974,10 +963,9 @@ export const parseTemplate = (template, data) => {
  * const html = 'lorem ipsum <strong>dolor</strong> <em>sit</em> amet';
  * const formatted = stripHtmlTags(html);
  * // => 'lorem ipsum dolor sit amet'
- *
  */
 export const stripHtmlTags = html => {
-  const copyOfHtml = clone(html);
+  const copyOfHtml = copyOf(html);
   const formatted = stripTags(copyOfHtml);
   return formatted;
 };
@@ -999,7 +987,6 @@ export const stripHtmlTags = html => {
  * const value = { x: 5, y: 6 };
  * const string = stringify(value);
  * // => '{"x":5,"y":6}'
- *
  */
 export const stringify = value => {
   try {
@@ -1026,7 +1013,6 @@ export const stringify = value => {
  * const string = '{"x":5,"y":6}';
  * const value = parse(value);
  * // => { x: 5, y: 6 }
- *
  */
 export const parse = value => {
   try {
@@ -1055,10 +1041,9 @@ export const parse = value => {
  *
  * pluralize('Hat');
  * // => Hats
- *
  */
 export const pluralize = value => {
-  let plural = clone(value);
+  let plural = copyOf(value);
   plural = inflection.pluralize(value);
   return plural;
 };
@@ -1082,10 +1067,9 @@ export const pluralize = value => {
  *
  * singularize('Hats');
  * // => Hat
- *
  */
 export const singularize = value => {
-  let singular = clone(value);
+  let singular = copyOf(value);
   singular = inflection.singularize(value);
   return singular;
 };
@@ -1113,10 +1097,9 @@ export const singularize = value => {
  *
  * autoParse({ a: '5', b: '6' }, 'a'))
  * // => { a: 5, b: '6' }
- *
  */
 export const autoParse = (value, ...fields) => {
-  const copyOfValue = cloneDeep(value);
+  const copyOfValue = copyOf(value);
   // handle plain object
   if (isPlainObject(copyOfValue)) {
     let parsed = pick(copyOfValue, ...fields);
