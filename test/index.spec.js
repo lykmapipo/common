@@ -1,6 +1,7 @@
 import { expect } from '@lykmapipo/test-helpers';
 import {
   isNotValue,
+  copyOf,
   mapToUpper,
   mapToLower,
   areNotEmpty,
@@ -45,6 +46,19 @@ describe('common', () => {
     expect(isNotValue(undefined)).to.be.true;
     expect(isNotValue(false)).to.be.false;
     expect(isNotValue(true)).to.be.false;
+  });
+
+  it('should make a copy of a value', () => {
+    expect(copyOf).to.exist;
+    expect(copyOf).to.be.a('function');
+    expect(copyOf.name).to.be.equal('copyOf');
+    expect(copyOf('a')).to.be.equal('a');
+    expect(copyOf('')).to.be.equal('');
+    expect(copyOf(null)).to.be.equal(null);
+    expect(copyOf(undefined)).to.be.equal(undefined);
+    expect(copyOf(false)).to.be.equal(false);
+    expect(copyOf(true)).to.be.equal(true);
+    expect(copyOf({ a: 1 })).to.be.eql({ a: 1 });
   });
 
   it('should convert values to upper', () => {

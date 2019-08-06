@@ -101,6 +101,28 @@ export const RESOURCE_ACTIONS = [
 export const isNotValue = value => (isBoolean(value) ? false : !value);
 
 /**
+ * @function copyOf
+ * @name copyOf
+ * @description Recursively clone a value
+ * @param {*} value valid value to clone
+ * @returns {*} cloned value
+ * @author lally elias <lallyelias87@gmail.com>
+ * @license MIT
+ * @since 0.25.0
+ * @version 0.1.0
+ * @static
+ * @public
+ * @example
+ *
+ * const copy = copyOf('a');
+ * //=> 'a'
+ *
+ * const copy = copyOf({ 'a': 1 });
+ * //=> { 'a': 1 }
+ */
+export const copyOf = value => cloneDeep(value);
+
+/**
  * @function mapToUpper
  * @name mapToUpper
  * @description Convert list of values to upper values
