@@ -91,10 +91,10 @@ export const RESOURCE_ACTIONS = [
  * @public
  * @example
  *
- * const isNotValue = isValue('a');
+ * const notValue = isNotValue('a');
  * // => false
  *
- * const isNotValue = isValue(null);
+ * const notValue = isNotValue(null);
  * // => true
  */
 export const isNotValue = value => (isBoolean(value) ? false : !value);

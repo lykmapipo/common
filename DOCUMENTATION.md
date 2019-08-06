@@ -9,7 +9,7 @@ Check if variable has no associated state
 
 | Name | Type | Description |  |
 | ---- | ---- | ----------- | -------- |
-| value | `Mixed`  | variable to check if it has no associated state | &nbsp; |
+| value |  | variable to check if it has no associated state | &nbsp; |
 
 
 
@@ -18,18 +18,53 @@ Check if variable has no associated state
 
 ```javascript
 
-const isNotValue = isValue('a');
-//=> false
+const notValue = isNotValue('a');
+// => false
 
-const isNotValue = isValue(null);
-//=> true
+const notValue = isNotValue(null);
+// => true
 ```
 
 
 ##### Returns
 
 
-- `Boolean`  whether variable contain state
+- `boolean`  whether variable contain state
+
+
+
+#### copyOf(value) 
+
+Recursively clone a value
+
+
+
+
+##### Parameters
+
+| Name | Type | Description |  |
+| ---- | ---- | ----------- | -------- |
+| value |  | valid value to clone | &nbsp; |
+
+
+
+
+##### Examples
+
+```javascript
+
+const copy = copyOf('a');
+// => 'a'
+
+const copy = copyOf({ 'a': 1 });
+// => { 'a': 1 }
+```
+
+
+##### Returns
+
+
+-  cloned value
 
 
 
@@ -44,7 +79,7 @@ Convert list of values to upper values
 
 | Name | Type | Description |  |
 | ---- | ---- | ----------- | -------- |
-| values | `Array.<String>` `String`  | list to convert to upper | &nbsp; |
+| values | `string`  | list to convert to upper | &nbsp; |
 
 
 
@@ -54,17 +89,17 @@ Convert list of values to upper values
 ```javascript
 
 const mapToUpper = mapToUpper('a');
-//=> ['A']
+// => ['A']
 
 const mapToUpper = mapToUpper(['a', 'b'], 'c');
-//=> ['A', 'B', 'C']
+// => ['A', 'B', 'C']
 ```
 
 
 ##### Returns
 
 
-- `Array.&lt;String&gt;`  list of upper values
+- `Array.&lt;string&gt;`  list of upper values
 
 
 
@@ -79,7 +114,7 @@ Convert list of values to lower values
 
 | Name | Type | Description |  |
 | ---- | ---- | ----------- | -------- |
-| values | `Array.<String>` `String`  | list to convert to lower | &nbsp; |
+| values | `string`  | list to convert to lower | &nbsp; |
 
 
 
@@ -89,17 +124,17 @@ Convert list of values to lower values
 ```javascript
 
 const mapToLower = mapToLower('A');
-//=> ['a']
+// => ['a']
 
 const mapToLower = mapToLower(['A', 'B'], 'C');
-//=> ['a', 'b', 'c']
+// => ['a', 'b', 'c']
 ```
 
 
 ##### Returns
 
 
-- `Array.&lt;String&gt;`  list of lower values
+- `Array.&lt;string&gt;`  list of lower values
 
 
 
@@ -114,7 +149,7 @@ Check if provided values are not empty
 
 | Name | Type | Description |  |
 | ---- | ---- | ----------- | -------- |
-| values | `String`  | set of values to check for emptiness | &nbsp; |
+| values | `string`  | set of values to check for emptiness | &nbsp; |
 
 
 
@@ -124,17 +159,17 @@ Check if provided values are not empty
 ```javascript
 
 const notEmpty = areNotEmpty('a', 'b', 'c');
-//=> true
+// => true
 
 const notEmpty = areNotEmpty('a', 'b', null);
-//=> false
+// => false
 ```
 
 
 ##### Returns
 
 
-- `Boolean`  whether values are not empty
+- `boolean`  whether values are not empty
 
 
 
@@ -149,7 +184,7 @@ Creates new array(or object) with all falsey values removed. The values false, n
 
 | Name | Type | Description |  |
 | ---- | ---- | ----------- | -------- |
-| value | `Array` `Object`  | The array(or object) to compact. | &nbsp; |
+| value | `Array` `object`  | The array(or object) to compact. | &nbsp; |
 
 
 
@@ -169,7 +204,7 @@ const y = compact({a: 1, b: "", c: undefined});
 ##### Returns
 
 
-- `Object` `Array`  new array(or object) of filtered values.
+- `object` `Array`  new array(or object) of filtered values.
 
 
 
@@ -184,7 +219,7 @@ Creates new duplicate-free version of array(or object).
 
 | Name | Type | Description |  |
 | ---- | ---- | ----------- | -------- |
-| value | `Array` `Object`  | The array(or object) to inspect. | &nbsp; |
+| value | `Array` `object`  | The array(or object) to inspect. | &nbsp; |
 
 
 
@@ -204,7 +239,7 @@ const y = uniq({a: 1, b: "", c: undefined});
 ##### Returns
 
 
-- `Object` `Array`  new duplicate free array(or object).
+- `object` `Array`  new duplicate free array(or object).
 
 
 
@@ -219,7 +254,7 @@ Creates new duplicate-free version of sorted array(or object).
 
 | Name | Type | Description |  |
 | ---- | ---- | ----------- | -------- |
-| value | `Array` `Object`  | The array(or object) to inspect. | &nbsp; |
+| value | `Array` `object`  | The array(or object) to inspect. | &nbsp; |
 
 
 
@@ -239,7 +274,7 @@ const y = sortedUniq({a: 1, b: "", c: undefined});
 ##### Returns
 
 
-- `Object` `Array`  new duplicate free sorted array(or object).
+- `object` `Array`  new duplicate free sorted array(or object).
 
 
 
@@ -254,7 +289,7 @@ Merge a list on objects into a single object
 
 | Name | Type | Description |  |
 | ---- | ---- | ----------- | -------- |
-| objects | `Object`  | list of objects | &nbsp; |
+| objects | `object`  | list of objects | &nbsp; |
 
 
 
@@ -264,14 +299,14 @@ Merge a list on objects into a single object
 ```javascript
 
 const obj = mergeObjects({ a: 1 }, { b: 1 }, { c: 2}, { c: 2}, {b: null})
-//=> { a: 1, b: 1, c: 2 }
+// => { a: 1, b: 1, c: 2 }
 ```
 
 
 ##### Returns
 
 
-- `Object`  a merged object
+- `object`  a merged object
 
 
 
@@ -286,8 +321,8 @@ Read package information
 
 | Name | Type | Description |  |
 | ---- | ---- | ----------- | -------- |
-| path | `String`  | valid path to package.json file | *Optional* |
-| field | `String` `Array.<String>` `String`  | fields to pick from package | &nbsp; |
+| path | `string`  | valid path to package.json file | *Optional* |
+| field | `string`  | fields to pick from package | &nbsp; |
 
 
 
@@ -307,7 +342,7 @@ const { name, version } = pkg(__dirname);
 ##### Returns
 
 
-- `Object`  current process package information
+- `object`  current process package information
 
 
 
@@ -322,7 +357,7 @@ Generate resource scopes(permissions)
 
 | Name | Type | Description |  |
 | ---- | ---- | ----------- | -------- |
-| resources | `String`  | resources | &nbsp; |
+| resources | `string`  | resources | &nbsp; |
 
 
 
@@ -354,7 +389,7 @@ Generate shortened form of word(s) or phrase.
 
 | Name | Type | Description |  |
 | ---- | ---- | ----------- | -------- |
-| words | `String`  | set of words to derive abbreaviation | &nbsp; |
+| words | `string`  | set of words to derive abbreaviation | &nbsp; |
 
 
 
@@ -371,7 +406,7 @@ const abbreaviation = abbreviate('Ministry of Finance')
 ##### Returns
 
 
-- `String`  abbreviation
+- `string`  abbreviation
 
 
 
@@ -386,7 +421,7 @@ Obtain an id or a given object
 
 | Name | Type | Description |  |
 | ---- | ---- | ----------- | -------- |
-| data | `Object`  | object to pick id from | &nbsp; |
+| data | `object`  | object to pick id from | &nbsp; |
 
 
 
@@ -396,17 +431,17 @@ Obtain an id or a given object
 ```javascript
 
 const id = idOf({ id: 1 })
-//=> 1
+// => 1
 
 const id = idOf({ _id: 1 })
-//=> 1
+// => 1
 ```
 
 
 ##### Returns
 
 
-- `Mixed`  id of a given object
+-  id of a given object
 
 
 
@@ -421,7 +456,7 @@ Produce camelize variable name based on passed strings
 
 | Name | Type | Description |  |
 | ---- | ---- | ----------- | -------- |
-| names | `String`  | list of strings to produce variable name | &nbsp; |
+| names | `string`  | list of strings to produce variable name | &nbsp; |
 
 
 
@@ -431,17 +466,17 @@ Produce camelize variable name based on passed strings
 ```javascript
 
 const name = variableNameFor('get', 'name');
-//=> getName
+// => getName
 
 const name = variableNameFor('pick', 'a', 'name');
-//=> pickAName
+// => pickAName
 ```
 
 
 ##### Returns
 
 
-- `String`  camelized variable name
+- `string`  camelized variable name
 
 
 
@@ -456,8 +491,8 @@ Check if value is in a collection
 
 | Name | Type | Description |  |
 | ---- | ---- | ----------- | -------- |
-| collection | `Array` `Object` `string`  | The collection to inspect. | &nbsp; |
-| value | `Mixed`  | The value to search for. | &nbsp; |
+| collection | `Array`  | The collection to inspect. | &nbsp; |
+| value |  | The value to search for. | &nbsp; |
 
 
 
@@ -467,17 +502,17 @@ Check if value is in a collection
 ```javascript
 
 const hasValue = has([ 1, 2 ], 1);
-//=> true
+// => true
 
 const hasValue = has([ 'a', 'b' ], 'c');
-//=> false
+// => false
 ```
 
 
 ##### Returns
 
 
-- `Boolean`  whether value is in collection
+- `boolean`  whether value is in collection
 
 
 
@@ -493,7 +528,7 @@ Check if all value are in a collection
 | Name | Type | Description |  |
 | ---- | ---- | ----------- | -------- |
 | collection | `Array`  | The collection to inspect. | &nbsp; |
-| values | `Array` `Mixed`  | The values to search for. | &nbsp; |
+| values |  | The values to search for. | &nbsp; |
 
 
 
@@ -503,20 +538,20 @@ Check if all value are in a collection
 ```javascript
 
 const hasValues = hasAll([ 1, 2 ], 1, 2);
-//=> true
+// => true
 
 const hasValues = hasAll([ 1, 2 ], [ 1, 2 ]);
-//=> true
+// => true
 
 const hasValues = hasAll([ 'a', 'b' ], 'c', 'd');
-//=> false
+// => false
 ```
 
 
 ##### Returns
 
 
-- `Boolean`  whether values are in collection
+- `boolean`  whether values are in collection
 
 
 
@@ -532,7 +567,7 @@ Check if any value is in a collection
 | Name | Type | Description |  |
 | ---- | ---- | ----------- | -------- |
 | collection | `Array`  | The collection to inspect. | &nbsp; |
-| values | `Array` `Mixed`  | The values to search for. | &nbsp; |
+| values |  | The values to search for. | &nbsp; |
 
 
 
@@ -542,23 +577,23 @@ Check if any value is in a collection
 ```javascript
 
 const hasValues = hasAny([ 1, 2 ], 1, 2);
-//=> true
+// => true
 
 const hasValues = hasAny([ 1, 2 ], [ 1, 2 ]);
-//=> true
+// => true
 
 const hasValues = hasAny([ 'a', 'b' ], 'b', 'd');
-//=> true
+// => true
 
 const hasValues = hasAny([ 'a', 'b' ], 'c', 'd');
-//=> false
+// => false
 ```
 
 
 ##### Returns
 
 
-- `Boolean`  whether any value is in collection
+- `boolean`  whether any value is in collection
 
 
 
@@ -573,7 +608,7 @@ Normalize errors bag to light weight object
 
 | Name | Type | Description |  |
 | ---- | ---- | ----------- | -------- |
-| errors | `Object`  | valid errors bag | &nbsp; |
+| errors | `object`  | valid errors bag | &nbsp; |
 
 
 
@@ -583,14 +618,14 @@ Normalize errors bag to light weight object
 ```javascript
 
 const body = bagify({name : new Error('Validation Error') });
-//=> { name: { name: 'Error', message: 'Name Required'}, ... }
+// => { name: { name: 'Error', message: 'Name Required'}, ... }
 ```
 
 
 ##### Returns
 
 
-- `Object`  formatted errors bag
+- `object`  formatted errors bag
 
 
 
@@ -606,10 +641,10 @@ Convert error instance to light weight object
 | Name | Type | Description |  |
 | ---- | ---- | ----------- | -------- |
 | error | `Error`  | valid error instance | &nbsp; |
-| options | `Object`  | additional convert options | *Optional* |
-| options.name&#x3D;Error | `String`  | default error name | *Optional* |
-| options.code&#x3D;500 | `String`  | default error code | *Optional* |
-| options.stack&#x3D;false | `String`  | where to include error stack | *Optional* |
+| options | `object`  | additional convert options | *Optional* |
+| options.name&#x3D;Error | `string`  | default error name | *Optional* |
+| options.code&#x3D;500 | `string`  | default error code | *Optional* |
+| options.stack&#x3D;false | `string`  | where to include error stack | *Optional* |
 
 
 
@@ -619,14 +654,14 @@ Convert error instance to light weight object
 ```javascript
 
 const body = mapErrorToObject(new Error('Missing API Key'));
-//=> { name:'Error', message: 'Missing API Key', ... }
+// => { name:'Error', message: 'Missing API Key', ... }
 ```
 
 
 ##### Returns
 
 
-- `Object`  formatted error object
+- `object`  formatted error object
 
 
 
@@ -644,14 +679,14 @@ Obtain operating system information
 ```javascript
 
 const info = osInfo();
-//=> { arch:'x64', ... }
+// => { arch:'x64', ... }
 ```
 
 
 ##### Returns
 
 
-- `Object`  os information object
+- `object`  os information object
 
 
 
@@ -669,14 +704,14 @@ Obtain current process information
 ```javascript
 
 const info = processInfo();
-//=> { pid: 8989, ... }
+// => { pid: 8989, ... }
 ```
 
 
 ##### Returns
 
 
-- `Object`  current process information
+- `object`  current process information
 
 
 
@@ -691,8 +726,8 @@ Generating attractive random colors
 
 | Name | Type | Description |  |
 | ---- | ---- | ----------- | -------- |
-| optns | `Object`  | valid generator options | *Optional* |
-| optns.luminosity&#x3D;light | `String`  | controls the luminosity of the generated color. you can specify a string containing `bright`, `light` or<br>`dark`. | *Optional* |
+| optns | `object`  | valid generator options | *Optional* |
+| optns.luminosity&#x3D;light | `string`  | controls the luminosity of the generated color. you can specify a string containing `bright`, `light` or<br>`dark`. | *Optional* |
 
 
 
@@ -702,14 +737,14 @@ Generating attractive random colors
 ```javascript
 
 const color = randomColor();
-//=> #C349D8
+// => #C349D8
 ```
 
 
 ##### Returns
 
 
-- `String`  random color
+- `string`  random color
 
 
 
@@ -725,7 +760,7 @@ Format a data using specified format
 | Name | Type | Description |  |
 | ---- | ---- | ----------- | -------- |
 | date&#x3D;new | `Date`  | Date()] valid date instance | *Optional* |
-| format&#x3D;&#x27;YYYY-MM-DD&#x27; | `String`  | valid date format | *Optional* |
+| format&#x3D;&#x27;YYYY-MM-DD&#x27; | `string`  | valid date format | *Optional* |
 
 
 
@@ -735,14 +770,14 @@ Format a data using specified format
 ```javascript
 
 const date = formatDate(new Date(), 'YYYY-MM-DD');
-//=> 2019-05-30
+// => 2019-05-30
 ```
 
 
 ##### Returns
 
 
-- `String`  formatted date string
+- `string`  formatted date string
 
 
 
@@ -757,8 +792,8 @@ Generate hash of provided object
 
 | Name | Type | Description |  |
 | ---- | ---- | ----------- | -------- |
-| object | `Object`  | valid object to hash | &nbsp; |
-| ignore | `String`  | properties to ignore | *Optional* |
+| object | `object`  | valid object to hash | &nbsp; |
+| ignore | `string`  | properties to ignore | *Optional* |
 
 
 
@@ -775,7 +810,7 @@ const hash = hashOf({ foo: 'bar' })
 ##### Returns
 
 
-- `String`  valid object hash
+- `string`  valid object hash
 
 
 
@@ -790,8 +825,8 @@ Parse, format and render string based template
 
 | Name | Type | Description |  |
 | ---- | ---- | ----------- | -------- |
-| template | `String`  | valid template | &nbsp; |
-| data | `Object`  | object valid object apply on template | &nbsp; |
+| template | `string`  | valid template | &nbsp; |
+| data | `object`  | object valid object apply on template | &nbsp; |
 
 
 
@@ -802,14 +837,14 @@ Parse, format and render string based template
 
 const template = 'Hello {name}, you have {count} unread messages';
 const formatted = parseTemplate(template, { name: 'John', count: 12 });
-//=> 'Hello John, you have 12 unread messages'
+// => 'Hello John, you have 12 unread messages'
 ```
 
 
 ##### Returns
 
 
-- `String`  formatted string
+- `string`  formatted string
 
 
 
@@ -824,7 +859,7 @@ Strip HTML tags from a string
 
 | Name | Type | Description |  |
 | ---- | ---- | ----------- | -------- |
-| html | `String`  | valid html string | &nbsp; |
+| html | `string`  | valid html string | &nbsp; |
 
 
 
@@ -835,18 +870,18 @@ Strip HTML tags from a string
 
 const html = 'lorem ipsum <strong>dolor</strong> <em>sit</em> amet';
 const formatted = stripHtmlTags(html);
-//=> 'lorem ipsum dolor sit amet'
+// => 'lorem ipsum dolor sit amet'
 ```
 
 
 ##### Returns
 
 
-- `String`  string with no html tags
+- `string`  string with no html tags
 
 
 
-#### stringify(valid) 
+#### stringify(value) 
 
 Safely converts a given value to a JSON string
 
@@ -857,7 +892,7 @@ Safely converts a given value to a JSON string
 
 | Name | Type | Description |  |
 | ---- | ---- | ----------- | -------- |
-| valid | `Mixed`  | valid value | &nbsp; |
+| value |  | valid value | &nbsp; |
 
 
 
@@ -868,14 +903,14 @@ Safely converts a given value to a JSON string
 
 const value = { x: 5, y: 6 };
 const string = stringify(value);
-//=> '{"x":5,"y":6}'
+// => '{"x":5,"y":6}'
 ```
 
 
 ##### Returns
 
 
-- `String`  JSON string of a value
+- `string`  JSON string of a value
 
 
 
@@ -890,7 +925,7 @@ Safely parses a JSON string to a value
 
 | Name | Type | Description |  |
 | ---- | ---- | ----------- | -------- |
-| value | `String`  | JSON string of a value | &nbsp; |
+| value | `string`  | JSON string of a value | &nbsp; |
 
 
 
@@ -901,14 +936,14 @@ Safely parses a JSON string to a value
 
 const string = '{"x":5,"y":6}';
 const value = parse(value);
-//=> { x: 5, y: 6 }
+// => { x: 5, y: 6 }
 ```
 
 
 ##### Returns
 
 
-- `Mixed`  valid value
+-  valid value
 
 
 
@@ -923,7 +958,7 @@ Convert a given string value to its plural form
 
 | Name | Type | Description |  |
 | ---- | ---- | ----------- | -------- |
-| value | `String`  | subject value | &nbsp; |
+| value | `string`  | subject value | &nbsp; |
 
 
 
@@ -943,7 +978,7 @@ pluralize('Hat');
 ##### Returns
 
 
-- `String`  plural form of provided string
+- `string`  plural form of provided string
 
 
 
@@ -958,7 +993,7 @@ Convert a given string value to its singular form
 
 | Name | Type | Description |  |
 | ---- | ---- | ----------- | -------- |
-| value | `String`  | subject value | &nbsp; |
+| value | `string`  | subject value | &nbsp; |
 
 
 
@@ -978,11 +1013,11 @@ singularize('Hats');
 ##### Returns
 
 
-- `String`  singular form of provided string
+- `string`  singular form of provided string
 
 
 
-#### autoParse(value) 
+#### autoParse(value[, fields]) 
 
 Safely auto parse a given value to js object
 
@@ -993,8 +1028,8 @@ Safely auto parse a given value to js object
 
 | Name | Type | Description |  |
 | ---- | ---- | ----------- | -------- |
-| value | `Mixed`  | subject to parse | &nbsp; |
-| ...fields | `String`  | subject fields to apply auto parse | *Optional* |
+| value |  | subject to parse | &nbsp; |
+| fields | `string`  | subject fields to apply auto parse | *Optional* |
 
 
 
@@ -1017,7 +1052,7 @@ autoParse({ a: '5', b: '6' }, 'a'))
 ##### Returns
 
 
-- `Mixed`  valid js object
+-  valid js object
 
 
 

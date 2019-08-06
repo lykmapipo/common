@@ -1,3 +1,18 @@
+#### 0.25.0 (2019-08-06)
+
+##### Chores
+
+* **deps:**  force latest version & audit fix ([93c809f0](https://github.com/lykmapipo/common/commit/93c809f0343abd494f8c00f8f4b8c1d507f81d6b))
+
+##### New Features
+
+*  add copyOf for deep cloning a value ([68e715cb](https://github.com/lykmapipo/common/commit/68e715cb50d54d5940710c00e70c6e337b1eb5cb))
+
+##### Code Style Changes
+
+*  remove extra line after example ([19d7e3bb](https://github.com/lykmapipo/common/commit/19d7e3bb392afd3628ffa3c636b180d62055291e))
+*  improve examples jsdoc ([ec8ca0a1](https://github.com/lykmapipo/common/commit/ec8ca0a1ca477bcac60cff03a1e5012c0bc3a649))
+
 #### 0.24.3 (2019-08-06)
 
 ##### Chores

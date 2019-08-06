@@ -1,7 +1,7 @@
 import { resolve } from 'path';
 import { readFileSync } from 'fs';
 import { arch, cpus, endianness, freemem, homedir, hostname, loadavg, networkInterfaces, platform, release, tmpdir, totalmem, type, uptime } from 'os';
-import { isBoolean, flattenDeep, map, reduce, cloneDeep, isArray, compact as compact$1, isPlainObject, omitBy, uniq as uniq$1, orderBy, merge, isEmpty, pick, words, get, camelCase, includes, every, some, forEach, toUpper, omit, clone, toLower, toString, first } from 'lodash';
+import { isBoolean, cloneDeep, flattenDeep, map, reduce, isArray, compact as compact$1, isPlainObject, omitBy, uniq as uniq$1, orderBy, merge, isEmpty, pick, words, get, camelCase, includes, every, some, forEach, toUpper, omit, toLower, toString, first } from 'lodash';
 export { getExtension as mimeExtensionOf, getType as mimeTypeOf } from 'mime';
 import { STATUS_CODES } from 'statuses';
 import inflection from 'inflection';
@@ -39,8 +39,8 @@ const RESOURCE_ACTIONS = [
  * @function isNotValue
  * @name isNotValue
  * @description Check if variable has no associated state
- * @param {Mixed} value variable to check if it has no associated state
- * @return {Boolean} whether variable contain state
+ * @param {*} value variable to check if it has no associated state
+ * @returns {boolean} whether variable contain state
  * @author lally elias <lallyelias87@gmail.com>
  * @license MIT
  * @since 0.9.0
@@ -49,20 +49,42 @@ const RESOURCE_ACTIONS = [
  * @public
  * @example
  *
- * const isNotValue = isValue('a');
- * //=> false
+ * const notValue = isNotValue('a');
+ * // => false
  *
- * const isNotValue = isValue(null);
- * //=> true
+ * const notValue = isNotValue(null);
+ * // => true
  */
 const isNotValue = value => (isBoolean(value) ? false : !value);
+
+/**
+ * @function copyOf
+ * @name copyOf
+ * @description Recursively clone a value
+ * @param {*} value valid value to clone
+ * @returns {*} cloned value
+ * @author lally elias <lallyelias87@gmail.com>
+ * @license MIT
+ * @since 0.25.0
+ * @version 0.1.0
+ * @static
+ * @public
+ * @example
+ *
+ * const copy = copyOf('a');
+ * // => 'a'
+ *
+ * const copy = copyOf({ 'a': 1 });
+ * // => { 'a': 1 }
+ */
+const copyOf = value => cloneDeep(value);
 
 /**
  * @function mapToUpper
  * @name mapToUpper
  * @description Convert list of values to upper values
- * @param {String[]|...String} values list to convert to upper
- * @return {String[]} list of upper values
+ * @param {...string} values list to convert to upper
+ * @returns {string[]} list of upper values
  * @author lally elias <lallyelias87@gmail.com>
  * @license MIT
  * @since 0.12.0
@@ -72,10 +94,10 @@ const isNotValue = value => (isBoolean(value) ? false : !value);
  * @example
  *
  * const mapToUpper = mapToUpper('a');
- * //=> ['A']
+ * // => ['A']
  *
  * const mapToUpper = mapToUpper(['a', 'b'], 'c');
- * //=> ['A', 'B', 'C']
+ * // => ['A', 'B', 'C']
  */
 const mapToUpper = (...values) => {
   // convert lower to upper
@@ -92,8 +114,8 @@ const mapToUpper = (...values) => {
  * @function mapToLower
  * @name mapToLower
  * @description Convert list of values to lower values
- * @param {String[]|...String} values list to convert to lower
- * @return {String[]} list of lower values
+ * @param {...string} values list to convert to lower
+ * @returns {string[]} list of lower values
  * @author lally elias <lallyelias87@gmail.com>
  * @license MIT
  * @since 0.12.0
@@ -103,10 +125,10 @@ const mapToUpper = (...values) => {
  * @example
  *
  * const mapToLower = mapToLower('A');
- * //=> ['a']
+ * // => ['a']
  *
  * const mapToLower = mapToLower(['A', 'B'], 'C');
- * //=> ['a', 'b', 'c']
+ * // => ['a', 'b', 'c']
  */
 const mapToLower = (...values) => {
   // convert upper to lower
@@ -123,8 +145,8 @@ const mapToLower = (...values) => {
  * @function areNotEmpty
  * @name areNotEmpty
  * @description Check if provided values are not empty
- * @param {...String} values set of values to check for emptiness
- * @return {Boolean} whether values are not empty
+ * @param {...string} values set of values to check for emptiness
+ * @returns {boolean} whether values are not empty
  * @author lally elias <lallyelias87@gmail.com>
  * @license MIT
  * @since 0.1.0
@@ -134,10 +156,10 @@ const mapToLower = (...values) => {
  * @example
  *
  * const notEmpty = areNotEmpty('a', 'b', 'c');
- * //=> true
+ * // => true
  *
  * const notEmpty = areNotEmpty('a', 'b', null);
- * //=> false
+ * // => false
  */
 const areNotEmpty = (...values) => {
   // copy values
@@ -157,8 +179,8 @@ const areNotEmpty = (...values) => {
  * @name compact
  * @description Creates new array(or object) with all falsey values removed.
  * The values false, null, 0, "", undefined, and NaN are falsey.
- * @param {Array|Object} value The array(or object) to compact.
- * @return {Object|Array} new array(or object) of filtered values.
+ * @param {Array|object} value The array(or object) to compact.
+ * @returns {object|Array} new array(or object) of filtered values.
  * @author lally elias <lallyelias87@gmail.com>
  * @license MIT
  * @since 0.1.0
@@ -175,7 +197,7 @@ const areNotEmpty = (...values) => {
  */
 const compact = value => {
   // copy value
-  const copyOfValue = cloneDeep(value);
+  const copyOfValue = copyOf(value);
 
   // compact array
   if (isArray(copyOfValue)) {
@@ -195,8 +217,8 @@ const compact = value => {
  * @function uniq
  * @name uniq
  * @description Creates new duplicate-free version of array(or object).
- * @param {Array|Object} value The array(or object) to inspect.
- * @return {Object|Array} new duplicate free array(or object).
+ * @param {Array|object} value The array(or object) to inspect.
+ * @returns {object|Array} new duplicate free array(or object).
  * @author lally elias <lallyelias87@gmail.com>
  * @license MIT
  * @since 0.1.0
@@ -227,8 +249,8 @@ const uniq = value => {
  * @function sortedUniq
  * @name sortedUniq
  * @description Creates new duplicate-free version of sorted array(or object).
- * @param {Array|Object} value The array(or object) to inspect.
- * @return {Object|Array} new duplicate free sorted array(or object).
+ * @param {Array|object} value The array(or object) to inspect.
+ * @returns {object|Array} new duplicate free sorted array(or object).
  * @author lally elias <lallyelias87@gmail.com>
  * @license MIT
  * @since 0.1.0
@@ -259,8 +281,8 @@ const sortedUniq = value => {
  * @function mergeObjects
  * @name mergeObjects
  * @description Merge a list on objects into a single object
- * @param {...Object} objects list of objects
- * @return {Object} a merged object
+ * @param {...object} objects list of objects
+ * @returns {object} a merged object
  * @author lally elias <lallyelias87@gmail.com>
  * @license MIT
  * @since 0.10.0
@@ -270,7 +292,7 @@ const sortedUniq = value => {
  * @example
  *
  * const obj = mergeObjects({ a: 1 }, { b: 1 }, { c: 2}, { c: 2}, {b: null})
- * //=> { a: 1, b: 1, c: 2 }
+ * // => { a: 1, b: 1, c: 2 }
  */
 const mergeObjects = (...objects) => {
   // ensure source objects
@@ -288,9 +310,9 @@ const mergeObjects = (...objects) => {
  * @function pkg
  * @name pkg
  * @description Read package information
- * @param {String} [path] valid path to package.json file
- * @param {String|String[]|...String} field fields to pick from package
- * @return {Object} current process package information
+ * @param {string} [path] valid path to package.json file
+ * @param {...string} field fields to pick from package
+ * @returns {object} current process package information
  * @author lally elias <lallyelias87@gmail.com>
  * @license MIT
  * @since 0.1.0
@@ -338,8 +360,8 @@ const pkg = (path, ...field) => {
  * @function scopesFor
  * @name scopesFor
  * @description Generate resource scopes(permissions)
- * @param {...String} resources resources
- * @return {Array} resources scopes
+ * @param {...string} resources resources
+ * @returns {Array} resources scopes
  * @author lally elias <lallyelias87@gmail.com>
  * @license MIT
  * @since 0.6.0
@@ -385,8 +407,8 @@ const scopesFor = (...resources) => {
  * @function abbreviate
  * @name abbreviate
  * @description Generate shortened form of word(s) or phrase.
- * @param {...String} words set of words to derive abbreaviation
- * @return {String} abbreviation
+ * @param {...string} words set of words to derive abbreaviation
+ * @returns {string} abbreviation
  * @author lally elias <lallyelias87@gmail.com>
  * @license MIT
  * @since 0.6.0
@@ -417,8 +439,8 @@ const abbreviate = (...words$1) => {
  * @function idOf
  * @name idOf
  * @description Obtain an id or a given object
- * @param {Object} data object to pick id from
- * @return {Mixed} id of a given object
+ * @param {object} data object to pick id from
+ * @returns {*} id of a given object
  * @author lally elias <lallyelias87@gmail.com>
  * @license MIT
  * @since 0.10.0
@@ -428,10 +450,10 @@ const abbreviate = (...words$1) => {
  * @example
  *
  * const id = idOf({ id: 1 })
- * //=> 1
+ * // => 1
  *
  * const id = idOf({ _id: 1 })
- * //=> 1
+ * // => 1
  */
 const idOf = data => get(data, '_id') || get(data, 'id');
 
@@ -439,8 +461,8 @@ const idOf = data => get(data, '_id') || get(data, 'id');
  * @function variableNameFor
  * @name variableNameFor
  * @description Produce camelize variable name based on passed strings
- * @param {...String} names list of strings to produce variable name
- * @return {String} camelized variable name
+ * @param {...string} names list of strings to produce variable name
+ * @returns {string} camelized variable name
  * @author lally elias <lallyelias87@gmail.com>
  * @license MIT
  * @since 0.10.0
@@ -450,10 +472,10 @@ const idOf = data => get(data, '_id') || get(data, 'id');
  * @example
  *
  * const name = variableNameFor('get', 'name');
- * //=> getName
+ * // => getName
  *
  * const name = variableNameFor('pick', 'a', 'name');
- * //=> pickAName
+ * // => pickAName
  */
 const variableNameFor = (...names) => camelCase([...names].join(' '));
 
@@ -461,9 +483,9 @@ const variableNameFor = (...names) => camelCase([...names].join(' '));
  * @function has
  * @name has
  * @description Check if value is in a collection
- * @param {Array|Object|string} collection The collection to inspect.
- * @param {Mixed} value The value to search for.
- * @returns {Boolean} whether value is in collection
+ * @param {Array} collection The collection to inspect.
+ * @param {*} value The value to search for.
+ * @returns {boolean} whether value is in collection
  * @author lally elias <lallyelias87@gmail.com>
  * @license MIT
  * @since 0.11.0
@@ -473,10 +495,10 @@ const variableNameFor = (...names) => camelCase([...names].join(' '));
  * @example
  *
  * const hasValue = has([ 1, 2 ], 1);
- * //=> true
+ * // => true
  *
  * const hasValue = has([ 'a', 'b' ], 'c');
- * //=> false
+ * // => false
  */
 const has = (collection, value) => includes(collection, value);
 
@@ -485,8 +507,8 @@ const has = (collection, value) => includes(collection, value);
  * @name hasAll
  * @description Check if all value are in a collection
  * @param {Array} collection The collection to inspect.
- * @param {Array|...Mixed} values The values to search for.
- * @returns {Boolean} whether values are in collection
+ * @param {*} values The values to search for.
+ * @returns {boolean} whether values are in collection
  * @author lally elias <lallyelias87@gmail.com>
  * @license MIT
  * @since 0.11.0
@@ -496,13 +518,13 @@ const has = (collection, value) => includes(collection, value);
  * @example
  *
  * const hasValues = hasAll([ 1, 2 ], 1, 2);
- * //=> true
+ * // => true
  *
  * const hasValues = hasAll([ 1, 2 ], [ 1, 2 ]);
- * //=> true
+ * // => true
  *
  * const hasValues = hasAll([ 'a', 'b' ], 'c', 'd');
- * //=> false
+ * // => false
  */
 const hasAll = (collection, ...values) => {
   // check if value is in collection
@@ -521,8 +543,8 @@ const hasAll = (collection, ...values) => {
  * @name hasAny
  * @description Check if any value is in a collection
  * @param {Array} collection The collection to inspect.
- * @param {Array|...Mixed} values The values to search for.
- * @returns {Boolean} whether any value is in collection
+ * @param {*} values The values to search for.
+ * @returns {boolean} whether any value is in collection
  * @author lally elias <lallyelias87@gmail.com>
  * @license MIT
  * @since 0.11.0
@@ -532,16 +554,16 @@ const hasAll = (collection, ...values) => {
  * @example
  *
  * const hasValues = hasAny([ 1, 2 ], 1, 2);
- * //=> true
+ * // => true
  *
  * const hasValues = hasAny([ 1, 2 ], [ 1, 2 ]);
- * //=> true
+ * // => true
  *
  * const hasValues = hasAny([ 'a', 'b' ], 'b', 'd');
- * //=> true
+ * // => true
  *
  * const hasValues = hasAny([ 'a', 'b' ], 'c', 'd');
- * //=> false
+ * // => false
  */
 const hasAny = (collection, ...values) => {
   // check if value is in collection
@@ -559,8 +581,8 @@ const hasAny = (collection, ...values) => {
  * @function bagify
  * @name bagify
  * @description Normalize errors bag to light weight object
- * @param {Object} errors valid errors bag
- * @return {Object} formatted errors bag
+ * @param {object} errors valid errors bag
+ * @returns {object} formatted errors bag
  * @author lally elias <lallyelias87@gmail.com>
  * @license MIT
  * @since 0.14.0
@@ -570,8 +592,7 @@ const hasAny = (collection, ...values) => {
  * @example
  *
  * const body = bagify({name : new Error('Validation Error') });
- * //=> { name: { name: 'Error', message: 'Name Required'}, ... }
- *
+ * // => { name: { name: 'Error', message: 'Name Required'}, ... }
  */
 const bagify = (errors = {}) => {
   // initialize normalize errors bag
@@ -606,12 +627,12 @@ const bagify = (errors = {}) => {
  * @name mapErrorToObject
  * @description Convert error instance to light weight object
  * @param {Error} error valid error instance
- * @param {Object} [options] additional convert options
- * @param {String} [options.name=Error] default error name
- * @param {String} [options.code=500] default error code
- * @param {String} [options.stack=false] where to include error stack
+ * @param {object} [options] additional convert options
+ * @param {string} [options.name=Error] default error name
+ * @param {string} [options.code=500] default error code
+ * @param {string} [options.stack=false] where to include error stack
  * @see {@link https://jsonapi.org/format/#errors}
- * @return {Object} formatted error object
+ * @returns {object} formatted error object
  * @author lally elias <lallyelias87@gmail.com>
  * @license MIT
  * @since 0.13.0
@@ -621,8 +642,7 @@ const bagify = (errors = {}) => {
  * @example
  *
  * const body = mapErrorToObject(new Error('Missing API Key'));
- * //=> { name:'Error', message: 'Missing API Key', ... }
- *
+ * // => { name:'Error', message: 'Missing API Key', ... }
  */
 const mapErrorToObject = (error, options = {}) => {
   // ensure options
@@ -660,7 +680,7 @@ const mapErrorToObject = (error, options = {}) => {
  * @function osInfo
  * @name osInfo
  * @description Obtain operating system information
- * @return {Object} os information object
+ * @returns {object} os information object
  * @author lally elias <lallyelias87@gmail.com>
  * @license MIT
  * @since 0.14.0
@@ -670,8 +690,7 @@ const mapErrorToObject = (error, options = {}) => {
  * @example
  *
  * const info = osInfo();
- * //=> { arch:'x64', ... }
- *
+ * // => { arch:'x64', ... }
  */
 const osInfo = () => {
   // collect os information
@@ -699,7 +718,7 @@ const osInfo = () => {
  * @function processInfo
  * @name processInfo
  * @description Obtain current process information
- * @return {Object} current process information
+ * @returns {object} current process information
  * @author lally elias <lallyelias87@gmail.com>
  * @license MIT
  * @since 0.15.0
@@ -709,8 +728,7 @@ const osInfo = () => {
  * @example
  *
  * const info = processInfo();
- * //=> { pid: 8989, ... }
- *
+ * // => { pid: 8989, ... }
  */
 const processInfo = () => {
   // collect process information
@@ -742,11 +760,11 @@ const processInfo = () => {
  * @function randomColor
  * @name randomColor
  * @description Generating attractive random colors
- * @param {Object} [optns] valid generator options
- * @param {String} [optns.luminosity=light] controls the luminosity of the
+ * @param {object} [optns] valid generator options
+ * @param {string} [optns.luminosity=light] controls the luminosity of the
  * generated color. you can specify a string containing `bright`, `light` or
  * `dark`.
- * @return {String} random color
+ * @returns {string} random color
  * @author lally elias <lallyelias87@gmail.com>
  * @license MIT
  * @since 0.18.0
@@ -756,8 +774,7 @@ const processInfo = () => {
  * @example
  *
  * const color = randomColor();
- * //=> #C349D8
- *
+ * // => #C349D8
  */
 const randomColor = (optns = { luminosity: 'light' }) => {
   const options = mergeObjects(optns);
@@ -770,8 +787,8 @@ const randomColor = (optns = { luminosity: 'light' }) => {
  * @name formatDate
  * @description Format a data using specified format
  * @param {Date} [date=new Date()] valid date instance
- * @param {String} [format='YYYY-MM-DD'] valid date format
- * @return {String} formatted date string
+ * @param {string} [format='YYYY-MM-DD'] valid date format
+ * @returns {string} formatted date string
  * @author lally elias <lallyelias87@gmail.com>
  * @license MIT
  * @since 0.19.0
@@ -781,8 +798,7 @@ const randomColor = (optns = { luminosity: 'light' }) => {
  * @example
  *
  * const date = formatDate(new Date(), 'YYYY-MM-DD');
- * //=> 2019-05-30
- *
+ * // => 2019-05-30
  */
 const formatDate = (date = new Date(), format = 'YYYY-MM-DD') => {
   const formatted = moment(date).format(format);
@@ -793,9 +809,9 @@ const formatDate = (date = new Date(), format = 'YYYY-MM-DD') => {
  * @function hashOf
  * @name hashOf
  * @description Generate hash of provided object
- * @param {Object} object valid object to hash
- * @param {...String} [ignore] properties to ignore
- * @return {String} valid object hash
+ * @param {object} object valid object to hash
+ * @param {...string} [ignore] properties to ignore
+ * @returns {string} valid object hash
  * @author lally elias <lallyelias87@gmail.com>
  * @license MIT
  * @since 0.21.0
@@ -806,7 +822,6 @@ const formatDate = (date = new Date(), format = 'YYYY-MM-DD') => {
  *
  * const hash = hashOf({ foo: 'bar' })
  * // => '67b69634f9880a282c14a0f0cb7ba20cf5d677e9'
- *
  */
 const hashOf = (object, ...ignore) => {
   // ensure object
@@ -824,9 +839,9 @@ const hashOf = (object, ...ignore) => {
  * @function parseTemplate
  * @name parseTemplate
  * @description Parse, format and render string based template
- * @param {String} template valid template
- * @param {Object} data object valid object apply on template
- * @return {String} formatted string
+ * @param {string} template valid template
+ * @param {object} data object valid object apply on template
+ * @returns {string} formatted string
  * @author lally elias <lallyelias87@gmail.com>
  * @license MIT
  * @since 0.21.0
@@ -837,12 +852,11 @@ const hashOf = (object, ...ignore) => {
  *
  * const template = 'Hello {name}, you have {count} unread messages';
  * const formatted = parseTemplate(template, { name: 'John', count: 12 });
- * //=> 'Hello John, you have 12 unread messages'
- *
+ * // => 'Hello John, you have 12 unread messages'
  */
 const parseTemplate = (template, data) => {
   // ensure copy
-  const copyOfTemplate = clone(template);
+  const copyOfTemplate = copyOf(template);
   const copyOfData = mergeObjects(data);
 
   // render string template
@@ -856,8 +870,8 @@ const parseTemplate = (template, data) => {
  * @function stripHtmlTags
  * @name stripHtmlTags
  * @description Strip HTML tags from a string
- * @param {String} html valid html string
- * @return {String} string with no html tags
+ * @param {string} html valid html string
+ * @returns {string} string with no html tags
  * @author lally elias <lallyelias87@gmail.com>
  * @license MIT
  * @since 0.21.0
@@ -868,11 +882,10 @@ const parseTemplate = (template, data) => {
  *
  * const html = 'lorem ipsum <strong>dolor</strong> <em>sit</em> amet';
  * const formatted = stripHtmlTags(html);
- * //=> 'lorem ipsum dolor sit amet'
- *
+ * // => 'lorem ipsum dolor sit amet'
  */
 const stripHtmlTags = html => {
-  const copyOfHtml = clone(html);
+  const copyOfHtml = copyOf(html);
   const formatted = stripTags(copyOfHtml);
   return formatted;
 };
@@ -881,8 +894,8 @@ const stripHtmlTags = html => {
  * @function stringify
  * @name stringify
  * @description Safely converts a given value to a JSON string
- * @param {Mixed} valid valid value
- * @return {String} JSON string of a value
+ * @param {*} value valid value
+ * @returns {string} JSON string of a value
  * @author lally elias <lallyelias87@gmail.com>
  * @license MIT
  * @since 0.22.0
@@ -893,8 +906,7 @@ const stripHtmlTags = html => {
  *
  * const value = { x: 5, y: 6 };
  * const string = stringify(value);
- * //=> '{"x":5,"y":6}'
- *
+ * // => '{"x":5,"y":6}'
  */
 const stringify = value => {
   try {
@@ -908,8 +920,8 @@ const stringify = value => {
  * @function parse
  * @name parse
  * @description Safely parses a JSON string to a value
- * @param {String} value JSON string of a value
- * @return {Mixed} valid value
+ * @param {string} value JSON string of a value
+ * @returns {*} valid value
  * @author lally elias <lallyelias87@gmail.com>
  * @license MIT
  * @since 0.22.0
@@ -920,8 +932,7 @@ const stringify = value => {
  *
  * const string = '{"x":5,"y":6}';
  * const value = parse(value);
- * //=> { x: 5, y: 6 }
- *
+ * // => { x: 5, y: 6 }
  */
 const parse = value => {
   try {
@@ -935,8 +946,8 @@ const parse = value => {
  * @function pluralize
  * @name pluralize
  * @description Convert a given string value to its plural form
- * @param {String} value subject value
- * @return {String} plural form of provided string
+ * @param {string} value subject value
+ * @returns {string} plural form of provided string
  * @author lally elias <lallyelias87@gmail.com>
  * @license MIT
  * @since 0.24.0
@@ -950,10 +961,9 @@ const parse = value => {
  *
  * pluralize('Hat');
  * // => Hats
- *
  */
 const pluralize = value => {
-  let plural = clone(value);
+  let plural = copyOf(value);
   plural = inflection.pluralize(value);
   return plural;
 };
@@ -962,8 +972,8 @@ const pluralize = value => {
  * @function singularize
  * @name singularize
  * @description Convert a given string value to its singular form
- * @param {String} value subject value
- * @return {String} singular form of provided string
+ * @param {string} value subject value
+ * @returns {string} singular form of provided string
  * @author lally elias <lallyelias87@gmail.com>
  * @license MIT
  * @since 0.24.0
@@ -977,10 +987,9 @@ const pluralize = value => {
  *
  * singularize('Hats');
  * // => Hat
- *
  */
 const singularize = value => {
-  let singular = clone(value);
+  let singular = copyOf(value);
   singular = inflection.singularize(value);
   return singular;
 };
@@ -989,9 +998,9 @@ const singularize = value => {
  * @function autoParse
  * @name autoParse
  * @description Safely auto parse a given value to js object
- * @param {Mixed} value subject to parse
- * @param {...String} [...fields] subject fields to apply auto parse
- * @return {Mixed} valid js object
+ * @param {*} value subject to parse
+ * @param {...string} [fields] subject fields to apply auto parse
+ * @returns {*} valid js object
  * @author lally elias <lallyelias87@gmail.com>
  * @license MIT
  * @since 0.24.0
@@ -1008,10 +1017,9 @@ const singularize = value => {
  *
  * autoParse({ a: '5', b: '6' }, 'a'))
  * // => { a: 5, b: '6' }
- *
  */
 const autoParse = (value, ...fields) => {
-  const copyOfValue = cloneDeep(value);
+  const copyOfValue = copyOf(value);
   // handle plain object
   if (isPlainObject(copyOfValue)) {
     let parsed = pick(copyOfValue, ...fields);
@@ -1023,4 +1031,4 @@ const autoParse = (value, ...fields) => {
   return parseValue(copyOfValue);
 };
 
-export { RESOURCE_ACTIONS, abbreviate, areNotEmpty, autoParse, bagify, compact, formatDate, has, hasAll, hasAny, hashOf, idOf, isNotValue, mapErrorToObject, mapToLower, mapToUpper, mergeObjects, osInfo, parse, parseTemplate, pkg, pluralize, processInfo, randomColor, scopesFor, singularize, sortedUniq, stringify, stripHtmlTags, uniq, variableNameFor };
+export { RESOURCE_ACTIONS, abbreviate, areNotEmpty, autoParse, bagify, compact, copyOf, formatDate, has, hasAll, hasAny, hashOf, idOf, isNotValue, mapErrorToObject, mapToLower, mapToUpper, mergeObjects, osInfo, parse, parseTemplate, pkg, pluralize, processInfo, randomColor, scopesFor, singularize, sortedUniq, stringify, stripHtmlTags, uniq, variableNameFor };
