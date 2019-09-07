@@ -6,8 +6,6 @@
 
 Helper utilities for day to day development
 
-*Note!: Start of v0.9.0 all constants are not included consider use [constants](https://github.com/lykmapipo/constants)*
-
 ## Requirements
 
 - [NodeJS v8.11.1+](https://nodejs.org)
@@ -21,43 +19,6 @@ npm install --save @lykmapipo/common
 
 ## Usage
 
-- With Node.js:
-
-```js
-const {
-  compact,
-  uniq,
-  sortedUniq,
-  pkg,
-  scopesFor,
-  abbreviate
-} = require('@lykmapipo/common');
-
-const a = [null, 1, "", undefined];
-const b = compact(a); // => [ 1 ]
-const x = { a: 1, b: "", c: undefined };
-const y = compact(x); // => { a: 1 }
-
-const a = [null, 1, 1, "", undefined, 2];
-const b = uniq(a); // => [ 1, 2 ]
-const x = { a: 1, b: "", c: undefined };
-const y = uniq(x); // => { a: 1 }
-
-const a = [null, 1, 2, "", undefined, 1];
-const b = sortedUniq(a); // => [ 1, 2 ]
-const x = { a: 1, b: "", c: undefined };
-const y = sortedUniq(x); // => { a: 1 }
-
-const { name, description } = pkg(); // => { name: ..., version: ...}
-
-const scopes = scopesFor('user', 'payment'); // => ['user:create', 'payment:create'];
-
-const abbreaviation = abbreviate('Ministry of Finance') // => MOF
-
-```
-
-- With ES Module:
-
 ```js
 import {
   compact,
@@ -65,29 +26,29 @@ import {
   sortedUniq,
   pkg,
   scopesFor,
-  abbreviate
+  abbreviate,
 } from '@lykmapipo/common';
 
-const a = [null, 1, "", undefined];
+const a = [null, 1, '', undefined];
 const b = compact(a); // => [ 1 ]
-const x = { a: 1, b: "", c: undefined };
+const x = { a: 1, b: '', c: undefined };
 const y = compact(x); // => { a: 1 }
 
-const a = [null, 1, 1, "", undefined, 2];
+const a = [null, 1, 1, '', undefined, 2];
 const b = uniq(a); // => [ 1, 2 ]
-const x = { a: 1, b: "", c: undefined };
+const x = { a: 1, b: '', c: undefined };
 const y = uniq(x); // => { a: 1 }
 
-const a = [null, 1, 2, "", undefined, 1];
+const a = [null, 1, 2, '', undefined, 1];
 const b = sortedUniq(a); // => [ 1, 2 ]
-const x = { a: 1, b: "", c: undefined };
+const x = { a: 1, b: '', c: undefined };
 const y = sortedUniq(x); // => { a: 1 }
 
 const { name, description } = pkg(); // => { name: ..., version: ...}
 
 const scopes = scopesFor('user', 'payment'); // => ['user:create', 'payment:create'];
 
-const abbreaviation = abbreviate('Ministry of Finance') // => MOF
+const abbreaviation = abbreviate('Ministry of Finance'); // => MOF
 ```
 
 ## Test
