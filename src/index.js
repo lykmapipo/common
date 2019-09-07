@@ -17,6 +17,7 @@ import {
   uptime,
 } from 'os';
 import {
+  assign,
   camelCase,
   cloneDeep,
   compact as compactify,
@@ -617,6 +618,49 @@ export const hasAny = (collection, ...values) => {
 
   // return whether collection has any value
   return isAnyInCollection;
+};
+
+/**
+ * @function normalizeError
+ * @name normalizeError
+ * @description Normalize error instance with name, code, status and message.
+ *
+ * **Note:** This method mutates `object`.
+ *
+ * @param {Error} error valid error instance
+ * @param {object} [options] additional convert options
+ * @param {string} [options.name=Error] default error name
+ * @param {string} [options.code=500] default error code
+ * @param {string} [options.status=500] default error status
+ * @param {string} [options.message=500] default error message
+ * @see {@link https://jsonapi.org/format/#errors}
+ * @returns {Error} normalized error object
+ * @author lally elias <lallyelias87@gmail.com>
+ * @license MIT
+ * @since 0.26.0
+ * @version 0.1.0
+ * @static
+ * @public
+ * @example
+ *
+ * const body = normalizeError(new Error('Missing API Key'));
+ * // => error.status = 500;
+ */
+export const normalizeError = (error, options = {}) => {
+  // ensure options
+  let { name = 'Error', code = 500, status, message } = mergeObjects(options);
+
+  // prepare error properties
+  code = error.code || error.statusCode || code;
+  status = error.status || error.statusCode || status || code;
+  name = error.name || name;
+  message = error.message || message || STATUS_CODES[code];
+
+  // assign values
+  assign(error, { code, status, name, message });
+
+  // return normalized error
+  return error;
 };
 
 /**

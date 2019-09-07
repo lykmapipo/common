@@ -17,6 +17,7 @@ import {
   has,
   hasAll,
   hasAny,
+  normalizeError,
   bagify,
   mapErrorToObject,
   osInfo,
@@ -253,6 +254,24 @@ describe('common', () => {
     expect(hasAny([1, 2], [1, 2])).to.be.true;
     expect(hasAny([1, 2], 1, 3)).to.be.true;
     expect(hasAny([1, 2], 3)).to.be.false;
+  });
+
+  it('should normalize error instance', () => {
+    const error = new Error('Internal Server Error');
+    const object = normalizeError(error);
+    expect(object.code).to.be.equal(500);
+    expect(object.status).to.be.equal(500);
+    expect(object.name).to.be.equal('Error');
+    expect(object.message).to.be.equal('Internal Server Error');
+  });
+
+  it('should normalize error instance', () => {
+    const error = new Error('Internal Server Error');
+    const object = normalizeError(error, { code: 100, status: 500 });
+    expect(object.code).to.be.equal(100);
+    expect(object.status).to.be.equal(500);
+    expect(object.name).to.be.equal('Error');
+    expect(object.message).to.be.equal('Internal Server Error');
   });
 
   it('should normalize error instance to object', () => {
