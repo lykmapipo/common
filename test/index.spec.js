@@ -297,6 +297,20 @@ describe('common', () => {
     });
   });
 
+  it('should normalize error instance to object with status', () => {
+    const error = new Error('Invalid Arguments');
+    const object = mapErrorToObject(error, { code: 100, status: 400 });
+    expect(object).to.be.eql({
+      status: 400,
+      code: 100,
+      name: 'Error',
+      error: 'Error',
+      message: 'Invalid Arguments',
+      description: 'Invalid Arguments',
+      error_description: 'Invalid Arguments',
+    });
+  });
+
   it('should normalize error instance to object with stack', () => {
     const error = new Error('Bad Request');
     const object = mapErrorToObject(error, { stack: true });
