@@ -17,7 +17,7 @@ import {
   uptime,
 } from 'os';
 import {
-  assign,
+  assign as assignify,
   camelCase,
   cloneDeep,
   compact as compactify,
@@ -321,9 +321,43 @@ export const sortedUniq = value => {
 };
 
 /**
+ * @function assign
+ * @name assign
+ * @description Assign a list of objects into a single object
+ *
+ * **Note:** This method mutates `object`.
+ *
+ * @param {object} [object={}] destination object
+ * @param {...object} objects list of objects
+ * @returns {object} a merged object
+ * @author lally elias <lallyelias87@gmail.com>
+ * @license MIT
+ * @since 0.26.0
+ * @version 0.1.0
+ * @static
+ * @public
+ * @example
+ *
+ * const obj = { a: 1 };
+ * assign(obj, { b: 1 }, { c: 2});
+ * // => { a: 1, b: 1, c: 2 }
+ */
+export const assign = (object = {}, ...objects) => {
+  // ensure source objects
+  let sources = compactify([...objects]);
+  sources = map(sources, compact);
+
+  // assign objects
+  assignify(object, ...sources);
+
+  // return assigned object
+  return object;
+};
+
+/**
  * @function mergeObjects
  * @name mergeObjects
- * @description Merge a list on objects into a single object
+ * @description Merge a list of objects into a single object
  * @param {...object} objects list of objects
  * @returns {object} a merged object
  * @author lally elias <lallyelias87@gmail.com>

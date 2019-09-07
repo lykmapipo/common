@@ -12,6 +12,7 @@ import {
   scopesFor,
   abbreviate,
   idOf,
+  assign,
   mergeObjects,
   variableNameFor,
   has,
@@ -218,6 +219,11 @@ describe('common', () => {
     expect(idOf({})).to.be.undefined;
     expect(idOf(1)).to.be.undefined;
     expect(idOf('1')).to.be.undefined;
+  });
+
+  it('should value to object', () => {
+    const obj = { a: 1 };
+    expect(assign(obj, { b: 1 })).to.be.eql({ a: 1, b: 1 });
   });
 
   it('should merge objects to single object', () => {
