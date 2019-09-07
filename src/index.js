@@ -672,7 +672,8 @@ export const bagify = (errors = {}) => {
  * @param {object} [options] additional convert options
  * @param {string} [options.name=Error] default error name
  * @param {string} [options.code=500] default error code
- * @param {string} [options.stack=false] where to include error stack
+ * @param {string} [options.stack=false] whether to include error stack
+ * @param {string} [options.status=500] default error status
  * @see {@link https://jsonapi.org/format/#errors}
  * @returns {object} formatted error object
  * @author lally elias <lallyelias87@gmail.com>
@@ -699,8 +700,8 @@ export const mapErrorToObject = (error, options = {}) => {
 
   // prepare error payload
   const body = {};
-  body.code = error.code || code;
-  body.status = error.status || status || code;
+  body.code = error.code || error.statusCode || code;
+  body.status = error.status || error.statusCode || status || code;
   body.name = error.name || name;
   body.message = error.message || message || STATUS_CODES[code];
   body.description = error.description || description || body.message;
