@@ -1,3 +1,22 @@
+#### 0.26.0 (2019-09-07)
+
+##### Documentation Changes
+
+*  update status badges ([e53c0703](https://github.com/lykmapipo/common/commit/e53c0703158c29519d19a9908b4e0198113ab172))
+*  remove license year ([09bb6276](https://github.com/lykmapipo/common/commit/09bb627618eb9f02fac2949d6f0c1f63e35a5f24))
+*  update usage docs ([58ee67cd](https://github.com/lykmapipo/common/commit/58ee67cdec4270469ceffeca3d6e4c494bf50803))
+
+##### New Features
+
+*  add object assign helper ([40341ddf](https://github.com/lykmapipo/common/commit/40341ddf35f1289fe481bb3e3bd390efc3eb41dd))
+* **error:**
+  *  add error normalization helper ([9b6532e3](https://github.com/lykmapipo/common/commit/9b6532e318034235bb70f6f833cd71b48ce16d68))
+  *  allow status and code distinction ([7dbf8ffe](https://github.com/lykmapipo/common/commit/7dbf8ffefd6f3509fad0fe108c783ba106ba4488))
+
+##### Tests
+
+*  improve error status & code specs ([fe24da9c](https://github.com/lykmapipo/common/commit/fe24da9cd778f66f0409060cb768671abcdcddb6))
+
 #### 0.25.3 (2019-09-07)
 
 ##### Chores

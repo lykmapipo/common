@@ -1,7 +1,7 @@
 import { resolve } from 'path';
 import { readFileSync } from 'fs';
 import { arch, cpus, endianness, freemem, homedir, hostname, loadavg, networkInterfaces, platform, release, tmpdir, totalmem, type, uptime } from 'os';
-import { isBoolean, cloneDeep, flattenDeep, map, reduce, isArray, compact as compact$1, isPlainObject, omitBy, uniq as uniq$1, orderBy, merge, isEmpty, pick, words, get, camelCase, includes, every, some, forEach, toUpper, omit, toLower, toString, first } from 'lodash';
+import { isBoolean, cloneDeep, flattenDeep, map, reduce, isArray, compact as compact$1, isPlainObject, omitBy, uniq as uniq$1, orderBy, assign as assign$1, merge, isEmpty, pick, words, get, camelCase, includes, every, some, forEach, toUpper, omit, toLower, toString, first } from 'lodash';
 export { getExtension as mimeExtensionOf, getType as mimeTypeOf } from 'mime';
 import { STATUS_CODES } from 'statuses';
 import inflection from 'inflection';
@@ -278,9 +278,43 @@ const sortedUniq = value => {
 };
 
 /**
+ * @function assign
+ * @name assign
+ * @description Assign a list of objects into a single object
+ *
+ * **Note:** This method mutates `object`.
+ *
+ * @param {object} [object={}] destination object
+ * @param {...object} objects list of objects
+ * @returns {object} a merged object
+ * @author lally elias <lallyelias87@gmail.com>
+ * @license MIT
+ * @since 0.26.0
+ * @version 0.1.0
+ * @static
+ * @public
+ * @example
+ *
+ * const obj = { a: 1 };
+ * assign(obj, { b: 1 }, { c: 2});
+ * // => { a: 1, b: 1, c: 2 }
+ */
+const assign = (object = {}, ...objects) => {
+  // ensure source objects
+  let sources = compact$1([...objects]);
+  sources = map(sources, compact);
+
+  // assign objects
+  assign$1(object, ...sources);
+
+  // return assigned object
+  return object;
+};
+
+/**
  * @function mergeObjects
  * @name mergeObjects
- * @description Merge a list on objects into a single object
+ * @description Merge a list of objects into a single object
  * @param {...object} objects list of objects
  * @returns {object} a merged object
  * @author lally elias <lallyelias87@gmail.com>
@@ -578,6 +612,49 @@ const hasAny = (collection, ...values) => {
 };
 
 /**
+ * @function normalizeError
+ * @name normalizeError
+ * @description Normalize error instance with name, code, status and message.
+ *
+ * **Note:** This method mutates `object`.
+ *
+ * @param {Error} error valid error instance
+ * @param {object} [options] additional convert options
+ * @param {string} [options.name=Error] default error name
+ * @param {string} [options.code=500] default error code
+ * @param {string} [options.status=500] default error status
+ * @param {string} [options.message=500] default error message
+ * @see {@link https://jsonapi.org/format/#errors}
+ * @returns {Error} normalized error object
+ * @author lally elias <lallyelias87@gmail.com>
+ * @license MIT
+ * @since 0.26.0
+ * @version 0.1.0
+ * @static
+ * @public
+ * @example
+ *
+ * const body = normalizeError(new Error('Missing API Key'));
+ * // => error.status = 500;
+ */
+const normalizeError = (error, options = {}) => {
+  // ensure options
+  let { name = 'Error', code = 500, status, message } = mergeObjects(options);
+
+  // prepare error properties
+  code = error.code || error.statusCode || code;
+  status = error.status || error.statusCode || status || code;
+  name = error.name || name;
+  message = error.message || message || STATUS_CODES[code];
+
+  // assign values
+  assign(error, { code, status, name, message });
+
+  // return normalized error
+  return error;
+};
+
+/**
  * @function bagify
  * @name bagify
  * @description Normalize errors bag to light weight object
@@ -630,7 +707,8 @@ const bagify = (errors = {}) => {
  * @param {object} [options] additional convert options
  * @param {string} [options.name=Error] default error name
  * @param {string} [options.code=500] default error code
- * @param {string} [options.stack=false] where to include error stack
+ * @param {string} [options.stack=false] whether to include error stack
+ * @param {string} [options.status=500] default error status
  * @see {@link https://jsonapi.org/format/#errors}
  * @returns {object} formatted error object
  * @author lally elias <lallyelias87@gmail.com>
@@ -657,8 +735,8 @@ const mapErrorToObject = (error, options = {}) => {
 
   // prepare error payload
   const body = {};
-  body.code = error.code || code;
-  body.status = error.status || status || code;
+  body.code = error.code || error.statusCode || code;
+  body.status = error.status || error.statusCode || status || code;
   body.name = error.name || name;
   body.message = error.message || message || STATUS_CODES[code];
   body.description = error.description || description || body.message;
@@ -1031,4 +1109,4 @@ const autoParse = (value, ...fields) => {
   return parseValue(copyOfValue);
 };
 
-export { RESOURCE_ACTIONS, abbreviate, areNotEmpty, autoParse, bagify, compact, copyOf, formatDate, has, hasAll, hasAny, hashOf, idOf, isNotValue, mapErrorToObject, mapToLower, mapToUpper, mergeObjects, osInfo, parse, parseTemplate, pkg, pluralize, processInfo, randomColor, scopesFor, singularize, sortedUniq, stringify, stripHtmlTags, uniq, variableNameFor };
+export { RESOURCE_ACTIONS, abbreviate, areNotEmpty, assign, autoParse, bagify, compact, copyOf, formatDate, has, hasAll, hasAny, hashOf, idOf, isNotValue, mapErrorToObject, mapToLower, mapToUpper, mergeObjects, normalizeError, osInfo, parse, parseTemplate, pkg, pluralize, processInfo, randomColor, scopesFor, singularize, sortedUniq, stringify, stripHtmlTags, uniq, variableNameFor };

@@ -278,9 +278,44 @@ const y = sortedUniq({a: 1, b: "", c: undefined});
 
 
 
+#### assign([object&#x3D;{}], objects) 
+
+Assign a list of objects into a single object 
+**Note:** This method mutates `object`.
+
+
+
+
+##### Parameters
+
+| Name | Type | Description |  |
+| ---- | ---- | ----------- | -------- |
+| object&#x3D;{} | `object`  | destination object | *Optional* |
+| objects | `object`  | list of objects | &nbsp; |
+
+
+
+
+##### Examples
+
+```javascript
+
+const obj = { a: 1 };
+assign(obj, { b: 1 }, { c: 2});
+// => { a: 1, b: 1, c: 2 }
+```
+
+
+##### Returns
+
+
+- `object`  a merged object
+
+
+
 #### mergeObjects(objects) 
 
-Merge a list on objects into a single object
+Merge a list of objects into a single object
 
 
 
@@ -597,6 +632,44 @@ const hasValues = hasAny([ 'a', 'b' ], 'c', 'd');
 
 
 
+#### normalizeError(error[, options]) 
+
+Normalize error instance with name, code, status and message. 
+**Note:** This method mutates `object`.
+
+
+
+
+##### Parameters
+
+| Name | Type | Description |  |
+| ---- | ---- | ----------- | -------- |
+| error | `Error`  | valid error instance | &nbsp; |
+| options | `object`  | additional convert options | *Optional* |
+| options.name&#x3D;Error | `string`  | default error name | *Optional* |
+| options.code&#x3D;500 | `string`  | default error code | *Optional* |
+| options.status&#x3D;500 | `string`  | default error status | *Optional* |
+| options.message&#x3D;500 | `string`  | default error message | *Optional* |
+
+
+
+
+##### Examples
+
+```javascript
+
+const body = normalizeError(new Error('Missing API Key'));
+// => error.status = 500;
+```
+
+
+##### Returns
+
+
+- `Error`  normalized error object
+
+
+
 #### bagify(errors) 
 
 Normalize errors bag to light weight object
@@ -644,7 +717,8 @@ Convert error instance to light weight object
 | options | `object`  | additional convert options | *Optional* |
 | options.name&#x3D;Error | `string`  | default error name | *Optional* |
 | options.code&#x3D;500 | `string`  | default error code | *Optional* |
-| options.stack&#x3D;false | `string`  | where to include error stack | *Optional* |
+| options.stack&#x3D;false | `string`  | whether to include error stack | *Optional* |
+| options.status&#x3D;500 | `string`  | default error status | *Optional* |
 
 
 
