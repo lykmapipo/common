@@ -35,6 +35,8 @@ import {
   pluralize,
   singularize,
   autoParse,
+  flat,
+  unflat,
 } from '../src/index';
 
 describe('common', () => {
@@ -578,5 +580,15 @@ describe('common', () => {
     const val = '5';
     expect(autoParse(val)).to.be.eql(5);
     expect(val).to.eql(val);
+  });
+
+  it('should flat a value', () => {
+    const value = { a: { b: { c: 2 } } };
+    expect(flat(value)).to.be.eql({ 'a.b.c': 2 });
+  });
+
+  it('should unflat a value', () => {
+    const value = { 'a.b.c': 2 };
+    expect(unflat(value)).to.be.eql({ a: { b: { c: 2 } } });
   });
 });

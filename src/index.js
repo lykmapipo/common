@@ -46,6 +46,7 @@ import {
   words as wordify,
 } from 'lodash';
 import { getType as mimeTypeOf, getExtension as mimeExtensionOf } from 'mime';
+import { flatten, unflatten } from 'flat';
 import { STATUS_CODES } from 'statuses';
 import inflection from 'inflection';
 import generateColor from 'randomcolor';
@@ -1188,4 +1189,52 @@ export const autoParse = (value, ...fields) => {
   }
   // handle others
   return parseValue(copyOfValue);
+};
+
+/**
+ * @function flat
+ * @name flat
+ * @description Flatten a nested object
+ * @param {object} value valid object to flatten
+ * @returns {object} flatten object
+ * @author lally elias <lallyelias87@gmail.com>
+ * @license MIT
+ * @since 0.27.0
+ * @version 0.1.0
+ * @static
+ * @public
+ * @example
+ *
+ * const value = { a: { b: { c: 2 } } };
+ * flat(value);
+ * // => { 'a.b.c': 2 }
+ */
+export const flat = value => {
+  let flattened = copyOf(value);
+  flattened = flatten(flattened);
+  return flattened;
+};
+
+/**
+ * @function unflat
+ * @name unflat
+ * @description Unflatten object to nested object
+ * @param {object} value valid object to un flatten
+ * @returns {object} nested object
+ * @author lally elias <lallyelias87@gmail.com>
+ * @license MIT
+ * @since 0.27.0
+ * @version 0.1.0
+ * @static
+ * @public
+ * @example
+ *
+ * const value = { 'a.b.c': 2 };
+ * unflat(value);
+ * // => { a: { b: { c: 2 } } };
+ */
+export const unflat = value => {
+  let unflatted = copyOf(value);
+  unflatted = unflatten(unflatted);
+  return unflatted;
 };
