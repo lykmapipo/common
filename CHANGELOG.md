@@ -1,3 +1,13 @@
+#### 0.27.0 (2019-09-26)
+
+##### Chores
+
+* **deps:**  force latest version & audit fix ([eaaa9c45](https://github.com/lykmapipo/common/commit/eaaa9c45f34c883bdf485e5fb6c521c2d202400b))
+
+##### New Features
+
+*  add flat and unflat helpers ([871660a9](https://github.com/lykmapipo/common/commit/871660a9f8f4b4a3e49a70f3e803b5ff4bb4c8ec))
+
 #### 0.26.4 (2019-09-24)
 
 ##### Chores

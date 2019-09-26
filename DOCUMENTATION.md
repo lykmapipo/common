@@ -1130,5 +1130,71 @@ autoParse({ a: '5', b: '6' }, 'a'))
 
 
 
+#### flat(value) 
+
+Flatten a nested object
+
+
+
+
+##### Parameters
+
+| Name | Type | Description |  |
+| ---- | ---- | ----------- | -------- |
+| value | `object`  | valid object to flatten | &nbsp; |
+
+
+
+
+##### Examples
+
+```javascript
+
+const value = { a: { b: { c: 2 } } };
+flat(value);
+// => { 'a.b.c': 2 }
+```
+
+
+##### Returns
+
+
+- `object`  flatten object
+
+
+
+#### unflat(value) 
+
+Unflatten object to nested object
+
+
+
+
+##### Parameters
+
+| Name | Type | Description |  |
+| ---- | ---- | ----------- | -------- |
+| value | `object`  | valid object to un flatten | &nbsp; |
+
+
+
+
+##### Examples
+
+```javascript
+
+const value = { 'a.b.c': 2 };
+unflat(value);
+// => { a: { b: { c: 2 } } };
+```
+
+
+##### Returns
+
+
+- `object`  nested object
+
+
+
 
 *Documentation generated with [doxdox](https://github.com/neogeek/doxdox).*
