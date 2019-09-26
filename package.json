@@ -83,7 +83,7 @@
   },
   "dependencies": {
     "auto-parse": ">=1.8.0",
-    "flat": "^4.1.0",
+    "flat": ">=4.1.0",
     "inflection": ">=1.12.0",
     "lodash": ">=4.17.15",
     "mime": ">=2.4.4",
