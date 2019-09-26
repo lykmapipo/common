@@ -1,3 +1,9 @@
+#### 0.27.1 (2019-09-26)
+
+##### Chores
+
+* **deps:**  fix peer resoulutions ([c9b393a9](https://github.com/lykmapipo/common/commit/c9b393a9dfbbf1012ade307e906ea50bf68fbca2))
+
 #### 0.27.0 (2019-09-26)
 
 ##### Chores
