@@ -383,7 +383,7 @@ const { name, version } = pkg(__dirname);
 
 #### scopesFor(resources) 
 
-Generate resource scopes(permissions)
+Generate resource scopes
 
 
 
@@ -392,7 +392,7 @@ Generate resource scopes(permissions)
 
 | Name | Type | Description |  |
 | ---- | ---- | ----------- | -------- |
-| resources | `string`  | resources | &nbsp; |
+| resources | `string`  | valid resources | &nbsp; |
 
 
 
@@ -409,7 +409,39 @@ const scopes = scopesFor('user')
 ##### Returns
 
 
-- `Array`  resources scopes
+- `Array.&lt;string&gt;`  resources scopes
+
+
+
+#### permissionsFor(resources) 
+
+Generate resource permissions
+
+
+
+
+##### Parameters
+
+| Name | Type | Description |  |
+| ---- | ---- | ----------- | -------- |
+| resources | `string`  | valid resources | &nbsp; |
+
+
+
+
+##### Examples
+
+```javascript
+
+const permissions = permissionsFor('User')
+// => [{resource: 'User', wildcard: 'user:create', action: ...}, ....];
+```
+
+
+##### Returns
+
+
+- `Array.&lt;object&gt;`  resources permissions
 
 
 

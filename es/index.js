@@ -1,7 +1,7 @@
 import { resolve } from 'path';
 import { readFileSync } from 'fs';
 import { arch, cpus, endianness, freemem, homedir, hostname, loadavg, networkInterfaces, platform, release, tmpdir, totalmem, type, uptime } from 'os';
-import { isBoolean, cloneDeep, flattenDeep, map, reduce, isArray, compact as compact$1, isPlainObject, omitBy, uniq as uniq$1, orderBy, assign as assign$1, merge, isEmpty, pick, words, get, camelCase, includes, every, some, forEach, toUpper, omit, toLower, toString, first } from 'lodash';
+import { isBoolean, cloneDeep, flattenDeep, map, reduce, isArray, compact as compact$1, isPlainObject, omitBy, uniq as uniq$1, orderBy, assign as assign$1, merge, isEmpty, pick, forEach, toLower, startCase, words, get, camelCase, includes, every, some, toUpper, omit, toString, first } from 'lodash';
 export { getExtension as mimeExtensionOf, getType as mimeTypeOf } from 'mime';
 import { flatten, unflatten } from 'flat';
 import { STATUS_CODES } from 'statuses';
@@ -394,9 +394,9 @@ const pkg = (path, ...field) => {
 /**
  * @function scopesFor
  * @name scopesFor
- * @description Generate resource scopes(permissions)
- * @param {...string} resources resources
- * @returns {Array} resources scopes
+ * @description Generate resource scopes
+ * @param {...string} resources valid resources
+ * @returns {string[]} resources scopes
  * @author lally elias <lallyelias87@gmail.com>
  * @license MIT
  * @since 0.6.0
@@ -436,6 +436,53 @@ const scopesFor = (...resources) => {
 
   // return resources scopes
   return scopes;
+};
+
+/**
+ * @function permissionsFor
+ * @name permissionsFor
+ * @description Generate resource permissions
+ * @param {...string} resources valid resources
+ * @returns {object[]} resources permissions
+ * @author lally elias <lallyelias87@gmail.com>
+ * @license MIT
+ * @since 0.28.0
+ * @version 0.1.0
+ * @static
+ * @public
+ * @example
+ *
+ * const permissions = permissionsFor('User')
+ * // => [{resource: 'User', wildcard: 'user:create', action: ...}, ....];
+ */
+const permissionsFor = (...resources) => {
+  // initialize resources permissions
+  let permissions = [];
+
+  // generate resources permissions
+  if (resources) {
+    // copy unique resources
+    const copyOfResources = uniq([...resources]);
+
+    // create permissions(permissions) per resource
+    forEach(copyOfResources, resource => {
+      // prepare resource permissions
+      const resourcePermissions = map(RESOURCE_ACTIONS, action => {
+        return {
+          resource,
+          action: toLower(action),
+          description: startCase(`${action} ${resource}`),
+          wildcard: toLower([resource, action].join(':')),
+        };
+      });
+
+      // collect resource permissions
+      permissions = [...permissions, ...resourcePermissions];
+    });
+  }
+
+  // return resources permissions
+  return permissions;
 };
 
 /**
@@ -1158,4 +1205,4 @@ const unflat = value => {
   return unflatted;
 };
 
-export { RESOURCE_ACTIONS, abbreviate, areNotEmpty, assign, autoParse, bagify, compact, copyOf, flat, formatDate, has, hasAll, hasAny, hashOf, idOf, isNotValue, mapErrorToObject, mapToLower, mapToUpper, mergeObjects, normalizeError, osInfo, parse, parseTemplate, pkg, pluralize, processInfo, randomColor, scopesFor, singularize, sortedUniq, stringify, stripHtmlTags, unflat, uniq, variableNameFor };
+export { RESOURCE_ACTIONS, abbreviate, areNotEmpty, assign, autoParse, bagify, compact, copyOf, flat, formatDate, has, hasAll, hasAny, hashOf, idOf, isNotValue, mapErrorToObject, mapToLower, mapToUpper, mergeObjects, normalizeError, osInfo, parse, parseTemplate, permissionsFor, pkg, pluralize, processInfo, randomColor, scopesFor, singularize, sortedUniq, stringify, stripHtmlTags, unflat, uniq, variableNameFor };
