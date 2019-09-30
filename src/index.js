@@ -39,6 +39,7 @@ import {
   orderBy,
   reduce,
   some,
+  startCase,
   toLower,
   toString,
   toUpper,
@@ -437,9 +438,9 @@ export const pkg = (path, ...field) => {
 /**
  * @function scopesFor
  * @name scopesFor
- * @description Generate resource scopes(permissions)
- * @param {...string} resources resources
- * @returns {Array} resources scopes
+ * @description Generate resource scopes
+ * @param {...string} resources valid resources
+ * @returns {string[]} resources scopes
  * @author lally elias <lallyelias87@gmail.com>
  * @license MIT
  * @since 0.6.0
@@ -479,6 +480,53 @@ export const scopesFor = (...resources) => {
 
   // return resources scopes
   return scopes;
+};
+
+/**
+ * @function permissionsFor
+ * @name permissionsFor
+ * @description Generate resource permissions
+ * @param {...string} resources valid resources
+ * @returns {object[]} resources permissions
+ * @author lally elias <lallyelias87@gmail.com>
+ * @license MIT
+ * @since 0.28.0
+ * @version 0.1.0
+ * @static
+ * @public
+ * @example
+ *
+ * const permissions = permissionsFor('User')
+ * // => [{resource: 'User', wildcard: 'user:create', action: ...}, ....];
+ */
+export const permissionsFor = (...resources) => {
+  // initialize resources permissions
+  let permissions = [];
+
+  // generate resources permissions
+  if (resources) {
+    // copy unique resources
+    const copyOfResources = uniq([...resources]);
+
+    // create permissions(permissions) per resource
+    forEach(copyOfResources, resource => {
+      // prepare resource permissions
+      const resourcePermissions = map(RESOURCE_ACTIONS, action => {
+        return {
+          resource,
+          action: toLower(action),
+          description: startCase(`${action} ${resource}`),
+          wildcard: toLower([resource, action].join(':')),
+        };
+      });
+
+      // collect resource permissions
+      permissions = [...permissions, ...resourcePermissions];
+    });
+  }
+
+  // return resources permissions
+  return permissions;
 };
 
 /**

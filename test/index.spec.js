@@ -1,3 +1,4 @@
+import { _ } from 'lodash';
 import { expect } from '@lykmapipo/test-helpers';
 import {
   isNotValue,
@@ -10,6 +11,7 @@ import {
   sortedUniq,
   pkg,
   scopesFor,
+  permissionsFor,
   abbreviate,
   idOf,
   assign,
@@ -178,6 +180,31 @@ describe('common', () => {
     const scopes = scopesFor('user', 'payment');
     expect(scopes).to.exist;
     expect(scopes).to.include(
+      'user:create',
+      'user:view',
+      'user:edit',
+      'user:delete',
+      'user:share',
+      'user:print',
+      'user:import',
+      'user:export',
+      'user:download',
+      'payment:create',
+      'payment:view',
+      'payment:edit',
+      'payment:delete',
+      'payment:share',
+      'payment:print',
+      'payment:import',
+      'payment:export',
+      'payment:download'
+    );
+  });
+
+  it('should create permissions for resources', () => {
+    const permissions = permissionsFor('User', 'Payment');
+    expect(permissions).to.exist;
+    expect(_.map(permissions, 'wildcard')).to.include(
       'user:create',
       'user:view',
       'user:edit',
