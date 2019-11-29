@@ -56,7 +56,7 @@
     "@commitlint/cli": "^8.2.0",
     "@commitlint/config-conventional": "^8.2.0",
     "@commitlint/travis-cli": "^8.2.0",
-    "@lykmapipo/test-helpers": "^0.4.11",
+    "@lykmapipo/test-helpers": "^0.4.12",
     "chai": "^4.2.0",
     "commitizen": "^4.0.3",
     "coveralls": "^3.0.9",
