@@ -1228,5 +1228,45 @@ unflat(value);
 
 
 
+#### join(values[, separator&#x3D;&#x27;,, property]) 
+
+Converts array values into a string separated by separator
+
+
+
+
+##### Parameters
+
+| Name | Type | Description |  |
+| ---- | ---- | ----------- | -------- |
+| values | `Array.<string>`  | list to convert to string | &nbsp; |
+| separator&#x3D;&#x27;, | `string`  | '] valid separator | *Optional* |
+| property | `string`  | property to pick when value is object | *Optional* |
+
+
+
+
+##### Examples
+
+```javascript
+
+const join = join('a');
+// => 'a'
+
+const join = join(['a', 'b']);
+// => 'a, b, c'
+
+* const join = join([{ a: 'c' }, 'b'], ', ', 'c');
+// => 'c, b'
+```
+
+
+##### Returns
+
+
+- `string`  joined values
+
+
+
 
 *Documentation generated with [doxdox](https://github.com/neogeek/doxdox).*

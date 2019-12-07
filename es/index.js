@@ -1,7 +1,7 @@
 import { resolve } from 'path';
 import { readFileSync } from 'fs';
 import { arch, cpus, endianness, freemem, homedir, hostname, loadavg, networkInterfaces, platform, release, tmpdir, totalmem, type, uptime } from 'os';
-import { isBoolean, cloneDeep, flattenDeep, map, reduce, isArray, compact as compact$1, isPlainObject, omitBy, uniq as uniq$1, orderBy, assign as assign$1, merge, isEmpty, pick, forEach, toLower, startCase, words, get, camelCase, includes, every, some, toUpper, omit, toString, first } from 'lodash';
+import { isBoolean, cloneDeep, flattenDeep, map, reduce, isArray, compact as compact$1, isPlainObject, omitBy, uniq as uniq$1, orderBy, assign as assign$1, merge, isEmpty, pick, forEach, toLower, startCase, words, get, camelCase, includes, every, some, toUpper, omit, join as join$1, toString, first } from 'lodash';
 export { getExtension as mimeExtensionOf, getType as mimeTypeOf } from 'mime';
 import { flatten, unflatten } from 'flat';
 import { STATUS_CODES } from 'statuses';
@@ -1205,4 +1205,48 @@ const unflat = value => {
   return unflatted;
 };
 
-export { RESOURCE_ACTIONS, abbreviate, areNotEmpty, assign, autoParse, bagify, compact, copyOf, flat, formatDate, has, hasAll, hasAny, hashOf, idOf, isNotValue, mapErrorToObject, mapToLower, mapToUpper, mergeObjects, normalizeError, osInfo, parse, parseTemplate, permissionsFor, pkg, pluralize, processInfo, randomColor, scopesFor, singularize, sortedUniq, stringify, stripHtmlTags, unflat, uniq, variableNameFor };
+/**
+ * @function join
+ * @name join
+ * @description Converts array values into a string separated by separator
+ * @param {string[]} values list to convert to string
+ * @param {string} [separator=', '] valid separator
+ * @param {string} [property] property to pick when value is object
+ * @returns {string} joined values
+ * @author lally elias <lallyelias87@gmail.com>
+ * @license MIT
+ * @since 0.29.0
+ * @version 0.1.0
+ * @static
+ * @public
+ * @example
+ *
+ * const join = join('a');
+ * // => 'a'
+ *
+ * const join = join(['a', 'b']);
+ * // => 'a, b, c'
+ *
+ * * const join = join([{ a: 'c' }, 'b'], ', ', 'c');
+ * // => 'c, b'
+ */
+const join = (values = [], separator = ', ', property = '') => {
+  // copy values
+  const copies = flattenDeep([].concat(values));
+
+  // collect parts
+  const parts = map(copies, copy => {
+    if (isPlainObject(copy)) {
+      return get(copy, property);
+    }
+    return copy;
+  });
+
+  // joined parts
+  const joined = join$1(parts, separator);
+
+  // return joined values
+  return joined;
+};
+
+export { RESOURCE_ACTIONS, abbreviate, areNotEmpty, assign, autoParse, bagify, compact, copyOf, flat, formatDate, has, hasAll, hasAny, hashOf, idOf, isNotValue, join, mapErrorToObject, mapToLower, mapToUpper, mergeObjects, normalizeError, osInfo, parse, parseTemplate, permissionsFor, pkg, pluralize, processInfo, randomColor, scopesFor, singularize, sortedUniq, stringify, stripHtmlTags, unflat, uniq, variableNameFor };

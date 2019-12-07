@@ -1,3 +1,9 @@
+#### 0.29.0 (2019-12-07)
+
+##### New Features
+
+*  add value join helper ([18323f0c](https://github.com/lykmapipo/common/commit/18323f0ce5caff7b3c015c00a17cdb6bb3a56274))
+
 #### 0.28.14 (2019-12-06)
 
 ##### Chores
