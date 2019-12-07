@@ -31,6 +31,7 @@ import {
   isEmpty,
   includes,
   isPlainObject,
+  join as joinify,
   map,
   merge as mergify,
   pick,
@@ -1285,4 +1286,48 @@ export const unflat = value => {
   let unflatted = copyOf(value);
   unflatted = unflatten(unflatted);
   return unflatted;
+};
+
+/**
+ * @function join
+ * @name join
+ * @description Converts array values into a string separated by separator
+ * @param {string[]} values list to convert to string
+ * @param {string} [separator=', '] valid separator
+ * @param {string} [property] property to pick when value is object
+ * @returns {string} joined values
+ * @author lally elias <lallyelias87@gmail.com>
+ * @license MIT
+ * @since 0.29.0
+ * @version 0.1.0
+ * @static
+ * @public
+ * @example
+ *
+ * const join = join('a');
+ * // => 'a'
+ *
+ * const join = join(['a', 'b']);
+ * // => 'a, b, c'
+ *
+ * * const join = join([{ a: 'c' }, 'b'], ', ', 'c');
+ * // => 'c, b'
+ */
+export const join = (values = [], separator = ', ', property = '') => {
+  // copy values
+  const copies = flattenDeep([].concat(values));
+
+  // collect parts
+  const parts = map(copies, copy => {
+    if (isPlainObject(copy)) {
+      return get(copy, property);
+    }
+    return copy;
+  });
+
+  // joined parts
+  const joined = joinify(parts, separator);
+
+  // return joined values
+  return joined;
 };

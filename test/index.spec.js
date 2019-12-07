@@ -39,6 +39,7 @@ import {
   autoParse,
   flat,
   unflat,
+  join,
 } from '../src/index';
 
 describe('common', () => {
@@ -617,5 +618,11 @@ describe('common', () => {
   it('should unflat a value', () => {
     const value = { 'a.b.c': 2 };
     expect(unflat(value)).to.be.eql({ a: { b: { c: 2 } } });
+  });
+
+  it('should join values', () => {
+    expect(join('a')).to.be.equal('a');
+    expect(join(['a', 'b'])).to.be.equal('a, b');
+    expect(join([{ a: 'b' }, 'c'], ', ', 'a')).to.be.equal('b, c');
   });
 });
