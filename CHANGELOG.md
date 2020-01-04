@@ -1,3 +1,9 @@
+#### 0.30.0 (2020-01-04)
+
+##### New Features
+
+* **runtime:**  detect node, browser and web worker ([cf217fc9](https://github.com/lykmapipo/common/commit/cf217fc924a0f25f23634f520d1b3c16aa76e602))
+
 #### 0.29.2 (2020-01-03)
 
 ##### Chores
