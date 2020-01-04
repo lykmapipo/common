@@ -1,6 +1,9 @@
 import { _ } from 'lodash';
 import { expect } from '@lykmapipo/test-helpers';
 import {
+  isNode,
+  isBrowser,
+  isWebWorker,
   isNotValue,
   copyOf,
   mapToUpper,
@@ -43,6 +46,18 @@ import {
 } from '../src/index';
 
 describe('common', () => {
+  it('should check for node runtime', () => {
+    expect(isNode).to.be.true;
+  });
+
+  it('should check for node runtime', () => {
+    expect(isBrowser).to.be.false;
+  });
+
+  it('should check for node runtime', () => {
+    expect(isWebWorker).to.be.false;
+  });
+
   it('should check if variable has no state', () => {
     expect(isNotValue).to.exist;
     expect(isNotValue).to.be.a('function');

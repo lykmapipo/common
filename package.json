@@ -1,6 +1,6 @@
 {
   "name": "@lykmapipo/common",
-  "version": "0.29.2",
+  "version": "0.30.0",
   "description": "Helper utilities for day to day development",
   "main": "lib/index.js",
   "module": "es/index.js",
@@ -53,9 +53,9 @@
     "@babel/node": "^7.7.7",
     "@babel/preset-env": "^7.7.7",
     "@babel/register": "^7.7.7",
-    "@commitlint/cli": "^8.3.3",
-    "@commitlint/config-conventional": "^8.3.3",
-    "@commitlint/travis-cli": "^8.3.3",
+    "@commitlint/cli": "^8.3.4",
+    "@commitlint/config-conventional": "^8.3.4",
+    "@commitlint/travis-cli": "^8.3.4",
     "@lykmapipo/test-helpers": "^0.5.1",
     "chai": "^4.2.0",
     "commitizen": "^4.0.3",
@@ -83,6 +83,7 @@
   },
   "dependencies": {
     "auto-parse": ">=1.8.0",
+    "browser-or-node": ">=1.2.1",
     "flat": ">=5.0.0",
     "inflection": ">=1.12.0",
     "lodash": ">=4.17.15",

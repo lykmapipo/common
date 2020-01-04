@@ -59,6 +59,8 @@ import renderTemplate from 'string-template';
 import stripTags from 'striptags';
 import parseValue from 'auto-parse';
 
+export { isNode, isBrowser, isWebWorker } from 'browser-or-node';
+
 /**
  * @name RESOURCE_ACTIONS
  * @description Default resource actions
