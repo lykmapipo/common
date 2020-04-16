@@ -389,6 +389,35 @@ export const mergeObjects = (...objects) => {
 };
 
 /**
+ * @function safeMergeObjects
+ * @name safeMergeObjects
+ * @description Merge a list of objects into a single object without
+ * cloning sources
+ * @param {...object} objects list of objects
+ * @returns {object} a merged object
+ * @author lally elias <lallyelias87@gmail.com>
+ * @license MIT
+ * @since 0.31.0
+ * @version 0.1.0
+ * @static
+ * @public
+ * @example
+ *
+ * const obj = safeMergeObjects({ a: 1 }, { b: 1 }, { c: 2}, { c: 2}, {b: null})
+ * // => { a: 1, b: 1, c: 2 }
+ */
+export const safeMergeObjects = (...objects) => {
+  // ensure source objects
+  const sources = compactify([...objects]);
+
+  // merged objects
+  const merged = mergify({}, ...sources);
+
+  // return merged object
+  return merged;
+};
+
+/**
  * @function pkg
  * @name pkg
  * @description Read package information

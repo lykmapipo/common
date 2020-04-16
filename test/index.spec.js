@@ -19,6 +19,7 @@ import {
   idOf,
   assign,
   mergeObjects,
+  safeMergeObjects,
   variableNameFor,
   has,
   hasAll,
@@ -278,6 +279,18 @@ describe('common', () => {
       b: 1,
     });
     expect(mergeObjects({ a: false }, { b: true })).to.be.eql({
+      a: false,
+      b: true,
+    });
+  });
+
+  it('should safe merge objects to single object', () => {
+    expect(safeMergeObjects({ a: 1 }, { b: 1 })).to.be.eql({ a: 1, b: 1 });
+    expect(safeMergeObjects({ a: 1 }, { b: 1 }, { b: undefined })).to.be.eql({
+      a: 1,
+      b: 1,
+    });
+    expect(safeMergeObjects({ a: false }, { b: true })).to.be.eql({
       a: false,
       b: true,
     });
