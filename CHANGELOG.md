@@ -1,3 +1,9 @@
+#### 0.31.0 (2020-04-16)
+
+##### New Features
+
+*  implement safe merge object to ignore sources cloning ([ceb72b66](https://github.com/lykmapipo/common/commit/ceb72b6677a97e53284ed012a39f2f51be276aa2))
+
 #### 0.30.10 (2020-04-14)
 
 ##### Chores

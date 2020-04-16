@@ -57,7 +57,7 @@ const RESOURCE_ACTIONS = [
  * const notValue = isNotValue(null);
  * // => true
  */
-const isNotValue = value => (isBoolean(value) ? false : !value);
+const isNotValue = (value) => (isBoolean(value) ? false : !value);
 
 /**
  * @function copyOf
@@ -79,7 +79,7 @@ const isNotValue = value => (isBoolean(value) ? false : !value);
  * const copy = copyOf({ 'a': 1 });
  * // => { 'a': 1 }
  */
-const copyOf = value => cloneDeep(value);
+const copyOf = (value) => cloneDeep(value);
 
 /**
  * @function mapToUpper
@@ -103,7 +103,7 @@ const copyOf = value => cloneDeep(value);
  */
 const mapToUpper = (...values) => {
   // convert lower to upper
-  const convertToUpper = value => toUpper(value);
+  const convertToUpper = (value) => toUpper(value);
   // collect values
   const lowerValues = flattenDeep([...values]);
   // convert to upper
@@ -134,7 +134,7 @@ const mapToUpper = (...values) => {
  */
 const mapToLower = (...values) => {
   // convert upper to lower
-  const convertToLower = value => toLower(value);
+  const convertToLower = (value) => toLower(value);
   // collect values
   const upperValues = flattenDeep([...values]);
   // convert to lower
@@ -197,7 +197,7 @@ const areNotEmpty = (...values) => {
  * const y = compact({a: 1, b: "", c: undefined});
  * // => { a: 1 }
  */
-const compact = value => {
+const compact = (value) => {
   // copy value
   const copyOfValue = copyOf(value);
 
@@ -235,7 +235,7 @@ const compact = value => {
  * const y = uniq({a: 1, b: "", c: undefined});
  * // => { a: 1 }
  */
-const uniq = value => {
+const uniq = (value) => {
   // uniq
   if (value) {
     let copyOfValue = compact(value);
@@ -267,7 +267,7 @@ const uniq = value => {
  * const y = sortedUniq({a: 1, b: "", c: undefined});
  * // => { a: 1 }
  */
-const sortedUniq = value => {
+const sortedUniq = (value) => {
   // sortedUniq
   if (value) {
     let copyOfValue = uniq(value);
@@ -334,6 +334,35 @@ const mergeObjects = (...objects) => {
   // ensure source objects
   let sources = compact$1([...objects]);
   sources = map(sources, compact);
+
+  // merged objects
+  const merged = merge({}, ...sources);
+
+  // return merged object
+  return merged;
+};
+
+/**
+ * @function safeMergeObjects
+ * @name safeMergeObjects
+ * @description Merge a list of objects into a single object without
+ * cloning sources
+ * @param {...object} objects list of objects
+ * @returns {object} a merged object
+ * @author lally elias <lallyelias87@gmail.com>
+ * @license MIT
+ * @since 0.31.0
+ * @version 0.1.0
+ * @static
+ * @public
+ * @example
+ *
+ * const obj = safeMergeObjects({ a: 1 }, { b: 1 }, { c: 2}, { c: 2}, {b: null})
+ * // => { a: 1, b: 1, c: 2 }
+ */
+const safeMergeObjects = (...objects) => {
+  // ensure source objects
+  const sources = compact$1([...objects]);
 
   // merged objects
   const merged = merge({}, ...sources);
@@ -414,9 +443,9 @@ const scopesFor = (...resources) => {
   let scopes;
 
   // map resource to actions
-  const toActions = resource => {
+  const toActions = (resource) => {
     // map action to wildcard scopes
-    const toWildcard = action => {
+    const toWildcard = (action) => {
       // map action to scope(permission)
       const scope = toLower([resource, action].join(':'));
       return scope;
@@ -466,9 +495,9 @@ const permissionsFor = (...resources) => {
     const copyOfResources = uniq([...resources]);
 
     // create permissions(permissions) per resource
-    forEach(copyOfResources, resource => {
+    forEach(copyOfResources, (resource) => {
       // prepare resource permissions
-      const resourcePermissions = map(RESOURCE_ACTIONS, action => {
+      const resourcePermissions = map(RESOURCE_ACTIONS, (action) => {
         return {
           resource,
           action: toLower(action),
@@ -538,7 +567,7 @@ const abbreviate = (...words$1) => {
  * const id = idOf({ _id: 1 })
  * // => 1
  */
-const idOf = data => get(data, '_id') || get(data, 'id');
+const idOf = (data) => get(data, '_id') || get(data, 'id');
 
 /**
  * @function variableNameFor
@@ -611,7 +640,7 @@ const has = (collection, value) => includes(collection, value);
  */
 const hasAll = (collection, ...values) => {
   // check if value is in collection
-  const checkIfIsInCollection = value => has(collection, value);
+  const checkIfIsInCollection = (value) => has(collection, value);
 
   // check if collection has all values
   const flatValues = flattenDeep([...values]);
@@ -650,7 +679,7 @@ const hasAll = (collection, ...values) => {
  */
 const hasAny = (collection, ...values) => {
   // check if value is in collection
-  const checkIfIsInCollection = value => has(collection, value);
+  const checkIfIsInCollection = (value) => has(collection, value);
 
   // check if collection has all values
   const flatValues = flattenDeep([...values]);
@@ -1011,7 +1040,7 @@ const parseTemplate = (template, data) => {
  * const formatted = stripHtmlTags(html);
  * // => 'lorem ipsum dolor sit amet'
  */
-const stripHtmlTags = html => {
+const stripHtmlTags = (html) => {
   const copyOfHtml = copyOf(html);
   const formatted = stripTags(copyOfHtml);
   return formatted;
@@ -1035,7 +1064,7 @@ const stripHtmlTags = html => {
  * const string = stringify(value);
  * // => '{"x":5,"y":6}'
  */
-const stringify = value => {
+const stringify = (value) => {
   try {
     return JSON.stringify(value);
   } catch (e) {
@@ -1061,7 +1090,7 @@ const stringify = value => {
  * const value = parse(value);
  * // => { x: 5, y: 6 }
  */
-const parse = value => {
+const parse = (value) => {
   try {
     return JSON.parse(value);
   } catch (e) {
@@ -1089,7 +1118,7 @@ const parse = value => {
  * pluralize('Hat');
  * // => Hats
  */
-const pluralize = value => {
+const pluralize = (value) => {
   let plural = copyOf(value);
   plural = inflection.pluralize(value);
   return plural;
@@ -1115,7 +1144,7 @@ const pluralize = value => {
  * singularize('Hats');
  * // => Hat
  */
-const singularize = value => {
+const singularize = (value) => {
   let singular = copyOf(value);
   singular = inflection.singularize(value);
   return singular;
@@ -1176,7 +1205,7 @@ const autoParse = (value, ...fields) => {
  * flat(value);
  * // => { 'a.b.c': 2 }
  */
-const flat = value => {
+const flat = (value) => {
   let flattened = copyOf(value);
   flattened = flatten(flattened);
   return flattened;
@@ -1200,7 +1229,7 @@ const flat = value => {
  * unflat(value);
  * // => { a: { b: { c: 2 } } };
  */
-const unflat = value => {
+const unflat = (value) => {
   let unflatted = copyOf(value);
   unflatted = unflatten(unflatted);
   return unflatted;
@@ -1236,7 +1265,7 @@ const join = (values = [], separator = ', ', property = '') => {
   const copies = flattenDeep([].concat(values));
 
   // collect parts
-  const parts = map(copies, copy => {
+  const parts = map(copies, (copy) => {
     if (isPlainObject(copy)) {
       return get(copy, property);
     }
@@ -1250,4 +1279,4 @@ const join = (values = [], separator = ', ', property = '') => {
   return joined;
 };
 
-export { RESOURCE_ACTIONS, abbreviate, areNotEmpty, assign, autoParse, bagify, compact, copyOf, flat, formatDate, has, hasAll, hasAny, hashOf, idOf, isNotValue, join, mapErrorToObject, mapToLower, mapToUpper, mergeObjects, normalizeError, osInfo, parse, parseTemplate, permissionsFor, pkg, pluralize, processInfo, randomColor, scopesFor, singularize, sortedUniq, stringify, stripHtmlTags, unflat, uniq, variableNameFor };
+export { RESOURCE_ACTIONS, abbreviate, areNotEmpty, assign, autoParse, bagify, compact, copyOf, flat, formatDate, has, hasAll, hasAny, hashOf, idOf, isNotValue, join, mapErrorToObject, mapToLower, mapToUpper, mergeObjects, normalizeError, osInfo, parse, parseTemplate, permissionsFor, pkg, pluralize, processInfo, randomColor, safeMergeObjects, scopesFor, singularize, sortedUniq, stringify, stripHtmlTags, unflat, uniq, variableNameFor };

@@ -345,6 +345,38 @@ const obj = mergeObjects({ a: 1 }, { b: 1 }, { c: 2}, { c: 2}, {b: null})
 
 
 
+#### safeMergeObjects(objects) 
+
+Merge a list of objects into a single object without cloning sources
+
+
+
+
+##### Parameters
+
+| Name | Type | Description |  |
+| ---- | ---- | ----------- | -------- |
+| objects | `object`  | list of objects | &nbsp; |
+
+
+
+
+##### Examples
+
+```javascript
+
+const obj = safeMergeObjects({ a: 1 }, { b: 1 }, { c: 2}, { c: 2}, {b: null})
+// => { a: 1, b: 1, c: 2 }
+```
+
+
+##### Returns
+
+
+- `object`  a merged object
+
+
+
 #### pkg([path], field) 
 
 Read package information
