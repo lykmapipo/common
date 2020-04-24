@@ -1,6 +1,6 @@
 {
   "name": "@lykmapipo/common",
-  "version": "0.31.1",
+  "version": "0.32.0",
   "description": "Helper utilities for day to day development",
   "main": "lib/index.js",
   "module": "es/index.js",
@@ -56,11 +56,11 @@
     "@commitlint/cli": "^8.3.5",
     "@commitlint/config-conventional": "^8.3.4",
     "@commitlint/travis-cli": "^8.3.5",
-    "@lykmapipo/test-helpers": "^0.5.15",
+    "@lykmapipo/test-helpers": "^0.5.16",
     "acorn": "^7.1.1",
     "chai": "^4.2.0",
     "commitizen": "^4.0.4",
-    "coveralls": "^3.0.13",
+    "coveralls": "^3.0.14",
     "cz-conventional-changelog": "^3.1.0",
     "doxdox": "^3.0.0",
     "eslint": "^6.8.0",
@@ -81,7 +81,7 @@
     "nyc": "^15.0.1",
     "prettier": "^2.0.5",
     "rimraf": "^3.0.2",
-    "rollup": "^2.7.1",
+    "rollup": "^2.7.2",
     "shelljs": "^0.8.3"
   },
   "dependencies": {

@@ -1,6 +1,7 @@
 import { _ } from 'lodash';
 import { expect } from '@lykmapipo/test-helpers';
 import {
+  STATUS_CODES,
   isNode,
   isBrowser,
   isWebWorker,
@@ -47,6 +48,10 @@ import {
 } from '../src/index';
 
 describe('common', () => {
+  it('should export status codes', () => {
+    expect(STATUS_CODES).to.exist.and.be.an('object');
+  });
+
   it('should check for node runtime', () => {
     expect(isNode).to.be.true;
   });

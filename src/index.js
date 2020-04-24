@@ -49,7 +49,7 @@ import {
 } from 'lodash';
 import { getType as mimeTypeOf, getExtension as mimeExtensionOf } from 'mime';
 import { flatten, unflatten } from 'flat';
-import { STATUS_CODES } from 'statuses';
+import { message as STATUS_CODES } from 'statuses';
 import inflection from 'inflection';
 import generateColor from 'randomcolor';
 import moment from 'moment';
@@ -58,6 +58,8 @@ import hashObject from 'object-hash';
 import renderTemplate from 'string-template';
 import stripTags from 'striptags';
 import parseValue from 'auto-parse';
+
+export { STATUS_CODES };
 
 export { isNode, isBrowser, isWebWorker } from 'browser-or-node';
 
