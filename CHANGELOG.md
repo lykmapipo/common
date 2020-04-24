@@ -1,3 +1,13 @@
+#### 0.32.0 (2020-04-24)
+
+##### Chores
+
+* **deps:**  force latest version & audit fix ([a20aaa9c](https://github.com/lykmapipo/common/commit/a20aaa9cc80a763f3b155eb40f40f50d3c906172))
+
+##### New Features
+
+*  expose http status codes map ([0e836607](https://github.com/lykmapipo/common/commit/0e83660775b01af03635b4af1bb54aa05b68027b))
+
 #### 0.31.1 (2020-04-22)
 
 ##### Chores
