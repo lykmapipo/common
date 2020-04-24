@@ -4,7 +4,8 @@ import { arch, cpus, endianness, freemem, homedir, hostname, loadavg, networkInt
 import { isBoolean, cloneDeep, flattenDeep, map, reduce, isArray, compact as compact$1, isPlainObject, omitBy, uniq as uniq$1, orderBy, assign as assign$1, merge, isEmpty, pick, forEach, toLower, startCase, words, get, camelCase, includes, every, some, toUpper, omit, join as join$1, toString, first } from 'lodash';
 export { getExtension as mimeExtensionOf, getType as mimeTypeOf } from 'mime';
 import { flatten, unflatten } from 'flat';
-import { STATUS_CODES } from 'statuses';
+import { message } from 'statuses';
+export { message as STATUS_CODES } from 'statuses';
 import inflection from 'inflection';
 import generateColor from 'randomcolor';
 import moment from 'moment';
@@ -717,16 +718,16 @@ const hasAny = (collection, ...values) => {
  */
 const normalizeError = (error, options = {}) => {
   // ensure options
-  let { name = 'Error', code = 500, status, message } = mergeObjects(options);
+  let { name = 'Error', code = 500, status, message: message$1 } = mergeObjects(options);
 
   // prepare error properties
   code = error.code || error.statusCode || code;
   status = error.status || error.statusCode || status || code;
   name = error.name || name;
-  message = error.message || message || STATUS_CODES[code];
+  message$1 = error.message || message$1 || message[code];
 
   // assign values
-  assign(error, { code, status, name, message });
+  assign(error, { code, status, name, message: message$1 });
 
   // return normalized error
   return error;
@@ -807,7 +808,7 @@ const mapErrorToObject = (error, options = {}) => {
     code = 500,
     stack = false,
     status,
-    message,
+    message: message$1,
     description,
   } = mergeObjects(options);
 
@@ -816,7 +817,7 @@ const mapErrorToObject = (error, options = {}) => {
   body.code = error.code || error.statusCode || code;
   body.status = error.status || error.statusCode || status || code;
   body.name = error.name || name;
-  body.message = error.message || message || STATUS_CODES[code];
+  body.message = error.message || message$1 || message[code];
   body.description = error.description || description || body.message;
   body.errors = error.errors ? bagify(error.errors) : undefined;
   body.stack = stack ? error.stack : undefined;
