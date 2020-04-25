@@ -45,6 +45,7 @@ import {
   flat,
   unflat,
   join,
+  arrayToObject,
 } from '../src/index';
 
 describe('common', () => {
@@ -657,5 +658,16 @@ describe('common', () => {
     expect(join('a')).to.be.equal('a');
     expect(join(['a', 'b'])).to.be.equal('a, b');
     expect(join([{ a: 'b' }, 'c'], ', ', 'a')).to.be.equal('b, c');
+  });
+
+  it('should convert array to object', () => {
+    expect(arrayToObject(['a'])).to.be.eql({ a: 'a' });
+    expect(arrayToObject(['a'], (obj, val) => val)).to.be.eql({ a: 'a' });
+
+    expect(arrayToObject(['a', 'b'])).to.be.eql({ a: 'a', b: 'b' });
+    expect(arrayToObject(['a', 'b'], (obj, val) => val)).to.be.eql({
+      a: 'a',
+      b: 'b',
+    });
   });
 });
