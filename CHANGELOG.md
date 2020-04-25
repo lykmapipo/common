@@ -1,3 +1,13 @@
+#### 0.33.0 (2020-04-25)
+
+##### Chores
+
+* **deps:**  force latest version & audit fix ([18c57cd0](https://github.com/lykmapipo/common/commit/18c57cd0356d375e13980eabc8ebd75dc2baa74c))
+
+##### New Features
+
+*  add array to object helper ([f8903fc2](https://github.com/lykmapipo/common/commit/f8903fc23e42a5c19528bc3a10bc993370ae9b03))
+
 #### 0.32.1 (2020-04-25)
 
 ##### Chores
