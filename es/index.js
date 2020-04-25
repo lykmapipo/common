@@ -1,7 +1,7 @@
 import { resolve } from 'path';
 import { readFileSync } from 'fs';
 import { arch, cpus, endianness, freemem, homedir, hostname, loadavg, networkInterfaces, platform, release, tmpdir, totalmem, type, uptime } from 'os';
-import { isBoolean, cloneDeep, flattenDeep, map, reduce, isArray, compact as compact$1, isPlainObject, omitBy, uniq as uniq$1, orderBy, assign as assign$1, merge, isEmpty, pick, forEach, toLower, startCase, words, get, camelCase, includes, every, some, toUpper, omit, join as join$1, toString, first } from 'lodash';
+import { isBoolean, cloneDeep, flattenDeep, map, reduce, isArray, compact as compact$1, isPlainObject, omitBy, uniq as uniq$1, orderBy, assign as assign$1, merge, isEmpty, pick, forEach, toLower, startCase, words, get, camelCase, includes, every, some, toUpper, omit, join as join$1, isFunction, toString, first } from 'lodash';
 export { getExtension as mimeExtensionOf, getType as mimeTypeOf } from 'mime';
 import { flatten, unflatten } from 'flat';
 import { message } from 'statuses';
@@ -1280,4 +1280,45 @@ const join = (values = [], separator = ', ', property = '') => {
   return joined;
 };
 
-export { RESOURCE_ACTIONS, abbreviate, areNotEmpty, assign, autoParse, bagify, compact, copyOf, flat, formatDate, has, hasAll, hasAny, hashOf, idOf, isNotValue, join, mapErrorToObject, mapToLower, mapToUpper, mergeObjects, normalizeError, osInfo, parse, parseTemplate, permissionsFor, pkg, pluralize, processInfo, randomColor, safeMergeObjects, scopesFor, singularize, sortedUniq, stringify, stripHtmlTags, unflat, uniq, variableNameFor };
+/**
+ * @function arrayToObject
+ * @name arrayToObject
+ * @description Converts array values into an object
+ * @param {string[]} array array to convert to object
+ * @param {Function} [transformer] iteratee function which receive result
+ * `object` and current `key` to be transformed
+ * @returns {object} resulted object or empty
+ * @author lally elias <lallyelias87@gmail.com>
+ * @license MIT
+ * @since 0.33.0
+ * @version 0.1.0
+ * @static
+ * @public
+ * @example
+ *
+ * const arrayToObject = arrayToObject(['a']);
+ * // => { a: 'a' }
+ *
+ * const arrayToObject = arrayToObject(['a', 'b']);
+ * // => { a: 'a', b: 'b' }
+ *
+ */
+const arrayToObject = (array, transformer) => {
+  // ensure compact keys
+  const keys = compact([].concat(array));
+
+  // prepare transformer
+  const defaultTransformer = (object, value) => value;
+  const valueFor = isFunction(transformer) ? transformer : defaultTransformer;
+
+  // transform array to object
+  const object = {};
+  forEach(keys, (key) => {
+    object[key] = valueFor(object, key);
+  });
+
+  // return object
+  return object;
+};
+
+export { RESOURCE_ACTIONS, abbreviate, areNotEmpty, arrayToObject, assign, autoParse, bagify, compact, copyOf, flat, formatDate, has, hasAll, hasAny, hashOf, idOf, isNotValue, join, mapErrorToObject, mapToLower, mapToUpper, mergeObjects, normalizeError, osInfo, parse, parseTemplate, permissionsFor, pkg, pluralize, processInfo, randomColor, safeMergeObjects, scopesFor, singularize, sortedUniq, stringify, stripHtmlTags, unflat, uniq, variableNameFor };
