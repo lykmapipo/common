@@ -1348,6 +1348,8 @@ export const unflat = (value) => {
  * // => 'c, b'
  */
 export const join = (values = [], separator = ', ', property = '') => {
+  // TODO: prefix(support number)?, suffix(support new line)?
+
   // copy values
   const copies = flattenDeep([].concat(values));
 
