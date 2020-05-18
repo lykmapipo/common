@@ -1,3 +1,16 @@
+#### 0.34.0 (2020-05-18)
+
+##### Chores
+
+* **deps:**
+  *  force latest version & audit fix ([ddf7795e](https://github.com/lykmapipo/common/commit/ddf7795e152ed3b15c6ceac35340b5d2912eecb9))
+  *  force latest version & audit fix ([60449c93](https://github.com/lykmapipo/common/commit/60449c931070fbf7f780c6df749f7dd0efc7832b))
+
+##### New Features
+
+* **uuid:**  expose uuidv1, uuidv3, uuidv4, uuidv5 shortcuts ([ade596d5](https://github.com/lykmapipo/common/commit/ade596d58c8e428a079dc5605224b9c9f4ad764b))
+* **parse-ms:**  convert ms absolute value to object ([625702c7](https://github.com/lykmapipo/common/commit/625702c77c6dc47d092eb71729a298165aba2bee))
+
 #### 0.33.3 (2020-05-14)
 
 ##### Chores
