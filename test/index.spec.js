@@ -46,6 +46,7 @@ import {
   unflat,
   join,
   arrayToObject,
+  parseMs,
 } from '../src/index';
 
 describe('common', () => {
@@ -668,6 +669,28 @@ describe('common', () => {
     expect(arrayToObject(['a', 'b'], (obj, val) => val)).to.be.eql({
       a: 'a',
       b: 'b',
+    });
+  });
+
+  it('should parse milliseconds', () => {
+    expect(parseMs(1337000001)).to.be.eql({
+      days: 15,
+      hours: 11,
+      minutes: 23,
+      seconds: 20,
+      milliseconds: 1,
+      microseconds: 0,
+      nanoseconds: 0,
+    });
+
+    expect(parseMs(-1337000001)).to.be.eql({
+      days: 15,
+      hours: 11,
+      minutes: 23,
+      seconds: 20,
+      milliseconds: 1,
+      microseconds: 0,
+      nanoseconds: 0,
     });
   });
 });

@@ -59,6 +59,7 @@ import hashObject from 'object-hash';
 import renderTemplate from 'string-template';
 import stripTags from 'striptags';
 import parseValue from 'auto-parse';
+import parseMilliSeconds from 'parse-ms';
 
 export { STATUS_CODES };
 
@@ -1407,4 +1408,38 @@ export const arrayToObject = (array, transformer) => {
 
   // return object
   return object;
+};
+
+/**
+ * @function parseMs
+ * @name parseMs
+ * @description Safely parse a given millisecond absolute value into js object
+ * @param {number} ms valid millisecond value
+ * @returns {object} valid js object
+ * @author lally elias <lallyelias87@gmail.com>
+ * @license MIT
+ * @since 0.34.0
+ * @version 0.1.0
+ * @static
+ * @public
+ * @example
+ *
+ * parseMs(1337000001);
+ * // => {
+ *     days: 15,
+ *     hours: 11,
+ *     minutes: 23,
+ *     seconds: 20,
+ *     milliseconds: 1,
+ *     microseconds: 0,
+ *     nanoseconds: 0,
+ *   }
+ */
+export const parseMs = (ms) => {
+  // ensure absolute value
+  const value = ms > 0 ? ms : -ms;
+
+  // parse milliseconds
+  const parsed = parseMilliSeconds(value);
+  return parsed;
 };
