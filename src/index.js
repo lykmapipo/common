@@ -1439,7 +1439,7 @@ export const arrayToObject = (array, transformer) => {
  */
 export const parseMs = (ms) => {
   // ensure absolute value
-  const value = ms > 0 ? ms : -ms;
+  const value = Math.abs(ms);
 
   // parse milliseconds
   const parsed = parseMilliSeconds(value);

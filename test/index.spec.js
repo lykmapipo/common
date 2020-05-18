@@ -703,5 +703,25 @@ describe('common', () => {
       microseconds: 0,
       nanoseconds: 0,
     });
+
+    expect(parseMs(0)).to.be.eql({
+      days: 0,
+      hours: 0,
+      minutes: 0,
+      seconds: 0,
+      milliseconds: 0,
+      microseconds: 0,
+      nanoseconds: 0,
+    });
+
+    expect(parseMs(-0)).to.be.eql({
+      days: 0,
+      hours: 0,
+      minutes: 0,
+      seconds: 0,
+      milliseconds: 0,
+      microseconds: 0,
+      nanoseconds: 0,
+    });
   });
 });
