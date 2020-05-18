@@ -14,6 +14,8 @@ import hashObject from 'object-hash';
 import renderTemplate from 'string-template';
 import stripTags from 'striptags';
 import parseValue from 'auto-parse';
+import parseMilliSeconds from 'parse-ms';
+export { v1 as uuidv1, v3 as uuidv3, v4 as uuidv4, v5 as uuidv5 } from 'uuid';
 export { isBrowser, isNode, isWebWorker } from 'browser-or-node';
 
 /**
@@ -1262,6 +1264,8 @@ const unflat = (value) => {
  * // => 'c, b'
  */
 const join = (values = [], separator = ', ', property = '') => {
+  // TODO: prefix(support number)?, suffix(support new line)?
+
   // copy values
   const copies = flattenDeep([].concat(values));
 
@@ -1321,4 +1325,38 @@ const arrayToObject = (array, transformer) => {
   return object;
 };
 
-export { RESOURCE_ACTIONS, abbreviate, areNotEmpty, arrayToObject, assign, autoParse, bagify, compact, copyOf, flat, formatDate, has, hasAll, hasAny, hashOf, idOf, isNotValue, join, mapErrorToObject, mapToLower, mapToUpper, mergeObjects, normalizeError, osInfo, parse, parseTemplate, permissionsFor, pkg, pluralize, processInfo, randomColor, safeMergeObjects, scopesFor, singularize, sortedUniq, stringify, stripHtmlTags, unflat, uniq, variableNameFor };
+/**
+ * @function parseMs
+ * @name parseMs
+ * @description Safely parse a given millisecond absolute value into js object
+ * @param {number} ms valid millisecond value
+ * @returns {object} valid js object
+ * @author lally elias <lallyelias87@gmail.com>
+ * @license MIT
+ * @since 0.34.0
+ * @version 0.1.0
+ * @static
+ * @public
+ * @example
+ *
+ * parseMs(1337000001);
+ * // => {
+ *     days: 15,
+ *     hours: 11,
+ *     minutes: 23,
+ *     seconds: 20,
+ *     milliseconds: 1,
+ *     microseconds: 0,
+ *     nanoseconds: 0,
+ *   }
+ */
+const parseMs = (ms) => {
+  // ensure absolute value
+  const value = ms > 0 ? ms : -ms;
+
+  // parse milliseconds
+  const parsed = parseMilliSeconds(value);
+  return parsed;
+};
+
+export { RESOURCE_ACTIONS, abbreviate, areNotEmpty, arrayToObject, assign, autoParse, bagify, compact, copyOf, flat, formatDate, has, hasAll, hasAny, hashOf, idOf, isNotValue, join, mapErrorToObject, mapToLower, mapToUpper, mergeObjects, normalizeError, osInfo, parse, parseMs, parseTemplate, permissionsFor, pkg, pluralize, processInfo, randomColor, safeMergeObjects, scopesFor, singularize, sortedUniq, stringify, stripHtmlTags, unflat, uniq, variableNameFor };
