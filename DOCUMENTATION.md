@@ -1300,5 +1300,81 @@ const join = join(['a', 'b']);
 
 
 
+#### arrayToObject(array[, transformer]) 
+
+Converts array values into an object
+
+
+
+
+##### Parameters
+
+| Name | Type | Description |  |
+| ---- | ---- | ----------- | -------- |
+| array | `Array.<string>`  | array to convert to object | &nbsp; |
+| transformer | `Function`  | iteratee function which receive result `object` and current `key` to be transformed | *Optional* |
+
+
+
+
+##### Examples
+
+```javascript
+
+const arrayToObject = arrayToObject(['a']);
+// => { a: 'a' }
+
+const arrayToObject = arrayToObject(['a', 'b']);
+// => { a: 'a', b: 'b' }
+```
+
+
+##### Returns
+
+
+- `object`  resulted object or empty
+
+
+
+#### parseMs(ms) 
+
+Safely parse a given millisecond absolute value into js object
+
+
+
+
+##### Parameters
+
+| Name | Type | Description |  |
+| ---- | ---- | ----------- | -------- |
+| ms | `number`  | valid millisecond value | &nbsp; |
+
+
+
+
+##### Examples
+
+```javascript
+
+parseMs(1337000001);
+// => {
+    days: 15,
+    hours: 11,
+    minutes: 23,
+    seconds: 20,
+    milliseconds: 1,
+    microseconds: 0,
+    nanoseconds: 0,
+  }
+```
+
+
+##### Returns
+
+
+- `object`  valid js object
+
+
+
 
 *Documentation generated with [doxdox](https://github.com/neogeek/doxdox).*
