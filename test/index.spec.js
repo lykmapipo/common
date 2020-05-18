@@ -2,6 +2,10 @@ import { _ } from 'lodash';
 import { expect } from '@lykmapipo/test-helpers';
 import {
   STATUS_CODES,
+  uuidv1,
+  uuidv3,
+  uuidv4,
+  uuidv5,
   isNode,
   isBrowser,
   isWebWorker,
@@ -52,6 +56,13 @@ import {
 describe('common', () => {
   it('should export status codes', () => {
     expect(STATUS_CODES).to.exist.and.be.an('object');
+  });
+
+  it('should expose uuid shortcuts', () => {
+    expect(uuidv1()).to.be.exist;
+    expect(uuidv3('hello.example.com', uuidv3.DNS)).to.be.exist;
+    expect(uuidv4()).to.be.exist;
+    expect(uuidv5('hello.example.com', uuidv5.DNS)).to.be.exist;
   });
 
   it('should check for node runtime', () => {
