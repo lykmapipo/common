@@ -1,3 +1,13 @@
+#### 0.34.1 (2020-05-18)
+
+##### Chores
+
+* **deps:**  force latest version & audit fix ([2978c595](https://github.com/lykmapipo/common/commit/2978c5952ab1f1cabf271f4d6dbff6077ec4da8f))
+
+##### Bug Fixes
+
+* **parse-ms:**  ensure absolute value ([09044a9a](https://github.com/lykmapipo/common/commit/09044a9added3748b0cc4b19bac24bb11d9f9998))
+
 #### 0.34.0 (2020-05-18)
 
 ##### Chores
