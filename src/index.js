@@ -24,17 +24,21 @@ import {
   every,
   flattenDeep,
   get,
+  find,
+  filter,
   first,
   forEach,
   isArray,
   isBoolean,
   isFunction,
   isEmpty,
+  isError,
   includes,
   isPlainObject,
   join as joinify,
   map,
   merge as mergify,
+  noop,
   pick,
   omit,
   omitBy,
@@ -1445,3 +1449,37 @@ export const parseMs = (ms) => {
   const parsed = parseMilliSeconds(value);
   return parsed;
 };
+
+/**
+ * @function wrapCallback
+ * @name wrapCallback
+ * @description Wrap callback with default args
+ * @param {Function} cb valid function to wrap
+ * @param {...object} [defaultArgs] default arguments to wrapped function
+ * @returns {Function} wrapped function.
+ * @author lally elias <lallyelias87@gmail.com>
+ * @license MIT
+ * @since 0.35.0
+ * @version 0.1.0
+ * @static
+ * @public
+ * @example
+ *
+ * wrapCallback(cb, defaults);
+ * // => fn
+ */
+export const wrapCallback = (cb, ...defaultArgs) => (...replyArgs) => {
+  // prepare replies
+  const args = compact([...replyArgs, ...defaultArgs]);
+  const error = find(args, (arg) => isError(arg));
+  const replies = filter(args, (arg) => !isError(arg));
+
+  // reply
+  if (isFunction(cb)) {
+    return cb(error, ...replies);
+  }
+  // noop
+  return noop(error, ...replies);
+};
+
+// TODO: promiseOrCallback

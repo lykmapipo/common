@@ -51,6 +51,7 @@ import {
   join,
   arrayToObject,
   parseMs,
+  wrapCallback,
 } from '../src/index';
 
 describe('common', () => {
@@ -723,5 +724,33 @@ describe('common', () => {
       microseconds: 0,
       nanoseconds: 0,
     });
+  });
+
+  it('should wrap with default values', (done) => {
+    const defaultArgs = 14;
+    const cb = (error, result) => {
+      expect(error).to.not.exist;
+      expect(result).to.be.equal(defaultArgs);
+      return done(error, result);
+    };
+    wrapCallback(cb, 14)();
+  });
+
+  it('should wrap with error', (done) => {
+    const defaultArgs = 14;
+    const reply = new Error('Failed');
+    const cb = (error, result) => {
+      expect(error).to.exist;
+      expect(error.message).to.be.equal(reply.message);
+      expect(result).to.be.equal(defaultArgs);
+      return done();
+    };
+    wrapCallback(cb, 14)(reply);
+  });
+
+  it('should wrap with no callback', () => {
+    const defaultArgs = 14;
+    const wrapped = wrapCallback(defaultArgs);
+    expect(wrapped()).to.be.undefined;
   });
 });
