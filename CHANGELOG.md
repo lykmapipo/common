@@ -1,3 +1,13 @@
+#### 0.35.0 (2020-06-15)
+
+##### Chores
+
+* **deps:**  force latest version & audit fix ([c2ba9afd](https://github.com/lykmapipo/common/commit/c2ba9afdb7219c478874748251672152ff01a636))
+
+##### New Features
+
+* **callbacks:**  provide wrap with default value or noop ([0606b661](https://github.com/lykmapipo/common/commit/0606b6618a0c8e1f9aec0b6be48ca2f8d7997890))
+
 #### 0.34.3 (2020-06-07)
 
 ##### Chores
