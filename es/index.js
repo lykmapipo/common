@@ -1,7 +1,7 @@
 import { resolve } from 'path';
 import { readFileSync } from 'fs';
 import { arch, cpus, endianness, freemem, homedir, hostname, loadavg, networkInterfaces, platform, release, tmpdir, totalmem, type, uptime } from 'os';
-import { isBoolean, cloneDeep, flattenDeep, map, reduce, isArray, compact as compact$1, isPlainObject, omitBy, uniq as uniq$1, orderBy, assign as assign$1, merge, isEmpty, pick, forEach, toLower, startCase, words, get, camelCase, includes, every, some, toUpper, omit, join as join$1, isFunction, toString, first } from 'lodash';
+import { isBoolean, cloneDeep, flattenDeep, map, reduce, isArray, compact as compact$1, isPlainObject, omitBy, uniq as uniq$1, orderBy, assign as assign$1, merge, isEmpty, pick, forEach, toLower, startCase, words, get, camelCase, includes, every, some, toUpper, omit, join as join$1, isFunction, find, isError, filter, noop, toString, first } from 'lodash';
 export { getExtension as mimeExtensionOf, getType as mimeTypeOf } from 'mime';
 import { flatten, unflatten } from 'flat';
 import { message } from 'statuses';
@@ -1359,4 +1359,38 @@ const parseMs = (ms) => {
   return parsed;
 };
 
-export { RESOURCE_ACTIONS, abbreviate, areNotEmpty, arrayToObject, assign, autoParse, bagify, compact, copyOf, flat, formatDate, has, hasAll, hasAny, hashOf, idOf, isNotValue, join, mapErrorToObject, mapToLower, mapToUpper, mergeObjects, normalizeError, osInfo, parse, parseMs, parseTemplate, permissionsFor, pkg, pluralize, processInfo, randomColor, safeMergeObjects, scopesFor, singularize, sortedUniq, stringify, stripHtmlTags, unflat, uniq, variableNameFor };
+/**
+ * @function wrapCallback
+ * @name wrapCallback
+ * @description Wrap callback with default args
+ * @param {Function} cb valid function to wrap
+ * @param {...object} [defaultArgs] default arguments to wrapped function
+ * @returns {Function} wrapped function.
+ * @author lally elias <lallyelias87@gmail.com>
+ * @license MIT
+ * @since 0.35.0
+ * @version 0.1.0
+ * @static
+ * @public
+ * @example
+ *
+ * wrapCallback(cb, defaults);
+ * // => fn
+ */
+const wrapCallback = (cb, ...defaultArgs) => (...replyArgs) => {
+  // prepare replies
+  const args = compact([...replyArgs, ...defaultArgs]);
+  const error = find(args, (arg) => isError(arg));
+  const replies = filter(args, (arg) => !isError(arg));
+
+  // reply
+  if (isFunction(cb)) {
+    return cb(error, ...replies);
+  }
+  // noop
+  return noop(error, ...replies);
+};
+
+// TODO: promiseOrCallback
+
+export { RESOURCE_ACTIONS, abbreviate, areNotEmpty, arrayToObject, assign, autoParse, bagify, compact, copyOf, flat, formatDate, has, hasAll, hasAny, hashOf, idOf, isNotValue, join, mapErrorToObject, mapToLower, mapToUpper, mergeObjects, normalizeError, osInfo, parse, parseMs, parseTemplate, permissionsFor, pkg, pluralize, processInfo, randomColor, safeMergeObjects, scopesFor, singularize, sortedUniq, stringify, stripHtmlTags, unflat, uniq, variableNameFor, wrapCallback };
