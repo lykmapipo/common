@@ -1,3 +1,13 @@
+#### 0.36.0 (2020-06-19)
+
+##### Chores
+
+* **deps:**  force latest version & audit fix ([91fa465b](https://github.com/lykmapipo/common/commit/91fa465b31368f9cad1ddf020b849e14919864a4))
+
+##### New Features
+
+* **helpers:**  add firstValue getter ([1c94b8ef](https://github.com/lykmapipo/common/commit/1c94b8ef2a6791fee4791a809fabc95632b3e043))
+
 #### 0.35.1 (2020-06-16)
 
 ##### Chores
