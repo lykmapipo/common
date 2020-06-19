@@ -116,6 +116,30 @@ export const RESOURCE_ACTIONS = [
 export const isNotValue = (value) => (isBoolean(value) ? false : !value);
 
 /**
+ * @function isNotValue
+ * @name isNotValue
+ * @description Obtain first valid value
+ * @param {*} values list of values
+ * @returns {*} first valid value
+ * @author lally elias <lallyelias87@gmail.com>
+ * @license MIT
+ * @since 0.36.0
+ * @version 0.1.0
+ * @static
+ * @public
+ * @example
+ *
+ * firstValue('a', 'b');
+ * // => 'a'
+ *
+ * firstValue(undefined, 'b');
+ * // => 'b'
+ */
+export const firstValue = (...values) => {
+  return first(filter([...values], (value) => !isNotValue(value)));
+};
+
+/**
  * @function copyOf
  * @name copyOf
  * @description Recursively clone a value

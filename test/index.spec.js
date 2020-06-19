@@ -10,6 +10,7 @@ import {
   isBrowser,
   isWebWorker,
   isNotValue,
+  firstValue,
   copyOf,
   mapToUpper,
   mapToLower,
@@ -88,6 +89,19 @@ describe('common', () => {
     expect(isNotValue(undefined)).to.be.true;
     expect(isNotValue(false)).to.be.false;
     expect(isNotValue(true)).to.be.false;
+  });
+
+  it('should get first valid value', () => {
+    expect(firstValue).to.exist;
+    expect(firstValue).to.be.a('function');
+    expect(firstValue.name).to.be.equal('firstValue');
+    expect(firstValue('a')).to.be.equal('a');
+    expect(firstValue(null, 'a')).to.be.equal('a');
+    expect(firstValue(undefined, 'a')).to.be.equal('a');
+    expect(firstValue('', 'a')).to.be.equal('a');
+    expect(firstValue(false)).to.be.equal(false);
+    expect(firstValue(false, true)).to.be.equal(false);
+    expect(firstValue(true, false)).to.be.equal(true);
   });
 
   it('should make a copy of a value', () => {
