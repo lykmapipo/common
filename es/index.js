@@ -29,6 +29,7 @@ export { isBrowser, isNode, isWebWorker } from 'browser-or-node';
  * @private
  */
 const RESOURCE_ACTIONS = [
+  'list',
   'create',
   'view',
   'edit',
