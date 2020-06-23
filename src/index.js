@@ -82,6 +82,7 @@ export { isNode, isBrowser, isWebWorker } from 'browser-or-node';
  * @private
  */
 export const RESOURCE_ACTIONS = [
+  'list',
   'create',
   'view',
   'edit',

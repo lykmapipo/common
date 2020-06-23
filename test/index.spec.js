@@ -230,6 +230,7 @@ describe('common', () => {
     const scopes = scopesFor('user', 'payment');
     expect(scopes).to.exist;
     expect(scopes).to.include(
+      'user:list',
       'user:create',
       'user:view',
       'user:edit',
@@ -255,6 +256,7 @@ describe('common', () => {
     const permissions = permissionsFor('User', 'Payment');
     expect(permissions).to.exist;
     expect(_.map(permissions, 'wildcard')).to.include(
+      'user:list',
       'user:create',
       'user:view',
       'user:edit',
