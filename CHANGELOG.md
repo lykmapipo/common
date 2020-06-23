@@ -1,3 +1,13 @@
+#### 0.36.1 (2020-06-23)
+
+##### Chores
+
+* **deps:**  force latest version & audit fix ([e58ec158](https://github.com/lykmapipo/common/commit/e58ec15808fdde947c631287ed715f02c5ffcbde))
+
+##### Bug Fixes
+
+*  add list resource action ([d48ed35a](https://github.com/lykmapipo/common/commit/d48ed35ae59a7efba237224ac8425b0d0a7f627e))
+
 #### 0.36.0 (2020-06-19)
 
 ##### Chores
