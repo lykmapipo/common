@@ -82,6 +82,8 @@ export { isNode, isBrowser, isWebWorker } from 'browser-or-node';
  * @private
  */
 export const RESOURCE_ACTIONS = [
+  // PERMISSION_SEED_ACTIONS
+  // RESOURCE_ACTIONS
   'list',
   'create',
   'view',
