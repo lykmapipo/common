@@ -56,7 +56,7 @@
     "@commitlint/cli": "^9.0.1",
     "@commitlint/config-conventional": "^9.0.1",
     "@commitlint/travis-cli": "^9.0.1",
-    "@lykmapipo/test-helpers": "^0.5.23",
+    "@lykmapipo/test-helpers": "^0.5.24",
     "acorn": "^7.3.1",
     "chai": "^4.2.0",
     "commitizen": "^4.1.2",
@@ -66,7 +66,7 @@
     "eslint": "^7.3.1",
     "eslint-config-airbnb-base": "^14.2.0",
     "eslint-config-prettier": "^6.11.0",
-    "eslint-plugin-import": "^2.21.2",
+    "eslint-plugin-import": "^2.22.0",
     "eslint-plugin-jsdoc": "^28.5.1",
     "eslint-plugin-mocha": "^7.0.1",
     "eslint-plugin-prettier": "^3.1.4",
@@ -81,12 +81,12 @@
     "nyc": "^15.1.0",
     "prettier": "^2.0.5",
     "rimraf": "^3.0.2",
-    "rollup": "^2.18.0",
+    "rollup": "^2.18.1",
     "shelljs": "^0.8.4"
   },
   "dependencies": {
     "auto-parse": ">=1.8.0",
-    "browser-or-node": ">=1.2.1",
+    "browser-or-node": ">=1.3.0",
     "flat": ">=5.0.0",
     "inflection": ">=1.12.0",
     "lodash": ">=4.17.15",
@@ -99,7 +99,7 @@
     "statuses": ">=2.0.0",
     "string-template": ">=1.0.0",
     "striptags": ">=3.1.1",
-    "uuid": ">=8.1.0"
+    "uuid": ">=8.2.0"
   },
   "engines": {
     "node": ">=8.11.1",

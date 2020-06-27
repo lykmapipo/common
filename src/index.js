@@ -45,6 +45,7 @@ import {
   orderBy,
   reduce,
   some,
+  snakeCase,
   startCase,
   toLower,
   toString,
@@ -1241,7 +1242,7 @@ export const parse = (value) => {
  */
 export const pluralize = (value) => {
   let plural = copyOf(value);
-  plural = inflection.pluralize(value);
+  plural = inflection.pluralize(plural);
   return plural;
 };
 
@@ -1267,7 +1268,7 @@ export const pluralize = (value) => {
  */
 export const singularize = (value) => {
   let singular = copyOf(value);
-  singular = inflection.singularize(value);
+  singular = inflection.singularize(singular);
   return singular;
 };
 
@@ -1510,3 +1511,26 @@ export const wrapCallback = (cb, ...defaultArgs) => (...replyArgs) => {
 };
 
 // TODO: promiseOrCallback
+
+/**
+ * @function classify
+ * @name classify
+ * @description Convert a given string value to its class name form
+ * @param {string} value subject value
+ * @returns {string} plural form of provided string
+ * @author lally elias <lallyelias87@gmail.com>
+ * @license MIT
+ * @since 0.37.0
+ * @version 0.1.0
+ * @static
+ * @public
+ * @example
+ *
+ * classify('Health Center');
+ * // => HealthCenter
+ */
+export const classify = (value) => {
+  let className = snakeCase(copyOf(value));
+  className = inflection.classify(className);
+  return className;
+};

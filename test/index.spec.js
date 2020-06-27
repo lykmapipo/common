@@ -53,6 +53,7 @@ import {
   arrayToObject,
   parseMs,
   wrapCallback,
+  classify,
 } from '../src/index';
 
 describe('common', () => {
@@ -768,5 +769,15 @@ describe('common', () => {
     const defaultArgs = 14;
     const wrapped = wrapCallback(defaultArgs);
     expect(wrapped()).to.be.undefined;
+  });
+
+  it('should classify a value', () => {
+    expect(classify('people')).to.be.eql('Person');
+    expect(classify('Hats')).to.be.eql('Hat');
+    expect(classify('Health Centers')).to.be.eql('HealthCenter');
+
+    const val = 'Hats';
+    expect(classify(val)).to.be.eql('Hat');
+    expect(val).to.eql(val);
   });
 });
