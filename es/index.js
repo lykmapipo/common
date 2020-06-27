@@ -1,7 +1,7 @@
 import { resolve } from 'path';
 import { readFileSync } from 'fs';
 import { arch, cpus, endianness, freemem, homedir, hostname, loadavg, networkInterfaces, platform, release, tmpdir, totalmem, type, uptime } from 'os';
-import { isBoolean, first, filter, cloneDeep, flattenDeep, map, reduce, isArray, compact as compact$1, isPlainObject, omitBy, uniq as uniq$1, orderBy, assign as assign$1, merge, isEmpty, pick, forEach, toLower, startCase, words, get, camelCase, includes, every, some, toUpper, omit, join as join$1, isFunction, find, isError, noop, toString } from 'lodash';
+import { isBoolean, first, filter, cloneDeep, flattenDeep, map, reduce, isArray, compact as compact$1, isPlainObject, omitBy, uniq as uniq$1, orderBy, assign as assign$1, merge, isEmpty, pick, forEach, toLower, startCase, words, get, camelCase, includes, every, some, toUpper, omit, join as join$1, isFunction, find, isError, noop, snakeCase, toString } from 'lodash';
 export { getExtension as mimeExtensionOf, getType as mimeTypeOf } from 'mime';
 import { flatten, unflatten } from 'flat';
 import { message } from 'statuses';
@@ -29,6 +29,8 @@ export { isBrowser, isNode, isWebWorker } from 'browser-or-node';
  * @private
  */
 const RESOURCE_ACTIONS = [
+  // PERMISSION_SEED_ACTIONS
+  // RESOURCE_ACTIONS
   'list',
   'create',
   'view',
@@ -1148,7 +1150,7 @@ const parse = (value) => {
  */
 const pluralize = (value) => {
   let plural = copyOf(value);
-  plural = inflection.pluralize(value);
+  plural = inflection.pluralize(plural);
   return plural;
 };
 
@@ -1174,7 +1176,7 @@ const pluralize = (value) => {
  */
 const singularize = (value) => {
   let singular = copyOf(value);
-  singular = inflection.singularize(value);
+  singular = inflection.singularize(singular);
   return singular;
 };
 
@@ -1418,4 +1420,27 @@ const wrapCallback = (cb, ...defaultArgs) => (...replyArgs) => {
 
 // TODO: promiseOrCallback
 
-export { RESOURCE_ACTIONS, abbreviate, areNotEmpty, arrayToObject, assign, autoParse, bagify, compact, copyOf, firstValue, flat, formatDate, has, hasAll, hasAny, hashOf, idOf, isNotValue, join, mapErrorToObject, mapToLower, mapToUpper, mergeObjects, normalizeError, osInfo, parse, parseMs, parseTemplate, permissionsFor, pkg, pluralize, processInfo, randomColor, safeMergeObjects, scopesFor, singularize, sortedUniq, stringify, stripHtmlTags, unflat, uniq, variableNameFor, wrapCallback };
+/**
+ * @function classify
+ * @name classify
+ * @description Convert a given string value to its class name form
+ * @param {string} value subject value
+ * @returns {string} plural form of provided string
+ * @author lally elias <lallyelias87@gmail.com>
+ * @license MIT
+ * @since 0.37.0
+ * @version 0.1.0
+ * @static
+ * @public
+ * @example
+ *
+ * classify('Health Center');
+ * // => HealthCenter
+ */
+const classify = (value) => {
+  let className = snakeCase(copyOf(value));
+  className = inflection.classify(className);
+  return className;
+};
+
+export { RESOURCE_ACTIONS, abbreviate, areNotEmpty, arrayToObject, assign, autoParse, bagify, classify, compact, copyOf, firstValue, flat, formatDate, has, hasAll, hasAny, hashOf, idOf, isNotValue, join, mapErrorToObject, mapToLower, mapToUpper, mergeObjects, normalizeError, osInfo, parse, parseMs, parseTemplate, permissionsFor, pkg, pluralize, processInfo, randomColor, safeMergeObjects, scopesFor, singularize, sortedUniq, stringify, stripHtmlTags, unflat, uniq, variableNameFor, wrapCallback };
