@@ -1,3 +1,13 @@
+#### 0.37.0 (2020-06-27)
+
+##### Chores
+
+* **deps:**  force latest version & audit fix ([ebe9cf40](https://github.com/lykmapipo/common/commit/ebe9cf40d34528445c3eb6d9dec946909dd1bd1f))
+
+##### New Features
+
+*  add classify helper ([42979596](https://github.com/lykmapipo/common/commit/42979596276b6a6967c767df87d09b3938525786))
+
 #### 0.36.2 (2020-06-25)
 
 ##### Chores
