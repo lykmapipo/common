@@ -33,6 +33,41 @@ const notValue = isNotValue(null);
 
 
 
+#### firstValue(values) 
+
+Obtain first valid value
+
+
+
+
+##### Parameters
+
+| Name | Type | Description |  |
+| ---- | ---- | ----------- | -------- |
+| values |  | list of values | &nbsp; |
+
+
+
+
+##### Examples
+
+```javascript
+
+firstValue('a', 'b');
+// => 'a'
+
+firstValue(undefined, 'b');
+// => 'b'
+```
+
+
+##### Returns
+
+
+-  first valid value
+
+
+
 #### copyOf(value) 
 
 Recursively clone a value
@@ -1373,6 +1408,71 @@ parseMs(1337000001);
 
 
 - `object`  valid js object
+
+
+
+#### wrapCallback(cb[, defaultArgs]) 
+
+Wrap callback with default args
+
+
+
+
+##### Parameters
+
+| Name | Type | Description |  |
+| ---- | ---- | ----------- | -------- |
+| cb | `Function`  | valid function to wrap | &nbsp; |
+| defaultArgs | `object`  | default arguments to wrapped function | *Optional* |
+
+
+
+
+##### Examples
+
+```javascript
+
+wrapCallback(cb, defaults);
+// => fn
+```
+
+
+##### Returns
+
+
+- `Function`  wrapped function.
+
+
+
+#### classify(value) 
+
+Convert a given string value to its class name form
+
+
+
+
+##### Parameters
+
+| Name | Type | Description |  |
+| ---- | ---- | ----------- | -------- |
+| value | `string`  | subject value | &nbsp; |
+
+
+
+
+##### Examples
+
+```javascript
+
+classify('Health Center');
+// => HealthCenter
+```
+
+
+##### Returns
+
+
+- `string`  plural form of provided string
 
 
 
