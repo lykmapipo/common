@@ -2,7 +2,12 @@
 
 ##### Chores
 
+* **release:**  compile latest source & release notes ([a4460a89](https://github.com/lykmapipo/common/commit/a4460a89d8a1fa77b16d34701e3f9600ceb3c4d2))
 * **deps:**  force latest version & audit fix ([ebe9cf40](https://github.com/lykmapipo/common/commit/ebe9cf40d34528445c3eb6d9dec946909dd1bd1f))
+
+##### Documentation Changes
+
+* **api:**  generate latest ([295ddad8](https://github.com/lykmapipo/common/commit/295ddad8d277e2073f0889db14d084e33de1703d))
 
 ##### New Features
 
