@@ -54,6 +54,7 @@ import {
   parseMs,
   wrapCallback,
   classify,
+  tryCatch,
 } from '../src/index';
 
 describe('common', () => {
@@ -779,5 +780,15 @@ describe('common', () => {
     const val = 'Hats';
     expect(classify(val)).to.be.eql('Hat');
     expect(val).to.eql(val);
+  });
+
+  it('should tryCatch a function', () => {
+    expect(tryCatch).to.be.a('function');
+    expect(tryCatch(() => 1, 0)).to.equal(1);
+    expect(
+      tryCatch(() => {
+        throw new Error('Failed');
+      }, 0)
+    ).to.equal(0);
   });
 });
