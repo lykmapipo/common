@@ -1476,5 +1476,41 @@ classify('Health Center');
 
 
 
+#### tryCatch(func, defaultValue) 
+
+Attempts to invoke `func`, returning either the result or `defaultValue` on error
+
+
+
+
+##### Parameters
+
+| Name | Type | Description |  |
+| ---- | ---- | ----------- | -------- |
+| func | `Function`  | The function to attempt. | &nbsp; |
+| defaultValue |  | value to return on error | &nbsp; |
+
+
+
+
+##### Examples
+
+```javascript
+
+tryCatch(() => 1, 0);
+//=> 1
+
+tryCatch(() => { throw new Error('Failed'); }, {});
+// => {}
+```
+
+
+##### Returns
+
+
+-  `func` result or `defaultValue`.
+
+
+
 
 *Documentation generated with [doxdox](https://github.com/neogeek/doxdox).*
