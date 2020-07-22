@@ -1,3 +1,9 @@
+#### 0.38.0 (2020-07-22)
+
+##### New Features
+
+*  add tryCatch helper ([b99b8b1b](https://github.com/lykmapipo/common/commit/b99b8b1bf5a3eaa89e23d9b2aedfe22892208025))
+
 #### 0.37.4 (2020-07-20)
 
 ##### Chores

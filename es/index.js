@@ -66,8 +66,8 @@ const RESOURCE_ACTIONS = [
 const isNotValue = (value) => (isBoolean(value) ? false : !value);
 
 /**
- * @function isNotValue
- * @name isNotValue
+ * @function firstValueisNotValue
+ * @name firstValue
  * @description Obtain first valid value
  * @param {*} values list of values
  * @returns {*} first valid value
@@ -1443,4 +1443,34 @@ const classify = (value) => {
   return className;
 };
 
-export { RESOURCE_ACTIONS, abbreviate, areNotEmpty, arrayToObject, assign, autoParse, bagify, classify, compact, copyOf, firstValue, flat, formatDate, has, hasAll, hasAny, hashOf, idOf, isNotValue, join, mapErrorToObject, mapToLower, mapToUpper, mergeObjects, normalizeError, osInfo, parse, parseMs, parseTemplate, permissionsFor, pkg, pluralize, processInfo, randomColor, safeMergeObjects, scopesFor, singularize, sortedUniq, stringify, stripHtmlTags, unflat, uniq, variableNameFor, wrapCallback };
+/**
+ * @function tryCatch
+ * @name tryCatch
+ * @description Attempts to invoke `func`, returning either the result or
+ * `defaultValue` on error
+ * @param {Function} func The function to attempt.
+ * @param {*} defaultValue value to return on error
+ * @returns {*} `func` result or `defaultValue`.
+ * @author lally elias <lallyelias87@gmail.com>
+ * @license MIT
+ * @since 0.38.0
+ * @version 0.1.0
+ * @static
+ * @public
+ * @example
+ *
+ * tryCatch(() => 1, 0);
+ * //=> 1
+ *
+ * tryCatch(() => { throw new Error('Failed'); }, {});
+ * // => {}
+ */
+const tryCatch = (func, defaultValue) => {
+  try {
+    return func();
+  } catch (e) {
+    return defaultValue;
+  }
+};
+
+export { RESOURCE_ACTIONS, abbreviate, areNotEmpty, arrayToObject, assign, autoParse, bagify, classify, compact, copyOf, firstValue, flat, formatDate, has, hasAll, hasAny, hashOf, idOf, isNotValue, join, mapErrorToObject, mapToLower, mapToUpper, mergeObjects, normalizeError, osInfo, parse, parseMs, parseTemplate, permissionsFor, pkg, pluralize, processInfo, randomColor, safeMergeObjects, scopesFor, singularize, sortedUniq, stringify, stripHtmlTags, tryCatch, unflat, uniq, variableNameFor, wrapCallback };
