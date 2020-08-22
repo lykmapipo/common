@@ -1,3 +1,13 @@
+#### 0.39.0 (2020-08-22)
+
+##### Chores
+
+* **deps:**  force latest version & audit fix ([3965667f](https://github.com/lykmapipo/common/commit/3965667f2b50b20cc84ff25d280f7e6def9c9307))
+
+##### Bug Fixes
+
+* **isnotvalue:**  allow for zero state value ([9b010f86](https://github.com/lykmapipo/common/commit/9b010f863facd7257d19cd665da6975b4b52a49c))
+
 #### 0.38.3 (2020-08-19)
 
 ##### Chores
