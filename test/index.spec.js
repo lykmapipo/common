@@ -91,6 +91,8 @@ describe('common', () => {
     expect(isNotValue(undefined)).to.be.true;
     expect(isNotValue(false)).to.be.false;
     expect(isNotValue(true)).to.be.false;
+    expect(isNotValue(0)).to.be.false;
+    expect(isNotValue(1)).to.be.false;
   });
 
   it('should get first valid value', () => {
@@ -315,9 +317,10 @@ describe('common', () => {
       a: 1,
       b: 1,
     });
-    expect(mergeObjects({ a: false }, { b: true })).to.be.eql({
+    expect(mergeObjects({ a: false }, { b: true }, { c: 0 })).to.be.eql({
       a: false,
       b: true,
+      c: 0,
     });
   });
 
@@ -327,9 +330,10 @@ describe('common', () => {
       a: 1,
       b: 1,
     });
-    expect(safeMergeObjects({ a: false }, { b: true })).to.be.eql({
+    expect(safeMergeObjects({ a: false }, { b: true }, { c: 0 })).to.be.eql({
       a: false,
       b: true,
+      c: 0,
     });
   });
 

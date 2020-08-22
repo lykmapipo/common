@@ -31,6 +31,7 @@ import {
   isArray,
   isBoolean,
   isFunction,
+  isNumber,
   isEmpty,
   isError,
   includes,
@@ -106,7 +107,7 @@ export const RESOURCE_ACTIONS = [
  * @author lally elias <lallyelias87@gmail.com>
  * @license MIT
  * @since 0.9.0
- * @version 0.1.0
+ * @version 0.2.0
  * @static
  * @public
  * @example
@@ -117,10 +118,12 @@ export const RESOURCE_ACTIONS = [
  * const notValue = isNotValue(null);
  * // => true
  */
-export const isNotValue = (value) => (isBoolean(value) ? false : !value);
+export const isNotValue = (value) => {
+  return isBoolean(value) || isNumber(value) ? false : !value;
+};
 
 /**
- * @function firstValueisNotValue
+ * @function firstValue
  * @name firstValue
  * @description Obtain first valid value
  * @param {*} values list of values
