@@ -1,7 +1,7 @@
 import { resolve } from 'path';
 import { readFileSync } from 'fs';
 import { arch, cpus, endianness, freemem, homedir, hostname, loadavg, networkInterfaces, platform, release, tmpdir, totalmem, type, uptime } from 'os';
-import { isBoolean, first, filter, cloneDeep, flattenDeep, map, reduce, isArray, compact as compact$1, isPlainObject, omitBy, uniq as uniq$1, orderBy, assign as assign$1, merge, isEmpty, pick, forEach, toLower, startCase, words, get, camelCase, includes, every, some, toUpper, omit, join as join$1, isFunction, find, isError, noop, snakeCase, toString } from 'lodash';
+import { isBoolean, isNumber, first, filter, cloneDeep, flattenDeep, map, reduce, isArray, compact as compact$1, isPlainObject, omitBy, uniq as uniq$1, orderBy, assign as assign$1, merge, isEmpty, pick, forEach, toLower, startCase, words, get, camelCase, includes, every, some, toUpper, omit, join as join$1, isFunction, find, isError, noop, snakeCase, toString } from 'lodash';
 export { getExtension as mimeExtensionOf, getType as mimeTypeOf } from 'mime';
 import { flatten, unflatten } from 'flat';
 import { message } from 'statuses';
@@ -52,7 +52,7 @@ const RESOURCE_ACTIONS = [
  * @author lally elias <lallyelias87@gmail.com>
  * @license MIT
  * @since 0.9.0
- * @version 0.1.0
+ * @version 0.2.0
  * @static
  * @public
  * @example
@@ -63,10 +63,12 @@ const RESOURCE_ACTIONS = [
  * const notValue = isNotValue(null);
  * // => true
  */
-const isNotValue = (value) => (isBoolean(value) ? false : !value);
+const isNotValue = (value) => {
+  return isBoolean(value) || isNumber(value) ? false : !value;
+};
 
 /**
- * @function firstValueisNotValue
+ * @function firstValue
  * @name firstValue
  * @description Obtain first valid value
  * @param {*} values list of values
