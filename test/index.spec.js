@@ -87,12 +87,31 @@ describe('common', () => {
     expect(isNotValue.name).to.be.equal('isNotValue');
     expect(isNotValue('a')).to.be.false;
     expect(isNotValue('')).to.be.true;
+    expect(isNotValue(' ')).to.be.true;
     expect(isNotValue(null)).to.be.true;
     expect(isNotValue(undefined)).to.be.true;
     expect(isNotValue(false)).to.be.false;
     expect(isNotValue(true)).to.be.false;
     expect(isNotValue(0)).to.be.false;
     expect(isNotValue(1)).to.be.false;
+    expect(isNotValue(new Date())).to.be.false;
+    expect(isNotValue(new Date('a'))).to.be.true;
+    expect(isNotValue([1])).to.be.false;
+    expect(isNotValue([])).to.be.true;
+    // expect(isNotValue(new ArrayBuffer(1))).to.be.false;
+    // expect(isNotValue(new ArrayBuffer())).to.be.true;
+    expect(isNotValue(Buffer.from('1'))).to.be.false;
+    expect(isNotValue(Buffer.from(''))).to.be.true;
+    // expect(isNotValue(Buffer.from(' '))).to.be.true;
+    expect(isNotValue(new Error())).to.be.false;
+    expect(isNotValue(new Set([1]))).to.be.false;
+    expect(isNotValue(new Set())).to.be.true;
+    // expect(isNotValue(new WeakSet())).to.be.false;
+    expect(isNotValue(new WeakSet())).to.be.true;
+    expect(isNotValue(new Map([['a', 1]]))).to.be.false;
+    expect(isNotValue(new Map())).to.be.true;
+    // expect(isNotValue(new WeakMap())).to.be.false;
+    expect(isNotValue(new WeakMap())).to.be.true;
   });
 
   it('should get first valid value', () => {

@@ -30,10 +30,12 @@ import {
   forEach,
   isArray,
   isBoolean,
+  isDate,
   isFunction,
   isNumber,
   isEmpty,
   isError,
+  isString,
   includes,
   isPlainObject,
   join as joinify,
@@ -51,6 +53,7 @@ import {
   toLower,
   toString,
   toUpper,
+  trim,
   uniq as uniqify,
   words as wordify,
 } from 'lodash';
@@ -101,13 +104,13 @@ export const RESOURCE_ACTIONS = [
 /**
  * @function isNotValue
  * @name isNotValue
- * @description Check if variable has no associated state
- * @param {*} value variable to check if it has no associated state
+ * @description Check if variable has no associated state or has empty state
+ * @param {*} value variable to check
  * @returns {boolean} whether variable contain state
  * @author lally elias <lallyelias87@gmail.com>
  * @license MIT
  * @since 0.9.0
- * @version 0.2.0
+ * @version 0.3.0
  * @static
  * @public
  * @example
@@ -119,7 +122,20 @@ export const RESOURCE_ACTIONS = [
  * // => true
  */
 export const isNotValue = (value) => {
-  return isBoolean(value) || isNumber(value) ? false : !value;
+  // handle boolean and number
+  if (isBoolean(value) || isNumber(value) || isError(value)) {
+    return false;
+  }
+  // handle string
+  if (isString(value)) {
+    return !value || isEmpty(trim(value));
+  }
+  // handle date
+  if (isDate(value)) {
+    return !value || !value.getTime();
+  }
+  // handle other types
+  return !value || isEmpty(value);
 };
 
 /**
