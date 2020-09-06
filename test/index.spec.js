@@ -10,6 +10,7 @@ import {
   isBrowser,
   isWebWorker,
   isNotValue,
+  isValue,
   firstValue,
   copyOf,
   mapToUpper,
@@ -112,6 +113,39 @@ describe('common', () => {
     expect(isNotValue(new Map())).to.be.true;
     // expect(isNotValue(new WeakMap())).to.be.false;
     expect(isNotValue(new WeakMap())).to.be.true;
+  });
+
+  it('should check if variable has state', () => {
+    expect(isValue).to.exist;
+    expect(isValue).to.be.a('function');
+    expect(isValue.name).to.be.equal('isValue');
+    expect(isValue('a')).to.be.true;
+    expect(isValue('')).to.be.false;
+    expect(isValue(' ')).to.be.false;
+    expect(isValue(null)).to.be.false;
+    expect(isValue(undefined)).to.be.false;
+    expect(isValue(false)).to.be.true;
+    expect(isValue(true)).to.be.true;
+    expect(isValue(0)).to.be.true;
+    expect(isValue(1)).to.be.true;
+    expect(isValue(new Date())).to.be.true;
+    expect(isValue(new Date('a'))).to.be.false;
+    expect(isValue([1])).to.be.true;
+    expect(isValue([])).to.be.false;
+    // expect(isValue(new ArrayBuffer(1))).to.be.true;
+    // expect(isValue(new ArrayBuffer())).to.be.false;
+    expect(isValue(Buffer.from('1'))).to.be.true;
+    expect(isValue(Buffer.from(''))).to.be.false;
+    // expect(isValue(Buffer.from(' '))).to.be.false;
+    expect(isValue(new Error())).to.be.true;
+    expect(isValue(new Set([1]))).to.be.true;
+    expect(isValue(new Set())).to.be.false;
+    // expect(isValue(new WeakSet())).to.be.true;
+    expect(isValue(new WeakSet())).to.be.false;
+    expect(isValue(new Map([['a', 1]]))).to.be.true;
+    expect(isValue(new Map())).to.be.false;
+    // expect(isValue(new WeakMap())).to.be.true;
+    expect(isValue(new WeakMap())).to.be.false;
   });
 
   it('should get first valid value', () => {

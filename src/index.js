@@ -139,6 +139,30 @@ export const isNotValue = (value) => {
 };
 
 /**
+ * @function isValue
+ * @name isValue
+ * @description Check if variable has associated state or has no empty state
+ * @param {*} value variable to check
+ * @returns {boolean} whether variable contain state
+ * @author lally elias <lallyelias87@gmail.com>
+ * @license MIT
+ * @since 0.40.0
+ * @version 0.1.0
+ * @static
+ * @public
+ * @example
+ *
+ * const notValue = isValue('a');
+ * // => true
+ *
+ * const notValue = isValue(null);
+ * // => false
+ */
+export const isValue = (value) => {
+  return !isNotValue(value);
+};
+
+/**
  * @function firstValue
  * @name firstValue
  * @description Obtain first valid value
