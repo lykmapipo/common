@@ -1,3 +1,13 @@
+#### 0.40.0 (2020-09-06)
+
+##### New Features
+
+*  check if value has state ([8c7e34e8](https://github.com/lykmapipo/common/commit/8c7e34e8ad2db498af86b891524f7730417da7a3))
+
+##### Refactors
+
+*  add more types on check is not value ([a6f0cdb8](https://github.com/lykmapipo/common/commit/a6f0cdb83084715a06adf9e1cdb7418a01d1ee03))
+
 #### 0.39.1 (2020-09-02)
 
 ##### Chores

@@ -1,7 +1,7 @@
 import { resolve } from 'path';
 import { readFileSync } from 'fs';
 import { arch, cpus, endianness, freemem, homedir, hostname, loadavg, networkInterfaces, platform, release, tmpdir, totalmem, type, uptime } from 'os';
-import { isBoolean, isNumber, first, filter, cloneDeep, flattenDeep, map, reduce, isArray, compact as compact$1, isPlainObject, omitBy, uniq as uniq$1, orderBy, assign as assign$1, merge, isEmpty, pick, forEach, toLower, startCase, words, get, camelCase, includes, every, some, toUpper, omit, join as join$1, isFunction, find, isError, noop, snakeCase, toString } from 'lodash';
+import { isBoolean, isNumber, isError, isString, isEmpty, trim, isDate, first, filter, cloneDeep, flattenDeep, map, reduce, isArray, compact as compact$1, isPlainObject, omitBy, uniq as uniq$1, orderBy, assign as assign$1, merge, pick, forEach, toLower, startCase, words, get, camelCase, includes, every, some, toUpper, omit, join as join$1, isFunction, find, noop, snakeCase, toString } from 'lodash';
 export { getExtension as mimeExtensionOf, getType as mimeTypeOf } from 'mime';
 import { flatten, unflatten } from 'flat';
 import { message } from 'statuses';
@@ -46,13 +46,13 @@ const RESOURCE_ACTIONS = [
 /**
  * @function isNotValue
  * @name isNotValue
- * @description Check if variable has no associated state
- * @param {*} value variable to check if it has no associated state
+ * @description Check if variable has no associated state or has empty state
+ * @param {*} value variable to check
  * @returns {boolean} whether variable contain state
  * @author lally elias <lallyelias87@gmail.com>
  * @license MIT
  * @since 0.9.0
- * @version 0.2.0
+ * @version 0.3.0
  * @static
  * @public
  * @example
@@ -64,7 +64,44 @@ const RESOURCE_ACTIONS = [
  * // => true
  */
 const isNotValue = (value) => {
-  return isBoolean(value) || isNumber(value) ? false : !value;
+  // handle boolean and number
+  if (isBoolean(value) || isNumber(value) || isError(value)) {
+    return false;
+  }
+  // handle string
+  if (isString(value)) {
+    return !value || isEmpty(trim(value));
+  }
+  // handle date
+  if (isDate(value)) {
+    return !value || !value.getTime();
+  }
+  // handle other types
+  return !value || isEmpty(value);
+};
+
+/**
+ * @function isValue
+ * @name isValue
+ * @description Check if variable has associated state or has no empty state
+ * @param {*} value variable to check
+ * @returns {boolean} whether variable contain state
+ * @author lally elias <lallyelias87@gmail.com>
+ * @license MIT
+ * @since 0.40.0
+ * @version 0.1.0
+ * @static
+ * @public
+ * @example
+ *
+ * const notValue = isValue('a');
+ * // => true
+ *
+ * const notValue = isValue(null);
+ * // => false
+ */
+const isValue = (value) => {
+  return !isNotValue(value);
 };
 
 /**
@@ -1475,4 +1512,4 @@ const tryCatch = (func, defaultValue) => {
   }
 };
 
-export { RESOURCE_ACTIONS, abbreviate, areNotEmpty, arrayToObject, assign, autoParse, bagify, classify, compact, copyOf, firstValue, flat, formatDate, has, hasAll, hasAny, hashOf, idOf, isNotValue, join, mapErrorToObject, mapToLower, mapToUpper, mergeObjects, normalizeError, osInfo, parse, parseMs, parseTemplate, permissionsFor, pkg, pluralize, processInfo, randomColor, safeMergeObjects, scopesFor, singularize, sortedUniq, stringify, stripHtmlTags, tryCatch, unflat, uniq, variableNameFor, wrapCallback };
+export { RESOURCE_ACTIONS, abbreviate, areNotEmpty, arrayToObject, assign, autoParse, bagify, classify, compact, copyOf, firstValue, flat, formatDate, has, hasAll, hasAny, hashOf, idOf, isNotValue, isValue, join, mapErrorToObject, mapToLower, mapToUpper, mergeObjects, normalizeError, osInfo, parse, parseMs, parseTemplate, permissionsFor, pkg, pluralize, processInfo, randomColor, safeMergeObjects, scopesFor, singularize, sortedUniq, stringify, stripHtmlTags, tryCatch, unflat, uniq, variableNameFor, wrapCallback };

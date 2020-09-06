@@ -1,6 +1,6 @@
 #### isNotValue(value) 
 
-Check if variable has no associated state
+Check if variable has no associated state or has empty state
 
 
 
@@ -9,7 +9,7 @@ Check if variable has no associated state
 
 | Name | Type | Description |  |
 | ---- | ---- | ----------- | -------- |
-| value |  | variable to check if it has no associated state | &nbsp; |
+| value |  | variable to check | &nbsp; |
 
 
 
@@ -23,6 +23,41 @@ const notValue = isNotValue('a');
 
 const notValue = isNotValue(null);
 // => true
+```
+
+
+##### Returns
+
+
+- `boolean`  whether variable contain state
+
+
+
+#### isValue(value) 
+
+Check if variable has associated state or has no empty state
+
+
+
+
+##### Parameters
+
+| Name | Type | Description |  |
+| ---- | ---- | ----------- | -------- |
+| value |  | variable to check | &nbsp; |
+
+
+
+
+##### Examples
+
+```javascript
+
+const notValue = isValue('a');
+// => true
+
+const notValue = isValue(null);
+// => false
 ```
 
 
