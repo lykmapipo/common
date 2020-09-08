@@ -1010,7 +1010,7 @@ const randomColor = (optns = { luminosity: 'light' }) => {
 /**
  * @function formatDate
  * @name formatDate
- * @description Format a data using specified format
+ * @description Format a date using specified format
  * @param {Date} [date=new Date()] valid date instance
  * @param {string} [format='YYYY-MM-DD'] valid date format
  * @returns {string} formatted date string
@@ -1026,8 +1026,31 @@ const randomColor = (optns = { luminosity: 'light' }) => {
  * // => 2019-05-30
  */
 const formatDate = (date = new Date(), format = 'YYYY-MM-DD') => {
-  const formatted = moment(date).format(format);
+  const formatted = moment.utc(date).format(format);
   return formatted;
+};
+
+/**
+ * @function parseDate
+ * @name parseDate
+ * @description Parse a date in UTC from specified format
+ * @param {string} date valid date string
+ * @param {string} [format='YYYY-MM-DD'] valid date format
+ * @returns {string} parsed date object in UTC
+ * @author lally elias <lallyelias87@gmail.com>
+ * @license MIT
+ * @since 0.41.0
+ * @version 0.1.0
+ * @static
+ * @public
+ * @example
+ *
+ * const date = parseDate('2019-05-30', 'YYYY-MM-DD');
+ * // => Thu May 30 2019 ...
+ */
+const parseDate = (date, format = 'YYYY-MM-DD') => {
+  const parsed = moment.utc(date, format).toDate();
+  return parsed;
 };
 
 /**
@@ -1512,4 +1535,4 @@ const tryCatch = (func, defaultValue) => {
   }
 };
 
-export { RESOURCE_ACTIONS, abbreviate, areNotEmpty, arrayToObject, assign, autoParse, bagify, classify, compact, copyOf, firstValue, flat, formatDate, has, hasAll, hasAny, hashOf, idOf, isNotValue, isValue, join, mapErrorToObject, mapToLower, mapToUpper, mergeObjects, normalizeError, osInfo, parse, parseMs, parseTemplate, permissionsFor, pkg, pluralize, processInfo, randomColor, safeMergeObjects, scopesFor, singularize, sortedUniq, stringify, stripHtmlTags, tryCatch, unflat, uniq, variableNameFor, wrapCallback };
+export { RESOURCE_ACTIONS, abbreviate, areNotEmpty, arrayToObject, assign, autoParse, bagify, classify, compact, copyOf, firstValue, flat, formatDate, has, hasAll, hasAny, hashOf, idOf, isNotValue, isValue, join, mapErrorToObject, mapToLower, mapToUpper, mergeObjects, normalizeError, osInfo, parse, parseDate, parseMs, parseTemplate, permissionsFor, pkg, pluralize, processInfo, randomColor, safeMergeObjects, scopesFor, singularize, sortedUniq, stringify, stripHtmlTags, tryCatch, unflat, uniq, variableNameFor, wrapCallback };

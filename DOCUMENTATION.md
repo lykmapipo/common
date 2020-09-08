@@ -958,7 +958,7 @@ const color = randomColor();
 
 #### formatDate([date&#x3D;new, format&#x3D;&#x27;YYYY-MM-DD&#x27;]) 
 
-Format a data using specified format
+Format a date using specified format
 
 
 
@@ -986,6 +986,39 @@ const date = formatDate(new Date(), 'YYYY-MM-DD');
 
 
 - `string`  formatted date string
+
+
+
+#### parseDate(date[, format&#x3D;&#x27;YYYY-MM-DD&#x27;]) 
+
+Parse a date in UTC from specified format
+
+
+
+
+##### Parameters
+
+| Name | Type | Description |  |
+| ---- | ---- | ----------- | -------- |
+| date | `string`  | valid date string | &nbsp; |
+| format&#x3D;&#x27;YYYY-MM-DD&#x27; | `string`  | valid date format | *Optional* |
+
+
+
+
+##### Examples
+
+```javascript
+
+const date = parseDate('2019-05-30', 'YYYY-MM-DD');
+// => Thu May 30 2019 ...
+```
+
+
+##### Returns
+
+
+- `string`  parsed date object in UTC
 
 
 

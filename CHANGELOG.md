@@ -1,3 +1,17 @@
+#### 0.41.0 (2020-09-08)
+
+##### Chores
+
+* **deps:**  force latest version & audit fix ([51f13c3b](https://github.com/lykmapipo/common/commit/51f13c3b99cd62e781a05ae5ccbdaebcb718a72d))
+
+##### New Features
+
+* **date:**  parse from a string format ([401b8c3b](https://github.com/lykmapipo/common/commit/401b8c3b50aca4e8ba56b0b41a245ffcb47b230f))
+
+##### Refactors
+
+* **date:**  format in UTC ([f1eb5ddf](https://github.com/lykmapipo/common/commit/f1eb5ddfdc6613cd85b1b8bfca4e3461304090a7))
+
 #### 0.40.0 (2020-09-06)
 
 ##### New Features
