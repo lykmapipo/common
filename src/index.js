@@ -1084,7 +1084,7 @@ export const randomColor = (optns = { luminosity: 'light' }) => {
  * // => 2019-05-30
  */
 export const formatDate = (date = new Date(), format = 'YYYY-MM-DD') => {
-  const formatted = moment(date).format(format);
+  const formatted = moment.utc(date).format(format);
   return formatted;
 };
 
