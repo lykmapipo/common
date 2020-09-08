@@ -38,6 +38,7 @@ import {
   processInfo,
   randomColor,
   formatDate,
+  parseDate,
   mimeTypeOf,
   mimeExtensionOf,
   hashOf,
@@ -659,6 +660,14 @@ describe('common', () => {
     expect(formatDate()).to.exist;
     expect(formatDate(new Date('2019-01-25'))).to.be.equal('2019-01-25');
     expect(formatDate(new Date('2019-01-25'), 'YYYY')).to.be.equal('2019');
+  });
+
+  it('should parse dates', () => {
+    expect(parseDate('2019-01-25')).to.be.eql(new Date('2019-01-25'));
+    expect(parseDate('2019-01-25', 'YYYY-MM-DD')).to.be.eql(
+      new Date('2019-01-25')
+    );
+    expect(parseDate('20190125', 'YYYYMMDD')).to.be.eql(new Date('2019-01-25'));
   });
 
   it('should get mime type of extension', () => {

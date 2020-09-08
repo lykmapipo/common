@@ -1068,7 +1068,7 @@ export const randomColor = (optns = { luminosity: 'light' }) => {
 /**
  * @function formatDate
  * @name formatDate
- * @description Format a data using specified format
+ * @description Format a date using specified format
  * @param {Date} [date=new Date()] valid date instance
  * @param {string} [format='YYYY-MM-DD'] valid date format
  * @returns {string} formatted date string
@@ -1086,6 +1086,29 @@ export const randomColor = (optns = { luminosity: 'light' }) => {
 export const formatDate = (date = new Date(), format = 'YYYY-MM-DD') => {
   const formatted = moment(date).format(format);
   return formatted;
+};
+
+/**
+ * @function parseDate
+ * @name parseDate
+ * @description Parse a date in UTC from specified format
+ * @param {string} date valid date string
+ * @param {string} [format='YYYY-MM-DD'] valid date format
+ * @returns {string} parsed date object in UTC
+ * @author lally elias <lallyelias87@gmail.com>
+ * @license MIT
+ * @since 0.41.0
+ * @version 0.1.0
+ * @static
+ * @public
+ * @example
+ *
+ * const date = parseDate('2019-05-30', 'YYYY-MM-DD');
+ * // => Thu May 30 2019 ...
+ */
+export const parseDate = (date, format = 'YYYY-MM-DD') => {
+  const parsed = moment.utc(date, format).toDate();
+  return parsed;
 };
 
 /**
