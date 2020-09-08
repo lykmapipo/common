@@ -1,3 +1,9 @@
+#### 0.41.1 (2020-09-08)
+
+##### Refactors
+
+* **value:**  ignore NaN as a state ([b7f16378](https://github.com/lykmapipo/common/commit/b7f16378a2697eee63f928b289cab0cf14e15662))
+
 #### 0.41.0 (2020-09-08)
 
 ##### Chores
