@@ -33,6 +33,7 @@ import {
   isDate,
   isFunction,
   isNumber,
+  isNaN as isNotANumber,
   isEmpty,
   isError,
   isString,
@@ -109,7 +110,7 @@ export const RESOURCE_ACTIONS = [
  * @returns {boolean} whether variable contain state
  * @author lally elias <lallyelias87@gmail.com>
  * @license MIT
- * @since 0.9.0
+ * @since 0.10.0
  * @version 0.3.0
  * @static
  * @public
@@ -122,6 +123,10 @@ export const RESOURCE_ACTIONS = [
  * // => true
  */
 export const isNotValue = (value) => {
+  // handle NaN
+  if (isNotANumber(value)) {
+    return true;
+  }
   // handle boolean and number
   if (isBoolean(value) || isNumber(value) || isError(value)) {
     return false;
@@ -147,7 +152,7 @@ export const isNotValue = (value) => {
  * @author lally elias <lallyelias87@gmail.com>
  * @license MIT
  * @since 0.40.0
- * @version 0.1.0
+ * @version 0.2.0
  * @static
  * @public
  * @example

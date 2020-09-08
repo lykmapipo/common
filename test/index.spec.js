@@ -92,6 +92,7 @@ describe('common', () => {
     expect(isNotValue(' ')).to.be.true;
     expect(isNotValue(null)).to.be.true;
     expect(isNotValue(undefined)).to.be.true;
+    expect(isNotValue(NaN)).to.be.true;
     expect(isNotValue(false)).to.be.false;
     expect(isNotValue(true)).to.be.false;
     expect(isNotValue(0)).to.be.false;
@@ -125,6 +126,7 @@ describe('common', () => {
     expect(isValue(' ')).to.be.false;
     expect(isValue(null)).to.be.false;
     expect(isValue(undefined)).to.be.false;
+    expect(isValue(NaN)).to.be.false;
     expect(isValue(false)).to.be.true;
     expect(isValue(true)).to.be.true;
     expect(isValue(0)).to.be.true;
