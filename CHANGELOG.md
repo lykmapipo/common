@@ -1,3 +1,13 @@
+#### 0.42.0 (2020-10-01)
+
+##### Chores
+
+* **deps:**  force latest version ([7784dbcd](https://github.com/lykmapipo/common/commit/7784dbcdf14ca0e8bd5bd96ae7074739c88940b0))
+
+##### Bug Fixes
+
+* **value:**  pass function as state ([6f5e03e9](https://github.com/lykmapipo/common/commit/6f5e03e958055d460bfd183ec5cb2633899c1396))
+
 #### 0.41.3 (2020-09-23)
 
 ##### Chores

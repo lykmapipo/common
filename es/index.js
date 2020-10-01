@@ -1,7 +1,7 @@
 import { resolve } from 'path';
 import { readFileSync } from 'fs';
 import { arch, cpus, endianness, freemem, homedir, hostname, loadavg, networkInterfaces, platform, release, tmpdir, totalmem, type, uptime } from 'os';
-import { isNaN, isBoolean, isNumber, isError, isString, isEmpty, trim, isDate, first, filter, cloneDeep, flattenDeep, map, reduce, isArray, compact as compact$1, isPlainObject, omitBy, uniq as uniq$1, orderBy, assign as assign$1, merge, pick, forEach, toLower, startCase, words, get, camelCase, includes, every, some, toUpper, omit, join as join$1, isFunction, find, noop, snakeCase, toString } from 'lodash';
+import { isNaN, isBoolean, isNumber, isError, isFunction, isString, isEmpty, trim, isDate, first, filter, cloneDeep, flattenDeep, map, reduce, isArray, compact as compact$1, isPlainObject, omitBy, uniq as uniq$1, orderBy, assign as assign$1, merge, pick, forEach, toLower, startCase, words, get, camelCase, includes, every, some, toUpper, omit, join as join$1, find, noop, snakeCase, toString } from 'lodash';
 export { getExtension as mimeExtensionOf, getType as mimeTypeOf } from 'mime';
 import { flatten, unflatten } from 'flat';
 import { message } from 'statuses';
@@ -68,8 +68,13 @@ const isNotValue = (value) => {
   if (isNaN(value)) {
     return true;
   }
-  // handle boolean and number
-  if (isBoolean(value) || isNumber(value) || isError(value)) {
+  // handle boolean, number, error and function
+  if (
+    isBoolean(value) ||
+    isNumber(value) ||
+    isError(value) ||
+    isFunction(value)
+  ) {
     return false;
   }
   // handle string
