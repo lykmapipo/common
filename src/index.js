@@ -127,8 +127,13 @@ export const isNotValue = (value) => {
   if (isNotANumber(value)) {
     return true;
   }
-  // handle boolean and number
-  if (isBoolean(value) || isNumber(value) || isError(value)) {
+  // handle boolean, number, error and function
+  if (
+    isBoolean(value) ||
+    isNumber(value) ||
+    isError(value) ||
+    isFunction(value)
+  ) {
     return false;
   }
   // handle string

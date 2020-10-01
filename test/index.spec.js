@@ -97,6 +97,8 @@ describe('common', () => {
     expect(isNotValue(true)).to.be.false;
     expect(isNotValue(0)).to.be.false;
     expect(isNotValue(1)).to.be.false;
+    expect(isNotValue(new Error())).to.be.false;
+    expect(isNotValue(() => {})).to.be.false;
     expect(isNotValue(new Date())).to.be.false;
     expect(isNotValue(new Date('a'))).to.be.true;
     expect(isNotValue([1])).to.be.false;
@@ -106,7 +108,6 @@ describe('common', () => {
     expect(isNotValue(Buffer.from('1'))).to.be.false;
     expect(isNotValue(Buffer.from(''))).to.be.true;
     // expect(isNotValue(Buffer.from(' '))).to.be.true;
-    expect(isNotValue(new Error())).to.be.false;
     expect(isNotValue(new Set([1]))).to.be.false;
     expect(isNotValue(new Set())).to.be.true;
     // expect(isNotValue(new WeakSet())).to.be.false;
@@ -131,6 +132,8 @@ describe('common', () => {
     expect(isValue(true)).to.be.true;
     expect(isValue(0)).to.be.true;
     expect(isValue(1)).to.be.true;
+    expect(isValue(new Error())).to.be.true;
+    expect(isValue(() => {})).to.be.true;
     expect(isValue(new Date())).to.be.true;
     expect(isValue(new Date('a'))).to.be.false;
     expect(isValue([1])).to.be.true;
@@ -140,7 +143,6 @@ describe('common', () => {
     expect(isValue(Buffer.from('1'))).to.be.true;
     expect(isValue(Buffer.from(''))).to.be.false;
     // expect(isValue(Buffer.from(' '))).to.be.false;
-    expect(isValue(new Error())).to.be.true;
     expect(isValue(new Set([1]))).to.be.true;
     expect(isValue(new Set())).to.be.false;
     // expect(isValue(new WeakSet())).to.be.true;
@@ -368,7 +370,10 @@ describe('common', () => {
   });
 
   it('should merge objects to single object', () => {
-    expect(mergeObjects({ a: 1 }, { b: 1 })).to.be.eql({ a: 1, b: 1 });
+    expect(mergeObjects({ a: 1 }, { b: 1 })).to.be.eql({
+      a: 1,
+      b: 1,
+    });
     expect(mergeObjects({ a: 1 }, { b: 1 }, { b: undefined })).to.be.eql({
       a: 1,
       b: 1,
@@ -378,6 +383,7 @@ describe('common', () => {
       b: true,
       c: 0,
     });
+    expect(mergeObjects({ c: () => {} })).to.have.property('c');
   });
 
   it('should safe merge objects to single object', () => {
@@ -391,6 +397,7 @@ describe('common', () => {
       b: true,
       c: 0,
     });
+    expect(safeMergeObjects({ c: () => {} })).to.have.property('c');
   });
 
   it('should generate camelized variable name', () => {
