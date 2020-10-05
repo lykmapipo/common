@@ -56,7 +56,7 @@
     "@commitlint/cli": "^11.0.0",
     "@commitlint/config-conventional": "^11.0.0",
     "@commitlint/travis-cli": "^11.0.0",
-    "@lykmapipo/test-helpers": "^0.6.2",
+    "@lykmapipo/test-helpers": "^0.6.3",
     "acorn": "^8.0.2",
     "chai": "^4.2.0",
     "commitizen": "^4.2.1",
@@ -68,7 +68,7 @@
     "eslint-config-airbnb-base": "^14.2.0",
     "eslint-config-prettier": "^6.12.0",
     "eslint-plugin-import": "^2.22.1",
-    "eslint-plugin-jsdoc": "^30.6.2",
+    "eslint-plugin-jsdoc": "^30.6.3",
     "eslint-plugin-mocha": "^8.0.0",
     "eslint-plugin-prettier": "^3.1.4",
     "generate-changelog": "^1.8.0",
@@ -101,7 +101,7 @@
     "statuses": ">=2.0.0",
     "string-template": ">=1.0.0",
     "striptags": ">=3.1.1",
-    "uuid": ">=8.3.0"
+    "uuid": ">=8.3.1"
   },
   "engines": {
     "node": ">=8.11.1",
