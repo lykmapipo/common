@@ -1,3 +1,9 @@
+#### 0.43.0 (2021-03-21)
+
+##### New Features
+
+* **transformer:**  add sync transform block ([c50639eb](https://github.com/lykmapipo/common/commit/c50639eb6fa5530cc3bf931c39379704abb5c641))
+
 #### 0.42.11 (2021-03-21)
 
 #### 0.42.10 (2021-02-20)

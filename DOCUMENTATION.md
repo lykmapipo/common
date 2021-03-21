@@ -1403,6 +1403,42 @@ const join = join(['a', 'b']);
 
 
 
+#### transform(vals[, transformers]) 
+
+Preprocess given values according to provided transformers
+
+
+
+
+##### Parameters
+
+| Name | Type | Description |  |
+| ---- | ---- | ----------- | -------- |
+| vals |  | value to be convert | &nbsp; |
+| transformers | `Function`  | iteratee function which receive result `value` to be transformed | *Optional* |
+
+
+
+
+##### Examples
+
+```javascript
+
+const transform = transform(['a']);
+// => ['a']
+
+const transform = transform([1, '2'], _.toNumber);
+// => [1, 2]
+```
+
+
+##### Returns
+
+
+-  resulted value
+
+
+
 #### arrayToObject(array[, transformer]) 
 
 Converts array values into an object

@@ -1,7 +1,7 @@
 import { resolve } from 'path';
 import { readFileSync } from 'fs';
 import { arch, cpus, endianness, freemem, homedir, hostname, loadavg, networkInterfaces, platform, release, tmpdir, totalmem, type, uptime } from 'os';
-import { isNaN, isBoolean, isNumber, isError, isFunction, isString, isEmpty, trim, isDate, first, filter, cloneDeep, flattenDeep, map, reduce, isArray, compact as compact$1, isPlainObject, omitBy, uniq as uniq$1, orderBy, assign as assign$1, merge, pick, forEach, toLower, startCase, words, get, camelCase, includes, every, some, toUpper, omit, join as join$1, find, noop, snakeCase, toString } from 'lodash';
+import { isNaN, isBoolean, isNumber, isError, isFunction, isString, isEmpty, trim, isDate, first, filter, cloneDeep, flattenDeep, map, reduce, isArray, compact as compact$1, isPlainObject, omitBy, uniq as uniq$1, orderBy, assign as assign$1, merge, pick, forEach, toLower, startCase, words, get, camelCase, includes, every, some, toUpper, omit, join as join$1, size, find, noop, snakeCase, toString } from 'lodash';
 export { getExtension as mimeExtensionOf, getType as mimeTypeOf } from 'mime';
 import { flatten, unflatten } from 'flat';
 import { message } from 'statuses';
@@ -1383,6 +1383,57 @@ const join = (values = [], separator = ', ', property = '') => {
 };
 
 /**
+ * @function transform
+ * @name transform
+ * @description Preprocess given values according to provided transformers
+ * @param {*} vals value to be convert
+ * @param {Function} [transformers] iteratee function which receive result
+ * `value` to be transformed
+ * @returns {*} resulted value
+ * @author lally elias <lallyelias87@gmail.com>
+ * @license MIT
+ * @since 0.43.0
+ * @version 0.1.0
+ * @static
+ * @public
+ * @example
+ *
+ * const transform = transform(['a']);
+ * // => ['a']
+ *
+ * const transform = transform([1, '2'], _.toNumber);
+ * // => [1, 2]
+ *
+ */
+const transform = (vals, ...transformers) => {
+  // ensure compact values
+  const values = compact([].concat(vals));
+
+  // prepare transformers
+  const defaultTransformer = (value) => value;
+  const preprocessors = map(
+    compact([defaultTransformer].concat(...transformers)),
+    (transformer) => {
+      return isFunction(transformer) ? transformer : defaultTransformer;
+    }
+  );
+
+  // transform values
+  let transformed = map(values, (value) => {
+    let data;
+    forEach(preprocessors, (transformer) => {
+      data = transformer(value);
+    });
+    return data;
+  });
+
+  // return transformed data
+  transformed = compact(transformed);
+  transformed = size(transformed) === 1 ? first(transformed) : transformed;
+  return transformed;
+};
+
+/**
  * @function arrayToObject
  * @name arrayToObject
  * @description Converts array values into an object
@@ -1544,4 +1595,4 @@ const tryCatch = (func, defaultValue) => {
   }
 };
 
-export { RESOURCE_ACTIONS, abbreviate, areNotEmpty, arrayToObject, assign, autoParse, bagify, classify, compact, copyOf, firstValue, flat, formatDate, has, hasAll, hasAny, hashOf, idOf, isNotValue, isValue, join, mapErrorToObject, mapToLower, mapToUpper, mergeObjects, normalizeError, osInfo, parse, parseDate, parseMs, parseTemplate, permissionsFor, pkg, pluralize, processInfo, randomColor, safeMergeObjects, scopesFor, singularize, sortedUniq, stringify, stripHtmlTags, tryCatch, unflat, uniq, variableNameFor, wrapCallback };
+export { RESOURCE_ACTIONS, abbreviate, areNotEmpty, arrayToObject, assign, autoParse, bagify, classify, compact, copyOf, firstValue, flat, formatDate, has, hasAll, hasAny, hashOf, idOf, isNotValue, isValue, join, mapErrorToObject, mapToLower, mapToUpper, mergeObjects, normalizeError, osInfo, parse, parseDate, parseMs, parseTemplate, permissionsFor, pkg, pluralize, processInfo, randomColor, safeMergeObjects, scopesFor, singularize, sortedUniq, stringify, stripHtmlTags, transform, tryCatch, unflat, uniq, variableNameFor, wrapCallback };
