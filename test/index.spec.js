@@ -52,6 +52,7 @@ import {
   flat,
   unflat,
   join,
+  transform,
   arrayToObject,
   parseMs,
   wrapCallback,
@@ -775,6 +776,16 @@ describe('common', () => {
       a: 'a',
       b: 'b',
     });
+  });
+
+  it('should transform values', () => {
+    const asNumber = (val) => Number(val);
+
+    expect(transform('1')).to.be.eql('1');
+    expect(transform('1', asNumber)).to.be.eql(1);
+
+    expect(transform(['1', '2'])).to.be.eql(['1', '2']);
+    expect(transform(['1', '2'], asNumber)).to.be.eql([1, 2]);
   });
 
   it('should parse milliseconds', () => {

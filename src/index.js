@@ -48,6 +48,7 @@ import {
   omitBy,
   orderBy,
   reduce,
+  size,
   some,
   snakeCase,
   startCase,
@@ -1477,6 +1478,57 @@ export const join = (values = [], separator = ', ', property = '') => {
 
   // return joined values
   return joined;
+};
+
+/**
+ * @function transform
+ * @name transform
+ * @description Preprocess given values according to provided transformers
+ * @param {*} vals value to be convert
+ * @param {Function} [transformers] iteratee function which receive result
+ * `value` to be transformed
+ * @returns {*} resulted value
+ * @author lally elias <lallyelias87@gmail.com>
+ * @license MIT
+ * @since 0.43.0
+ * @version 0.1.0
+ * @static
+ * @public
+ * @example
+ *
+ * const transform = transform(['a']);
+ * // => ['a']
+ *
+ * const transform = transform([1, '2'], _.toNumber);
+ * // => [1, 2]
+ *
+ */
+export const transform = (vals, ...transformers) => {
+  // ensure compact values
+  const values = compact([].concat(vals));
+
+  // prepare transformers
+  const defaultTransformer = (value) => value;
+  const preprocessors = map(
+    compact([defaultTransformer].concat(...transformers)),
+    (transformer) => {
+      return isFunction(transformer) ? transformer : defaultTransformer;
+    }
+  );
+
+  // transform values
+  let transformed = map(values, (value) => {
+    let data;
+    forEach(preprocessors, (transformer) => {
+      data = transformer(value);
+    });
+    return data;
+  });
+
+  // return transformed data
+  transformed = compact(transformed);
+  transformed = size(transformed) === 1 ? first(transformed) : transformed;
+  return transformed;
 };
 
 /**
