@@ -18,8 +18,7 @@
     "docs": "doxdox 'lib/**/*.js' -p package.json -l markdown -o DOCUMENTATION.md",
     "cmt": "git add -A && git-cz",
     "changelog": "changelog",
-    "chore:deps": "ncu -u && npm install --save",
-    "prepare": "husky install"
+    "chore:deps": "ncu -u && npm install --save"
   },
   "repository": {
     "type": "git",
@@ -98,7 +97,7 @@
     "moment": ">=2.29.1",
     "object-hash": ">=2.1.1",
     "parse-json": ">=5.2.0",
-    "parse-ms": ">=2.1.0",
+    "parse-ms": "2.1.0",
     "randomcolor": ">=0.6.2",
     "statuses": ">=2.0.1",
     "string-template": ">=1.0.0",
