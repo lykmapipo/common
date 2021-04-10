@@ -1,3 +1,9 @@
+#### 0.43.1 (2021-04-10)
+
+##### Chores
+
+* **deps:**  pin parse-ms to v2.10 ([2c6372e3](https://github.com/lykmapipo/common/commit/2c6372e38c67321dab2a76a56d33dad250427fb0))
+
 #### 0.43.0 (2021-03-21)
 
 ##### New Features
