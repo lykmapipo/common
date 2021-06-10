@@ -422,8 +422,7 @@ export const sortedUniq = (value) => {
  * @name assign
  * @description Assign a list of objects into a single object
  *
- * **Note:** This method mutates `object`.
- *
+ * Note:** This method mutates `object`.
  * @param {object} [object={}] destination object
  * @param {...object} objects list of objects
  * @returns {object} a merged object
@@ -832,8 +831,7 @@ export const hasAny = (collection, ...values) => {
  * @name normalizeError
  * @description Normalize error instance with name, code, status and message.
  *
- * **Note:** This method mutates `object`.
- *
+ * Note:** This method mutates `object`.
  * @param {Error} error valid error instance
  * @param {object} [options] additional convert options
  * @param {string} [options.name=Error] default error name
@@ -1456,7 +1454,7 @@ export const unflat = (value) => {
  * const join = join(['a', 'b']);
  * // => 'a, b, c'
  *
- * * const join = join([{ a: 'c' }, 'b'], ', ', 'c');
+ * const join = join([{ a: 'c' }, 'b'], ', ', 'c');
  * // => 'c, b'
  */
 export const join = (values = [], separator = ', ', property = '') => {
@@ -1501,7 +1499,6 @@ export const join = (values = [], separator = ', ', property = '') => {
  *
  * const transform = transform([1, '2'], _.toNumber);
  * // => [1, 2]
- *
  */
 export const transform = (vals, ...transformers) => {
   // ensure compact values
@@ -1552,7 +1549,6 @@ export const transform = (vals, ...transformers) => {
  *
  * const arrayToObject = arrayToObject(['a', 'b']);
  * // => { a: 'a', b: 'b' }
- *
  */
 export const arrayToObject = (array, transformer) => {
   // ensure compact keys
@@ -1624,19 +1620,21 @@ export const parseMs = (ms) => {
  * wrapCallback(cb, defaults);
  * // => fn
  */
-export const wrapCallback = (cb, ...defaultArgs) => (...replyArgs) => {
-  // prepare replies
-  const args = compact([...replyArgs, ...defaultArgs]);
-  const error = find(args, (arg) => isError(arg));
-  const replies = filter(args, (arg) => !isError(arg));
+export const wrapCallback =
+  (cb, ...defaultArgs) =>
+  (...replyArgs) => {
+    // prepare replies
+    const args = compact([...replyArgs, ...defaultArgs]);
+    const error = find(args, (arg) => isError(arg));
+    const replies = filter(args, (arg) => !isError(arg));
 
-  // reply
-  if (isFunction(cb)) {
-    return cb(error, ...replies);
-  }
-  // noop
-  return noop(error, ...replies);
-};
+    // reply
+    if (isFunction(cb)) {
+      return cb(error, ...replies);
+    }
+    // noop
+    return noop(error, ...replies);
+  };
 
 // TODO: promiseOrCallback
 
