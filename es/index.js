@@ -14,7 +14,6 @@ import hashObject from 'object-hash';
 import renderTemplate from 'string-template';
 import stripTags from 'striptags';
 import parseValue from 'auto-parse';
-import parseMilliSeconds from 'parse-ms';
 export { v1 as uuidv1, v3 as uuidv3, v4 as uuidv4, v5 as uuidv5 } from 'uuid';
 export { isBrowser, isNode, isWebWorker } from 'browser-or-node';
 
@@ -362,8 +361,7 @@ const sortedUniq = (value) => {
  * @name assign
  * @description Assign a list of objects into a single object
  *
- * **Note:** This method mutates `object`.
- *
+ * Note:** This method mutates `object`.
  * @param {object} [object={}] destination object
  * @param {...object} objects list of objects
  * @returns {object} a merged object
@@ -772,8 +770,7 @@ const hasAny = (collection, ...values) => {
  * @name normalizeError
  * @description Normalize error instance with name, code, status and message.
  *
- * **Note:** This method mutates `object`.
- *
+ * Note:** This method mutates `object`.
  * @param {Error} error valid error instance
  * @param {object} [options] additional convert options
  * @param {string} [options.name=Error] default error name
@@ -1358,7 +1355,7 @@ const unflat = (value) => {
  * const join = join(['a', 'b']);
  * // => 'a, b, c'
  *
- * * const join = join([{ a: 'c' }, 'b'], ', ', 'c');
+ * const join = join([{ a: 'c' }, 'b'], ', ', 'c');
  * // => 'c, b'
  */
 const join = (values = [], separator = ', ', property = '') => {
@@ -1403,7 +1400,6 @@ const join = (values = [], separator = ', ', property = '') => {
  *
  * const transform = transform([1, '2'], _.toNumber);
  * // => [1, 2]
- *
  */
 const transform = (vals, ...transformers) => {
   // ensure compact values
@@ -1454,7 +1450,6 @@ const transform = (vals, ...transformers) => {
  *
  * const arrayToObject = arrayToObject(['a', 'b']);
  * // => { a: 'a', b: 'b' }
- *
  */
 const arrayToObject = (array, transformer) => {
   // ensure compact keys
@@ -1504,7 +1499,18 @@ const parseMs = (ms) => {
   const value = Math.abs(ms);
 
   // parse milliseconds
-  const parsed = parseMilliSeconds(value);
+  // credits: https://github.com/sindresorhus/parse-ms/blob/main/index.js#L6
+  const parsed = {
+    days: Math.trunc(value / 86400000),
+    hours: Math.trunc(value / 3600000) % 24,
+    minutes: Math.trunc(value / 60000) % 60,
+    seconds: Math.trunc(value / 1000) % 60,
+    milliseconds: Math.trunc(value) % 1000,
+    microseconds: Math.trunc(value * 1000) % 1000,
+    nanoseconds: Math.trunc(value * 1e6) % 1000,
+  };
+
+  // return parsed
   return parsed;
 };
 
@@ -1526,19 +1532,21 @@ const parseMs = (ms) => {
  * wrapCallback(cb, defaults);
  * // => fn
  */
-const wrapCallback = (cb, ...defaultArgs) => (...replyArgs) => {
-  // prepare replies
-  const args = compact([...replyArgs, ...defaultArgs]);
-  const error = find(args, (arg) => isError(arg));
-  const replies = filter(args, (arg) => !isError(arg));
+const wrapCallback =
+  (cb, ...defaultArgs) =>
+  (...replyArgs) => {
+    // prepare replies
+    const args = compact([...replyArgs, ...defaultArgs]);
+    const error = find(args, (arg) => isError(arg));
+    const replies = filter(args, (arg) => !isError(arg));
 
-  // reply
-  if (isFunction(cb)) {
-    return cb(error, ...replies);
-  }
-  // noop
-  return noop(error, ...replies);
-};
+    // reply
+    if (isFunction(cb)) {
+      return cb(error, ...replies);
+    }
+    // noop
+    return noop(error, ...replies);
+  };
 
 // TODO: promiseOrCallback
 
