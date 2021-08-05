@@ -70,7 +70,6 @@ import hashObject from 'object-hash';
 import renderTemplate from 'string-template';
 import stripTags from 'striptags';
 import parseValue from 'auto-parse';
-import parseMilliSeconds from 'parse-ms';
 
 export { STATUS_CODES };
 
@@ -1598,7 +1597,18 @@ export const parseMs = (ms) => {
   const value = Math.abs(ms);
 
   // parse milliseconds
-  const parsed = parseMilliSeconds(value);
+  // credits: https://github.com/sindresorhus/parse-ms/blob/main/index.js#L6
+  const parsed = {
+    days: Math.trunc(value / 86400000),
+    hours: Math.trunc(value / 3600000) % 24,
+    minutes: Math.trunc(value / 60000) % 60,
+    seconds: Math.trunc(value / 1000) % 60,
+    milliseconds: Math.trunc(value) % 1000,
+    microseconds: Math.trunc(value * 1000) % 1000,
+    nanoseconds: Math.trunc(value * 1e6) % 1000,
+  };
+
+  // return parsed
   return parsed;
 };
 
