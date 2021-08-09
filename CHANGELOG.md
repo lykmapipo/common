@@ -1,3 +1,18 @@
+#### 0.44.0 (2021-08-05)
+
+##### Chores
+
+*  compile latest source ([7e63b15e](https://github.com/lykmapipo/common/commit/7e63b15ef56104089ea46150430c37f13cee5f4a))
+* **deps:**  bump striptags from 3.1.1 to 3.2.0 ([1773b33b](https://github.com/lykmapipo/common/commit/1773b33bd65be5726f8a8c5a2d4fcc1dcee1cad7))
+
+##### Documentation Changes
+
+* **readme:**  update badges ([9bc20ed6](https://github.com/lykmapipo/common/commit/9bc20ed63065ebcb3e37a5b84c68391bbd2d334f))
+
+##### Refactors
+
+*  copy parse-ms source ([34253a18](https://github.com/lykmapipo/common/commit/34253a18b62962461078e3d8cf341d36d4dc46c0))
+
 #### 0.43.4 (2021-06-10)
 
 ##### Chores
