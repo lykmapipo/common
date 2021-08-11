@@ -1,6 +1,6 @@
 # common
 
-[![Build Status](https://travis-ci.org/lykmapipo/common.svg?branch=master)](https://travis-ci.org/lykmapipo/common)
+[![Build Status](https://travis-ci.com/lykmapipo/common.svg?branch=master)](https://travis-ci.com/lykmapipo/common)
 [![Dependencies Status](https://david-dm.org/lykmapipo/common.svg)](https://david-dm.org/lykmapipo/common)
 [![Coverage Status](https://coveralls.io/repos/github/lykmapipo/common/badge.svg?branch=master)](https://coveralls.io/github/lykmapipo/common?branch=master)
 [![GitHub License](https://img.shields.io/github/license/lykmapipo/common)](https://github.com/lykmapipo/common/blob/develop/LICENSE)
