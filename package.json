@@ -85,7 +85,7 @@
     "nyc": "^15.1.0",
     "prettier": "^2.4.1",
     "rimraf": "^3.0.2",
-    "rollup": "^2.58.3",
+    "rollup": "^2.59.0",
     "shelljs": "^0.8.4",
     "websocket-extensions": "^0.1.4"
   },
@@ -95,7 +95,7 @@
     "flat": ">=5.0.2",
     "inflection": ">=1.13.1",
     "lodash": ">=4.17.21",
-    "mime": ">=2.5.2",
+    "mime": ">=2.6.0",
     "moment": ">=2.29.1",
     "object-hash": ">=2.2.0",
     "parse-json": ">=5.2.0",
