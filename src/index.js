@@ -65,7 +65,6 @@ import { message as STATUS_CODES } from 'statuses';
 import inflection from 'inflection';
 import generateColor from 'randomcolor';
 import moment from 'moment';
-import parseJson from 'parse-json';
 import hashObject from 'object-hash';
 import renderTemplate from 'string-template';
 import stripTags from 'striptags';
@@ -533,11 +532,11 @@ export const pkg = (path, ...field) => {
   const read = () => {
     try {
       const filePath = resolvePath(path, 'package.json');
-      const json = parseJson(readFileSync(filePath, 'utf8'));
+      const json = JSON.parse(readFileSync(filePath, 'utf8'));
       return json;
     } catch (e) {
       const filePath = resolvePath(process.cwd(), 'package.json');
-      const json = parseJson(readFileSync(filePath, 'utf8'));
+      const json = JSON.parse(readFileSync(filePath, 'utf8'));
       return json;
     }
   };

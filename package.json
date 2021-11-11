@@ -1,6 +1,6 @@
 {
   "name": "@lykmapipo/common",
-  "version": "0.44.4",
+  "version": "0.44.5",
   "description": "Helper utilities for day to day development",
   "main": "lib/index.js",
   "module": "es/index.js",
@@ -98,7 +98,6 @@
     "mime": ">=2.6.0",
     "moment": ">=2.29.1",
     "object-hash": ">=2.2.0",
-    "parse-json": ">=5.2.0",
     "randomcolor": ">=0.6.2",
     "statuses": ">=2.0.1",
     "string-template": ">=1.0.0",
