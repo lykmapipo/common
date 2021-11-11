@@ -1,3 +1,24 @@
+#### 0.44.5 (2021-11-11)
+
+##### Chores
+
+* **release:**  compile latest source ([163e2f24](https://github.com/lykmapipo/common/commit/163e2f24d03c3be37b8eb013c4e5e09e5ced13b7))
+* **deps:**
+  *  drop parse-json ([aa7b5521](https://github.com/lykmapipo/common/commit/aa7b5521377e2b2fd81d931faab96800c5e85298))
+  *  force latest version & audit fix ([9907ef3a](https://github.com/lykmapipo/common/commit/9907ef3af911328a998ade2e74e0345eee4cba23))
+  *  force latest version & audit fix ([9dbec09b](https://github.com/lykmapipo/common/commit/9dbec09bb67a9d1af88ca3877ff11466854dcba5))
+  *  force latest version & audit fix ([1a7f6e0f](https://github.com/lykmapipo/common/commit/1a7f6e0f2efa591516e56727ef61d04b5219bf17))
+  *  force latest version & audit fix ([580aa24d](https://github.com/lykmapipo/common/commit/580aa24de81ae1bf4ae4cd13e2dd73dfe487f356))
+  *  force latest version & audit fix ([9d4bdc4b](https://github.com/lykmapipo/common/commit/9d4bdc4bc3de44b764ea284245d6f765125bafa4))
+  *  force latest version & audit fix ([fc4eb9ab](https://github.com/lykmapipo/common/commit/fc4eb9ab4c3c33e849f9cb43fc0c975175f7677d))
+  *  force latest version & audit fix ([eb5a3799](https://github.com/lykmapipo/common/commit/eb5a3799b5c164ca8071f7944dcdad43f9d87870))
+  *  force latest version & audit fix ([9676f0bf](https://github.com/lykmapipo/common/commit/9676f0bfdadec4ee5f79f786317a6a735c269be3))
+* **ci:**  update travis badge url ([00738b0b](https://github.com/lykmapipo/common/commit/00738b0bf2384aaccb69e15842916e676fe1a70b))
+
+##### Documentation Changes
+
+* **security:**  restore security policy guide ([6534240e](https://github.com/lykmapipo/common/commit/6534240e5fcad9212c38d1ebff42f67458d3e5de))
+
 #### 0.44.4 (2021-09-06)
 
 ##### Chores
