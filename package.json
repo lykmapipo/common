@@ -96,7 +96,7 @@
     "inflection": ">=1.13.2",
     "lodash": ">=4.17.21",
     "mime": ">=2.6.0",
-    "moment": ">=2.29.3",
+    "moment": ">=2.29.4",
     "object-hash": ">=2.2.0",
     "randomcolor": ">=0.6.2",
     "statuses": ">=2.0.1",
